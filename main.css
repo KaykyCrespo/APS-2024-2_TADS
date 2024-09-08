@@ -60,13 +60,13 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1vw;
+    gap: 1.5vw;
 
 
     /* Estilos para seleção de opções */
     .div-options {
         display: flex;
-        gap: 4vw;
+        gap: 3vw;
 
         .options {
             display: flex;
@@ -75,16 +75,16 @@ main {
             label {
                 color: white;
                 font-family: 'Open sans';
-                font-size: 1vw;
+                font-size: 1.25vw;
             }
         }
     }
     
     /* Estilo para a linha que fica entre os inputs */
     .vertical-line{
-        height: 5vw;
+        height: 3vw;
         width: 80%;
-        border-left: 0.15vw solid white;
+        border-left: 0.1vw solid #ffffffc2;
         
     }
 
@@ -98,7 +98,8 @@ main {
         h1 {
             margin-bottom: 1.5vh;
             font-family: 'Poppins';
-            font-size: 1.5vw;
+            font-size: 1.6vw;
+            margin-bottom: 0.75vw;
             color: white;
         }
     }
@@ -110,8 +111,18 @@ main {
         h1 {
             margin-bottom: 1.5vh;
             font-family: 'Poppins';
-            font-size: 1.5vw;
+            font-size: 1.6vw;
             color: white;
+            margin: 0;
+        }
+
+        h2 {
+            color: white;
+            font-family: 'Open sans';
+            font-weight: normal;
+            font-size: 1.2vw;
+            margin-bottom: 1vw;
+
         }
 
     }
@@ -122,10 +133,19 @@ main {
         width: 80%;
 
         h1 {
-            margin-bottom: 1.5vh;
             font-family: 'Poppins';
-            font-size: 1.5vw;
+            font-size: 1.6vw;
             color: white;
+            margin: 0;
+        }
+
+        h2 {
+            color: white;
+            font-family: 'Open sans';
+            font-weight: normal;
+            font-size: 1.2vw;
+            margin-bottom: 1vw;
+
         }
 
     }
@@ -133,7 +153,7 @@ main {
     /* Div final contendo os botões de reset e fazer teste*/
     >:nth-of-type(6) {
         width: 80%;
-        margin-top: 7.5vw;
+        margin-top: 5vw;
 
         display: flex;
         justify-content: space-between;
