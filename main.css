@@ -10,6 +10,13 @@ main {
     display: flex;
 }
 
+input[type="radio"] {
+    cursor: pointer;
+    height: 1vw;
+    width: 1vw;
+    margin-top: 0.4vw;
+}
+
 #left-side {
     background-color: #012326;
     width: 50%;

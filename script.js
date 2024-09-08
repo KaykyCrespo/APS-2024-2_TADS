@@ -1,19 +1,11 @@
-let sortType;
-let arrayNumbers = [];
-
-window.onload = setNumbersArray(50);
+// Qualquer motivo que seja puramente estético usar JavaScript caso não Pyscript
 
 
-function setSortType(sort){
-    sortType = sort;
-    alert(sortType)
-}
-
-
-function setNumbersArray(quantity){
-    for (let i = 0; i < quantity; i++) {
-        arrayNumbers.push(Math.floor(Math.random() * 5000))    
-    }
-    alert(arrayNumbers)
-    
-}
+window.onload = function() {
+    document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
+        radio.checked = false;
+    });
+    document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
+        radio.checked = false;
+    });
+};

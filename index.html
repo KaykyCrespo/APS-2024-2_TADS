@@ -7,6 +7,8 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.8.2/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.8.2/core.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
 </head>
@@ -29,16 +31,16 @@
                 <h1>Select array sort type</h1>
                 <div class="div-options">
                     <div class="options">
-                        <input type="radio" id="bubblesort" name="sortOption" value="bubblesort"  onclick="setSortType('bubblesort')">
-                        <label for="sort-name">Bubblesort</label>
+                        <input type="radio" id="bubblesort" name="sortOption" value="bubblesort" py-click="setSortType">
+                        <label for="bubblesort">Bubblesort</label>
                     </div>
                     <div class="options">
-                        <input type="radio" id="insertionsort" name="sortOption" value="insertionsort" onclick="setSortType('insertionsort')">
-                        <label for="sort-name">Insertionsort</label>
+                        <input type="radio" id="insertionsort" name="sortOption" value="insertionsort" py-click="setSortType">
+                        <label for="insertionsort">Insertionsort</label>
                     </div>
                     <div class="options">
-                        <input type="radio" id="quicksort" name="sortOption" value="quicksort" onclick="setSortType('quicksort')">
-                        <label for="sort-name">Quicksort</label>
+                        <input type="radio" id="selectionsort" name="sortOption" value="selectionsort" py-click="setSortType">
+                        <label for="quicksort">Selectionsort</label>
                     </div>
                 </div>
             </div>
@@ -48,28 +50,28 @@
                 <h2>All numbers are going to be randomly generated</h2>
                 <div class="div-options">
                     <div class="options">
-                        <input type="radio" id="option1" name="option1" value="option1">
+                        <input type="radio" id="100" name="arraySize" value="100" py-click="setArraySortSize">
                         <label for="sort-name">100</label>
                     </div>
                     <div class="options">
-                        <input type="radio" id="option1" name="option1" value="option1">
+                        <input type="radio" id="250" name="arraySize" value="250" py-click="setArraySortSize">
                         <label for="sort-name">250</label>
                     </div>
                     <div class="options">
-                        <input type="radio" id="option1" name="option1" value="option1">
+                        <input type="radio" id="500" name="arraySize" value="500" py-click="setArraySortSize">
                         <label for="sort-name">500</label>
                     </div>
                     <div class="options">
-                        <input type="radio" id="option1" name="option1" value="option1">
+                        <input type="radio" id="1000" name="arraySize" value="1000" py-click="setArraySortSize">
                         <label for="sort-name">1000</label>
                     </div>
                     <div class="options">
-                        <input type="radio" id="option1" name="option1" value="option1">
+                        <input type="radio" id="5000" name="arraySize" value="5000" py-click="setArraySortSize">
                         <label for="sort-name">5000</label>
                     </div>
                     <div class="options">
-                        <input type="radio" id="option1" name="option1" value="option1">
-                        <label for="sort-name">1000</label>
+                        <input type="radio" id="10000" name="arraySize" value="10000" py-click="setArraySortSize">
+                        <label for="sort-name">10000</label>
                     </div>
                     
                 </div>
@@ -95,13 +97,14 @@
             </div>
             <div>
                 <p>Reset</p>
-                <button>
+                <button py-click="makeTest">
                     <h1>Make test</h1>
                     <img src="imgs/check.png" alt="">
                 </button>
             </div>
         </section>
         <main>
+        <script type="py" src="main.py"></script>
         <script src="script.js" defer></script>
 </body>
 
