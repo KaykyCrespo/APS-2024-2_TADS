@@ -21,7 +21,7 @@
         <section id="left-side">
             <div>
                 <h1>Array's performance tests</h1>
-                <label for="made-by">By Caio Pacheco, Kayky Crespo & Elias</label>
+                <p for="made-by">By Caio Pacheco, Kayky Crespo & Elias</p>
                 <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Vitae tellus etiam vivamus bibendum eu nostra
                     phasellus dictumst. Imperdiet est morbi ridiculus ultricies nostra suscipit iaculis penatibus.</p>
             </div>
@@ -35,17 +35,22 @@
                 <div class="div-options">
                     <div class="options">
                         <input type="radio" id="bubblesort" name="sortOption" value="bubblesort" py-click="setSortType">
-                        <label for="bubblesort">Bubblesort</label>
+                        <label for="bubblesort"></label>
+                        <p>Bubblesort</p>
+
                     </div>
                     <div class="options">
                         <input type="radio" id="insertionsort" name="sortOption" value="insertionsort"
                             py-click="setSortType">
-                        <label for="insertionsort">Insertionsort</label>
+                        <label for="insertionsort"></label>
+                        <p>Insertionsort</p>
+
                     </div>
                     <div class="options">
                         <input type="radio" id="selectionsort" name="sortOption" value="selectionsort"
                             py-click="setSortType">
-                        <label for="quicksort">Selectionsort</label>
+                        <label for="selectionsort"></label>
+                        <p>Selectionsort</p>
                     </div>
                 </div>
             </div>
@@ -56,27 +61,33 @@
                 <div class="div-options">
                     <div class="options">
                         <input type="radio" id="100" name="arraySize" value="100" py-click="setArraySortSize">
-                        <label for="sort-name">100</label>
+                        <label for="100"></label>
+                        <p>100</p>
                     </div>
                     <div class="options">
                         <input type="radio" id="250" name="arraySize" value="250" py-click="setArraySortSize">
-                        <label for="sort-name">250</label>
+                        <label for="250"></label>
+                        <p>250</p>
                     </div>
                     <div class="options">
                         <input type="radio" id="500" name="arraySize" value="500" py-click="setArraySortSize">
-                        <label for="sort-name">500</label>
+                        <label for="500"></label>
+                        <p>500</p>
                     </div>
                     <div class="options">
                         <input type="radio" id="1000" name="arraySize" value="1000" py-click="setArraySortSize">
-                        <label for="sort-name">1000</label>
+                        <label for="1000"></label>
+                        <p>1000</p>
                     </div>
                     <div class="options">
                         <input type="radio" id="5000" name="arraySize" value="5000" py-click="setArraySortSize">
-                        <label for="sort-name">5000</label>
+                        <label for="5000"></label>
+                        <p>5000</p>
                     </div>
                     <div class="options">
                         <input type="radio" id="10000" name="arraySize" value="10000" py-click="setArraySortSize">
-                        <label for="sort-name">10000</label>
+                        <label for="10000"></label>
+                        <p>10000</p>
                     </div>
 
                 </div>
@@ -88,20 +99,24 @@
                 <div class="div-options">
                     <div class="options">
                         <input type="radio" id="option1" name="option1" value="option1">
-                        <label for="sort-name">Bubblesort</label>
+                        <label for="sort-name"></label>
+                        <p>10000</p>
+
                     </div>
                     <div class="options">
                         <input type="radio" id="option1" name="option1" value="option1">
-                        <label for="sort-name">Bubblesort</label>
+                        <label for="sort-name"></label>
+                        <p>10000</p>
                     </div>
                     <div class="options">
                         <input type="radio" id="option1" name="option1" value="option1">
-                        <label for="sort-name">Bubblesort</label>
+                        <label for="sort-name"></label>
+                        <p>10000</p>
                     </div>
                 </div>
             </div>
             <div class="button-container">
-                <p id="resetar">Reset</p>
+                <p id="resetar" py-click="resetInputValues">Reset</p>
                 <button class="make-test-button" py-click="makeTest">
                     <h1>Make test</h1>
                     <img src="imgs/check.png" alt="">

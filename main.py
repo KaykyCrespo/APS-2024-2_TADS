@@ -1,4 +1,4 @@
-from js import document, window, alert
+from js import document, window, alert, showAlertBox, resetInputs
 import math, random, time
 
 sortType = "";
@@ -63,12 +63,26 @@ def makeTest(event):
     
     if sortType and sortArraySize:
         performanceTest(sortType)
+        showAlertBox("Array sorted with success.", "success");
+        
     else:
-        alertMessage.innerHTML = "Erro! Marque as opções que deseja testar.";
-        alertBox.style.display = "flex";
+        showAlertBox("Error! Some fields isn't checked.", "error");
         
-        
-        
+
+
+def resetInputValues(event):
+    global sortArraySize
+    global sortType
+    
+    try:
+        sortArraySize = []
+        sortType = "";
+        resetInputs();
+        showAlertBox("Success! Input values has been reseted.", "success")
+    except Exception as e:
+        showAlertBox(f"Error! {e}", "error")
+
+    
         
 def bubble_sort(lista):
     # Este é o loop externo que controla o número de passes que o algoritmo de ordenação precisa fazer. 
@@ -106,10 +120,10 @@ def insertionSort(lista):
         # Depois que todos os elementos maiores foram movidos, o key é inserido na posição correta.
         lista[j + 1] = key         
         
-def selectionSort(array, size):
+def selectionSort(array):
     # O loop externo percorre cada índice da lista, começando do início até o final (size - 1). 
     # ind é o índice atual onde o menor elemento da parte não ordenada será colocado.
-    for ind in range(size):
+    for ind in range(len(array)):
 
         # Inicializa min_index como o índice atual (ind). 
         # min_index irá armazenar o índice do menor elemento encontrado na parte não ordenada da lista.
@@ -117,7 +131,7 @@ def selectionSort(array, size):
 
         # O loop interno percorre os elementos restantes da lista a partir de ind + 1 até o final. 
         # j é o índice atual no loop interno.
-        for j in range(ind + 1, size):
+        for j in range(ind + 1, len(array)):
             
             # Se o elemento no índice j é menor que o elemento no índice min_index, 
             # atualiza min_index para j. Isso garante que min_index sempre apontará 
@@ -128,4 +142,4 @@ def selectionSort(array, size):
             # Após encontrar o menor elemento na parte não ordenada da lista, 
             # troca o elemento no índice ind com o elemento no índice min_index. 
             # Isso coloca o menor elemento na posição correta.
-        (array[ind], array[min_index]) = (array[min_index], array[ind])                   
+        (array[ind], array[min_index]) = (array[min_index], array[ind])             
