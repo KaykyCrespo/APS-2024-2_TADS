@@ -9,3 +9,13 @@ window.onload = function() {
         radio.checked = false;
     });
 };
+
+// função para resetar os inputs
+
+document.getElementById('resetar').addEventListener('click', function() {
+    // Seleciona todos os inputs de tipo 'radio' e os desmarca
+    const radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(radio => {
+        radio.checked = false;
+    });
+});
