@@ -23,9 +23,8 @@ print("Unsorted list is:")
 print(lista)
 
 
-# Medir o tempo de execução com time.perf_counter()
-# time.perf_counter() medirá o tempo total real decorrido,
-# incluindo o tempo que o processo passou esperando por I/O ou outras operações.
+# Medir o tempo de execução com time.process_time()
+# time.process_time() medirá apenas o tempo de CPU efetivo utilizado, ignorando o tempo de espera.
 start_time = time.perf_counter()
 bubble_sort(lista)
 end_time = time.perf_counter()

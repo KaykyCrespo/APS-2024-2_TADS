@@ -69,6 +69,9 @@ main {
     height: 100vh;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
 
 
@@ -371,10 +374,6 @@ main {
 
 
 
-
-/* Estilizar inputs de rádio como botões quadrados */
-/* Estilizar inputs de rádio como botões quadrados */
-/* Estilizar inputs de rádio como botões quadrados */
 /* Estilizar inputs de rádio como botões quadrados */
 .square-radio {
     position: relative;
