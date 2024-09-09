@@ -27,11 +27,25 @@ def setArraySortSize(event):
 def makeTest(event):
     global sortArraySize
     global sortType
+    print(sortType)
+    print(sortArraySize)
+    
+    alertBox = document.getElementById("alert-box");
+    alertMessage = document.getElementById("alert-message");
     
     
-    if sortType == "bubblesort" and sortType != "":
+    def performanceTest(sort):
+        
+        sort_functions = {
+        "bubblesort": bubble_sort,
+        "insertionsort": insertionSort,
+        "selectionsort": selectionSort
+        }
+        
+        sort_type = sort_functions.get(sort)
+        
         start_time = time.perf_counter()
-        bubble_sort(sortArraySize)
+        sort_type(sortArraySize)
         end_time = time.perf_counter()
         elapsed_time_perf_counter = end_time - start_time
         print(f"Tempo decorrido com perf_counter: {elapsed_time_perf_counter:.6f} segundos")
@@ -39,55 +53,23 @@ def makeTest(event):
         # Medir o tempo de execução com time.process_time()
         # time.process_time() medirá apenas o tempo de CPU efetivo utilizado, ignorando o tempo de espera.
         start_time = time.process_time()
-        bubble_sort(sortArraySize)
+        sort_type(sortArraySize)
         end_time = time.process_time()
         elapsed_time_process_time = end_time - start_time
         print(f"Tempo de CPU com process_time: {elapsed_time_process_time:.6f} segundos")
-        bubble_sort(sortArraySize)
+        sort_type(sortArraySize)
         
         print(sortArraySize)
-          
-    elif sortType == "insertionsort" and sortType != "":
-        start_time = time.perf_counter()
-        insertionSort(sortArraySize)
-        end_time = time.perf_counter()
-        elapsed_time_perf_counter = end_time - start_time
-        print(f"Tempo decorrido com perf_counter: {elapsed_time_perf_counter:.6f} segundos")
-
-        # Medir o tempo de execução com time.process_time()
-        start_time = time.process_time()
-        insertionSort(sortArraySize)
-        end_time = time.process_time()
-        elapsed_time_process_time = end_time - start_time
-        print(f"Tempo de CPU com process_time: {elapsed_time_process_time:.6f} segundos")
-        
-        print(sortArraySize)
-        
-    elif sortType == "selectionsort" and sortType != "":
-        start_time = time.perf_counter()
-        selectionSort(sortArraySize, len(sortArraySize))
-        end_time = time.perf_counter()
-        elapsed_time_perf_counter = end_time - start_time
-        print(f"Tempo decorrido com perf_counter: {elapsed_time_perf_counter:.6f} segundos")
-
-        # Medir o tempo de execução com time.process_time()
-        start_time = time.process_time()
-        selectionSort(sortArraySize, len(sortArraySize))
-        end_time = time.process_time()
-        elapsed_time_process_time = end_time - start_time
-        print(f"Tempo de CPU com process_time: {elapsed_time_process_time:.6f} segundos")
-        
-        print(sortArraySize)
-
+    
+    if sortType and sortArraySize:
+        performanceTest(sortType)
     else:
-        print("Erro! Selecione um sort ou seu tamanho para continuar.")
+        alertMessage.innerHTML = "Erro! Marque as opções que deseja testar.";
+        alertBox.style.display = "flex";
         
-    
-    
-    
-            
         
-
+        
+        
 def bubble_sort(lista):
     # Este é o loop externo que controla o número de passes que o algoritmo de ordenação precisa fazer. 
     # Ele começa em len(lista) - 1 e vai até 1, decrementando n a cada iteração. 
@@ -105,7 +87,6 @@ def bubble_sort(lista):
                     # Esta linha troca os valores de lista[i] e lista[i + 1].
                     lista[i], lista[i + 1] = lista[i + 1], lista[i]
                     
-
 def insertionSort(lista):
     # O loop externo começa a partir do índice 1 até o final da lista (len(lista) - 1). 
     # O elemento no índice 0 é considerado como parte da lista ordenada inicial, 

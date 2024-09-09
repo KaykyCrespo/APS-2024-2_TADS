@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +14,10 @@
 
 <body>
     <main>
+        <div id="alert-box">
+            <img src="imgs/alert_icon.png">
+            <p id="alert-message"></p>
+        </div>
         <section id="left-side">
             <div>
                 <h1>Array's performance tests</h1>
@@ -35,11 +38,13 @@
                         <label for="bubblesort">Bubblesort</label>
                     </div>
                     <div class="options">
-                        <input type="radio" id="insertionsort" name="sortOption" value="insertionsort" py-click="setSortType">
+                        <input type="radio" id="insertionsort" name="sortOption" value="insertionsort"
+                            py-click="setSortType">
                         <label for="insertionsort">Insertionsort</label>
                     </div>
                     <div class="options">
-                        <input type="radio" id="selectionsort" name="sortOption" value="selectionsort" py-click="setSortType">
+                        <input type="radio" id="selectionsort" name="sortOption" value="selectionsort"
+                            py-click="setSortType">
                         <label for="quicksort">Selectionsort</label>
                     </div>
                 </div>
@@ -73,7 +78,7 @@
                         <input type="radio" id="10000" name="arraySize" value="10000" py-click="setArraySortSize">
                         <label for="sort-name">10000</label>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="vertical-line"> </div>
@@ -103,9 +108,9 @@
                 </button>
             </div>
         </section>
-        <main>
-        <script type="py" src="main.py"></script>
-        <script src="script.js" defer></script>
+    </main>
+    <script type="py" src="main.py"></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
