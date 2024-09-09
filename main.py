@@ -30,10 +30,6 @@ def makeTest(event):
     print(sortType)
     print(sortArraySize)
     
-    alertBox = document.getElementById("alert-box");
-    alertMessage = document.getElementById("alert-message");
-    
-    
     def performanceTest(sort):
         
         sort_functions = {
