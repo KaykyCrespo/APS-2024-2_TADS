@@ -45,39 +45,76 @@ document.getElementById('resetar').addEventListener('click', function() {
 
 /* GRÁFICO EM COLUNAS*/
 const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Set 1', 'Set 2', 'Set 3'], // Labels for each pair of bars
-        datasets: [
-            {
-                label: 'Dataset 1',
-                data: [12, 19, 3],
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'Dataset 2',
-                data: [8, 15, 5],
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            },
-            {
-                label: 'Dataset 3',
-                data: [10, 12, 8],
-                backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+
+    // Plugin para exibir os valores ao lado de cada barra
+    const valueDisplayPlugin = {
+        afterDatasetsDraw: function(chart) {
+            const ctx = chart.ctx;
+
+            chart.data.datasets.forEach(function(dataset, i) {
+                const meta = chart.getDatasetMeta(i);
+                if (!meta.hidden) {
+                    meta.data.forEach(function(element, index) {
+                        // Pegando o valor da barra
+                        const dataValue = dataset.data[index];
+
+                        // Posição da barra
+                        const position = element.tooltipPosition();
+
+                        // Configurações do texto
+                        ctx.font = '12px Arial';
+                        ctx.fillStyle = 'black';
+                    });
+                }
+            });
         }
-    }
-});
+    };
+
+    // Gráfico em colunas
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Bubblesort', 'Insertionsort', 'Quicksort'], // Rótulos
+            datasets: [
+                {
+                    label: 'Time',
+                    data: [12, 19, 3],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Memory',
+                    data: [8, 15, 5],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'CPU',
+                    data: [10, 12, 8],
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            layout: {
+                padding: {
+                    top: 20 // Margem superior
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return value + 's'; // Adiciona um "s" ao lado de cada número
+                        }
+                    }
+                }
+            }
+        },
+        plugins: [valueDisplayPlugin] // Incluindo o plugin personalizado
+    });

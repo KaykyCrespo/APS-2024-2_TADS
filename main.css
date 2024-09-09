@@ -426,3 +426,37 @@ main {
 .square-radio:checked::after {
     opacity: 1;
 }
+
+
+/*Dropdown da escolha do grafico*/
+#dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+#dropdown select{
+    width: 200px;
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #003B40;
+    border: 1px solid #3a767d;
+    border-radius: 5px;
+    appearance: none;
+    cursor: pointer;
+}
+
+#dropdown::after{
+content: '\25BC';
+position: absolute;
+top: 50%;
+right: 10px;
+transform: translateY(-50%);
+color: #fff;
+pointer-events: none;
+}
+
+#myChart{
+    margin-top: 8vh;
+}
