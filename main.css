@@ -350,3 +350,62 @@ p {
 }
 /*Transição para o botão de MAKE TEST*/
 /*FIM*/
+
+
+
+
+/* Estilizar inputs de rádio como botões quadrados */
+/* Estilizar inputs de rádio como botões quadrados */
+/* Estilizar inputs de rádio como botões quadrados */
+/* Estilizar inputs de rádio como botões quadrados */
+.square-radio {
+    position: relative;
+    appearance: none;
+    width: 2vw; /* Ajuste conforme necessário */
+    height: 2vw; /* Ajuste conforme necessário */
+    background-color: #f0f0f0;
+    border: 2px solid #78B8BF;
+    border-radius: 0.2vw; /* Mantém o botão com bordas arredondadas */
+    cursor: pointer;
+    outline: none;
+    transition: 
+        background-color 0.3s ease, /* Transição suave para a cor de fundo */
+        border-color 0.3s ease, /* Transição suave para a cor da borda */
+        box-shadow 0.3s ease, /* Transição suave para a sombra */
+        transform 0.1s ease, /* Transição suave para o efeito de clique */
+        border-width 0.3s ease; /* Transição suave para a largura da borda */
+}
+
+.square-radio:checked {
+    background-color: #78B8BF;
+    border-color: #78b8bf37; /* Cor de borda quando selecionado */
+    border-width: 2px; /* Mantém a borda consistente quando selecionado */
+}
+
+.square-radio:focus {
+    box-shadow: 0 0 0 3px rgba(120, 184, 191, 0.5); /* Adiciona uma borda externa suave quando o botão está em foco */
+}
+
+.square-radio:active {
+    background-color: #5a9ca8; /* Cor mais escura quando pressionado */
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra interna para simular o efeito de pressionado */
+    transform: scale(0.95); /* Leve efeito de escala para simular o clique */
+    border-width: 2px; /* Mantém a largura da borda quando pressionado */
+}
+
+.square-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%; /* Ajustado para menor espaço em branco */
+    height: 50%; /* Ajustado para menor espaço em branco */
+    border-radius: 0.2vw; /* Mantém a borda arredondada no meio */
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease; /* Transição suave para a opacidade */
+    opacity: 0;
+}
+
+.square-radio:checked::after {
+    opacity: 1;
+}
