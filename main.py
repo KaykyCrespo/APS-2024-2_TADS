@@ -35,7 +35,8 @@ def makeTest(event):
         sort_functions = {
         "bubblesort": bubble_sort,
         "insertionsort": insertionSort,
-        "selectionsort": selectionSort
+        "selectionsort": selectionSort,
+        "heapsort": heapsort
         }
         
         sort_type = sort_functions.get(sort)

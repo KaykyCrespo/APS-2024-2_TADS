@@ -42,7 +42,7 @@ document.getElementById('resetar').addEventListener('click', function() {
     });
 });
 
-/*
+
 // GRÁFICO EM COLUNAS
 const ctx = document.getElementById('myChart').getContext('2d');
 
@@ -121,7 +121,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
     });
 
 
-
+/*
 // GRÁFICO DE PIZZA
   var ctx = document.getElementById('myPieChart').getContext('2d');
   var myPieChart = new Chart(ctx, {
@@ -274,9 +274,9 @@ const ctx = document.getElementById('myChart').getContext('2d');
       }
     }
   });
-  */
 
-  
+
+
   var ctx = document.getElementById('myProgressiveLineChart').getContext('2d');
   var myProgressiveLineChart = new Chart(ctx, {
     type: 'line', // Gráfico de linha
@@ -363,3 +363,4 @@ const ctx = document.getElementById('myChart').getContext('2d');
       }
     }
   });
+*/
