@@ -33,7 +33,6 @@ function resetInputs() {
 
 
 // função para resetar os inputs
-
 document.getElementById('resetar').addEventListener('click', function() {
     // Seleciona todos os inputs de tipo 'radio' e os desmarca
     const radios = document.querySelectorAll('input[type="radio"]');

@@ -27,16 +27,17 @@ def setArraySortSize(event):
 def makeTest(event):
     global sortArraySize
     global sortType
-    print(sortType)
-    print(sortArraySize)
+    originalUnsortedArray = sortArraySize.copy();
     
-    def performanceTest(sort):
+    unsortedArray = document.getElementById("unsorted-array");
+    sortedArray = document.getElementById("sorted-array");
+    sortTypeSelected = document.getElementById("selected-sort-type");
         
+    def performanceTest(sort):
         sort_functions = {
         "bubblesort": bubble_sort,
         "insertionsort": insertionSort,
-        "selectionsort": selectionSort,
-        "heapsort": heapsort
+        "selectionsort": selectionSort
         }
         
         sort_type = sort_functions.get(sort)
@@ -55,13 +56,14 @@ def makeTest(event):
         elapsed_time_process_time = end_time - start_time
         print(f"Tempo de CPU com process_time: {elapsed_time_process_time:.6f} segundos")
         sort_type(sortArraySize)
-        
-        print(sortArraySize)
     
     if sortType and sortArraySize:
         performanceTest(sortType)
+        sortTypeSelected.innerHTML = sortType.title();
+        unsortedArray.innerHTML = originalUnsortedArray;
+        sortedArray.innerHTML = sortArraySize;
+        window.location.hash = "#perfomance-results-containe";
         showAlertBox("Array sorted with success.", "success");
-        
     else:
         showAlertBox("Error! Some fields isn't checked.", "error");
         

@@ -1,130 +1,158 @@
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Page Title</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel="stylesheet" href="https://pyscript.net/releases/2024.8.2/core.css">
-        <script type="module" src="https://pyscript.net/releases/2024.8.2/core.js"></script>
-        <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src='main.js'></script>
-    </head>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.8.2/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.8.2/core.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src='main.js'></script>
+</head>
 
-    <body>
-        <main>
-            <div id="alert-box">
-                <img src="imgs/alert_icon.png">
-                <p id="alert-message"></p>
+<body>
+    <main>
+        <div id="alert-box">
+            <img src="imgs/alert_icon.png">
+            <p id="alert-message"></p>
+        </div>
+        <section id="left-side">
+            <div>
+                <h1>Array Buddy</h1>
+                <p for="made-by">By Caio Pacheco, Kayky Crespo & Elias</p>
+                <p>
+                    Using Array Buddy, analyze, visualize, and compare the performance of different Sorting algorithms is easy. 
+                    In addition to monitoring the execution time, memory used and iterations performed.
+                </p>
             </div>
-            <section id="left-side">
-                <div>
-                    <h1>Array's performance tests</h1>
-                    <p for="made-by">By Caio Pacheco, Kayky Crespo & Elias</p>
-                    <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Vitae tellus etiam vivamus bibendum eu nostra
-                        phasellus dictumst. Imperdiet est morbi ridiculus ultricies nostra suscipit iaculis penatibus.</p>
-                </div>
-                <div>
-                    <!-- JS Chart irá vir aqui -->
-                </div>
-            </section>
-            <section id="right-side">
-                <div>
-                    <h1>Select array sort type</h1>
-                    <div class="div-options">
-                        <div class="options">
-                            <input type="radio" id="bubblesort" name="sortOption" value="bubblesort" py-click="setSortType">
-                            <label for="bubblesort"></label>
-                            <p>Bubblesort</p>
-                        </div>
-                        <div class="options">
-                            <input type="radio" id="insertionsort" name="sortOption" value="insertionsort"
-                                py-click="setSortType">
-                            <label for="insertionsort"></label>
-                            <p>Insertionsort</p>
-                        </div>
-                        <div class="options">
-                            <input type="radio" id="selectionsort" name="sortOption" value="selectionsort"
-                                py-click="setSortType">
-                            <label for="selectionsort"></label>
-                            <p>Quicksort</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="vertical-line"> </div>
-                <div>
-                    <h1>How many numbers?</h1>
-                    <h2>All numbers are going to be randomly generated</h2>
-                    <div class="div-options">
-                        <div class="options">
-                            <input type="radio" id="100" name="arraySize" value="100" py-click="setArraySortSize">
-                            <label for="100"></label>
-                            <p>100</p>
-
-                        </div>
-                        <div class="options">
-                            <input type="radio" id="250" name="arraySize" value="250" py-click="setArraySortSize">
-                            <label for="250"></label>
-                            <p>250</p>
-                        </div>
-                        <div class="options">
-                            <input type="radio" id="500" name="arraySize" value="500" py-click="setArraySortSize">
-                            <label for="500"></label>
-                            <p>500</p>
-                        </div>
-                        <div class="options">
-                            <input type="radio" id="1000" name="arraySize" value="1000" py-click="setArraySortSize">
-                            <label for="1000"></label>
-                            <p>1.000</p>
-                        </div>
-                        <div class="options">
-                            <input type="radio" id="5000" name="arraySize" value="5000" py-click="setArraySortSize">
-                            <label for="5000"></label>
-                            <p>5.000</p>
-                        </div>
-                        <div class="options">
-                            <input type="radio" id="10000" name="arraySize" value="10000" py-click="setArraySortSize">
-                            <label for="10000"></label>
-                            <p>10.000</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="vertical-line"> </div>
-                <div>
-                    <h1>Ordination type</h1>
-                    <h2>This will affect on how the graphs are calculated and shown</h2>
-                    <div class="div-options">
-                        <div class="options" id="dropdown">
-                            <select id="ordinationType" name="ordinationType" py-change="setOrdinationType">
-                                <option value="ascending">Column Chart</option>
-                                <option value="descending">Pie Chart</option>
-                                <option value="random">Line Chart</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="button-container">
-                    <p id="resetar" py-click="resetInputValues">Reset</p>
-                    <button class="make-test-button" py-click="makeTest">
-                        <h1>Make test</h1>
-                        <img src="imgs/check.png" alt="">
-                    </button>
-                </div>
-            </section>
-        </main>
-        <div id="perfomance-results-container">
-            <div id="perfomance-results-left">
-
+            <div>
+                <!-- JS Chart irá vir aqui -->
             </div>
-            <div id="perfomance-results-right">
-                    <!-- JS Chart irá vir aqui -->
-                    <canvas id="myChart" width="6000" height="900"></canvas>
+        </section>
+        <section id="right-side">
+            <div>
+                <h1>Select array sort type</h1>
+                <div class="div-options">
+                    <div class="options">
+                        <input type="radio" id="bubblesort" name="sortOption" value="bubblesort" py-click="setSortType">
+                        <label for="bubblesort"></label>
+                        <p>Bubblesort</p>
+                    </div>
+                    <div class="options">
+                        <input type="radio" id="insertionsort" name="sortOption" value="insertionsort"
+                            py-click="setSortType">
+                        <label for="insertionsort"></label>
+                        <p>Insertionsort</p>
+                    </div>
+                    <div class="options">
+                        <input type="radio" id="selectionsort" name="sortOption" value="selectionsort"
+                            py-click="setSortType">
+                        <label for="selectionsort"></label>
+                        <p>Selectionsort</p>
+                    </div>
+                </div>
+            </div>
+            <div class="vertical-line"> </div>
+            <div>
+                <h1>How many numbers?</h1>
+                <h2>All numbers are going to be randomly generated</h2>
+                <div class="div-options">
+                    <div class="options">
+                        <input type="radio" id="100" name="arraySize" value="100" py-click="setArraySortSize">
+                        <label for="100"></label>
+                        <p>100</p>
+
+                    </div>
+                    <div class="options">
+                        <input type="radio" id="250" name="arraySize" value="250" py-click="setArraySortSize">
+                        <label for="250"></label>
+                        <p>250</p>
+                    </div>
+                    <div class="options">
+                        <input type="radio" id="500" name="arraySize" value="500" py-click="setArraySortSize">
+                        <label for="500"></label>
+                        <p>500</p>
+                    </div>
+                    <div class="options">
+                        <input type="radio" id="1000" name="arraySize" value="1000" py-click="setArraySortSize">
+                        <label for="1000"></label>
+                        <p>1.000</p>
+                    </div>
+                    <div class="options">
+                        <input type="radio" id="5000" name="arraySize" value="5000" py-click="setArraySortSize">
+                        <label for="5000"></label>
+                        <p>5.000</p>
+                    </div>
+                    <div class="options">
+                        <input type="radio" id="10000" name="arraySize" value="10000" py-click="setArraySortSize">
+                        <label for="10000"></label>
+                        <p>10.000</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="vertical-line"> </div>
+            <div>
+                <h1>Ordination type</h1>
+                <h2>This will affect on how the graphs are calculated and shown</h2>
+                <div class="div-options">
+                    <div class="options" id="dropdown">
+                        <select id="ordinationType" name="ordinationType" py-change="setOrdinationType">
+                            <option value="ascending">Column Chart</option>
+                            <option value="descending">Pie Chart</option>
+                            <option value="random">Line Chart</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="button-container">
+                <p id="resetar" py-click="resetInputValues">Reset</p>
+                <button class="make-test-button" py-click="makeTest">
+                    <h1>Make test</h1>
+                    <img src="imgs/check.png" alt="">
+                </button>
+            </div>
+        </section>
+    </main>
+    <div id="perfomance-results-container">
+        <div id="perfomance-results-left">
+            <div>
+                <section>
+                    <h1>Perfomance results</h1>
+                    <p>This session will be used to demonstrate statistics and information about the sorting algorithms used.</p>
+                    <p>Selected sort type: <strong id="selected-sort-type">Null</strong></p>
+                </section>
+                <section>
+                    <div>
+                        <h2>Unsorted array:</h2>
+                        <div>
+                            <p id="unsorted-array">[]</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Sorted array:</h2>
+                        <div>
+                            <p id="sorted-array">[]</p>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-        <script type="py" src="main.py"></script>
-        <script src="script.js" defer></script>
-    </body>
-    </html>
+        <!-- JS Chart irá vir aqui -->
+        <div id="perfomance-results-right">
+            <div>
+                <!-- dois gráficos aqui -->
+            </div>
+            <div>
+                <!-- dois gráficos aqui -->
+            </div>
+        </div>
+    </div>
+    <script type="py" src="main.py"></script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>
