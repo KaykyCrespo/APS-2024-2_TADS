@@ -267,9 +267,7 @@ main {
 
 /*Transição para o botão de resetar*/
 /*INICIO*/
-#resetar {
 
-}
 
 #resetar::after {
     content: '';
@@ -463,4 +461,24 @@ pointer-events: none;
 
 #myChart{
     margin-top: 8vh;
+}
+
+
+#perfomance-results-container {
+    display: flex;
+    border: 3px solid red;
+    height: 5vw;
+
+    #perfomance-results-left{
+        border: 3px solid green;
+    }
+
+    #perfomance-results-right{
+        display: flex;
+        flex-wrap: wrap;
+        border: 3px solid purple;
+
+    }
+
+
 }
