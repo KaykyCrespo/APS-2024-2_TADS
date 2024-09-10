@@ -207,6 +207,7 @@ main {
 
     }
 
+
     /* Div final contendo os botões de reset e fazer teste*/
     >:nth-of-type(6) {
         width: 80%;
@@ -216,13 +217,19 @@ main {
         justify-content: space-between;
 
         p {
+            position: relative;
+            display: inline-block;
+            color: #000; /* Cor inicial do texto */
+            transition: color 0.3s ease; /* Transição suave para a cor do texto */
             cursor: pointer;
             height: fit-content;
             font-family: 'Poppins';
             font-size: 1vw;
             color: #4995A6;
             border-bottom: 0.1vw solid #4995A6;
+
         }
+
 
         button {
             display: flex;
@@ -261,10 +268,7 @@ main {
 /*Transição para o botão de resetar*/
 /*INICIO*/
 #resetar {
-    position: relative;
-    display: inline-block;
-    color: #000; /* Cor inicial do texto */
-    transition: color 0.3s ease; /* Transição suave para a cor do texto */
+
 }
 
 #resetar::after {
