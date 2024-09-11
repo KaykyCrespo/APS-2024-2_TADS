@@ -43,86 +43,127 @@ document.getElementById('resetar').addEventListener('click', function() {
 
 
 // GRÁFICO EM COLUNAS
-const ctx = document.getElementById('myChart').getContext('2d');
+// Dados de exemplo
+const data = {
+  time: [12, 19, 3], // em segundos
+  memory: [8, 15, 5], // em GB
+  cpu: [10, 12, 8] // em porcentagem
+};
 
-    // Plugin para exibir os valores ao lado de cada barra
-    const valueDisplayPlugin = {
-        afterDatasetsDraw: function(chart) {
-            const ctx = chart.ctx;
-
-            chart.data.datasets.forEach(function(dataset, i) {
-                const meta = chart.getDatasetMeta(i);
-                if (!meta.hidden) {
-                    meta.data.forEach(function(element, index) {
-                        // Pegando o valor da barra
-                        const dataValue = dataset.data[index];
-
-                        // Posição da barra
-                        const position = element.tooltipPosition();
-
-                        // Configurações do texto
-                        ctx.font = '12px Arial';
-                        ctx.fillStyle = 'black';
-                    });
-                }
-            });
-        }
-    };
+/**
+// Plugin para exibir valores ao lado de cada barra
+const valueDisplayPlugin = {
+  afterDatasetsDraw: function(chart) {
+      const ctx = chart.ctx;
+      chart.data.datasets.forEach(function(dataset, i) {
+          const meta = chart.getDatasetMeta(i);
+          if (!meta.hidden) {
+              meta.data.forEach(function(element, index) {
+                  const dataValue = dataset.data[index];
+                  const position = element.tooltipPosition();
+                  ctx.font = '12px Arial';
+                  ctx.fillStyle = 'black';
+                  ctx.fillText(dataValue, position.x, position.y - 10); // Exibe o valor acima da barra
+              });
+          }
+      });
+  }
+};
+ */
 
 
-    // Gráfico em colunas
-    const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Bubblesort', 'Insertionsort', 'Quicksort'], // Rótulos
-            datasets: [
-                {
-                    label: 'Time',
-                    data: [12, 19, 3],
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Memory',
-                    data: [8, 15, 5],
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'CPU',
-                    data: [10, 12, 8],
-                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }
-            ]
-        },
-        options: {
-            layout: {
-                padding: {
-                    top: 20 // Margem superior
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return value + 's'; // Adiciona um "s" ao lado de cada número
-                        }
-                    }
-                }
-            }
-        },
-        plugins: [valueDisplayPlugin] // Incluindo o plugin personalizado
-    });
+
+
+
+
+
+
+// Criação do gráfico inicial com a métrica "time"
+const ctx = document.getElementById('lineChart').getContext('2d');
+let myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+      labels: ['Bubblesort', 'Insertionsort', 'Quicksort'], // Rótulos dos algoritmos
+      datasets: [{
+          label: 'Time',
+          data: data.time,
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+      }]
+  },
+  options: {
+      layout: {
+          padding: {
+              top: 20 // Margem superior
+          }
+      },
+      scales: {
+          y: {
+              beginAtZero: true,
+              ticks: {
+                  callback: function(value) {
+                      return value + 's'; // Unidade inicial em segundos
+                  }
+              }
+          }
+      }
+  },
+  //plugins: [valueDisplayPlugin] // Incluindo o plugin personalizado
+});
+
+// Função para atualizar o gráfico de acordo com a seleção do usuário
+function updateChart() {
+  const selectedMetric = document.getElementById('metricSelect').value;
+  let label, yAxisUnit;
+
+  // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
+  switch (selectedMetric) {
+      case 'time':
+          label = 'Time';
+          yAxisUnit = 's'; // Segundos
+          myChart.data.datasets[0].data = data.time;
+          myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.5)';
+          myChart.data.datasets[0].borderColor = 'rgba(255, 99, 132, 1)';
+          break;
+      case 'memory':
+          label = 'Memory';
+          yAxisUnit = 'GB'; // Gigabytes
+          myChart.data.datasets[0].data = data.memory;
+          myChart.data.datasets[0].backgroundColor = 'rgba(54, 162, 235, 0.5)';
+          myChart.data.datasets[0].borderColor = 'rgba(54, 162, 235, 1)';
+          break;
+      case 'cpu':
+          label = 'CPU';
+          yAxisUnit = '%'; // Porcentagem
+          myChart.data.datasets[0].data = data.cpu;
+          myChart.data.datasets[0].backgroundColor = 'rgba(75, 192, 192, 0.5)';
+          myChart.data.datasets[0].borderColor = 'rgba(75, 192, 192, 1)';
+          break;
+  }
+
+  // Atualizar o label do gráfico e o callback do eixo Y
+  myChart.data.datasets[0].label = label;
+  myChart.options.scales.y.ticks.callback = function(value) {
+      return value + yAxisUnit;
+  };
+
+  // Atualizar o gráfico
+  myChart.update();
+}
+
+
+
+
+
+
+
+
 
 
 /*
 // GRÁFICO DE PIZZA
-  var ctx = document.getElementById('myPieChart').getContext('2d');
+  var ctx = document.getElementById('pieChart').getContext('2d');
   var myPieChart = new Chart(ctx, {
     type: 'pie',
     data: {
@@ -161,7 +202,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
 
 
 //GRAFICO RADAR
-  var ctx = document.getElementById('myRadarChart').getContext('2d');
+  var ctx = document.getElementById('radarChart').getContext('2d');
   var myRadarChart = new Chart(ctx, {
     type: 'radar',
     data: {
@@ -276,7 +317,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
 
 
 
-  var ctx = document.getElementById('myProgressiveLineChart').getContext('2d');
+  var ctx = document.getElementById('progressiveLineChart').getContext('2d');
   var myProgressiveLineChart = new Chart(ctx, {
     type: 'line', // Gráfico de linha
     data: {

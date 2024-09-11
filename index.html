@@ -144,10 +144,18 @@
         <!-- JS Chart irá vir aqui -->
         <div id="perfomance-results-right">
             <div>
-                <!-- dois gráficos aqui -->
+                <label for="metricSelect">Selecione a métrica:</label>
+                    <select id="metricSelect" onchange="updateChart()">
+                        <option value="time">Time</option>
+                        <option value="memory">Memory</option>
+                        <option value="cpu">CPU</option>
+                    </select>
+                        <canvas id="lineChart" width="400" height="200"></canvas>
+                <canvas id="pieChart" width="400" height="200"></canvas>
             </div>
             <div>
-                <!-- dois gráficos aqui -->
+                <canvas id="progressiveLineChart" width="400" height="200"></canvas>
+                <canvas id="radarChart" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
