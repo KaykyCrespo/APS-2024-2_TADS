@@ -555,6 +555,7 @@ pointer-events: none;
 
     #perfomance-results-right{
         display: flex;
+        flex-wrap: wrap;
         width: 60.5%;
         border: 1px solid red   ;
     }

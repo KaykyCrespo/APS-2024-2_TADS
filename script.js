@@ -47,7 +47,8 @@ document.getElementById('resetar').addEventListener('click', function() {
 const data = {
   time: [12, 19, 3], // em segundos
   memory: [8, 15, 5], // em GB
-  cpu: [10, 12, 8] // em porcentagem
+  cpu: [10, 12, 8], // em porcentagem
+  iterations: [2, 5, 18] // Corrigido para "iterations"
 };
 
 /**
@@ -72,15 +73,9 @@ const valueDisplayPlugin = {
  */
 
 
-
-
-
-
-
-
 // Criação do gráfico inicial com a métrica "time"
-const ctx = document.getElementById('lineChart').getContext('2d');
-let myChart = new Chart(ctx, {
+const ctxLine = document.getElementById('lineChart').getContext('2d');
+let myChart = new Chart(ctxLine, {
   type: 'bar',
   data: {
       labels: ['Bubblesort', 'Insertionsort', 'Quicksort'], // Rótulos dos algoritmos
@@ -108,48 +103,120 @@ let myChart = new Chart(ctx, {
               }
           }
       }
-  },
-  //plugins: [valueDisplayPlugin] // Incluindo o plugin personalizado
+  }
 });
 
 // Função para atualizar o gráfico de acordo com a seleção do usuário
 function updateChart() {
-  const selectedMetric = document.getElementById('metricSelect').value;
+  const selectedMetric = document.getElementById('metricSelectLineChart').value;
   let label, yAxisUnit;
 
   // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
   switch (selectedMetric) {
-      case 'time':
-          label = 'Time';
-          yAxisUnit = 's'; // Segundos
-          myChart.data.datasets[0].data = data.time;
-          myChart.data.datasets[0].backgroundColor = 'rgba(255, 99, 132, 0.5)';
-          myChart.data.datasets[0].borderColor = 'rgba(255, 99, 132, 1)';
-          break;
-      case 'memory':
-          label = 'Memory';
-          yAxisUnit = 'GB'; // Gigabytes
-          myChart.data.datasets[0].data = data.memory;
-          myChart.data.datasets[0].backgroundColor = 'rgba(54, 162, 235, 0.5)';
-          myChart.data.datasets[0].borderColor = 'rgba(54, 162, 235, 1)';
-          break;
-      case 'cpu':
-          label = 'CPU';
-          yAxisUnit = '%'; // Porcentagem
-          myChart.data.datasets[0].data = data.cpu;
-          myChart.data.datasets[0].backgroundColor = 'rgba(75, 192, 192, 0.5)';
-          myChart.data.datasets[0].borderColor = 'rgba(75, 192, 192, 1)';
-          break;
-  }
+    case 'time':
+        label = 'Time';
+        yAxisUnit = 's'; 
+        myChart.data.datasets[0].data = data.time;
+        break;
+    case 'memory':
+        label = 'Memory';
+        yAxisUnit = 'GB';
+        myChart.data.datasets[0].data = data.memory;
+        break;
+    case 'cpu':
+        label = 'CPU';
+        yAxisUnit = '%';
+        myChart.data.datasets[0].data = data.cpu;
+        break;
+    case 'iterations':
+        label = 'Iterations';
+        yAxisUnit = ''; 
+        myChart.data.datasets[0].data = data.iterations;
+        break;
+}
 
-  // Atualizar o label do gráfico e o callback do eixo Y
-  myChart.data.datasets[0].label = label;
-  myChart.options.scales.y.ticks.callback = function(value) {
-      return value + yAxisUnit;
-  };
+myChart.data.datasets[0].label = label;
+myChart.options.scales.y.ticks.callback = function(value) {
+    return value + yAxisUnit;
+};
+myChart.update();
+}
 
-  // Atualizar o gráfico
-  myChart.update();
+
+
+
+
+
+
+// Inicialização do gráfico de pizza
+var ctxPie = document.getElementById('pieChart').getContext('2d');
+var myPieChart = new Chart(ctxPie, {
+    type: 'pie',
+    data: {
+        labels: ['Bobblesort', 'Insertion', 'Insertionsort', 'Heapsort'],
+        datasets: [{
+            label: 'Votes',
+            data: [12, 19, 3, 5],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Amount Interations',
+                font: {
+                    size: 20
+                }
+            }
+        }
+    }
+});
+
+// Função para atualizar o gráfico de pizza com base na métrica selecionada
+function updatePieChart() {
+    var metric = document.getElementById('metricSelectPieChart').value;
+    var data;
+    var labels;
+
+    switch (metric) {
+        case 'time':
+            labels = ['A', 'B', 'C', 'D'];
+            data = [10, 20, 30, 40];
+            break;
+        case 'memory':
+            labels = ['E', 'F', 'G', 'H'];
+            data = [15, 25, 35, 45];
+            break;
+        case 'cpu':
+            labels = ['I', 'J', 'K', 'L'];
+            data = [5, 15, 25, 35];
+            break;
+        case 'iterations':
+            labels = ['M', 'N', 'O', 'P'];
+            data = [8, 18, 28, 38];
+            break;
+        default:
+            labels = ['Bobblesort', 'Insertion', 'Insertionsort', 'Heapsort'];
+            data = [12, 19, 3, 5];
+    }
+
+    myPieChart.data.labels = labels;
+    myPieChart.data.datasets[0].data = data;
+    myPieChart.update();
 }
 
 
@@ -162,45 +229,6 @@ function updateChart() {
 
 
 /*
-// GRÁFICO DE PIZZA
-  var ctx = document.getElementById('pieChart').getContext('2d');
-  var myPieChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Bobblesort', 'Insertion', 'Insertionsort', 'heapsort'],
-      datasets: [{
-        label: 'Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(153, 102, 255, 1)',
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: 'Processamento de Memória', // Aqui está o título
-            font: {
-              size: 20
-            }
-          }
-        }
-      }
-    });
-
-
 //GRAFICO RADAR
   var ctx = document.getElementById('radarChart').getContext('2d');
   var myRadarChart = new Chart(ctx, {
