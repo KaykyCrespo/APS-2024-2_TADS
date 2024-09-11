@@ -194,23 +194,23 @@ function updatePieChart() {
 
     switch (metric) {
         case 'time':
-            labels = ['A', 'B', 'C', 'D'];
+            labels = ['Bobblesort', 'Insertion', 'Selectionsort', 'Heapsort'];
             data = [10, 20, 30, 40];
             break;
         case 'memory':
-            labels = ['E', 'F', 'G', 'H'];
+            labels = ['Bobblesort', 'Insertion', 'Selectionsort', 'Heapsort'];
             data = [15, 25, 35, 45];
             break;
         case 'cpu':
-            labels = ['I', 'J', 'K', 'L'];
+            labels = ['Bobblesort', 'Insertion', 'Selectionsort', 'Heapsort'];
             data = [5, 15, 25, 35];
             break;
         case 'iterations':
-            labels = ['M', 'N', 'O', 'P'];
+            labels = ['Bobblesort', 'Insertion', 'Selectionsort', 'Heapsort'];
             data = [8, 18, 28, 38];
             break;
         default:
-            labels = ['Bobblesort', 'Insertion', 'Insertionsort', 'Heapsort'];
+            labels = ['Bobblesort', 'Insertionsort', 'Selectionsort','Heapsort'];
             data = [12, 19, 3, 5];
     }
 
@@ -221,17 +221,9 @@ function updatePieChart() {
 
 
 
-
-
-
-
-
-
-
-/*
 //GRAFICO RADAR
-  var ctx = document.getElementById('radarChart').getContext('2d');
-  var myRadarChart = new Chart(ctx, {
+  var ctxRadar = document.getElementById('radarChart').getContext('2d');
+  var myRadarChart = new Chart(ctxRadar, {
     type: 'radar',
     data: {
       labels: ['Time', 'Memory', 'CPU', 'Number of Interactions'],
@@ -345,90 +337,138 @@ function updatePieChart() {
 
 
 
-  var ctx = document.getElementById('progressiveLineChart').getContext('2d');
-  var myProgressiveLineChart = new Chart(ctx, {
-    type: 'line', // Gráfico de linha
-    data: {
-      datasets: [{
-        label: 'Bubblesort',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1,
-        radius: 0,
-        data: [
-          {x: 0, y: 10}, {x: 1, y: 20}, {x: 2, y: 30}, {x: 3, y: 40},
-          {x: 4, y: 50}, {x: 5, y: 60}, {x: 6, y: 70}, {x: 7, y: 80}
-        ]
-      }, {
-        label: 'Insertionsort',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
-        radius: 0,
-        data: [
-          {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-          {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
-        ]
-      }, {
-        label: 'Selectionsort',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
-        radius: 0,
-        data: [
-          {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-          {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
-        ]
-      }, {
-        label: 'Heapsort',
-        borderColor: 'red',
-        borderWidth: 1,
-        radius: 0,
-        data: [
-          {x: 0, y: 10}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-          {x: 4, y: 75}, {x: 5, y: 25}, {x: 6, y: 85}, {x: 7, y: 85}
-        ]
-      }]
+
+
+
+
+
+
+
+
+
+
+// Função para atualizar o gráfico com base na seleção
+function updateProgressiveLineChart() {
+  var selectedMetricProgressiveLineChart = document.getElementById("metricSelectProgressiveLineChart").value;
+  
+  let newData = [];
+  switch (selectedMetricProgressiveLineChart) {
+      case "Bubblesort":
+          newData = [
+              {x: 0, y: 10}, {x: 1, y: 20}, {x: 2, y: 30}, {x: 3, y: 40},
+              {x: 4, y: 50}, {x: 5, y: 60}, {x: 6, y: 70}, {x: 7, y: 80}
+          ];
+          break;
+      case "Selectionsort":
+          newData = [
+              {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
+              {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
+          ];
+          break;
+      case "Insertionsort":
+          newData = [
+              {x: 0, y: 20}, {x: 1, y: 30}, {x: 2, y: 40}, {x: 3, y: 50},
+              {x: 4, y: 60}, {x: 5, y: 70}, {x: 6, y: 80}, {x: 7, y: 90}
+          ];
+          break;
+      case "Heapsort":
+          newData = [
+              {x: 0, y: 25}, {x: 1, y: 35}, {x: 2, y: 45}, {x: 3, y: 55},
+              {x: 4, y: 65}, {x: 5, y: 75}, {x: 6, y: 85}, {x: 7, y: 95}
+          ];
+          break;
+      default:
+          newData = [];
+  }
+
+  myProgressiveLineChart.data.datasets[0].data = newData;
+  myProgressiveLineChart.update();
+}
+
+// Criação do gráfico inicial
+var ctxprogressiveLine = document.getElementById('progressiveLineChart').getContext('2d');
+var myProgressiveLineChart = new Chart(ctxprogressiveLine, {
+type: 'line',
+data: {
+  datasets: [{
+    label: 'Time',
+    borderColor: 'rgba(255, 99, 132, 1)',
+    borderWidth: 1,
+    radius: 0,
+    data: [
+      {x: 0, y: 10}, {x: 1, y: 20}, {x: 2, y: 30}, {x: 3, y: 40},
+      {x: 4, y: 50}, {x: 5, y: 60}, {x: 6, y: 70}, {x: 7, y: 80}
+    ]
+  }, {
+    label: 'Memory',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 1,
+    radius: 0,
+    data: [
+      {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
+      {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
+    ]
+  }, {
+    label: 'CPU',
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 1,
+    radius: 0,
+    data: [
+      {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
+      {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
+    ]
+  }, {
+    label: 'Interactions',
+    borderColor: 'red',
+    borderWidth: 1,
+    radius: 0,
+    data: [
+      {x: 0, y: 10}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
+      {x: 4, y: 75}, {x: 5, y: 25}, {x: 6, y: 85}, {x: 7, y: 85}
+    ]
+  }]
+},
+options: {
+  animation: {
+    x: {
+      type: 'number',
+      easing: 'linear',
+      duration: 10000 / 8,
+      from: NaN,
+      delay(ctx) {
+        if (ctx.type !== 'data' || ctx.xStarted) {
+          return 0;
+        }
+        ctx.xStarted = true;
+        return ctx.index * (10000 / 8);
+      }
     },
-    options: {
-      animation: {
-        x: {
-          type: 'number',
-          easing: 'linear',
-          duration: 10000 / 8, // Duração total para o eixo X
-          from: NaN, // O ponto é inicialmente ignorado
-          delay(ctx) {
-            if (ctx.type !== 'data' || ctx.xStarted) {
-              return 0;
-            }
-            ctx.xStarted = true;
-            return ctx.index * (10000 / 8); // Definir o atraso entre os pontos
-          }
-        },
-        y: {
-          type: 'number',
-          easing: 'linear',
-          duration: 10000 / 8, // Duração total para o eixo Y
-          from: (ctx) => ctx.index === 0 
-            ? ctx.chart.scales.y.getPixelForValue(100)
-            : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y,
-          delay(ctx) {
-            if (ctx.type !== 'data' || ctx.yStarted) {
-              return 0;
-            }
-            ctx.yStarted = true;
-            return ctx.index * (10000 / 8); // Definir o atraso entre os pontos
-          }
+    y: {
+      type: 'number',
+      easing: 'linear',
+      duration: 10000 / 8,
+      from: (ctx) => ctx.index === 0 
+        ? ctx.chart.scales.y.getPixelForValue(100)
+        : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y,
+      delay(ctx) {
+        if (ctx.type !== 'data' || ctx.yStarted) {
+          return 0;
         }
-      },
-      interaction: {
-        intersect: false // Evitar interseção nas interações
-      },
-      plugins: {
-        legend: true // Mostrar a legenda
-      },
-      scales: {
-        x: {
-          type: 'linear' // Eixo X será linear
-        }
+        ctx.yStarted = true;
+        return ctx.index * (10000 / 8);
       }
     }
-  });
-*/
+  },
+  interaction: {
+    intersect: false
+  },
+  plugins: {
+    legend: true
+  },
+  scales: {
+    x: {
+      type: 'linear'
+    }
+  }
+}
+});
