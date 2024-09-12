@@ -31,8 +31,23 @@ const graphValues = {
 window.onload = resetInputs();
 
 
+// Função para definir os valores dos graficos
+function setGraphValues(name, type, value) {
+  console.log(name, type, value);
+  if (graphValues[name]) {
+      if (type in graphValues[name]) {
+          // Verifica se o valor atual já existe e soma o novo valor
+          if (graphValues[name][type]) {
+              graphValues[name][type] = parseFloat(graphValues[name][type]) + parseFloat(value);
+          } else {
+              graphValues[name][type] = parseFloat(value);
+          }
+          updateAllGraphs();
+      }
+  }
+}
+
 // GRÁFICO EM COLUNAS
-// Dados de exemplo
 const data = {
   time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
   memory: [8, 15, 5], // em GB
@@ -94,51 +109,9 @@ function updateAllGraphs(){
  
   myChart.update();
   updatePieChart();
+  updateStackedBarLineChart();
 }
 
-
-// Função para definir os valores dos graficos
-function setGraphValues(name, type, value) {
-  console.log(name, type, value);
-  if (graphValues[name]) {
-      if (type in graphValues[name]) {
-          // Verifica se o valor atual já existe e soma o novo valor
-          if (graphValues[name][type]) {
-              graphValues[name][type] = parseFloat(graphValues[name][type]) + parseFloat(value);
-          } else {
-              graphValues[name][type] = parseFloat(value);
-          }
-          updateAllGraphs();
-      }
-  }
-}
-
-
-
-
-
-
-
-/**
-// Plugin para exibir valores ao lado de cada barra
-const valueDisplayPlugin = {
-  afterDatasetsDraw: function(chart) {
-      const ctx = chart.ctx;
-      chart.data.datasets.forEach(function(dataset, i) {
-          const meta = chart.getDatasetMeta(i);
-          if (!meta.hidden) {
-              meta.data.forEach(function(element, index) {
-                  const dataValue = dataset.data[index];
-                  const position = element.tooltipPosition();
-                  ctx.font = '12px Arial';
-                  ctx.fillStyle = 'black';
-                  ctx.fillText(dataValue, position.x, position.y - 10); // Exibe o valor acima da barra
-              });
-          }
-      });
-  }
-};
- */
 
 
 // Criação do gráfico inicial com a métrica "time"
@@ -208,7 +181,25 @@ myChart.options.scales.y.ticks.callback = function(value) {
     return value + yAxisUnit;
 };
 myChart.update();
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -289,120 +280,269 @@ function updatePieChart() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //GRAFICO RADAR
-  var ctxRadar = document.getElementById('radarChart').getContext('2d');
-  var myRadarChart = new Chart(ctxRadar, {
-    type: 'radar',
-    data: {
-      labels: ['Time', 'Memory', 'CPU', 'Number of Interactions'],
-      datasets: [{
-        label: 'Bubblesort',
-        data: [20, 10, 15, 30, 25, 35],
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 2
-      }, {
-        label: 'Insertionsort',
-        data: [25, 20, 10, 35, 30, 15],
-        backgroundColor: 'red',
-        borderColor: 'red',
-        borderWidth: 2
-      },{
-        label: 'Selectionsort',
-        data: [40, 20, 10, 35, 30, 15],
-        backgroundColor: 'green',
-        borderColor: 'green',
-        borderWidth: 2
-      },{
-        label: 'Heapsort',
-        data: [15, 70, 10, 35, 30, 15],
-        backgroundColor: 'purple',
-        borderColor: 'purple',
-        borderWidth: 2
-      }]
+var ctxRadar = document.getElementById('radarChart').getContext('2d');
+var myRadarChart = new Chart(ctxRadar, {
+  type: 'radar',
+  data: {
+    labels: ['Time', 'Memory', 'CPU', 'Number of Interactions'],
+    datasets: [{
+      label: 'Bubblesort',
+      data: [0, 0, 0, 0], // Inicializado com 0, será atualizado dinamicamente
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 2
+    }, {
+      label: 'Insertionsort',
+      data: [0, 0, 0, 0],
+      backgroundColor: 'red',
+      borderColor: 'red',
+      borderWidth: 2
+    }, {
+      label: 'Selectionsort',
+      data: [0, 0, 0, 0],
+      backgroundColor: 'green',
+      borderColor: 'green',
+      borderWidth: 2
+    }, {
+      label: 'Heapsort',
+      data: [0, 0, 0, 0],
+      backgroundColor: 'purple',
+      borderColor: 'purple',
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Comparação Geral'
+      }
     },
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Comparação Geral'
-        }
-      },
-      scales: {
-        r: {
-          angleLines: {
-            display: true
-          },
-          suggestedMin: 0,
-          suggestedMax: 40
-        }
+    scales: {
+      r: {
+        angleLines: {
+          display: true
+        },
+        suggestedMin: 0,
+        suggestedMax: 100
       }
     }
-  });
+  }
+});
 
 
-// GRÁFICO StackedBarLineChart
-  var ctx = document.getElementById('myStackedBarLineChart').getContext('2d');
-  var myStackedBarLineChart = new Chart(ctx, {
-    type: 'bar', // Inicia como gráfico de barras
+// Função para atualizar o gráfico de radar com base nas métricas selecionadas
+  function updateRadarChart() {
+    var metric = document.getElementById('metricRadarChart').value;
+    var data;
+
+    switch (metric) {
+      case 'time':
+          data = [
+              graphValues.bubblesort.time || 0,
+              graphValues.insertionsort.time || 0,
+              graphValues.selectionsort.time || 0,
+              graphValues.heapsort.time || 0
+          ];
+          break;
+      case 'memory':
+          data = [
+              graphValues.bubblesort.memory || 0,
+              graphValues.insertionsort.memory || 0,
+              graphValues.selectionsort.memory || 0,
+              graphValues.heapsort.memory || 0
+          ];
+          break;
+      case 'cpu':
+          data = [
+              graphValues.bubblesort.cpu || 0,
+              graphValues.insertionsort.cpu || 0,
+              graphValues.selectionsort.cpu || 0,
+              graphValues.heapsort.cpu || 0
+          ];
+          break;
+      case 'iterations':
+          data = [
+              graphValues.bubblesort.iterations || 0,
+              graphValues.insertionsort.iterations || 0,
+              graphValues.selectionsort.iterations || 0,
+              graphValues.heapsort.iterations || 0
+          ];
+          break;
+      default:
+          data = [0, 0, 0, 0];
+  }
+
+  // Atualizar os datasets do gráfico de radar
+  myRadarChart.data.datasets[0].data = [graphValues.bubblesort.time]; 
+  myRadarChart.data.datasets[1].data = [graphValues.insertionsort.time]; 
+  myRadarChart.data.datasets[2].data = [graphValues.selectionsort.time];
+  myRadarChart.data.datasets[3].data = [graphValues.heapsort.time];
+
+  // Atualizar o gráfico
+  myRadarChart.update();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Inicialização do gráfico de barras empilhadas e linha
+var ctxStackedBarLine = document.getElementById('myStackedBarLineChart').getContext('2d');
+var myStackedBarLineChart = new Chart(ctxStackedBarLine, {
+    type: 'bar',
     data: {
-      labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
-      datasets: [
-        {
-          label: 'Memory',
-          data: [10, 20, 30, 40, 50, 60],
-          backgroundColor: 'rgba(255, 99, 132, 0.6)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1,
-          stack: 'Stack 0'
-        },
-        {
-          label: 'Number of Interactions',
-          data: [20, 30, 10, 50, 60, 40],
-          backgroundColor: 'rgba(54, 162, 235, 0.6)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1,
-          stack: 'Stack 0'
-        },
-        {
-          label: 'CPU',
-          data: [5, 15, 25, 35, 45, 55],
-          backgroundColor: 'rgba(75, 192, 192, 0.6)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1,
-          stack: 'Stack 0'
-        },
-        {
-          label: 'Time',
-          data: [35, 65, 95, 125, 155, 155], // Dados da linha
-          type: 'line', // Define este dataset como um gráfico de linha
-          fill: false,
-          borderColor: 'rgba(255, 206, 86, 1)',
-          backgroundColor: 'rgba(255, 206, 86, 0.2)',
-          borderWidth: 2
-        }
-      ]
+        labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
+        datasets: [
+            {
+                label: 'Memory',
+                data: [10, 20, 30, 40],
+                backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                stack: 'Stack 0'
+            },
+            {
+                label: 'Number of Interactions',
+                data: [20, 30, 10, 50],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                stack: 'Stack 0'
+            },
+            {
+                label: 'CPU',
+                data: [5, 15, 25, 35],
+                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                stack: 'Stack 0'
+            },
+            {
+                label: 'Time',
+                data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
+                type: 'line',
+                fill: false,
+                borderColor: 'rgba(255, 206, 86, 1)',
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderWidth: 2
+            }
+        ]
     },
     options: {
-      responsive: true,
-      scales: {
-        x: {
-          stacked: true, // Empilhar barras no eixo X
+        responsive: true,
+        scales: {
+            x: {
+                stacked: true,
+            },
+            y: {
+                stacked: true,
+                ticks: {
+                    callback: function(value) {
+                        return value + ' s'; // Adiciona a unidade de segundos para o eixo Y
+                    }
+                }
+            }
         },
-        y: {
-          stacked: true, // Empilhar barras no eixo Y
+        plugins: {
+            title: {
+                display: true,
+                text: 'Stacked Bar and Line Chart'
+            }
         }
-      },
-      plugins: {
-        title: {
-          display: true,
-          text: 'Stacked Bar and Line Chart'
-        }
-      }
     }
-  });
+});
 
+function updateStackedBarLineChart() {
+  const selectedMetric = document.getElementById('metricSelectStackedBarLineChart').value;
+  let label, yAxisUnit;
+
+  // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
+  switch (selectedMetric) {
+      case 'time':
+          label = 'Time';
+          yAxisUnit = 's';
+          myStackedBarLineChart.data.datasets[3].data = [
+              graphValues.bubblesort.time || 0,
+              graphValues.insertionsort.time || 0,
+              graphValues.selectionsort.time || 0,
+              graphValues.heapsort.time || 0
+          ]; // Atualiza a linha com os dados de tempo
+          break;
+      case 'memory':
+          label = 'Memory';
+          yAxisUnit = 'GB';
+          myStackedBarLineChart.data.datasets[0].data = [
+              graphValues.bubblesort.memory || 0,
+              graphValues.insertionsort.memory || 0,
+              graphValues.selectionsort.memory || 0,
+              graphValues.heapsort.memory || 0
+          ]; // Atualiza as barras de memória
+          break;
+      case 'cpu':
+          label = 'CPU';
+          yAxisUnit = '%';
+          myStackedBarLineChart.data.datasets[2].data = [
+              graphValues.bubblesort.cpu || 0,
+              graphValues.insertionsort.cpu || 0,
+              graphValues.selectionsort.cpu || 0,
+              graphValues.heapsort.cpu || 0
+          ]; // Atualiza as barras de CPU
+          break;
+      case 'iterations':
+          label = 'Iterations';
+          yAxisUnit = '';
+          myStackedBarLineChart.data.datasets[1].data = [
+              graphValues.bubblesort.iterations || 0,
+              graphValues.insertionsort.iterations || 0,
+              graphValues.selectionsort.iterations || 0,
+              graphValues.heapsort.iterations || 0
+          ]; // Atualiza as barras de interações
+          break;
+  }
+
+  // Atualiza o rótulo da linha
+  myStackedBarLineChart.data.datasets[3].label = label;
+
+  // Atualiza a unidade do eixo Y
+  myStackedBarLineChart.options.scales.y.ticks.callback = function(value) {
+      return value + ' ' + (selectedMetric === 'time' ? yAxisUnit : '');
+  };
+
+  myStackedBarLineChart.update();
+}
 
 
 
@@ -540,3 +680,30 @@ options: {
   }
 }
 });
+
+
+
+
+
+
+
+/**
+// Plugin para exibir valores ao lado de cada barra
+const valueDisplayPlugin = {
+  afterDatasetsDraw: function(chart) {
+      const ctx = chart.ctx;
+      chart.data.datasets.forEach(function(dataset, i) {
+          const meta = chart.getDatasetMeta(i);
+          if (!meta.hidden) {
+              meta.data.forEach(function(element, index) {
+                  const dataValue = dataset.data[index];
+                  const position = element.tooltipPosition();
+                  ctx.font = '12px Arial';
+                  ctx.fillStyle = 'black';
+                  ctx.fillText(dataValue, position.x, position.y - 10); // Exibe o valor acima da barra
+              });
+          }
+      });
+  }
+};
+ */
