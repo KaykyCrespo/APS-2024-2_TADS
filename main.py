@@ -57,6 +57,7 @@ def makeTest(event):
         print(f"Tempo de CPU com process_time: {elapsed_time_process_time:.6f} segundos")
         sort_type(sortArraySize)
 
+        
         def updateGraphValues(name, type, value):
         # Define a list of supported sort types
             supported_sorts = ['bubblesort', 'insertionsort', 'selectionsort']
@@ -64,6 +65,8 @@ def makeTest(event):
         # Check if the sort_type is in the supported list and update graph values
             if name in supported_sorts:
                 setGraphValues(name, type, value)
+
+        updateGraphValues(sort_type, 'time', elapsed_time_process_time)
 
     
     if sortType and sortArraySize:
