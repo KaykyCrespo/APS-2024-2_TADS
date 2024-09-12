@@ -121,8 +121,8 @@ let myChart = new Chart(ctxLine, {
       datasets: [{
           label: 'Time',
           data: data.time,
-          backgroundColor: 'rgba(255, 99, 132, 0.5)', // Cor de fundo das barras
-          borderColor: 'rgba(255, 99, 132, 1)', // Cor da borda das barras
+          backgroundColor: '#f4a261', // Cor de fundo das barras
+          borderColor: 'ffffff', // Cor da borda das barras
           borderWidth: 1
       }]
   },
@@ -153,7 +153,7 @@ let myChart = new Chart(ctxLine, {
               ticks: {
                   color: '#FFFFFF', // Cor do texto dos ticks do eixo X
                   font: {
-                      size: 14 // Tamanho da fonte dos ticks do eixo X
+                      size: 17 // Tamanho da fonte dos ticks do eixo X
                   }
               },
               grid: {
