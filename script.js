@@ -430,131 +430,119 @@ var myRadarChart = new Chart(ctxRadar, {
 
 
 
-
 // Função para atualizar o gráfico com base na seleção
 function updateProgressiveLineChart() {
   var selectedMetricProgressiveLineChart = document.getElementById("metricSelectProgressiveLineChart").value;
-  
+
   let newData = [];
+  let newLabel = 'Time';
+  let yAxisUnit = 's';
+
   switch (selectedMetricProgressiveLineChart) {
-      case "Bubblesort":
-          newData = [
-              {x: 0, y: 10}, {x: 1, y: 20}, {x: 2, y: 30}, {x: 3, y: 40},
-              {x: 4, y: 50}, {x: 5, y: 60}, {x: 6, y: 70}, {x: 7, y: 80}
-          ];
-          break;
-      case "Selectionsort":
-          newData = [
-              {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-              {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
-          ];
-          break;
-      case "Insertionsort":
-          newData = [
-              {x: 0, y: 20}, {x: 1, y: 30}, {x: 2, y: 40}, {x: 3, y: 50},
-              {x: 4, y: 60}, {x: 5, y: 70}, {x: 6, y: 80}, {x: 7, y: 90}
-          ];
-          break;
-      case "Heapsort":
-          newData = [
-              {x: 0, y: 25}, {x: 1, y: 35}, {x: 2, y: 45}, {x: 3, y: 55},
-              {x: 4, y: 65}, {x: 5, y: 75}, {x: 6, y: 85}, {x: 7, y: 95}
-          ];
-          break;
-      default:
-          newData = [];
+    case "Bubblesort":
+        newData = [
+            {x: 0, y: graphValues.bubblesort.time || 0}, {x: 1, y: graphValues.bubblesort.time || 0}, {x: 2, y: graphValues.bubblesort.time || 0}, {x: 3, y: graphValues.bubblesort.time || 0},
+            {x: 4, y: graphValues.bubblesort.time || 0}, {x: 5, y: graphValues.bubblesort.time || 0}, {x: 6, y: graphValues.bubblesort.time || 0}, {x: 7, y: graphValues.bubblesort.time || 0}
+        ];
+        break;
+    case "Selectionsort":
+        newData = [
+            {x: 0, y: graphValues.selectionsort.time || 0}, {x: 1, y: graphValues.selectionsort.time || 0}, {x: 2, y: graphValues.selectionsort.time || 0}, {x: 3, y: graphValues.selectionsort.time || 0},
+            {x: 4, y: graphValues.selectionsort.time || 0}, {x: 5, y: graphValues.selectionsort.time || 0}, {x: 6, y: graphValues.selectionsort.time || 0}, {x: 7, y: graphValues.selectionsort.time || 0}
+        ];
+        break;
+    case "Insertionsort":
+        newData = [
+            {x: 0, y: graphValues.insertionsort.time || 0}, {x: 1, y: graphValues.insertionsort.time || 0}, {x: 2, y: graphValues.insertionsort.time || 0}, {x: 3, y: graphValues.insertionsort.time || 0},
+            {x: 4, y: graphValues.insertionsort.time || 0}, {x: 5, y: graphValues.insertionsort.time || 0}, {x: 6, y: graphValues.insertionsort.time || 0}, {x: 7, y: graphValues.insertionsort.time || 0}
+        ];
+        break;
+    case "Heapsort":
+        newData = [
+            {x: 0, y: graphValues.heapsort.time || 0}, {x: 1, y: graphValues.heapsort.time || 0}, {x: 2, y: graphValues.heapsort.time || 0}, {x: 3, y: graphValues.heapsort.time || 0},
+            {x: 4, y: graphValues.heapsort.time || 0}, {x: 5, y: graphValues.heapsort.time || 0}, {x: 6, y: graphValues.heapsort.time || 0}, {x: 7, y: graphValues.heapsort.time || 0}
+        ];
+        break;
+    default:
+        newData = [];
   }
 
+  // Atualiza os dados do gráfico
   myProgressiveLineChart.data.datasets[0].data = newData;
+  myProgressiveLineChart.data.datasets[0].label = newLabel;
+  myProgressiveLineChart.options.scales.y.ticks.callback = function(value) {
+    return value + yAxisUnit;
+  };
+
   myProgressiveLineChart.update();
 }
 
 // Criação do gráfico inicial
 var ctxprogressiveLine = document.getElementById('progressiveLineChart').getContext('2d');
 var myProgressiveLineChart = new Chart(ctxprogressiveLine, {
-type: 'line',
-data: {
-  datasets: [{
-    label: 'Time',
-    borderColor: 'rgba(255, 99, 132, 1)',
-    borderWidth: 1,
-    radius: 0,
-    data: [
-      {x: 0, y: 10}, {x: 1, y: 20}, {x: 2, y: 30}, {x: 3, y: 40},
-      {x: 4, y: 50}, {x: 5, y: 60}, {x: 6, y: 70}, {x: 7, y: 80}
-    ]
-  }, {
-    label: 'Memory',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 1,
-    radius: 0,
-    data: [
-      {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-      {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
-    ]
-  }, {
-    label: 'CPU',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 1,
-    radius: 0,
-    data: [
-      {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-      {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
-    ]
-  }, {
-    label: 'Interactions',
-    borderColor: 'red',
-    borderWidth: 1,
-    radius: 0,
-    data: [
-      {x: 0, y: 10}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-      {x: 4, y: 75}, {x: 5, y: 25}, {x: 6, y: 85}, {x: 7, y: 85}
-    ]
-  }]
-},
-options: {
-  animation: {
-    x: {
-      type: 'number',
-      easing: 'linear',
-      duration: 10000 / 8,
-      from: NaN,
-      delay(ctx) {
-        if (ctx.type !== 'data' || ctx.xStarted) {
-          return 0;
+  type: 'line',
+  data: {
+    datasets: [{
+      label: 'Time',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1,
+      radius: 0,
+      data: [
+        {x: 0, y: graphValues.bubblesort.time || 0}, {x: 1, y: graphValues.insertionsort.time || 0}, {x: 2, y: graphValues.selectionsort.time || 0}, {x: 3, y: graphValues.heapsort.time || 0},
+        {x: 4, y: graphValues.bubblesort.time || 0}, {x: 5, y: graphValues.insertionsort.time || 0}, {x: 6, y: graphValues.selectionsort.time || 0}, {x: 7, y: graphValues.heapsort.time || 0}
+      ]
+    }]
+  },
+  options: {
+    animation: {
+      x: {
+        type: 'number',
+        easing: 'linear',
+        duration: 10000 / 8,
+        from: NaN,
+        delay(ctx) {
+          if (ctx.type !== 'data' || ctx.xStarted) {
+            return 0;
+          }
+          ctx.xStarted = true;
+          return ctx.index * (10000 / 8);
         }
-        ctx.xStarted = true;
-        return ctx.index * (10000 / 8);
+      },
+      y: {
+        type: 'number',
+        easing: 'linear',
+        duration: 10000 / 8,
+        from: (ctx) => ctx.index === 0 
+          ? ctx.chart.scales.y.getPixelForValue(100)
+          : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y,
+        delay(ctx) {
+          if (ctx.type !== 'data' || ctx.yStarted) {
+            return 0;
+          }
+          ctx.yStarted = true;
+          return ctx.index * (10000 / 8);
+        }
       }
     },
-    y: {
-      type: 'number',
-      easing: 'linear',
-      duration: 10000 / 8,
-      from: (ctx) => ctx.index === 0 
-        ? ctx.chart.scales.y.getPixelForValue(100)
-        : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y,
-      delay(ctx) {
-        if (ctx.type !== 'data' || ctx.yStarted) {
-          return 0;
+    interaction: {
+      intersect: false
+    },
+    plugins: {
+      legend: true
+    },
+    scales: {
+      x: {
+        type: 'linear'
+      },
+      y: {
+        ticks: {
+          callback: function(value) {
+            return value + 's';
+          }
         }
-        ctx.yStarted = true;
-        return ctx.index * (10000 / 8);
       }
     }
-  },
-  interaction: {
-    intersect: false
-  },
-  plugins: {
-    legend: true
-  },
-  scales: {
-    x: {
-      type: 'linear'
-    }
   }
-}
 });
 
 
