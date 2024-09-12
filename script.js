@@ -99,11 +99,15 @@ function updateAllGraphs(){
 
 // Função para definir os valores dos graficos
 function setGraphValues(name, type, value) {
-
-  console.log(name, type, value)
+  console.log(name, type, value);
   if (graphValues[name]) {
       if (type in graphValues[name]) {
-          graphValues[name][type] = value;
+          // Verifica se o valor atual já existe e soma o novo valor
+          if (graphValues[name][type]) {
+              graphValues[name][type] = parseFloat(graphValues[name][type]) + parseFloat(value);
+          } else {
+              graphValues[name][type] = parseFloat(value);
+          }
           updateAllGraphs();
       }
   }
