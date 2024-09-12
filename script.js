@@ -113,8 +113,7 @@ function updateAllGraphs(){
 }
 
 
-
-// Criação do gráfico inicial com a métrica "time"
+// Inicialização do gráfico de linha
 const ctxLine = document.getElementById('lineChart').getContext('2d');
 let myChart = new Chart(ctxLine, { 
   type: 'bar',
@@ -123,15 +122,16 @@ let myChart = new Chart(ctxLine, {
       datasets: [{
           label: 'Time',
           data: data.time,
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)', // Cor de fundo das barras
+          borderColor: 'rgba(255, 99, 132, 1)', // Cor da borda das barras
           borderWidth: 1
       }]
   },
   options: {
       layout: {
           padding: {
-              top: 20 // Margem superior
+              top: 20, // Margem superior
+              bottom: 20
           }
       },
       scales: {
@@ -140,12 +140,61 @@ let myChart = new Chart(ctxLine, {
               ticks: {
                   callback: function(value) {
                       return value + 's'; // Unidade inicial em segundos
+                  },
+                  color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
+                  font: {
+                      size: 20 // Tamanho da fonte dos ticks do eixo Y
                   }
+              },
+              grid: {
+                  color: '#FFFFFF' // Cor das linhas de grade do eixo Y
+              }
+          },
+          x: {
+              ticks: {
+                  color: '#FFFFFF', // Cor do texto dos ticks do eixo X
+                  font: {
+                      size: 14 // Tamanho da fonte dos ticks do eixo X
+                  }
+              },
+              grid: {
+                  color: '#FFFFFF' // Cor das linhas de grade do eixo X
+              }
+          }
+      },
+      plugins: {
+          legend: {
+              labels: {
+                  color: '#FFFFFF', // Cor do texto da legenda
+                  font: {
+                      size: 16 // Tamanho da fonte da legenda
+                  }
+              }
+          },
+          tooltip: {
+              callbacks: {
+                  title: function(tooltipItems) {
+                      return tooltipItems[0].label;
+                  },
+                  label: function(tooltipItem) {
+                      return tooltipItem.label + ': ' + tooltipItem.raw + 's';
+                  }
+              },
+              backgroundColor: '#000000', // Cor de fundo do tooltip
+              titleColor: '#FFFFFF', // Cor do texto do título do tooltip
+              bodyColor: '#FFFFFF', // Cor do texto do corpo do tooltip
+              titleFont: {
+                  size: 14 // Tamanho da fonte do título do tooltip
+              },
+              bodyFont: {
+                  size: 14 // Tamanho da fonte do corpo do tooltip
               }
           }
       }
   }
 });
+
+
 
 // Função para atualizar o gráfico de acordo com a seleção do usuário
 function updateChart() {
