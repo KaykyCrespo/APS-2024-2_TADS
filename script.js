@@ -4,7 +4,7 @@
 
 const alertBox = document.getElementById("alert-box");
 const alertMessage = document.getElementById("alert-message");
-// Define an object to store time, memory, and CPU for each sort type
+
 const graphValues = {
   bubblesort: {
     time: null,
@@ -20,8 +20,25 @@ const graphValues = {
     time: null,
     memory: null,
     cpu: null
+  },
+  heapsort: {
+    time: null,
+    memory: null,
+    cpu: null
   }
 }
+
+window.onload = resetInputs();
+
+
+// GRÁFICO EM COLUNAS
+// Dados de exemplo
+const data = {
+  time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
+  memory: [8, 15, 5], // em GB
+  cpu: [10, 12, 8], // em porcentagem
+  iterations: [2, 5, 18] // Corrigido para "iterations"
+};
 
 function showAlertBox(message, category){
     alertMessage.innerHTML = message;
@@ -38,7 +55,6 @@ function showAlertBox(message, category){
     }, 3000);
 }
 
-window.onload = resetInputs();
 
 function resetInputs() {
     document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
@@ -59,13 +75,37 @@ document.getElementById('resetar').addEventListener('click', function() {
     });
 });
 
+
+// Função pra atualizar gráficos
+function updateAllGraphs(){
+  myChart.data.datasets[0].data = [
+    graphValues.bubblesort.time || 0,
+    graphValues.insertionsort.time || 0,
+    graphValues.selectionsort.time || 0,
+    graphValues.heapsort.time || 0
+  ];
+
+  myPieChart.data.datasets[0].data = [
+    graphValues.bubblesort.time || 0,
+    graphValues.insertionsort.time || 0,
+    graphValues.selectionsort.time || 0,
+    graphValues.heapsort.time || 0
+  ];
+ 
+  myChart.update();
+  updatePieChart();
+}
+
+
+// Função para definir os valores dos graficos
 function setGraphValues(name, type, value) {
-  // Check if the sort algorithm exists in sortMetrics
+
+  console.log(name, type, value)
   if (graphValues[name]) {
-    // Check if the specified type exists for the algorithm, then update the value
-    if (type in graphValues[name]) {
-      graphValues[name][type] = value;
-    }
+      if (type in graphValues[name]) {
+          graphValues[name][type] = value;
+          updateAllGraphs();
+      }
   }
 }
 
@@ -74,14 +114,6 @@ function setGraphValues(name, type, value) {
 
 
 
-// GRÁFICO EM COLUNAS
-// Dados de exemplo
-const data = {
-  time: [12, 19, 3], // em segundos
-  memory: [8, 15, 5], // em GB
-  cpu: [10, 12, 8], // em porcentagem
-  iterations: [2, 5, 18] // Corrigido para "iterations"
-};
 
 /**
 // Plugin para exibir valores ao lado de cada barra
@@ -107,10 +139,10 @@ const valueDisplayPlugin = {
 
 // Criação do gráfico inicial com a métrica "time"
 const ctxLine = document.getElementById('lineChart').getContext('2d');
-let myChart = new Chart(ctxLine, {
+let myChart = new Chart(ctxLine, { 
   type: 'bar',
   data: {
-      labels: ['Bubblesort', 'Insertionsort', 'Quicksort'], // Rótulos dos algoritmos
+      labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
       datasets: [{
           label: 'Time',
           data: data.time,
@@ -185,10 +217,10 @@ var ctxPie = document.getElementById('pieChart').getContext('2d');
 var myPieChart = new Chart(ctxPie, {
     type: 'pie',
     data: {
-        labels: ['Bobblesort', 'Insertion', 'Insertionsort', 'Heapsort'],
+        labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
         datasets: [{
             label: 'Votes',
-            data: [12, 19, 3, 5],
+            data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -226,30 +258,30 @@ function updatePieChart() {
 
     switch (metric) {
         case 'time':
-            labels = ['Bobblesort', 'Insertion', 'Selectionsort', 'Heapsort'];
-            data = [10, 20, 30, 40];
+            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
+            data = [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time];
             break;
         case 'memory':
-            labels = ['Bobblesort', 'Insertion', 'Selectionsort', 'Heapsort'];
+            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
             data = [15, 25, 35, 45];
             break;
         case 'cpu':
-            labels = ['Bobblesort', 'Insertion', 'Selectionsort', 'Heapsort'];
+            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
             data = [5, 15, 25, 35];
             break;
         case 'iterations':
-            labels = ['Bobblesort', 'Insertion', 'Selectionsort', 'Heapsort'];
+            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
             data = [8, 18, 28, 38];
             break;
         default:
-            labels = ['Bobblesort', 'Insertionsort', 'Selectionsort','Heapsort'];
-            data = [12, 19, 3, 5];
+            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
+            data = [0, 19, 3, 5];
     }
 
     myPieChart.data.labels = labels;
     myPieChart.data.datasets[0].data = data;
     myPieChart.update();
-}
+} 
 
 
 

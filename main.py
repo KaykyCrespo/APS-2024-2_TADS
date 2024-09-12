@@ -10,7 +10,7 @@ sortArraySize = [];
 def setSortType(event):
     global sortType
     sortType = document.querySelector('input[name="sortOption"]:checked').value;
-    print("Sort type selected : ", sortType)
+    #print("Sort type selected : ", sortType)
 
 
 # Método para escolher numeros aleátorios e colocar no Array
@@ -20,7 +20,7 @@ def setArraySortSize(event):
     quantity = int(document.querySelector('input[name="arraySize"]:checked').value);
     for i in range(quantity):
         sortArraySize.append(random.randint(0, 500))
-    print("Random arrays numbers with size", int(document.querySelector('input[name="arraySize"]:checked').value),":", sortArraySize)
+    #print("Random arrays numbers with size", int(document.querySelector('input[name="arraySize"]:checked').value),":", sortArraySize)
     
     
 
@@ -34,10 +34,19 @@ def makeTest(event):
     sortTypeSelected = document.getElementById("selected-sort-type");
         
     def performanceTest(sort):
+        
+        def updateGraphValues(name, type, value):
+            supported_sorts = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort']
+        
+            if name in supported_sorts:
+                setGraphValues(name, type, value)
+        
+        
         sort_functions = {
         "bubblesort": bubble_sort,
         "insertionsort": insertionSort,
-        "selectionsort": selectionSort
+        "selectionsort": selectionSort,
+        "heapsort": heapSort
         }
         
         sort_type = sort_functions.get(sort)
@@ -56,25 +65,16 @@ def makeTest(event):
         elapsed_time_process_time = end_time - start_time
         print(f"Tempo de CPU com process_time: {elapsed_time_process_time:.6f} segundos")
         sort_type(sortArraySize)
-
-        
-        def updateGraphValues(name, type, value):
-        # Define a list of supported sort types
-            supported_sorts = ['bubblesort', 'insertionsort', 'selectionsort']
-        
-        # Check if the sort_type is in the supported list and update graph values
-            if name in supported_sorts:
-                setGraphValues(name, type, value)
-
-        updateGraphValues(sort_type, 'time', elapsed_time_process_time)
+        updateGraphValues(sort, 'time', f"{elapsed_time_perf_counter:.6f}")
 
     
     if sortType and sortArraySize:
-        performanceTest(sortType)
+        performanceTest(sortType);
         sortTypeSelected.innerHTML = sortType.title();
         unsortedArray.innerHTML = originalUnsortedArray;
         sortedArray.innerHTML = sortArraySize;
-        window.location.hash = "#perfomance-results-containe";
+        window.location.hash = "#perfomance-results-container";
+        resetInputValues(event);
         showAlertBox("Array sorted with success.", "success");
     else:
         showAlertBox("Error! Some fields isn't checked.", "error");
@@ -91,9 +91,7 @@ def resetInputValues(event):
         resetInputs();
         showAlertBox("Success! Input values has been reseted.", "success")
     except Exception as e:
-        showAlertBox(f"Error! {e}", "error")
-
-    
+        showAlertBox(f"Error! {e}", "error")  
         
 def bubble_sort(lista):
     # Este é o loop externo que controla o número de passes que o algoritmo de ordenação precisa fazer. 
@@ -154,3 +152,33 @@ def selectionSort(array):
             # troca o elemento no índice ind com o elemento no índice min_index. 
             # Isso coloca o menor elemento na posição correta.
         (array[ind], array[min_index]) = (array[min_index], array[ind])             
+
+def heapSort(arr):
+    def heapify(arr, n, i):
+        largest = i  # Inicializa largest como o índice i (raiz).
+        l = 2 * i + 1  # Índice do filho esquerdo.
+        r = 2 * i + 2  # Índice do filho direito.
+
+        # Se o filho esquerdo é maior que a raiz.
+        if l < n and arr[i] < arr[l]:
+            largest = l
+
+        # Se o filho direito é maior que o maior valor encontrado até agora.
+        if r < n and arr[largest] < arr[r]:
+            largest = r
+
+        # Se o maior valor não é a raiz, faz a troca e continua a heapificação.
+        if largest != i:
+            arr[i], arr[largest] = arr[largest], arr[i]  # Swap
+            heapify(arr, n, largest)  # Heapifica a subárvore.
+
+    n = len(arr)  # Move a definição de n para o início da função.
+
+    # Constroi o max heap.
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # Extrai os elementos um a um.
+    for i in range(n - 1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]  # Troca
+        heapify(arr, i, 0)  # Não precisa mais do valor original de n aqui.

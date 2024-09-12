@@ -128,7 +128,7 @@ input[type="radio"] {
     /* Estilos para seleção de opções */
     .div-options {
         display: flex;
-        gap: 3vw;
+        gap: 2vw;
 
         .options {
             display: flex;

@@ -37,7 +37,8 @@
                 <h1>Select array sort type</h1>
                 <div class="div-options">
                     <div class="options">
-                        <input type="radio" id="bubblesort" name="sortOption" value="bubblesort" py-click="setSortType">
+                        <input type="radio" id="bubblesort" name="sortOption" value="bubblesort" 
+                        py-click="setSortType">
                         <label for="bubblesort"></label>
                         <p>Bubblesort</p>
                     </div>
@@ -53,6 +54,13 @@
                         <label for="selectionsort"></label>
                         <p>Selectionsort</p>
                     </div>
+                    <div class="options">
+                        <input type="radio" id="heapsort" name="sortOption" value="heapsort"
+                            py-click="setSortType">
+                        <label for="heapsort"></label>
+                        <p>Heapsort</p>
+                    </div>
+
                 </div>
             </div>
             <div class="vertical-line"> </div>
@@ -123,7 +131,7 @@
                 <section>
                     <h1>Perfomance results</h1>
                     <p>This session will be used to demonstrate statistics and information about the sorting algorithms used.</p>
-                    <p>Selected sort type: <strong id="selected-sort-type">Null</strong></p>
+                    <p>Sort type used: <strong id="selected-sort-type">Null</strong></p>
                 </section>
                 <section>
                     <div>
