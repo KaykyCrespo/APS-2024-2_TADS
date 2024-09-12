@@ -4,6 +4,24 @@
 
 const alertBox = document.getElementById("alert-box");
 const alertMessage = document.getElementById("alert-message");
+// Define an object to store time, memory, and CPU for each sort type
+const graphValues = {
+  bubblesort: {
+    time: null,
+    memory: null,
+    cpu: null
+  },
+  insertionsort: {
+    time: null,
+    memory: null,
+    cpu: null
+  },
+  selectionsort: {
+    time: null,
+    memory: null,
+    cpu: null
+  }
+}
 
 function showAlertBox(message, category){
     alertMessage.innerHTML = message;
@@ -40,6 +58,20 @@ document.getElementById('resetar').addEventListener('click', function() {
         radio.checked = false;
     });
 });
+
+function setGraphValues(name, type, value) {
+  // Check if the sort algorithm exists in sortMetrics
+  if (graphValues[name]) {
+    // Check if the specified type exists for the algorithm, then update the value
+    if (type in graphValues[name]) {
+      graphValues[name][type] = value;
+    }
+  }
+}
+
+
+
+
 
 
 // GRÁFICO EM COLUNAS

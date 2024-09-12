@@ -1,4 +1,4 @@
-from js import document, window, alert, showAlertBox, resetInputs
+from js import document, window, alert, showAlertBox, resetInputs, setGraphValues
 import math, random, time
 
 sortType = "";
@@ -56,6 +56,15 @@ def makeTest(event):
         elapsed_time_process_time = end_time - start_time
         print(f"Tempo de CPU com process_time: {elapsed_time_process_time:.6f} segundos")
         sort_type(sortArraySize)
+
+        def updateGraphValues(name, type, value):
+        # Define a list of supported sort types
+            supported_sorts = ['bubblesort', 'insertionsort', 'selectionsort']
+        
+        # Check if the sort_type is in the supported list and update graph values
+            if name in supported_sorts:
+                setGraphValues(name, type, value)
+
     
     if sortType and sortArraySize:
         performanceTest(sortType)
