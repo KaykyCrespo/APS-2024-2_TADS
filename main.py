@@ -59,15 +59,12 @@ def makeTest(event):
         elapsed_time_perf_counter = end_time - start_time
         print(f"Tempo decorrido com perf_counter: {elapsed_time_perf_counter:.6f} segundos")
         
-        # Quantas iterações foram feitas
-        iterations = sort_type(sortArraySize);
-        print(iterations)
-        
-        # Quantos KBs estão sendo utilizados
-        print(measureMemoryUsage(originalUnsortedArray), "KBs")
-        
-        #Dando update no tempo
+        #Dando update nos gráficos com tempo, iterações e memória.
         updateGraphValues(sort, 'time', f"{elapsed_time_perf_counter:.6f}")
+        updateGraphValues(sort, 'iterations', sort_type(sortArraySize))
+        updateGraphValues(sort, 'memory', measureMemoryUsage(originalUnsortedArray))
+        
+    
 
 
     

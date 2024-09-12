@@ -9,22 +9,22 @@ const graphValues = {
   bubblesort: {
     time: null,
     memory: null,
-    cpu: null
+    iterations: null
   },
   insertionsort: {
     time: null,
     memory: null,
-    cpu: null
+    iterations: null
   },
   selectionsort: {
     time: null,
     memory: null,
-    cpu: null
+    iterations: null
   },
   heapsort: {
     time: null,
     memory: null,
-    cpu: null
+    iterations: null
   }
 }
 
@@ -33,26 +33,19 @@ window.onload = resetInputs();
 
 // Função para definir os valores dos graficos
 function setGraphValues(name, type, value) {
-  console.log(name, type, value);
   if (graphValues[name]) {
       if (type in graphValues[name]) {
-          // Verifica se o valor atual já existe e soma o novo valor
-          if (graphValues[name][type]) {
-              graphValues[name][type] = parseFloat(graphValues[name][type]) + parseFloat(value);
-          } else {
-              graphValues[name][type] = parseFloat(value);
-          }
-          updateAllGraphs();
+          graphValues[name][type] = value;
       }
+  updateAllGraphs();
   }
 }
 
 // GRÁFICO EM COLUNAS
 const data = {
   time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
-  memory: [8, 15, 5], // em GB
-  cpu: [10, 12, 8], // em porcentagem
-  iterations: [2, 5, 18] // Corrigido para "iterations"
+  memory: [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory], // em GB
+  iterations: [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations] // Corrigido para "iterations"
 };
 
 function showAlertBox(message, category){
@@ -69,7 +62,6 @@ function showAlertBox(message, category){
         alertBox.style.display = "none";
     }, 3000);
 }
-
 
 function resetInputs() {
     document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
@@ -106,10 +98,17 @@ function updateAllGraphs(){
     graphValues.selectionsort.time || 0,
     graphValues.heapsort.time || 0
   ];
- 
+
+  myProgressiveLineChart.data.datasets[0].data = [
+    graphValues.bubblesort.time || 0,
+    graphValues.insertionsort.time || 0,
+    graphValues.selectionsort.time || 0,
+    graphValues.heapsort.time || 0
+  ];
+
   myChart.update();
   updatePieChart();
-  updateStackedBarLineChart();
+  updateProgressiveLineChart();
 }
 
 
@@ -195,7 +194,6 @@ let myChart = new Chart(ctxLine, {
 });
 
 
-
 // Função para atualizar o gráfico de acordo com a seleção do usuário
 function updateChart() {
   const selectedMetric = document.getElementById('metricSelectLineChart').value;
@@ -212,11 +210,6 @@ function updateChart() {
         label = 'Memory';
         yAxisUnit = 'GB';
         myChart.data.datasets[0].data = data.memory;
-        break;
-    case 'cpu':
-        label = 'CPU';
-        yAxisUnit = '%';
-        myChart.data.datasets[0].data = data.cpu;
         break;
     case 'iterations':
         label = 'Iterations';
@@ -252,12 +245,10 @@ myChart.update();
 
 
 
-
-
-
-
 // Inicialização do gráfico de pizza
 var ctxPie = document.getElementById('pieChart').getContext('2d');
+var canvas = document.getElementById('pieChart');
+
 var myPieChart = new Chart(ctxPie, {
     type: 'pie',
     data: {
@@ -307,19 +298,15 @@ function updatePieChart() {
             break;
         case 'memory':
             labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [15, 25, 35, 45];
-            break;
-        case 'cpu':
-            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [5, 15, 25, 35];
+            data = [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory];
             break;
         case 'iterations':
             labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [8, 18, 28, 38];
+            data = [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations];
             break;
         default:
             labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [0, 19, 3, 5];
+            data = [0, 0, 0, 0];
     }
 
     myPieChart.data.labels = labels;
@@ -352,7 +339,7 @@ var ctxRadar = document.getElementById('radarChart').getContext('2d');
 var myRadarChart = new Chart(ctxRadar, {
   type: 'radar',
   data: {
-    labels: ['Time', 'Memory', 'CPU', 'Number of Interactions'],
+    labels: ['Time', 'Memory', 'Number of Interactions'],
     datasets: [{
       label: 'Bubblesort',
       data: [0, 0, 0, 0], // Inicializado com 0, será atualizado dinamicamente
@@ -420,14 +407,6 @@ var myRadarChart = new Chart(ctxRadar, {
               graphValues.insertionsort.memory || 0,
               graphValues.selectionsort.memory || 0,
               graphValues.heapsort.memory || 0
-          ];
-          break;
-      case 'cpu':
-          data = [
-              graphValues.bubblesort.cpu || 0,
-              graphValues.insertionsort.cpu || 0,
-              graphValues.selectionsort.cpu || 0,
-              graphValues.heapsort.cpu || 0
           ];
           break;
       case 'iterations':
