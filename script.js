@@ -41,50 +41,49 @@ function setGraphValues(name, type, value) {
   }
 }
 
+
+function showAlertBox(message, category){
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "flex";
+
+  if (category === 'success') {
+      alertBox.style.backgroundColor = 'green';
+  } else {
+      alertBox.style.backgroundColor = '#f36464';
+  }
+
+  setTimeout(() => {
+      alertBox.style.display = "none";
+  }, 3000);
+}
+
+function resetInputs() {
+  document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
+      radio.checked = false;
+  });
+  document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
+      radio.checked = false;
+  });
+  document.getElementById("userArrayInput").value = null
+  document.getElementById("arraySortedResponse").value = null
+}
+
+// função para resetar os inputs
+document.getElementById('resetar').addEventListener('click', function() {
+  // Seleciona todos os inputs de tipo 'radio' e os desmarca
+  const radios = document.querySelectorAll('input[type="radio"]');
+  radios.forEach(radio => {
+      radio.checked = false;
+  });
+});
+
+
 // GRÁFICO EM COLUNAS
 const data = {
   time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
   memory: [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory], // em GB
   iterations: [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations] // Corrigido para "iterations"
 };
-
-function showAlertBox(message, category){
-    alertMessage.innerHTML = message;
-    alertBox.style.display = "flex";
-
-    if (category === 'success') {
-        alertBox.style.backgroundColor = 'green';
-    } else {
-        alertBox.style.backgroundColor = '#f36464';
-    }
-
-    setTimeout(() => {
-        alertBox.style.display = "none";
-    }, 3000);
-}
-
-function resetInputs() {
-    document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
-        radio.checked = false;
-    });
-    document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
-        radio.checked = false;
-    });
-    document.getElementById("userArrayInput").value = null
-    document.getElementById("arraySortedResponse").value = null
-
-
-}
-
-
-// função para resetar os inputs
-document.getElementById('resetar').addEventListener('click', function() {
-    // Seleciona todos os inputs de tipo 'radio' e os desmarca
-    const radios = document.querySelectorAll('input[type="radio"]');
-    radios.forEach(radio => {
-        radio.checked = false;
-    });
-});
 
 
 // Função pra atualizar gráficos
@@ -227,7 +226,6 @@ myChart.options.scales.y.ticks.callback = function(value) {
     return value + yAxisUnit;
 };
 myChart.update();
-
 }
 
 

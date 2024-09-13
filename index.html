@@ -163,7 +163,6 @@
                         <select id="ordinationType" name="ordinationType" py-change="setOrdinationType">
                             <option value="ascending">Column Chart</option>
                             <option value="descending">Pie Chart</option>
-                            <option value="random">Line Chart</option>
                         </select>
                     </div>
                 </div>
@@ -201,27 +200,41 @@
                 </section>
             </div>
         </div>
+
+
+
         <!-- JS Chart irá vir aqui -->
         <div id="perfomance-results-right">
+
             <div>
+
                 <label for="metricSelectLineChart">Selecione a métrica:</label>
                     <select id="metricSelectLineChart" onchange="updateChart()">
                     <option value="time">Time</option>
                     <option value="memory">Memory</option>
                     <option value="iterations">Iterations</option>
                     </select>
+
                         <canvas id="lineChart" width="250" height="250"></canvas>
+
+
+
+
 
                 <label for="metricSelectPieChart">Selecione a métrica:</label>
                     <select id="metricSelectPieChart" onchange="updatePieChart()">
                         <option value="time">Time</option>
                         <option value="memory">Memory</option>
                         <option value="iterations">Iterations</option> 
-                    </select>       
+                    </select> 
+
                         <canvas id="pieChart" width="400" height="200"></canvas>
-                    
             </div>
+
+
+
             <div>
+
                 <label for="metricSelectProgressiveLineChart">Selecione a métrica:</label>
                 <select id="metricSelectProgressiveLineChart" onchange="updateProgressiveLineChart()">
                     <option value="Bubblesort">Bubblesort</option>
@@ -229,10 +242,17 @@
                     <option value="Insertionsort">Insertionsort</option>
                     <option value="Heapsort">Heapsort</option>
                 </select>
+
                 <canvas id="progressiveLineChart" width="400" height="200"></canvas>
+
+
+
+
+
                 <canvas id="radarChart" width="400" height="200"></canvas>
             </div>
         </div>
+
     </div>
     <script type="py" src="main.py"></script>
     <script src="script.js" defer></script>

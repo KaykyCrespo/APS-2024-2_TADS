@@ -537,8 +537,6 @@ input[type="radio"]:checked + label {
     }
 }
 
-
-
 .make-test-button {
     position: relative;
     display: flex;
@@ -677,17 +675,13 @@ input[type="radio"]:checked + label {
 }
 
 #dropdown::after{
-content: '\25BC';
-position: absolute;
-top: 50%;
-right: 10px;
-transform: translateY(-50%);
-color: #fff;
-pointer-events: none;
-}
-
-#myChart{
-    margin-top: 8vh;
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #fff;
+    pointer-events: none;
 }
 
 #perfomance-results-container {
@@ -782,4 +776,8 @@ pointer-events: none;
         border: 1px solid red   ;
     }
 
+}
+
+#myChart{
+    margin-top: 8vh;
 }

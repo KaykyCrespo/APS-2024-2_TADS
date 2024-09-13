@@ -139,80 +139,42 @@ def resetInputValues(event):
         
 def bubble_sort(lista):
     iteration_count = 0
-    # Este é o loop externo que controla o número de passes que o algoritmo de ordenação precisa fazer. 
-    # Ele começa em len(lista) - 1 e vai até 1, decrementando n a cada iteração. 
-    # O valor inicial é o comprimento da lista menos 1 porque na última iteração do loop, 
-    # só um elemento resta para ser verificado.
     for n in range(len(lista) - 1, 0, -1):
-        # Este é o loop interno que percorre a lista comparando elementos adjacentes. 
-        # Ele vai de 0 até n - 1. Cada iteração compara o elemento i com o elemento i + 1.
         for i in range(n):
             iteration_count += 1
-            # Aqui, o código compara lista[i] e lista[i + 1]. Se lista[i] é maior que lista[i + 1], 
-            # significa que os elementos estão fora de ordem e precisam ser trocados.
             if lista[i] > lista[i + 1]:
                 swapped = True
-                # A troca é realizada através da linha lista[i], lista[i + 1] = lista[i + 1], lista[i]. 
-                # Esta linha troca os valores de lista[i] e lista[i + 1].
                 lista[i], lista[i + 1] = lista[i + 1], lista[i]
     
     return iteration_count
                         
 def insertionSort(lista):
     iteration_count = 0
-    
-    # O loop externo começa a partir do índice 1 até o final da lista (len(lista) - 1). 
-    # O elemento no índice 0 é considerado como parte da lista ordenada inicial, 
-    # então começamos a partir do índice 1.
     for i in range(1, len(lista)):
         iteration_count += 1
-        # key é o valor do elemento atual que está sendo inserido na parte ordenada da lista. 
-        # j é o índice do último elemento da parte ordenada.
         key = lista[i]
         j = i - 1
-
-        # O loop interno move os elementos da parte ordenada (que são maiores que o key) 
-        # uma posição à frente para abrir espaço para o key.
-        # O loop continua enquanto j for maior ou igual a 0 e o key for menor que lista[j]
         while j >= 0 and key < lista[j]:
             lista[j + 1] = lista[j]
             j -= 1
             iteration_count += 1
-        # Depois que todos os elementos maiores foram movidos, o key é inserido na posição correta.
         lista[j + 1] = key    
         iteration_count += 1
-        
     return iteration_count     
         
 def selectionSort(array):
     iteration_count = 0
-    # O loop externo percorre cada índice da lista, começando do início até o final (size - 1). 
-    # ind é o índice atual onde o menor elemento da parte não ordenada será colocado.
     for ind in range(len(array)):
-        # Inicializa min_index como o índice atual (ind). 
-        # min_index irá armazenar o índice do menor elemento encontrado na parte não ordenada da lista.
         min_index = ind
-
-        # O loop interno percorre os elementos restantes da lista a partir de ind + 1 até o final. 
-        # j é o índice atual no loop interno.
         for j in range(ind + 1, len(array)):
             iteration_count += 1
-            
-            # Se o elemento no índice j é menor que o elemento no índice min_index, 
-            # atualiza min_index para j. Isso garante que min_index sempre apontará 
-            # para o menor elemento encontrado na parte não ordenada.
             if array[j] < array[min_index]:
                 min_index = j
-            # Após encontrar o menor elemento na parte não ordenada da lista, 
-            # troca o elemento no índice ind com o elemento no índice min_index. 
-            # Isso coloca o menor elemento na posição correta.
         (array[ind], array[min_index]) = (array[min_index], array[ind])   
-        
     return iteration_count
                   
 def heapSort(arr):
     iteration_count = 0
-    
     def heapify(arr, n, i):
         nonlocal iteration_count
         
@@ -220,17 +182,14 @@ def heapSort(arr):
         l = 2 * i + 1  # Índice do filho esquerdo.
         r = 2 * i + 2  # Índice do filho direito.
 
-        # Se o filho esquerdo é maior que a raiz.
         if l < n and arr[i] < arr[l]:
             largest = l
         iteration_count += 1
 
-        # Se o filho direito é maior que o maior valor encontrado até agora.
         if r < n and arr[largest] < arr[r]:
             largest = r
         iteration_count += 1
 
-        # Se o maior valor não é a raiz, faz a troca e continua a heapificação.
         if largest != i:
             arr[i], arr[largest] = arr[largest], arr[i]  # Swap
             iteration_count += 1
@@ -238,11 +197,9 @@ def heapSort(arr):
 
     n = len(arr)  # Move a definição de n para o início da função.
 
-    # Constroi o max heap.
     for i in range(n // 2 - 1, -1, -1):
         heapify(arr, n, i)
 
-    # Extrai os elementos um a um.
     for i in range(n - 1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]  # Troca
         iteration_count += 1
