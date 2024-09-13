@@ -28,7 +28,7 @@ const graphValues = {
   }
 }
 
-window.onload = resetInputs();
+window.onload = resetInputs;
 
 
 // Função para definir os valores dos graficos
@@ -37,7 +37,7 @@ function setGraphValues(name, type, value) {
       if (type in graphValues[name]) {
           graphValues[name][type] = value;
       }
-  updateAllGraphs();
+      updateAllGraphs();
   }
 }
 
@@ -70,6 +70,10 @@ function resetInputs() {
     document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
         radio.checked = false;
     });
+    document.getElementById("userArrayInput").value = null
+    document.getElementById("arraySortedResponse").value = null
+
+
 }
 
 

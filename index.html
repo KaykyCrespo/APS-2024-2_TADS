@@ -29,7 +29,59 @@
                 </p>
             </div>
             <div>
-                <!-- JS Chart irá vir aqui -->
+                <section>
+                    <h1>General statistics</h1>
+                    <div>
+                        <div>
+                            <p>Bubblesort used</p>
+                            <h2 id="bubblesort-count">0</h2>
+                        </div>
+                        <div>
+                            <p>Insertionsort used</p>
+                            <h2 id="insertionsort-count">0</h2>
+                        </div>
+                        <div>
+                            <p>Selectionsort used</p>
+                            <h2 id="selectionsort-count">0</h2>
+                        </div>
+                        <div>
+                            <p>Heapsort used</p>
+                            <h2 id="heapsort-count">0</h2>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p>Total iterations :</p>
+                            <h2 id="iterations-count">0</h2>
+                        </div>
+                        <div>
+                            <p>Total time (sec):</p>
+                            <h2 id="totaltime-count">0s</h2>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                     <div>
+                        <h1>Try it for yourself</h1>
+                        <h2>Here you test sorting a array that you came up with!</h2>
+                     </div>
+                     <div>
+                        <label>Try putting a number sequence below (ex : 1, 145, 56, 2235, 5922, 3)</label>
+                        <input type="text" name="userArrayInput" id="userArrayInput">
+                    </div>
+                    <div>
+                        <label>Here's the result:</label>
+                        <input type="text" name="arraySortedResponse" id="arraySortedResponse" readonly>
+                    </div>
+                    <div>
+                        <p class="resetar" py-click="resetInputValues">reset</p>
+                        <button class="make-test-button" py-click="makeManualTest">
+                            <h1>Make test</h1>
+                            <img src="imgs/check.png" alt="">
+                        </button>
+                    </div>
+
+                </section>
             </div>
         </section>
         <section id="right-side">
@@ -117,7 +169,7 @@
                 </div>
             </div>
             <div class="button-container">
-                <p id="resetar" py-click="resetInputValues">Reset</p>
+                <p class="resetar" py-click="resetInputValues">Reset</p>
                 <button class="make-test-button" py-click="makeTest">
                     <h1>Make test</h1>
                     <img src="imgs/check.png" alt="">
