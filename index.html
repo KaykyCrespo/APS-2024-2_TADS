@@ -24,64 +24,65 @@
                 <h1>Array Buddy</h1>
                 <p for="made-by">By Caio Pacheco, Kayky Crespo & Elias</p>
                 <p>
-                    Using Array Buddy, analyze, visualize, and compare the performance of different Sorting algorithms is easy.
+                    Using Array Buddy, analyze, visualize, and compare the performance of different Sorting algorithms
+                    is easy.
                     In addition to monitoring the execution time, memory used and iterations performed.
                 </p>
             </div>
             <div>
-                    <section>
-                        <h1>General statistics</h1>
+                <section>
+                    <h1>General statistics</h1>
+                    <div>
                         <div>
-                            <div>
-                                <p>Bubblesort used</p>
-                                <h2 id="bubblesort-count">0</h2>
-                            </div>
-                            <div>
-                                <p>Insertionsort used</p>
-                                <h2 id="insertionsort-count">0</h2>
-                            </div>
-                            <div>
-                                <p>Selectionsort used</p>
-                                <h2 id="selectionsort-count">0</h2>
-                            </div>
-                            <div>
-                                <p>Heapsort used</p>
-                                <h2 id="heapsort-count">0</h2>
-                            </div>
+                            <p>Bubblesort used</p>
+                            <h2 id="bubblesort-count">0</h2>
                         </div>
                         <div>
-                            <div>
-                                <p>Total iterations :</p>
-                                <h2 id="iterations-count">0</h2>
-                            </div>
-                            <div>
-                                <p>Total time (sec):</p>
-                                <h2 id="totaltime-count">0s</h2>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <div>
-                            <h1>Try it for yourself</h1>
-                            <h2>Here you test sorting a array that you came up with!</h2>
+                            <p>Insertionsort used</p>
+                            <h2 id="insertionsort-count">0</h2>
                         </div>
                         <div>
-                            <label>Try putting a number sequence below (ex : 1, 145, 56, 2235, 5922, 3)</label>
-                            <input type="text" name="userArrayInput" id="userArrayInput">
+                            <p>Selectionsort used</p>
+                            <h2 id="selectionsort-count">0</h2>
                         </div>
                         <div>
-                            <label>Here's the result:</label>
-                            <input type="text" name="arraySortedResponse" id="arraySortedResponse" readonly>
+                            <p>Heapsort used</p>
+                            <h2 id="heapsort-count">0</h2>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p>Total iterations :</p>
+                            <h2 id="iterations-count">0</h2>
                         </div>
                         <div>
-                            <p class="resetar" py-click="resetInputValues">reset</p>
-                            <button class="make-test-button" py-click="makeManualTest">
-                                <h1>Make test</h1>
-                                <img src="imgs/check.png" alt="">
-                            </button>
+                            <p>Total time (sec):</p>
+                            <h2 id="totaltime-count">0s</h2>
                         </div>
-    
-                    </section>
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <h1>Try it for yourself</h1>
+                        <h2>Here you test sorting a array that you came up with!</h2>
+                    </div>
+                    <div>
+                        <label>Try putting a number sequence below (ex : 1, 145, 56, 2235, 5922, 3)</label>
+                        <input type="text" name="userArrayInput" id="userArrayInput">
+                    </div>
+                    <div>
+                        <label>Here's the result:</label>
+                        <input type="text" name="arraySortedResponse" id="arraySortedResponse" readonly>
+                    </div>
+                    <div>
+                        <p class="resetar" py-click="resetInputValues">reset</p>
+                        <button class="make-test-button" py-click="makeManualTest">
+                            <h1>Make test</h1>
+                            <img src="imgs/check.png" alt="">
+                        </button>
+                    </div>
+
+                </section>
             </div>
         </section>
         <section id="right-side">
@@ -89,8 +90,7 @@
                 <h1>Select array sort type</h1>
                 <div class="div-options">
                     <div class="options">
-                        <input type="radio" id="bubblesort" name="sortOption" value="bubblesort" 
-                        py-click="setSortType">
+                        <input type="radio" id="bubblesort" name="sortOption" value="bubblesort" py-click="setSortType">
                         <label for="bubblesort"></label>
                         <p>Bubblesort</p>
                     </div>
@@ -107,8 +107,7 @@
                         <p>Selectionsort</p>
                     </div>
                     <div class="options">
-                        <input type="radio" id="heapsort" name="sortOption" value="heapsort"
-                            py-click="setSortType">
+                        <input type="radio" id="heapsort" name="sortOption" value="heapsort" py-click="setSortType">
                         <label for="heapsort"></label>
                         <p>Heapsort</p>
                     </div>
@@ -182,7 +181,8 @@
             <div>
                 <section>
                     <h1>Perfomance results</h1>
-                    <p>This session will be used to demonstrate statistics and information about the sorting algorithms used.</p>
+                    <p>This session will be used to demonstrate statistics and information about the sorting algorithms
+                        used.</p>
                     <p>Sort type used: <strong id="selected-sort-type">Null</strong></p>
                 </section>
                 <section>
@@ -205,25 +205,28 @@
         <div id="perfomance-results-right">
             <div>
                 <label for="metricSelectBarChart">Selecione a métrica:</label>
-                    <select id="metricSelectBarChart" onchange="updateBarChart()">
+                <select id="metricSelectBarChart" onchange="updateBarChart()">
                     <option value="time">Time</option>
                     <option value="memory">Memory</option>
                     <option value="iterations">Iterations</option>
                 </select>
-                        <canvas id="barChart" width="400" height="200"></canvas>
+                <canvas id="pieChart" width="400" height="200"></canvas>
+
+
 
                 <label for="metricSelectPieChart">Selecione a métrica:</label>
-                    <select id="metricSelectPieChart" onchange="updatePieChart()">
-                        <option value="time">Time</option>
-                        <option value="memory">Memory</option>
-                        <option value="iterations">Iterations</option> 
-                    </select>       
-                        <canvas id="pieChart" width="400" height="200"></canvas>
-                    
+                <select id="metricSelectPieChart" onchange="updatePieChart()">
+                    <option value="time">Time</option>
+                    <option value="memory">Memory</option>
+                    <option value="iterations">Iterations</option>
+                </select>
+                <canvas id="radarChart" width="400" height="200"></canvas>
+
+
             </div>
             <div>
-                <canvas id="myStackedBarLineChart" width="400" height="200"></canvas>
-                <canvas id="radarChart" width="400" height="200"></canvas>
+                <canvas id="barChart" width="400" height="200"></canvas>
+                <canvas id="barChartWAP" width="400" height="200"></canvas>
             </div>
         </div>
     </div>

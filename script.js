@@ -173,7 +173,7 @@ let barChart = new Chart(ctxLine, {
 
 
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
-function updateBarChart() { 
+function updateBarChart() {
   const selectedMetric = document.getElementById('metricSelectBarChart').value;
   let label, yAxisUnit;
     console.log(selectedMetric)
@@ -396,6 +396,118 @@ var myRadarChart = new Chart(ctxRadar, {
 
 
 
+// Inicialização do gráfico de BARRAS
+const ctxWAP = document.getElementById('barChartWAP').getContext('2d');
+let barChartWAP = new Chart(ctxWAP, {
+  type: 'bar',
+  data: {
+      labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
+      datasets: [{
+          label: 'Time',
+          data: data.time,
+          backgroundColor: '#f4a261', // Cor de fundo das barras
+          borderColor: 'ffffff', // Cor da borda das barras
+          borderWidth: 1
+      }]
+  },
+  options: {
+      layout: {
+          padding: {
+              top: 20, // Margem superior
+              bottom: 20
+          }
+      },
+      scales: {
+          y: {
+              beginAtZero: true,
+              ticks: {
+                  callback: function(value) {
+                      return value + 's'; // Unidade inicial em segundos
+                  },
+                  color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
+                  font: {
+                      size: 20 // Tamanho da fonte dos ticks do eixo Y
+                  }
+              },
+              grid: {
+                  color: '#FFFFFF' // Cor das linhas de grade do eixo Y
+              }
+          },
+          x: {
+              ticks: {
+                  color: '#FFFFFF', // Cor do texto dos ticks do eixo X
+                  font: {
+                      size: 17 // Tamanho da fonte dos ticks do eixo X
+                  }
+              },
+              grid: {
+                  color: '#FFFFFF' // Cor das linhas de grade do eixo X
+              }
+          }
+      },
+      plugins: {
+          legend: {
+              labels: {
+                  color: '#FFFFFF', // Cor do texto da legenda
+                  font: {
+                      size: 16 // Tamanho da fonte da legenda
+                  }
+              }
+          },
+          tooltip: {
+              callbacks: {
+                  title: function(tooltipItems) {
+                      return tooltipItems[0].label;
+                  },
+              },
+              backgroundColor: '#000000', // Cor de fundo do tooltip
+              titleColor: '#FFFFFF', // Cor do texto do título do tooltip
+              bodyColor: '#FFFFFF', // Cor do texto do corpo do tooltip
+              titleFont: {
+                  size: 14 // Tamanho da fonte do título do tooltip
+              },
+              bodyFont: {
+                  size: 14 // Tamanho da fonte do corpo do tooltip
+              }
+          }
+      }
+  }
+});
+
+
+
+/*
+// Função para atualizar o gráfico de BARRAS de acordo com a escolha
+function updateBarChart() {
+  const selectedMetric = document.getElementById('metricSelectBarChart').value;
+  let label, yAxisUnit;
+    console.log(selectedMetric)
+
+  // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
+  switch (selectedMetric) {
+    case 'time':
+        label = 'Time';
+        yAxisUnit = 's'; 
+        barChart.data.datasets[0].data = [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time];
+        break;
+    case 'memory':
+        label = 'Memory';
+        yAxisUnit = 'KBs';
+        barChart.data.datasets[0].data = [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory];
+        break;
+    case 'iterations':
+        label = 'Iterations';
+        yAxisUnit = ''; 
+        barChart.data.datasets[0].data = [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations];
+        break;
+}
+
+barChart.data.datasets[0].label = label;
+barChart.options.scales.y.ticks.callback = function(value) {
+    return value + yAxisUnit;
+};
+barChart.update();
+}
 
 
 
