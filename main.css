@@ -75,7 +75,7 @@ input[type="radio"]:checked + label {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 2vw;
+    gap: 1.5vw;
 
 
     /* Primeira div de título, descrição */
@@ -109,21 +109,20 @@ input[type="radio"]:checked + label {
         }
     }
 
-    /* Segundo div onde está as estatisticas */
+    /* Segundo div onde está as estatisticas e teste manual*/
     >:nth-of-type(2){
         width: 80%;
         display: flex;
         flex-direction: column;
         gap: 3vw;
         overflow-x: auto;
-        max-height: 25vw;
+        max-height: 26vw;
 
         /*Div estatisticas*/
         section:first-child{
             display: flex;
             flex-direction: column;
             width: 90%;
-
 
             h1 {
                 font-size: 2vw;
@@ -203,7 +202,7 @@ input[type="radio"]:checked + label {
         section:last-child{
             display: flex;
             flex-direction: column;
-            gap: 2.5vw;
+            gap: 1.4vw;
 
             div:nth-of-type(1){
                 h1 {

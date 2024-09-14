@@ -69,12 +69,12 @@ document.getElementById('resetar').addEventListener('click', function() {
 
 
 // Função para definir os valores dos graficos
-function setGraphValues(name, type, value) {
-  if (graphValues[name]) {
-      if (type in graphValues[name]) {
-          graphValues[name][type] = value;
+function setGraphValues(sort, type, value) {
+  if (graphValues[sort]) {
+      if (type in graphValues[sort]) {
+          graphValues[sort][type] = value;
       }
-      updateAllGraphs();
+      updateAllGraphs(sort);
   }
 }
 // GRÁFICO EM COLUNAS
@@ -86,29 +86,16 @@ const data = {
 
 
 // Função pra atualizar gráficos
-function updateAllGraphs(){
-  myChart.data.datasets[0].data = [
-    graphValues.bubblesort.time || 0,
-    graphValues.insertionsort.time || 0,
-    graphValues.selectionsort.time || 0,
-    graphValues.heapsort.time || 0
-  ];
-
-  myPieChart.data.datasets[0].data = [
-    graphValues.bubblesort.time || 0,
-    graphValues.insertionsort.time || 0,
-    graphValues.selectionsort.time || 0,
-    graphValues.heapsort.time || 0
-  ];
-
-  myChart.update();
-  updatePieChart();
+function updateAllGraphs(sort){
+    updateBarChart();
+    updatePieChart();
+    updateRadarChart(sort);
 }
 
 
-// Inicialização do gráfico de linha
-const ctxLine = document.getElementById('lineChart').getContext('2d');
-let myChart = new Chart(ctxLine, {
+// Inicialização do gráfico de BARRAS
+const ctxLine = document.getElementById('barChart').getContext('2d');
+let barChart = new Chart(ctxLine, {
   type: 'bar',
   data: {
       labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
@@ -169,9 +156,6 @@ let myChart = new Chart(ctxLine, {
                   title: function(tooltipItems) {
                       return tooltipItems[0].label;
                   },
-                  label: function(tooltipItem) {
-                      return tooltipItem.label + ': ' + tooltipItem.raw + 's';
-                  }
               },
               backgroundColor: '#000000', // Cor de fundo do tooltip
               titleColor: '#FFFFFF', // Cor do texto do título do tooltip
@@ -188,44 +172,37 @@ let myChart = new Chart(ctxLine, {
 });
 
 
-// Função para atualizar o gráfico de acordo com a seleção do usuário
-function updateChart() {
-  const selectedMetric = document.getElementById('metricSelectLineChart').value;
+// Função para atualizar o gráfico de BARRAS de acordo com a escolha
+function updateBarChart() { 
+  const selectedMetric = document.getElementById('metricSelectBarChart').value;
   let label, yAxisUnit;
+    console.log(selectedMetric)
 
   // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
   switch (selectedMetric) {
     case 'time':
         label = 'Time';
         yAxisUnit = 's'; 
-        myChart.data.datasets[0].data = data.time;
+        barChart.data.datasets[0].data = [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time];
         break;
     case 'memory':
         label = 'Memory';
-        yAxisUnit = 'GB';
-        myChart.data.datasets[0].data = data.memory;
+        yAxisUnit = 'KBs';
+        barChart.data.datasets[0].data = [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory];
         break;
     case 'iterations':
         label = 'Iterations';
         yAxisUnit = ''; 
-        myChart.data.datasets[0].data = data.iterations;
+        barChart.data.datasets[0].data = [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations];
         break;
 }
 
-myChart.data.datasets[0].label = label;
-myChart.options.scales.y.ticks.callback = function(value) {
+barChart.data.datasets[0].label = label;
+barChart.options.scales.y.ticks.callback = function(value) {
     return value + yAxisUnit;
 };
-myChart.update();
+barChart.update();
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -329,31 +306,36 @@ function updatePieChart() {
 
 //GRAFICO RADAR
 var ctxRadar = document.getElementById('radarChart').getContext('2d');
+ctxRadar.canvas.width = 600;
+ctxRadar.canvas.height = 600;
 var myRadarChart = new Chart(ctxRadar, {
+    // Adjust the canvas size
+
+
   type: 'radar',
   data: {
     labels: ['Time', 'Memory', 'Number of Interactions'],
     datasets: [{
       label: 'Bubblesort',
-      data: [0, 0, 0, 0], // Inicializado com 0, será atualizado dinamicamente
+      data: [graphValues.bubblesort.time, graphValues.bubblesort.memory, graphValues.bubblesort.iterations], // Inicializado com 0, será atualizado dinamicamente
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
       borderColor: 'rgba(54, 162, 235, 1)',
       borderWidth: 2
     }, {
       label: 'Insertionsort',
-      data: [0, 0, 0, 0],
+      data: [graphValues.insertionsort.time, graphValues.insertionsort.memory, graphValues.insertionsort.iterations],
       backgroundColor: 'red',
       borderColor: 'red',
       borderWidth: 2
     }, {
       label: 'Selectionsort',
-      data: [0, 0, 0, 0],
+      data: [graphValues.selectionsort.time, graphValues.selectionsort.memory, graphValues.selectionsort.iterations],
       backgroundColor: 'green',
       borderColor: 'green',
       borderWidth: 2
     }, {
       label: 'Heapsort',
-      data: [0, 0, 0, 0],
+      data: [graphValues.heapsort.time, graphValues.heapsort.memory, graphValues.heapsort.iterations],
       backgroundColor: 'purple',
       borderColor: 'purple',
       borderWidth: 2
@@ -372,8 +354,14 @@ var myRadarChart = new Chart(ctxRadar, {
         angleLines: {
           display: true
         },
+        grid: {
+          color: '#FFFFFF' // Color of the grid lines
+        },
+        border: {
+          color: '#FFFFFF' // Color of the radar chart outline
+        },
         suggestedMin: 0,
-        suggestedMax: 100
+        suggestedMax: 3
       }
     }
   }
@@ -381,44 +369,13 @@ var myRadarChart = new Chart(ctxRadar, {
 
 
 // Função para atualizar o gráfico de radar com base nas métricas selecionadas
-  function updateRadarChart() {
-    var metric = document.getElementById('metricRadarChart').value;
-    var data;
-
-    switch (metric) {
-      case 'time':
-          data = [
-              graphValues.bubblesort.time || 0,
-              graphValues.insertionsort.time || 0,
-              graphValues.selectionsort.time || 0,
-              graphValues.heapsort.time || 0
-          ];
-          break;
-      case 'memory':
-          data = [
-              graphValues.bubblesort.memory || 0,
-              graphValues.insertionsort.memory || 0,
-              graphValues.selectionsort.memory || 0,
-              graphValues.heapsort.memory || 0
-          ];
-          break;
-      case 'iterations':
-          data = [
-              graphValues.bubblesort.iterations || 0,
-              graphValues.insertionsort.iterations || 0,
-              graphValues.selectionsort.iterations || 0,
-              graphValues.heapsort.iterations || 0
-          ];
-          break;
-      default:
-          data = [0, 0, 0, 0];
-  }
+  function updateRadarChart(sort) {
 
   // Atualizar os datasets do gráfico de radar
-  myRadarChart.data.datasets[0].data = [graphValues.bubblesort.time]; 
-  myRadarChart.data.datasets[1].data = [graphValues.insertionsort.time]; 
-  myRadarChart.data.datasets[2].data = [graphValues.selectionsort.time];
-  myRadarChart.data.datasets[3].data = [graphValues.heapsort.time];
+  myRadarChart.data.datasets[0].data = [graphValues.bubblesort.time, graphValues.bubblesort.memory,  graphValues.bubblesort.iterations / 125000]; 
+  myRadarChart.data.datasets[1].data = [graphValues.insertionsort.time, graphValues.insertionsort.memory,  graphValues.insertionsort.iterations / 125000]; 
+  myRadarChart.data.datasets[2].data = [graphValues.selectionsort.time, graphValues.selectionsort.memory,  graphValues.selectionsort.iterations / 125000];
+  myRadarChart.data.datasets[3].data = [graphValues.heapsort.time, graphValues.heapsort.memory,  graphValues.heapsort.iterations / 125000];
 
   // Atualizar o gráfico
   myRadarChart.update();

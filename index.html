@@ -29,7 +29,6 @@
                 </p>
             </div>
             <div>
-                <div>
                     <section>
                         <h1>General statistics</h1>
                         <div>
@@ -83,7 +82,6 @@
                         </div>
     
                     </section>
-                </div>
             </div>
         </section>
         <section id="right-side">
@@ -206,13 +204,13 @@
         <!-- JS Chart irá vir aqui -->
         <div id="perfomance-results-right">
             <div>
-                <label for="metricSelectLineChart">Selecione a métrica:</label>
-                    <select id="metricSelectLineChart" onchange="updateChart()">
+                <label for="metricSelectBarChart">Selecione a métrica:</label>
+                    <select id="metricSelectBarChart" onchange="updateBarChart()">
                     <option value="time">Time</option>
                     <option value="memory">Memory</option>
                     <option value="iterations">Iterations</option>
-                    </select>
-                        <canvas id="lineChart" width="400" height="200"></canvas>
+                </select>
+                        <canvas id="barChart" width="400" height="200"></canvas>
 
                 <label for="metricSelectPieChart">Selecione a métrica:</label>
                     <select id="metricSelectPieChart" onchange="updatePieChart()">
