@@ -21,7 +21,7 @@ def setArraySortSize(event):
     for i in range(quantity):
         sortArraySize.append(random.randint(0, 500))
     #print("Random arrays numbers with size", int(document.querySelector('input[name="arraySize"]:checked').value),":", sortArraySize)
-    
+
 def updateStatistics(name, value):
     elementIds = {
         'bubblesort': "bubblesort-count",
@@ -60,45 +60,42 @@ def makeManualTest(event):
     else:
         showAlertBox("Invalid input on manual sort test.", "error");
         resetInputs();
-        
-    
 
-    
 
 def makeTest(event):
     global sortArraySize
     global sortType
     originalUnsortedArray = sortArraySize.copy();
-    
+
     unsortedArray = document.getElementById("unsorted-array");
     sortedArray = document.getElementById("sorted-array");
     sortTypeSelected = document.getElementById("selected-sort-type");
-        
+
     def performanceTest(sort):
-        
+
         def measureMemoryUsage(array):
             return sys.getsizeof(array) / 1024
-        
+
         def updateGraphValues(name, type, value):
             supported_sorts = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort']
             if name in supported_sorts:
                 setGraphValues(name, type, value)
-                
+
         def updateAllStatistics():
             updateStatistics(sort, 1);
             updateStatistics('totalTime', f"{elapsed_time_perf_counter:.6f}");
             updateStatistics('totalIterations', sort_type(sortArraySize));
-        
-        
+
+
         sort_functions = {
         "bubblesort": bubble_sort,
         "insertionsort": insertionSort,
         "selectionsort": selectionSort,
         "heapsort": heapSort
         }
-        
+
         sort_type = sort_functions.get(sort)
-        
+
         start_time = time.perf_counter()
         sort_type(sortArraySize)
         end_time = time.perf_counter()

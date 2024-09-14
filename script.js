@@ -30,18 +30,6 @@ const graphValues = {
 
 window.onload = resetInputs;
 
-
-// Função para definir os valores dos graficos
-function setGraphValues(name, type, value) {
-  if (graphValues[name]) {
-      if (type in graphValues[name]) {
-          graphValues[name][type] = value;
-      }
-      updateAllGraphs();
-  }
-}
-
-
 function showAlertBox(message, category){
   alertMessage.innerHTML = message;
   alertBox.style.display = "flex";
@@ -56,6 +44,7 @@ function showAlertBox(message, category){
       alertBox.style.display = "none";
   }, 3000);
 }
+
 
 function resetInputs() {
   document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
@@ -78,6 +67,16 @@ document.getElementById('resetar').addEventListener('click', function() {
 });
 
 
+
+// Função para definir os valores dos graficos
+function setGraphValues(name, type, value) {
+  if (graphValues[name]) {
+      if (type in graphValues[name]) {
+          graphValues[name][type] = value;
+      }
+      updateAllGraphs();
+  }
+}
 // GRÁFICO EM COLUNAS
 const data = {
   time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
@@ -117,7 +116,7 @@ function updateAllGraphs(){
 
 // Inicialização do gráfico de linha
 const ctxLine = document.getElementById('lineChart').getContext('2d');
-let myChart = new Chart(ctxLine, { 
+let myChart = new Chart(ctxLine, {
   type: 'bar',
   data: {
       labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
@@ -246,7 +245,7 @@ myChart.update();
 
 
 
-
+/*
 // Inicialização do gráfico de pizza
 var ctxPie = document.getElementById('pieChart').getContext('2d');
 var canvas = document.getElementById('pieChart');
