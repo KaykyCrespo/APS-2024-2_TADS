@@ -8,7 +8,7 @@ sortArraySize = [];
 
 
 
-#Método para definir o tipo de sort escolhido
+#Método para definir o tipo de sort escolhido aaaa
 def setSortType(event):
     global sortType
     sortType = document.querySelector('input[name="sortOption"]:checked').value;
