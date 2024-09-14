@@ -9,71 +9,80 @@ const graphValues = {
   bubblesort: {
     time: null,
     memory: null,
-    cpu: null
+    iterations: null
   },
   insertionsort: {
     time: null,
     memory: null,
-    cpu: null
+    iterations: null
   },
   selectionsort: {
     time: null,
     memory: null,
-    cpu: null
+    iterations: null
   },
   heapsort: {
     time: null,
     memory: null,
-    cpu: null
+    iterations: null
   }
 }
 
-window.onload = resetInputs();
-
-
-// GRÁFICO EM COLUNAS
-// Dados de exemplo
-const data = {
-  time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
-  memory: [8, 15, 5], // em GB
-  cpu: [10, 12, 8], // em porcentagem
-  iterations: [2, 5, 18] // Corrigido para "iterations"
-};
+window.onload = resetInputs;
 
 function showAlertBox(message, category){
-    alertMessage.innerHTML = message;
-    alertBox.style.display = "flex";
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "flex";
 
-    if (category === 'success') {
-        alertBox.style.backgroundColor = 'green';
-    } else {
-        alertBox.style.backgroundColor = '#f36464';
-    }
+  if (category === 'success') {
+      alertBox.style.backgroundColor = 'green';
+  } else {
+      alertBox.style.backgroundColor = '#f36464';
+  }
 
-    setTimeout(() => {
-        alertBox.style.display = "none";
-    }, 3000);
+  setTimeout(() => {
+      alertBox.style.display = "none";
+  }, 3000);
 }
 
 
 function resetInputs() {
-    document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
-        radio.checked = false;
-    });
-    document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
-        radio.checked = false;
-    });
+  document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
+      radio.checked = false;
+  });
+  document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
+      radio.checked = false;
+  });
+  document.getElementById("userArrayInput").value = null
+  document.getElementById("arraySortedResponse").value = null
 }
-
 
 // função para resetar os inputs
 document.getElementById('resetar').addEventListener('click', function() {
-    // Seleciona todos os inputs de tipo 'radio' e os desmarca
-    const radios = document.querySelectorAll('input[type="radio"]');
-    radios.forEach(radio => {
-        radio.checked = false;
-    });
+  // Seleciona todos os inputs de tipo 'radio' e os desmarca
+  const radios = document.querySelectorAll('input[type="radio"]');
+  radios.forEach(radio => {
+      radio.checked = false;
+  });
 });
+
+
+
+// Função para definir os valores dos graficos
+function setGraphValues(name, type, value) {
+  if (graphValues[name]) {
+      if (type in graphValues[name]) {
+          graphValues[name][type] = value;
+      }
+      updateAllGraphs();
+  }
+}
+// GRÁFICO EM COLUNAS
+const data = {
+  time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
+  memory: [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory], // em GB
+  iterations: [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations] // Corrigido para "iterations"
+};
 
 
 // Função pra atualizar gráficos
@@ -91,70 +100,31 @@ function updateAllGraphs(){
     graphValues.selectionsort.time || 0,
     graphValues.heapsort.time || 0
   ];
- 
+
   myChart.update();
   updatePieChart();
 }
 
 
-// Função para definir os valores dos graficos
-function setGraphValues(name, type, value) {
-
-  console.log(name, type, value)
-  if (graphValues[name]) {
-      if (type in graphValues[name]) {
-          graphValues[name][type] = value;
-          updateAllGraphs();
-      }
-  }
-}
-
-
-
-
-
-
-
-/**
-// Plugin para exibir valores ao lado de cada barra
-const valueDisplayPlugin = {
-  afterDatasetsDraw: function(chart) {
-      const ctx = chart.ctx;
-      chart.data.datasets.forEach(function(dataset, i) {
-          const meta = chart.getDatasetMeta(i);
-          if (!meta.hidden) {
-              meta.data.forEach(function(element, index) {
-                  const dataValue = dataset.data[index];
-                  const position = element.tooltipPosition();
-                  ctx.font = '12px Arial';
-                  ctx.fillStyle = 'black';
-                  ctx.fillText(dataValue, position.x, position.y - 10); // Exibe o valor acima da barra
-              });
-          }
-      });
-  }
-};
- */
-
-
-// Criação do gráfico inicial com a métrica "time"
+// Inicialização do gráfico de linha
 const ctxLine = document.getElementById('lineChart').getContext('2d');
-let myChart = new Chart(ctxLine, { 
+let myChart = new Chart(ctxLine, {
   type: 'bar',
   data: {
       labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
       datasets: [{
           label: 'Time',
           data: data.time,
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: '#f4a261', // Cor de fundo das barras
+          borderColor: 'ffffff', // Cor da borda das barras
           borderWidth: 1
       }]
   },
   options: {
       layout: {
           padding: {
-              top: 20 // Margem superior
+              top: 20, // Margem superior
+              bottom: 20
           }
       },
       scales: {
@@ -163,12 +133,60 @@ let myChart = new Chart(ctxLine, {
               ticks: {
                   callback: function(value) {
                       return value + 's'; // Unidade inicial em segundos
+                  },
+                  color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
+                  font: {
+                      size: 20 // Tamanho da fonte dos ticks do eixo Y
                   }
+              },
+              grid: {
+                  color: '#FFFFFF' // Cor das linhas de grade do eixo Y
+              }
+          },
+          x: {
+              ticks: {
+                  color: '#FFFFFF', // Cor do texto dos ticks do eixo X
+                  font: {
+                      size: 17 // Tamanho da fonte dos ticks do eixo X
+                  }
+              },
+              grid: {
+                  color: '#FFFFFF' // Cor das linhas de grade do eixo X
+              }
+          }
+      },
+      plugins: {
+          legend: {
+              labels: {
+                  color: '#FFFFFF', // Cor do texto da legenda
+                  font: {
+                      size: 16 // Tamanho da fonte da legenda
+                  }
+              }
+          },
+          tooltip: {
+              callbacks: {
+                  title: function(tooltipItems) {
+                      return tooltipItems[0].label;
+                  },
+                  label: function(tooltipItem) {
+                      return tooltipItem.label + ': ' + tooltipItem.raw + 's';
+                  }
+              },
+              backgroundColor: '#000000', // Cor de fundo do tooltip
+              titleColor: '#FFFFFF', // Cor do texto do título do tooltip
+              bodyColor: '#FFFFFF', // Cor do texto do corpo do tooltip
+              titleFont: {
+                  size: 14 // Tamanho da fonte do título do tooltip
+              },
+              bodyFont: {
+                  size: 14 // Tamanho da fonte do corpo do tooltip
               }
           }
       }
   }
 });
+
 
 // Função para atualizar o gráfico de acordo com a seleção do usuário
 function updateChart() {
@@ -186,11 +204,6 @@ function updateChart() {
         label = 'Memory';
         yAxisUnit = 'GB';
         myChart.data.datasets[0].data = data.memory;
-        break;
-    case 'cpu':
-        label = 'CPU';
-        yAxisUnit = '%';
-        myChart.data.datasets[0].data = data.cpu;
         break;
     case 'iterations':
         label = 'Iterations';
@@ -212,8 +225,23 @@ myChart.update();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Inicialização do gráfico de pizza
 var ctxPie = document.getElementById('pieChart').getContext('2d');
+var canvas = document.getElementById('pieChart');
+
 var myPieChart = new Chart(ctxPie, {
     type: 'pie',
     data: {
@@ -263,19 +291,15 @@ function updatePieChart() {
             break;
         case 'memory':
             labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [15, 25, 35, 45];
-            break;
-        case 'cpu':
-            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [5, 15, 25, 35];
+            data = [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory];
             break;
         case 'iterations':
             labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [8, 18, 28, 38];
+            data = [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations];
             break;
         default:
             labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [0, 19, 3, 5];
+            data = [0, 0, 0, 0];
     }
 
     myPieChart.data.labels = labels;
@@ -285,254 +309,168 @@ function updatePieChart() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //GRAFICO RADAR
-  var ctxRadar = document.getElementById('radarChart').getContext('2d');
-  var myRadarChart = new Chart(ctxRadar, {
-    type: 'radar',
-    data: {
-      labels: ['Time', 'Memory', 'CPU', 'Number of Interactions'],
-      datasets: [{
-        label: 'Bubblesort',
-        data: [20, 10, 15, 30, 25, 35],
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 2
-      }, {
-        label: 'Insertionsort',
-        data: [25, 20, 10, 35, 30, 15],
-        backgroundColor: 'red',
-        borderColor: 'red',
-        borderWidth: 2
-      },{
-        label: 'Selectionsort',
-        data: [40, 20, 10, 35, 30, 15],
-        backgroundColor: 'green',
-        borderColor: 'green',
-        borderWidth: 2
-      },{
-        label: 'Heapsort',
-        data: [15, 70, 10, 35, 30, 15],
-        backgroundColor: 'purple',
-        borderColor: 'purple',
-        borderWidth: 2
-      }]
+var ctxRadar = document.getElementById('radarChart').getContext('2d');
+var myRadarChart = new Chart(ctxRadar, {
+  type: 'radar',
+  data: {
+    labels: ['Time', 'Memory', 'Number of Interactions'],
+    datasets: [{
+      label: 'Bubblesort',
+      data: [0, 0, 0, 0], // Inicializado com 0, será atualizado dinamicamente
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 2
+    }, {
+      label: 'Insertionsort',
+      data: [0, 0, 0, 0],
+      backgroundColor: 'red',
+      borderColor: 'red',
+      borderWidth: 2
+    }, {
+      label: 'Selectionsort',
+      data: [0, 0, 0, 0],
+      backgroundColor: 'green',
+      borderColor: 'green',
+      borderWidth: 2
+    }, {
+      label: 'Heapsort',
+      data: [0, 0, 0, 0],
+      backgroundColor: 'purple',
+      borderColor: 'purple',
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Comparação Geral'
+      }
     },
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: 'Comparação Geral'
-        }
-      },
-      scales: {
-        r: {
-          angleLines: {
-            display: true
-          },
-          suggestedMin: 0,
-          suggestedMax: 40
-        }
+    scales: {
+      r: {
+        angleLines: {
+          display: true
+        },
+        suggestedMin: 0,
+        suggestedMax: 100
       }
     }
-  });
+  }
+});
 
 
-// GRÁFICO StackedBarLineChart
-  var ctx = document.getElementById('myStackedBarLineChart').getContext('2d');
-  var myStackedBarLineChart = new Chart(ctx, {
-    type: 'bar', // Inicia como gráfico de barras
-    data: {
-      labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
-      datasets: [
-        {
-          label: 'Memory',
-          data: [10, 20, 30, 40, 50, 60],
-          backgroundColor: 'rgba(255, 99, 132, 0.6)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1,
-          stack: 'Stack 0'
-        },
-        {
-          label: 'Number of Interactions',
-          data: [20, 30, 10, 50, 60, 40],
-          backgroundColor: 'rgba(54, 162, 235, 0.6)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1,
-          stack: 'Stack 0'
-        },
-        {
-          label: 'CPU',
-          data: [5, 15, 25, 35, 45, 55],
-          backgroundColor: 'rgba(75, 192, 192, 0.6)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1,
-          stack: 'Stack 0'
-        },
-        {
-          label: 'Time',
-          data: [35, 65, 95, 125, 155, 155], // Dados da linha
-          type: 'line', // Define este dataset como um gráfico de linha
-          fill: false,
-          borderColor: 'rgba(255, 206, 86, 1)',
-          backgroundColor: 'rgba(255, 206, 86, 0.2)',
-          borderWidth: 2
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        x: {
-          stacked: true, // Empilhar barras no eixo X
-        },
-        y: {
-          stacked: true, // Empilhar barras no eixo Y
-        }
-      },
-      plugins: {
-        title: {
-          display: true,
-          text: 'Stacked Bar and Line Chart'
-        }
-      }
-    }
-  });
+// Função para atualizar o gráfico de radar com base nas métricas selecionadas
+  function updateRadarChart() {
+    var metric = document.getElementById('metricRadarChart').value;
+    var data;
 
-
-
-
-
-
-
-
-
-
-
-
-
-// Função para atualizar o gráfico com base na seleção
-function updateProgressiveLineChart() {
-  var selectedMetricProgressiveLineChart = document.getElementById("metricSelectProgressiveLineChart").value;
-  
-  let newData = [];
-  switch (selectedMetricProgressiveLineChart) {
-      case "Bubblesort":
-          newData = [
-              {x: 0, y: 10}, {x: 1, y: 20}, {x: 2, y: 30}, {x: 3, y: 40},
-              {x: 4, y: 50}, {x: 5, y: 60}, {x: 6, y: 70}, {x: 7, y: 80}
+    switch (metric) {
+      case 'time':
+          data = [
+              graphValues.bubblesort.time || 0,
+              graphValues.insertionsort.time || 0,
+              graphValues.selectionsort.time || 0,
+              graphValues.heapsort.time || 0
           ];
           break;
-      case "Selectionsort":
-          newData = [
-              {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-              {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
+      case 'memory':
+          data = [
+              graphValues.bubblesort.memory || 0,
+              graphValues.insertionsort.memory || 0,
+              graphValues.selectionsort.memory || 0,
+              graphValues.heapsort.memory || 0
           ];
           break;
-      case "Insertionsort":
-          newData = [
-              {x: 0, y: 20}, {x: 1, y: 30}, {x: 2, y: 40}, {x: 3, y: 50},
-              {x: 4, y: 60}, {x: 5, y: 70}, {x: 6, y: 80}, {x: 7, y: 90}
-          ];
-          break;
-      case "Heapsort":
-          newData = [
-              {x: 0, y: 25}, {x: 1, y: 35}, {x: 2, y: 45}, {x: 3, y: 55},
-              {x: 4, y: 65}, {x: 5, y: 75}, {x: 6, y: 85}, {x: 7, y: 95}
+      case 'iterations':
+          data = [
+              graphValues.bubblesort.iterations || 0,
+              graphValues.insertionsort.iterations || 0,
+              graphValues.selectionsort.iterations || 0,
+              graphValues.heapsort.iterations || 0
           ];
           break;
       default:
-          newData = [];
+          data = [0, 0, 0, 0];
   }
 
-  myProgressiveLineChart.data.datasets[0].data = newData;
-  myProgressiveLineChart.update();
+  // Atualizar os datasets do gráfico de radar
+  myRadarChart.data.datasets[0].data = [graphValues.bubblesort.time]; 
+  myRadarChart.data.datasets[1].data = [graphValues.insertionsort.time]; 
+  myRadarChart.data.datasets[2].data = [graphValues.selectionsort.time];
+  myRadarChart.data.datasets[3].data = [graphValues.heapsort.time];
+
+  // Atualizar o gráfico
+  myRadarChart.update();
 }
 
-// Criação do gráfico inicial
-var ctxprogressiveLine = document.getElementById('progressiveLineChart').getContext('2d');
-var myProgressiveLineChart = new Chart(ctxprogressiveLine, {
-type: 'line',
-data: {
-  datasets: [{
-    label: 'Time',
-    borderColor: 'rgba(255, 99, 132, 1)',
-    borderWidth: 1,
-    radius: 0,
-    data: [
-      {x: 0, y: 10}, {x: 1, y: 20}, {x: 2, y: 30}, {x: 3, y: 40},
-      {x: 4, y: 50}, {x: 5, y: 60}, {x: 6, y: 70}, {x: 7, y: 80}
-    ]
-  }, {
-    label: 'Memory',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 1,
-    radius: 0,
-    data: [
-      {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-      {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
-    ]
-  }, {
-    label: 'CPU',
-    borderColor: 'rgba(54, 162, 235, 1)',
-    borderWidth: 1,
-    radius: 0,
-    data: [
-      {x: 0, y: 15}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-      {x: 4, y: 55}, {x: 5, y: 65}, {x: 6, y: 75}, {x: 7, y: 85}
-    ]
-  }, {
-    label: 'Interactions',
-    borderColor: 'red',
-    borderWidth: 1,
-    radius: 0,
-    data: [
-      {x: 0, y: 10}, {x: 1, y: 25}, {x: 2, y: 35}, {x: 3, y: 45},
-      {x: 4, y: 75}, {x: 5, y: 25}, {x: 6, y: 85}, {x: 7, y: 85}
-    ]
-  }]
-},
-options: {
-  animation: {
-    x: {
-      type: 'number',
-      easing: 'linear',
-      duration: 10000 / 8,
-      from: NaN,
-      delay(ctx) {
-        if (ctx.type !== 'data' || ctx.xStarted) {
-          return 0;
-        }
-        ctx.xStarted = true;
-        return ctx.index * (10000 / 8);
-      }
-    },
-    y: {
-      type: 'number',
-      easing: 'linear',
-      duration: 10000 / 8,
-      from: (ctx) => ctx.index === 0 
-        ? ctx.chart.scales.y.getPixelForValue(100)
-        : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y,
-      delay(ctx) {
-        if (ctx.type !== 'data' || ctx.yStarted) {
-          return 0;
-        }
-        ctx.yStarted = true;
-        return ctx.index * (10000 / 8);
-      }
-    }
-  },
-  interaction: {
-    intersect: false
-  },
-  plugins: {
-    legend: true
-  },
-  scales: {
-    x: {
-      type: 'linear'
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+// Plugin para exibir valores ao lado de cada barra
+const valueDisplayPlugin = {
+  afterDatasetsDraw: function(chart) {
+      const ctx = chart.ctx;
+      chart.data.datasets.forEach(function(dataset, i) {
+          const meta = chart.getDatasetMeta(i);
+          if (!meta.hidden) {
+              meta.data.forEach(function(element, index) {
+                  const dataValue = dataset.data[index];
+                  const position = element.tooltipPosition();
+                  ctx.font = '12px Arial';
+                  ctx.fillStyle = 'black';
+                  ctx.fillText(dataValue, position.x, position.y - 10); // Exibe o valor acima da barra
+              });
+          }
+      });
   }
-}
-});
+};
+ */

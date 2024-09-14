@@ -29,7 +29,61 @@
                 </p>
             </div>
             <div>
-                <!-- JS Chart irá vir aqui -->
+                <div>
+                    <section>
+                        <h1>General statistics</h1>
+                        <div>
+                            <div>
+                                <p>Bubblesort used</p>
+                                <h2 id="bubblesort-count">0</h2>
+                            </div>
+                            <div>
+                                <p>Insertionsort used</p>
+                                <h2 id="insertionsort-count">0</h2>
+                            </div>
+                            <div>
+                                <p>Selectionsort used</p>
+                                <h2 id="selectionsort-count">0</h2>
+                            </div>
+                            <div>
+                                <p>Heapsort used</p>
+                                <h2 id="heapsort-count">0</h2>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <p>Total iterations :</p>
+                                <h2 id="iterations-count">0</h2>
+                            </div>
+                            <div>
+                                <p>Total time (sec):</p>
+                                <h2 id="totaltime-count">0s</h2>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div>
+                            <h1>Try it for yourself</h1>
+                            <h2>Here you test sorting a array that you came up with!</h2>
+                        </div>
+                        <div>
+                            <label>Try putting a number sequence below (ex : 1, 145, 56, 2235, 5922, 3)</label>
+                            <input type="text" name="userArrayInput" id="userArrayInput">
+                        </div>
+                        <div>
+                            <label>Here's the result:</label>
+                            <input type="text" name="arraySortedResponse" id="arraySortedResponse" readonly>
+                        </div>
+                        <div>
+                            <p class="resetar" py-click="resetInputValues">reset</p>
+                            <button class="make-test-button" py-click="makeManualTest">
+                                <h1>Make test</h1>
+                                <img src="imgs/check.png" alt="">
+                            </button>
+                        </div>
+    
+                    </section>
+                </div>
             </div>
         </section>
         <section id="right-side">
@@ -156,7 +210,6 @@
                     <select id="metricSelectLineChart" onchange="updateChart()">
                     <option value="time">Time</option>
                     <option value="memory">Memory</option>
-                    <option value="cpu">CPU</option>
                     <option value="iterations">Iterations</option>
                     </select>
                         <canvas id="lineChart" width="400" height="200"></canvas>
@@ -165,7 +218,6 @@
                     <select id="metricSelectPieChart" onchange="updatePieChart()">
                         <option value="time">Time</option>
                         <option value="memory">Memory</option>
-                        <option value="cpu">CPU</option>
                         <option value="iterations">Iterations</option> 
                     </select>       
                         <canvas id="pieChart" width="400" height="200"></canvas>
@@ -174,16 +226,6 @@
             <div>
                 <canvas id="myStackedBarLineChart" width="400" height="200"></canvas>
                 <canvas id="radarChart" width="400" height="200"></canvas>
-            </div>
-            <div>
-                <label for="metricSelectProgressiveLineChart">Selecione a métrica:</label>
-                <select id="metricSelectProgressiveLineChart" onchange="updateProgressiveLineChart()">
-                    <option value="Bubblesort">Bubblesort</option>
-                    <option value="Selectionsort">Selectionsort</option>
-                    <option value="Insertionsort">Insertionsort</option>
-                    <option value="Heapsort">Heapsort</option>
-                </select>
-                <canvas id="progressiveLineChart" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
