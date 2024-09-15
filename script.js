@@ -90,6 +90,7 @@ function updateAllGraphs(sort){
     updateBarChart();
     updatePieChart();
     updateRadarChart(sort);
+    updateBarChartWAP(sort);
 }
 
 
@@ -404,7 +405,7 @@ let barChartWAP = new Chart(ctxWAP, {
       labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
       datasets: [{
           label: 'Time',
-          data: data.time,
+          data: [],
           backgroundColor: '#f4a261', // Cor de fundo das barras
           borderColor: 'ffffff', // Cor da borda das barras
           borderWidth: 1
@@ -422,7 +423,7 @@ let barChartWAP = new Chart(ctxWAP, {
               beginAtZero: true,
               ticks: {
                   callback: function(value) {
-                      return value + 's'; // Unidade inicial em segundos
+                      return value + 'wap'; // Unidade inicial em segundos
                   },
                   color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
                   font: {
@@ -476,38 +477,36 @@ let barChartWAP = new Chart(ctxWAP, {
 
 
 
-/*
+function wap() {
+    // Supondo que graphValues e sort sejam definidos e válidos
+    const algorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
+    return algorithms.map(algo => {
+        let interaionsWAP = graphValues[algo].interations;
+        let timeWAP = graphValues[algo].time;
+        let memoryWAP = graphValues[algo].memory;
+        return ((interaionsWAP / 10000000) * 2) + (timeWAP * 14) + (memoryWAP * 4) / 20;
+    });
+}
+
+
+
+
+
+
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
-function updateBarChart() {
-  const selectedMetric = document.getElementById('metricSelectBarChart').value;
-  let label, yAxisUnit;
-    console.log(selectedMetric)
+function updateBarChartWAP() {
+    const data = wap(); // Calcula os valores para WAP
 
-  // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
-  switch (selectedMetric) {
-    case 'time':
-        label = 'Time';
-        yAxisUnit = 's'; 
-        barChart.data.datasets[0].data = [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time];
-        break;
-    case 'memory':
-        label = 'Memory';
-        yAxisUnit = 'KBs';
-        barChart.data.datasets[0].data = [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory];
-        break;
-    case 'iterations':
-        label = 'Iterations';
-        yAxisUnit = ''; 
-        barChart.data.datasets[0].data = [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations];
-        break;
+    barChartWAP.data.datasets[0].data = data;
+    barChartWAP.data.datasets[0].label = 'WAP Metric'; // Atualiza o rótulo do conjunto de dados
+    barChartWAP.options.scales.y.ticks.callback = function(value) {
+        return value + ' '; // Unidade inicial (vazia por padrão)
+    };
+    barChartWAP.update();
 }
 
-barChart.data.datasets[0].label = label;
-barChart.options.scales.y.ticks.callback = function(value) {
-    return value + yAxisUnit;
-};
-barChart.update();
-}
+// Chame updatebarChartWAP quando quiser atualizar o gráfico
+updatebarChartWAP();
 
 
 
