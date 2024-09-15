@@ -155,14 +155,13 @@
             </div>
             <div class="vertical-line"> </div>
             <div>
-                <h1>Ordination type</h1>
-                <h2>This will affect on how the graphs are calculated and shown</h2>
+                <h1>Array build</h1>
+                <h2>This will affect on how the random array are made</h2>
                 <div class="div-options">
                     <div class="options" id="dropdown">
                         <select id="ordinationType" name="ordinationType" py-change="setOrdinationType">
-                            <option value="ascending">Column Chart</option>
-                            <option value="descending">Pie Chart</option>
-                            <option value="random">Line Chart</option>
+                            <option value="ascending">Never repeat numbers</option>
+                            <option value="descending">Repeat numbers</option>
                         </select>
                     </div>
                 </div>
@@ -203,27 +202,27 @@
         </div>
         <!-- JS Chart irá vir aqui -->
         <div id="perfomance-results-right">
-            <div>
+            <div id="graph-left">
                 <label for="metricSelectPieChart">Selecione a métrica:</label>
                 <select id="metricSelectPieChart" onchange="updatePieChart()">
                     <option value="time">Time</option>
                     <option value="memory">Memory</option>
                     <option value="iterations">Iterations</option>
                 </select>
-                <canvas id="pieChart" width="400" height="200"></canvas>
+                <canvas id="pieChart" width="450" height="350"></canvas>
 
                 <canvas id="radarChart" width="400" height="200"></canvas>
-
-
             </div>
-            <div>
+
+
+            <div id="graph-right">
                 <label for="metricSelectBarChart">Selecione a métrica:</label>
                 <select id="metricSelectBarChart" onchange="updateBarChart()">
                     <option value="time">Time</option>
                     <option value="memory">Memory</option>
                     <option value="iterations">Iterations</option>
                 </select>
-                <canvas id="barChart" width="400" height="200"></canvas>
+                <canvas id="barChart" width="350" height="150"></canvas>
 
                 <label for="metricSelectBarChartWAP">Selecione a métrica:</label>
                 <select id="metricSelectBarChartWAP" onchange="updateBarChartWAP()">
@@ -231,10 +230,34 @@
                     <option value="memory">Memory</option>
                     <option value="iterations">Iterations</option>
                 </select>
-                <canvas id="barChartWAP" width="400" height="200"></canvas>
+                <canvas id="barChartWAP" width="350" height="150"></canvas>
             </div>
+
+
+
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h4>Array Buddy</h4>
+                <h4>App for testing array's sorts</h4>
+
+                <p>Copyright &copy; ArrayBuddy. All rights Reserved</p>
+                <p>Política de Privacidade</p>
+                <p>Termos de uso</p>
+            </div>
+            <div class="footer-section quick-links">
+                <ul>
+                    <li><a href="#instagram">Home</a></li>
+                    <li><a href="#x">Categorias</a></li>
+                    <li><a href="#Linkdln">Maiores Produtores</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
     <script type="py" src="main.py"></script>
     <script src="script.js" defer></script>
 </body>

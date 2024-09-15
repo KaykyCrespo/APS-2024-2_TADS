@@ -8,6 +8,20 @@
     scroll-behavior: smooth;
 }
 
+/* Estilos para a barra de rolagem em navegadores Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color:  #ffffff; /* Cor da barra de rolagem */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #013A40; /* Cor da trilha de rolagem */
+}
+
 main {
     display: flex;
 }
@@ -686,7 +700,8 @@ input[type="radio"]:checked + label {
 #perfomance-results-container {
     display: flex;
     height: 100vh;
-    background-color: #00303C;   
+    background-color: #00303C;
+    border: 2px solid red;
 
     #perfomance-results-left{
         margin-left: 4.5vw;
@@ -695,6 +710,7 @@ input[type="radio"]:checked + label {
         justify-content: center;
         align-items: center;
         width: 30%;
+        border: 2px solid red;
         
         /* Tive que botar essa div pra fazer o traço no lado direito*/
         >:nth-of-type(1) {
@@ -772,11 +788,98 @@ input[type="radio"]:checked + label {
         display: flex;
         flex-wrap: wrap;
         width: 65%;
-        border: 1px solid red   ;
+        border: 1px solid red;
     }
 
+    #graph-left, #graph-right{
+        margin-top: 10vw 4.5vw;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid red;
+    }
 }
 
-#myChart{
-    margin-top: 8vh;
+canvas{
+    margin-left: 2.5vw; /* Espaçamento entre os gráficos */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*  FOOTER  */
+        .footer {
+            background: #457E83;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            margin: 0 0px 0 0px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1 1 300px;
+            margin: 10px;
+        }
+
+        .about {
+            text-align: center;
+        }
+
+        .quick-links {
+            text-align: center;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center; /* Ensure the paragraph text is aligned left */
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ddd;
+        }

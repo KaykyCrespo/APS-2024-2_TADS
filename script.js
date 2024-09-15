@@ -90,87 +90,92 @@ function updateAllGraphs(sort){
     updateBarChart();
     updatePieChart();
     updateRadarChart(sort);
-    updateBarChartWAP(sort);
+    updateBarChartWAP();
 }
 
 
+// Inicialização do gráfico de BARRAS
 // Inicialização do gráfico de BARRAS
 const ctxLine = document.getElementById('barChart').getContext('2d');
 let barChart = new Chart(ctxLine, {
   type: 'bar',
   data: {
-      labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
-      datasets: [{
-          label: 'Time',
-          data: data.time,
-          backgroundColor: '#f4a261', // Cor de fundo das barras
-          borderColor: 'ffffff', // Cor da borda das barras
-          borderWidth: 1
-      }]
+    labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
+    datasets: [{
+      label: 'Time',
+      data: data.time,
+      backgroundColor: '#00CED1', // Cor de fundo das barras
+      borderColor: '#FFFFFF', // Cor da borda das barras
+      borderWidth: 1
+    }]
   },
   options: {
-      layout: {
-          padding: {
-              top: 20, // Margem superior
-              bottom: 20
-          }
-      },
-      scales: {
-          y: {
-              beginAtZero: true,
-              ticks: {
-                  callback: function(value) {
-                      return value + 's'; // Unidade inicial em segundos
-                  },
-                  color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
-                  font: {
-                      size: 20 // Tamanho da fonte dos ticks do eixo Y
-                  }
-              },
-              grid: {
-                  color: '#FFFFFF' // Cor das linhas de grade do eixo Y
-              }
-          },
-          x: {
-              ticks: {
-                  color: '#FFFFFF', // Cor do texto dos ticks do eixo X
-                  font: {
-                      size: 17 // Tamanho da fonte dos ticks do eixo X
-                  }
-              },
-              grid: {
-                  color: '#FFFFFF' // Cor das linhas de grade do eixo X
-              }
-          }
-      },
-      plugins: {
-          legend: {
-              labels: {
-                  color: '#FFFFFF', // Cor do texto da legenda
-                  font: {
-                      size: 16 // Tamanho da fonte da legenda
-                  }
-              }
-          },
-          tooltip: {
-              callbacks: {
-                  title: function(tooltipItems) {
-                      return tooltipItems[0].label;
-                  },
-              },
-              backgroundColor: '#000000', // Cor de fundo do tooltip
-              titleColor: '#FFFFFF', // Cor do texto do título do tooltip
-              bodyColor: '#FFFFFF', // Cor do texto do corpo do tooltip
-              titleFont: {
-                  size: 14 // Tamanho da fonte do título do tooltip
-              },
-              bodyFont: {
-                  size: 14 // Tamanho da fonte do corpo do tooltip
-              }
-          }
+    layout: {
+      padding: {
+        top: 20, // Margem superior
+        bottom: 20
       }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: function(value) {
+            return value + 's'; // Unidade inicial em segundos
+          },
+          color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
+          font: {
+            size: 20 // Tamanho da fonte dos ticks do eixo Y
+          }
+        },
+        grid: {
+          color: '#FFFFFF' // Cor das linhas de grade do eixo Y
+        }
+      },
+      x: {
+        ticks: {
+          color: '#FFFFFF', // Cor do texto dos ticks do eixo X
+          font: {
+            size: 17 // Tamanho da fonte dos ticks do eixo X
+          }
+        },
+        grid: {
+          color: '#FFFFFF' // Cor das linhas de grade do eixo X
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        position: 'top', // Centraliza a legenda no topo
+        align: 'center', // Alinha a legenda ao centro
+        labels: {
+          color: '#FFFFFF', // Cor do texto da legenda
+          font: {
+            size: 16 // Tamanho da fonte da legenda
+          },
+          padding: 20 // Adiciona espaçamento entre os itens da legenda e o gráfico
+        }
+      },
+      tooltip: {
+        callbacks: {
+          title: function(tooltipItems) {
+            return tooltipItems[0].label;
+          }
+        },
+        backgroundColor: '#000000', // Cor de fundo do tooltip
+        titleColor: '#FFFFFF', // Cor do texto do título do tooltip
+        bodyColor: '#FFFFFF', // Cor do texto do corpo do tooltip
+        titleFont: {
+          size: 14 // Tamanho da fonte do título do tooltip
+        },
+        bodyFont: {
+          size: 14 // Tamanho da fonte do corpo do tooltip
+        }
+      }
+    }
   }
 });
+
 
 
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
@@ -228,10 +233,10 @@ var myPieChart = new Chart(ctxPie, {
             label: 'Votes',
             data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
+                '#20B2AA',
+                '#7FFFD4',
+                '#FFD700',
+                '#FFEA00'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -319,7 +324,7 @@ var myRadarChart = new Chart(ctxRadar, {
     datasets: [{
       label: 'Bubblesort',
       data: [graphValues.bubblesort.time, graphValues.bubblesort.memory, graphValues.bubblesort.iterations], // Inicializado com 0, será atualizado dinamicamente
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      backgroundColor: '#FF6347',
       borderColor: 'rgba(54, 162, 235, 1)',
       borderWidth: 2
     }, {
@@ -404,7 +409,7 @@ let barChartWAP = new Chart(ctxWAP, {
   data: {
       labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
       datasets: [{
-          label: 'Time',
+          label: 'WAP Metric',
           data: [],
           backgroundColor: '#f4a261', // Cor de fundo das barras
           borderColor: 'ffffff', // Cor da borda das barras
@@ -423,7 +428,7 @@ let barChartWAP = new Chart(ctxWAP, {
               beginAtZero: true,
               ticks: {
                   callback: function(value) {
-                      return value + 'wap'; // Unidade inicial em segundos
+                      return value + 'WAP'; // Unidade inicial em segundos
                   },
                   color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
                   font: {
@@ -477,13 +482,16 @@ let barChartWAP = new Chart(ctxWAP, {
 
 
 
+// Função para calcular o WAP para cada algoritmo
 function wap() {
-    // Supondo que graphValues e sort sejam definidos e válidos
     const algorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
-    return algorithms.map(algo => {
-        let interaionsWAP = graphValues[algo].interations;
-        let timeWAP = graphValues[algo].time;
-        let memoryWAP = graphValues[algo].memory;
+    
+    return algorithms.map(tipo => {
+        let interaionsWAP = graphValues[tipo].iterations;
+        let timeWAP = graphValues[tipo].time;
+        let memoryWAP = graphValues[tipo].memory;
+
+        // Calcula o WAP com base na fórmula
         return ((interaionsWAP / 10000000) * 2) + (timeWAP * 14) + (memoryWAP * 4) / 20;
     });
 }
@@ -492,21 +500,18 @@ function wap() {
 
 
 
-
-// Função para atualizar o gráfico de BARRAS de acordo com a escolha
+// Função para atualizar o gráfico de BARRAS com a métrica WAP
 function updateBarChartWAP() {
     const data = wap(); // Calcula os valores para WAP
 
-    barChartWAP.data.datasets[0].data = data;
+    barChartWAP.data.datasets[0].data = data; // Atualiza os dados do gráfico com os resultados WAP
     barChartWAP.data.datasets[0].label = 'WAP Metric'; // Atualiza o rótulo do conjunto de dados
     barChartWAP.options.scales.y.ticks.callback = function(value) {
-        return value + ' '; // Unidade inicial (vazia por padrão)
+        return value + ''; // Ajuste de unidade (opcional)
     };
-    barChartWAP.update();
+    barChartWAP.update(); // Atualiza o gráfico para refletir as mudanças
 }
 
-// Chame updatebarChartWAP quando quiser atualizar o gráfico
-updatebarChartWAP();
 
 
 
