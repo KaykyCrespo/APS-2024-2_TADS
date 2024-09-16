@@ -177,7 +177,6 @@ let barChart = new Chart(ctxLine, {
 });
 
 
-
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart() {
   const selectedMetric = document.getElementById('metricSelectBarChart').value;
@@ -223,8 +222,6 @@ barChart.update();
 
 // Inicialização do gráfico de pizza
 var ctxPie = document.getElementById('pieChart').getContext('2d');
-var canvas = document.getElementById('pieChart');
-
 var myPieChart = new Chart(ctxPie, {
     type: 'pie',
     data: {
@@ -312,8 +309,6 @@ function updatePieChart() {
 
 //GRAFICO RADAR
 var ctxRadar = document.getElementById('radarChart').getContext('2d');
-ctxRadar.canvas.width = 600;
-ctxRadar.canvas.height = 600;
 var myRadarChart = new Chart(ctxRadar, {
     // Adjust the canvas size
 
@@ -376,7 +371,6 @@ var myRadarChart = new Chart(ctxRadar, {
 
 // Função para atualizar o gráfico de radar com base nas métricas selecionadas
   function updateRadarChart(sort) {
-
   // Atualizar os datasets do gráfico de radar
   myRadarChart.data.datasets[0].data = [graphValues.bubblesort.time, graphValues.bubblesort.memory,  graphValues.bubblesort.iterations / 125000]; 
   myRadarChart.data.datasets[1].data = [graphValues.insertionsort.time, graphValues.insertionsort.memory,  graphValues.insertionsort.iterations / 125000]; 
@@ -481,7 +475,6 @@ let barChartWAP = new Chart(ctxWAP, {
 });
 
 
-
 // Função para calcular o WAP para cada algoritmo
 function wap() {
     const algorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
@@ -495,8 +488,6 @@ function wap() {
         return ((interaionsWAP / 10000000) * 2) + (timeWAP * 14) + (memoryWAP * 4) / 20;
     });
 }
-
-
 
 
 

@@ -509,7 +509,7 @@ input[type="radio"]:checked + label {
 /*INICIO*/
 
 
-.resetar::after {
+#resetar::after {
     content: '';
     position: absolute;
     bottom: -3px; /* Posição da linha abaixo do texto */
@@ -520,11 +520,11 @@ input[type="radio"]:checked + label {
     transition: width 0.3s ease, background-color 0.3s ease; /* Transição suave para largura e cor */
 }
 
-.resetar:hover {
+#resetar:hover {
     color: #78b8bf37;; /* Cor do texto ao passar o mouse */
 }
 
-.resetar:hover::after {
+#resetar:hover::after {
     width: 100%; /* Quando o hover acontece, a linha expande até 100% */
     background-color: #5a9ca8; /* Cor alterada levemente ao passar o mouse */
 }
