@@ -701,7 +701,6 @@ input[type="radio"]:checked + label {
     display: flex;
     height: 100vh;
     background-color: #00303C;
-    border: 2px solid red;
 
     #perfomance-results-left{
         margin-left: 4.5vw;
@@ -710,7 +709,6 @@ input[type="radio"]:checked + label {
         justify-content: center;
         align-items: center;
         width: 30%;
-        border: 2px solid red;
         
         /* Tive que botar essa div pra fazer o traço no lado direito*/
         >:nth-of-type(1) {
@@ -786,17 +784,64 @@ input[type="radio"]:checked + label {
 
     #perfomance-results-right{
         display: flex;
-        flex-wrap: wrap;
-        width: 65%;
-        border: 1px solid red;
-    }
-
-    #graph-left, #graph-right{
-        margin-top: 10vw 4.5vw;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        border: 2px solid red;
+        width: 65%;
+        margin-left: 3.5vw;
+
+
+        >div:nth-of-type(1){
+            display: flex;
+            gap: 2.5vw;
+            margin-bottom: 3vw;
+
+
+            >div:nth-of-type(1), >div:nth-of-type(2){
+                display: flex;
+                display: flex;
+                border: 0.25vw solid #4995A6;
+                border-radius: 0.25vw;
+
+                p {
+                    color: white;
+                    font-family: 'Open sans';
+                    background-color: #4995A6;
+                    padding: 0.5vw;
+                }
+                
+                select {
+                    cursor: pointer;
+                    color: white;
+                    font-family: 'Poppins';
+                    font-weight: bold;
+                    font-size: 0.9vw;
+                    padding: 0 1vw;
+                    background: none;
+                    border: none;
+
+
+
+                    & option {
+                        color: black;
+                        font-family: 'Arial', sans-serif;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
+
+        >div:nth-of-type(2){
+            display: flex;
+            height: 18vw;
+            
+        }
+
+        >div:nth-of-type(3){
+            display: flex;
+            height: 18vw;
+        }
     }
 }
 
@@ -804,82 +849,3 @@ canvas{
     margin-left: 2.5vw; /* Espaçamento entre os gráficos */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*  FOOTER  */
-        .footer {
-            background: #457E83;
-            color: #fff;
-            padding: 20px 0;
-        }
-
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 100%;
-            margin: 0 0px 0 0px;
-            padding: 0 20px;
-            flex-wrap: wrap;
-        }
-
-        .footer-section {
-            flex: 1 1 300px;
-            margin: 10px;
-        }
-
-        .about {
-            text-align: center;
-        }
-
-        .quick-links {
-            text-align: center;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 15px;
-            font-size: 18px;
-            text-transform: uppercase;
-        }
-
-        .footer-section p {
-            margin-bottom: 15px;
-            font-size: 14px;
-            line-height: 1.5;
-            text-align: center; /* Ensure the paragraph text is aligned left */
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            display: inline-block;
-            margin: 0 10px;
-        }
-
-        .footer-section ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .footer-section ul li a:hover {
-            color: #ddd;
-        }

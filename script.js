@@ -110,6 +110,7 @@ let barChart = new Chart(ctxLine, {
     }]
   },
   options: {
+    responsive: true,
     layout: {
       padding: {
         top: 20, // Margem superior
@@ -179,7 +180,7 @@ let barChart = new Chart(ctxLine, {
 
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart() {
-  const selectedMetric = document.getElementById('metricSelectBarChart').value;
+  const selectedMetric = document.getElementById('selectedMetric').value;
   let label, yAxisUnit;
     console.log(selectedMetric)
 
@@ -222,45 +223,47 @@ barChart.update();
 
 // Inicialização do gráfico de pizza
 var ctxPie = document.getElementById('pieChart').getContext('2d');
+
 var myPieChart = new Chart(ctxPie, {
-    type: 'pie',
-    data: {
-        labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
-        datasets: [{
-            label: 'Votes',
-            data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
-            backgroundColor: [
-                '#20B2AA',
-                '#7FFFD4',
-                '#FFD700',
-                '#FFEA00'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(153, 102, 255, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Amount Interations',
-                font: {
-                    size: 20
-                }
-            }
-        }
-    }
+  type: 'pie',
+  data: {
+      labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
+      datasets: [{
+          label: 'Votes',
+          data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
+          backgroundColor: [
+              '#20B2AA',
+              '#7FFFD4',
+              '#FFD700',
+              '#FFEA00'
+          ],
+          borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(153, 102, 255, 1)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+      responsive: true,
+      plugins: {
+          title: {
+              display: true,
+              text: 'Amount of Iterations',
+              font: {
+                  size: 20
+              }
+          }
+      }
+  }
 });
+
 
 // Função para atualizar o gráfico de pizza com base na métrica selecionada
 function updatePieChart() {
-    var metric = document.getElementById('metricSelectPieChart').value;
+    var metric = document.getElementById('selectedMetric').value;
     var data;
     var labels;
 
@@ -411,6 +414,7 @@ let barChartWAP = new Chart(ctxWAP, {
       }]
   },
   options: {
+      responsive: true,
       layout: {
           padding: {
               top: 20, // Margem superior
