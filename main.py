@@ -44,8 +44,6 @@ def updateStatistics(name, value):
     new_value = current_value + value
     element.innerHTML = f"{new_value:.3f}s" if name == 'totalTime' else str(int(new_value))
 
-
-
 def makeManualTest(event):
     userArray = document.getElementById("userArrayInput").value.strip()
     if not userArray:
@@ -73,7 +71,6 @@ def resetInputValues(event):
     document.getElementById("sorted-array").innerHTML = "[]"
     showAlertBox("Success! Input values have been reset.", "success")
 
-
 def calculate_color(value, min_value, max_value):
     # Definindo as cores de início e fim (R, G, B)
     start_color = (0, 0, 255)  # Azul
@@ -89,7 +86,6 @@ def calculate_color(value, min_value, max_value):
 
     # Retorna a cor no formato RGB
     return f'rgb({r},{g},{b})'
-
 
 def render_colored_array(array):
     min_value = min(array)
@@ -108,12 +104,6 @@ def render_colored_array(array):
     
     # Retorna a string contendo os spans com cores e vírgulas
     return colored_html
-
-
-
-
-
-
 
 def makeTest(event):
     global sortArraySize
