@@ -44,22 +44,34 @@ def updateStatistics(name, value):
     new_value = current_value + value
     element.innerHTML = f"{new_value:.3f}s" if name == 'totalTime' else str(int(new_value))
 
+
+
 def makeManualTest(event):
-    userArray = document.getElementById("userArrayInput").value
-    contains_letters = False
-    for char in userArray:
-        if char.isalpha():
-            contains_letters = True
-            break
-    if not contains_letters:
+    userArray = document.getElementById("userArrayInput").value.strip()
+    if not userArray:
+        showAlertBox("Input cannot be empty.", "error")
+        return
+
+    try:
         stringList = userArray.split(',')
-        integerList = [int(x.strip()) for x in stringList]
+        integerList = [int(x.strip()) for x in stringList if x.strip()]
         responseArray = document.getElementById("arraySortedResponse")
-        responseArray.value = sorted(integerList);
-        showAlertBox("Manual array sorted with success.", "success");
-    else:
-        showAlertBox("Invalid input on manual sort test.", "error");
-        resetInputs();
+        responseArray.value = sorted(integerList)
+        showAlertBox("Manual array sorted with success.", "success")
+    except ValueError:
+        showAlertBox("Invalid input on manual sort test. Please enter integers separated by commas.", "error")
+        resetInputs()
+
+def resetInputValues(event):
+    global sortArraySize
+    global sortType
+    
+    sortArraySize = []
+    sortType = ""
+    resetInputs()
+    document.getElementById("unsorted-array").innerHTML = "[]"
+    document.getElementById("sorted-array").innerHTML = "[]"
+    showAlertBox("Success! Input values have been reset.", "success")
 
 
 def makeTest(event):
