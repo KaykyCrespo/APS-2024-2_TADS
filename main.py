@@ -74,6 +74,47 @@ def resetInputValues(event):
     showAlertBox("Success! Input values have been reset.", "success")
 
 
+def calculate_color(value, min_value, max_value):
+    # Definindo as cores de início e fim (R, G, B)
+    start_color = (0, 0, 255)  # Azul
+    end_color = (255, 0, 0)    # Vermelho
+
+    # Calculando a proporção do valor entre o mínimo e o máximo
+    ratio = (value - min_value) / (max_value - min_value) if max_value != min_value else 0
+
+    # Interpolando as cores (R, G, B)
+    r = int(start_color[0] + ratio * (end_color[0] - start_color[0]))
+    g = int(start_color[1] + ratio * (end_color[1] - start_color[1]))
+    b = int(start_color[2] + ratio * (end_color[2] - start_color[2]))
+
+    # Retorna a cor no formato RGB
+    return f'rgb({r},{g},{b})'
+
+
+def render_colored_array(array):
+    min_value = min(array)
+    max_value = max(array)
+    
+    # Lista para armazenar os elementos coloridos com vírgula
+    colored_elements = []
+
+    # Gerando um <span> para cada número com uma cor interpolada
+    for num in array:
+        color = calculate_color(num, min_value, max_value)
+        colored_elements.append(f'<span style="color:{color}">{num}</span>')
+    
+    # Junta os elementos da lista com uma vírgula e espaço
+    colored_html = ', '.join(colored_elements)
+    
+    # Retorna a string contendo os spans com cores e vírgulas
+    return colored_html
+
+
+
+
+
+
+
 def makeTest(event):
     global sortArraySize
     global sortType
@@ -126,8 +167,10 @@ def makeTest(event):
     if sortType and sortArraySize:
         performanceTest(sortType);
         sortTypeSelected.innerHTML = sortType.title();
-        unsortedArray.innerHTML = originalUnsortedArray;
-        sortedArray.innerHTML = sortArraySize;
+
+        unsortedArray.innerHTML = render_colored_array(originalUnsortedArray)
+        sortedArray.innerHTML = render_colored_array(sortArraySize)
+        
         window.location.hash = "#perfomance-results-container";
         resetInputValues(event);
         showAlertBox("Array sorted with success.", "success");
@@ -145,7 +188,7 @@ def resetInputValues(event):
         showAlertBox("Success! Input values has been reseted.", "success")
     except Exception as e:
         showAlertBox(f"Error! {e}", "error")  
-        
+
 def bubble_sort(lista):
     iteration_count = 0
     for n in range(len(lista) - 1, 0, -1):
@@ -156,7 +199,6 @@ def bubble_sort(lista):
                 lista[i], lista[i + 1] = lista[i + 1], lista[i]
     
     return iteration_count
-                        
 def insertionSort(lista):
     iteration_count = 0
     for i in range(1, len(lista)):
@@ -170,7 +212,6 @@ def insertionSort(lista):
         lista[j + 1] = key    
         iteration_count += 1
     return iteration_count     
-        
 def selectionSort(array):
     iteration_count = 0
     for ind in range(len(array)):
@@ -181,7 +222,6 @@ def selectionSort(array):
                 min_index = j
         (array[ind], array[min_index]) = (array[min_index], array[ind])   
     return iteration_count
-                  
 def heapSort(arr):
     iteration_count = 0
     def heapify(arr, n, i):
