@@ -4,8 +4,16 @@ import math, random, time
 
 
 sortType = "";
+ordinationType  = "";
 sortArraySize = [];
 userArray = [];
+
+
+# Método para escolher o tipo de ordenação: com repetição ou sem repetição de números
+def setOrdinationType(event):
+    global ordinationType
+    ordinationType = document.getElementById("ordinationType").value
+    # ordinationType será "unique" ou "repeat" dependendo da seleção do usuário
 
 #Método para definir o tipo de sort escolhido
 def setSortType(event):
@@ -16,10 +24,18 @@ def setSortType(event):
 # Método para escolher numeros aleátorios e colocar no Array
 def setArraySortSize(event):
     global sortArraySize
+    global ordinationType
+    
     sortArraySize = []
-    quantity = int(document.querySelector('input[name="arraySize"]:checked').value);
-    for i in range(quantity):
-        sortArraySize.append(random.randint(0, 500))
+    quantity = int(document.querySelector('input[name="arraySize"]:checked').value)
+
+    if ordinationType == "unique":
+        # Gerar números únicos sem repetição
+        sortArraySize = random.sample(range(0, 20000), quantity)
+    else:
+        # Gerar números com repetição
+        for i in range(quantity):
+            sortArraySize.append(random.randint(0, 20000))
     #print("Random arrays numbers with size", int(document.querySelector('input[name="arraySize"]:checked').value),":", sortArraySize)
 
 def updateStatistics(name, value):
