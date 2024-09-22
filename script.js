@@ -45,7 +45,6 @@ function showAlertBox(message, category){
   }, 3000);
 }
 
-
 function resetInputs() {
   document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
       radio.checked = false;
@@ -66,8 +65,6 @@ document.getElementById('resetar').addEventListener('click', function() {
   });
 });
 
-
-
 // Função para definir os valores dos graficos
 function setGraphValues(sort, type, value) {
   if (graphValues[sort]) {
@@ -84,7 +81,6 @@ const data = {
   iterations: [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations] // Corrigido para "iterations"
 };
 
-
 // Função pra atualizar gráficos
 function updateAllGraphs(sort){
     updateBarChart();
@@ -95,7 +91,6 @@ function updateAllGraphs(sort){
 
 
 // Inicialização do gráfico de BARRAS
-// Inicialização do gráfico de BARRAS
 const ctxLine = document.getElementById('barChart').getContext('2d');
 let barChart = new Chart(ctxLine, {
   type: 'bar',
@@ -104,9 +99,9 @@ let barChart = new Chart(ctxLine, {
     datasets: [{
       label: 'Time',
       data: data.time,
-      backgroundColor: '#00CED1', // Cor de fundo das barras
-      borderColor: '#FFFFFF', // Cor da borda das barras
-      borderWidth: 1
+      backgroundColor: '#7FFFD4', // Cor de fundo das barras
+      borderColor: '#000000', // Cor da borda das barras
+      borderWidth: 2.5
     }]
   },
   options: {
@@ -188,7 +183,7 @@ function updateBarChart() {
   switch (selectedMetric) {
     case 'time':
         label = 'Time';
-        yAxisUnit = 's'; 
+        yAxisUnit = 's';
         barChart.data.datasets[0].data = [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time];
         break;
     case 'memory':
@@ -198,7 +193,7 @@ function updateBarChart() {
         break;
     case 'iterations':
         label = 'Iterations';
-        yAxisUnit = ''; 
+        yAxisUnit = '';
         barChart.data.datasets[0].data = [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations];
         break;
 }
@@ -232,18 +227,18 @@ var myPieChart = new Chart(ctxPie, {
           label: 'Votes',
           data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
           backgroundColor: [
-              '#20B2AA',
+              '#FF69B4',
+              '#800080',
               '#7FFFD4',
-              '#FFD700',
-              '#FFEA00'
+              '#f4a261'
           ],
           borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(153, 102, 255, 1)'
+              'rgba(0, 0, 0, 1)',
+              'rgba(0, 0, 0, 1)',
+              'rgba(0, 0, 0, 1)',
+              'rgba(0, 0, 0, 1)'
           ],
-          borderWidth: 1
+          borderWidth: 2.5
       }]
   },
   options: {
@@ -288,7 +283,7 @@ function updatePieChart() {
     myPieChart.data.labels = labels;
     myPieChart.data.datasets[0].data = data;
     myPieChart.update();
-} 
+}
 
 
 
@@ -322,27 +317,27 @@ var myRadarChart = new Chart(ctxRadar, {
     datasets: [{
       label: 'Bubblesort',
       data: [graphValues.bubblesort.time, graphValues.bubblesort.memory, graphValues.bubblesort.iterations], // Inicializado com 0, será atualizado dinamicamente
-      backgroundColor: '#FF6347',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 2
+      backgroundColor: '#FF69B4',
+      borderColor: 'rgba(0, 0, 0, 1)',
+      borderWidth: 2.5
     }, {
       label: 'Insertionsort',
       data: [graphValues.insertionsort.time, graphValues.insertionsort.memory, graphValues.insertionsort.iterations],
-      backgroundColor: 'red',
-      borderColor: 'red',
-      borderWidth: 2
+      backgroundColor: '#800080',
+      borderColor: 'rgba(0, 0, 0, 1)',
+      borderWidth: 2.5
     }, {
       label: 'Selectionsort',
       data: [graphValues.selectionsort.time, graphValues.selectionsort.memory, graphValues.selectionsort.iterations],
-      backgroundColor: 'green',
-      borderColor: 'green',
-      borderWidth: 2
+      backgroundColor: '#7FFFD4',
+      borderColor: 'rgba(0, 0, 0, 1)',
+      borderWidth: 2.5
     }, {
       label: 'Heapsort',
       data: [graphValues.heapsort.time, graphValues.heapsort.memory, graphValues.heapsort.iterations],
-      backgroundColor: 'purple',
-      borderColor: 'purple',
-      borderWidth: 2
+      backgroundColor: '#f4a261',
+      borderColor: 'rgba(0, 0, 0, 1)',
+      borderWidth: 2.5
     }]
   },
   options: {
@@ -409,8 +404,8 @@ let barChartWAP = new Chart(ctxWAP, {
           label: 'WAP Metric',
           data: [],
           backgroundColor: '#f4a261', // Cor de fundo das barras
-          borderColor: 'ffffff', // Cor da borda das barras
-          borderWidth: 1
+          borderColor: '#000000', // Cor da borda das barras
+          borderWidth: 2.5
       }]
   },
   options: {
