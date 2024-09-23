@@ -85,7 +85,6 @@ const data = {
 function updateAllGraphs(sort){
     updateBarChart();
     updatePieChart();
-    updateRadarChart(sort);
     updateBarChartWAP();
 }
 
@@ -246,7 +245,6 @@ var myPieChart = new Chart(ctxPie, {
       plugins: {
           title: {
               display: true,
-              text: 'Amount of Iterations',
               font: {
                   size: 20
               }
@@ -288,96 +286,6 @@ function updatePieChart() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//GRAFICO RADAR
-var ctxRadar = document.getElementById('radarChart').getContext('2d');
-var myRadarChart = new Chart(ctxRadar, {
-    // Adjust the canvas size
-
-
-  type: 'radar',
-  data: {
-    labels: ['Time', 'Memory', 'Number of Interactions'],
-    datasets: [{
-      label: 'Bubblesort',
-      data: [graphValues.bubblesort.time, graphValues.bubblesort.memory, graphValues.bubblesort.iterations], // Inicializado com 0, será atualizado dinamicamente
-      backgroundColor: '#FF69B4',
-      borderColor: 'rgba(0, 0, 0, 1)',
-      borderWidth: 2.5
-    }, {
-      label: 'Insertionsort',
-      data: [graphValues.insertionsort.time, graphValues.insertionsort.memory, graphValues.insertionsort.iterations],
-      backgroundColor: '#800080',
-      borderColor: 'rgba(0, 0, 0, 1)',
-      borderWidth: 2.5
-    }, {
-      label: 'Selectionsort',
-      data: [graphValues.selectionsort.time, graphValues.selectionsort.memory, graphValues.selectionsort.iterations],
-      backgroundColor: '#7FFFD4',
-      borderColor: 'rgba(0, 0, 0, 1)',
-      borderWidth: 2.5
-    }, {
-      label: 'Heapsort',
-      data: [graphValues.heapsort.time, graphValues.heapsort.memory, graphValues.heapsort.iterations],
-      backgroundColor: '#f4a261',
-      borderColor: 'rgba(0, 0, 0, 1)',
-      borderWidth: 2.5
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Comparação Geral'
-      }
-    },
-    scales: {
-      r: {
-        angleLines: {
-          display: true
-        },
-        grid: {
-          color: '#FFFFFF' // Color of the grid lines
-        },
-        border: {
-          color: '#FFFFFF' // Color of the radar chart outline
-        },
-        suggestedMin: 0,
-        suggestedMax: 3
-      }
-    }
-  }
-});
-
-
-// Função para atualizar o gráfico de radar com base nas métricas selecionadas
-  function updateRadarChart(sort) {
-  // Atualizar os datasets do gráfico de radar
-  myRadarChart.data.datasets[0].data = [graphValues.bubblesort.time, graphValues.bubblesort.memory,  graphValues.bubblesort.iterations / 125000]; 
-  myRadarChart.data.datasets[1].data = [graphValues.insertionsort.time, graphValues.insertionsort.memory,  graphValues.insertionsort.iterations / 125000]; 
-  myRadarChart.data.datasets[2].data = [graphValues.selectionsort.time, graphValues.selectionsort.memory,  graphValues.selectionsort.iterations / 125000];
-  myRadarChart.data.datasets[3].data = [graphValues.heapsort.time, graphValues.heapsort.memory,  graphValues.heapsort.iterations / 125000];
-
-  // Atualizar o gráfico
-  myRadarChart.update();
-}
 
 
 
@@ -504,7 +412,46 @@ function updateBarChartWAP() {
 
 
 
+const ctx = document.getElementById('polarAreaChart').getContext('2d');
 
+// Define the data for the Polar Area Chart
+const data1 = {
+    labels: ['Red', 'Blue', 'Yellow', 'Purple'],
+    datasets: [{
+        label: 'My Dataset',
+        data: [11, 16, 7, 3, 14],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+        ],
+        borderWidth: 1
+    }]
+};
+
+// Define the chart configuration
+const config = {
+    type: 'polarArea',
+    data: data1,
+    options: {
+        responsive: true,
+        scales: {
+            r: {
+                beginAtZero: true
+            }
+        }
+    }
+};
+
+// Initialize the Polar Area Chart
+const polarAreaChart = new Chart(ctx, config);
 
 
 
