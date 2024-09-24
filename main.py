@@ -28,6 +28,7 @@ def setArraySortSize(event):
     
     sortArraySize = []
     quantity = int(document.querySelector('input[name="arraySize"]:checked').value)
+    document.getElementById("selectedQuantity").value = quantity;
 
     if ordinationType == "unique":
         # Gerar números únicos sem repetição

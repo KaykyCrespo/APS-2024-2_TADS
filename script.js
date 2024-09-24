@@ -1,9 +1,25 @@
 // Qualquer motivo que seja puramente estético usar JavaScript caso não Pyscript
 
 
-
 const alertBox = document.getElementById("alert-box");
 const alertMessage = document.getElementById("alert-message");
+
+const sortingAlgorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
+const sizes = [250, 500, 1000, 2500, 7500, 15000];
+
+const graphValues1 = {};
+
+sortingAlgorithms.forEach(algorithm => {
+  sizes.forEach(size => {
+    graphValues1[`${algorithm}${size}`] = {
+      time: null,
+      memory: null,
+      iterations: null
+    };
+  });
+});
+
+
 
 const graphValues = {
   bubblesort: {
@@ -27,6 +43,19 @@ const graphValues = {
     iterations: null
   }
 }
+
+
+// Função pra atualizar gráficos
+function updateAllGraphs(){
+  const selectedQuantity = document.getElementById("selectedQuantity").value
+
+  updateBarChart(selectedQuantity);
+  updatePieChart(selectedQuantity);
+  updateBarChartWAP(selectedQuantity);
+  updatePolarAreaChart(selectedQuantity);
+
+}
+
 
 window.onload = resetInputs;
 
@@ -67,33 +96,30 @@ document.getElementById('resetar').addEventListener('click', function() {
 
 // Função para definir os valores dos graficos
 function setGraphValues(sort, type, value) {
+
+  arraySize = document.querySelector('input[name="arraySize"]:checked').value
   if (graphValues[sort]) {
       if (type in graphValues[sort]) {
           graphValues[sort][type] = value;
+          graphValues1[`${sort}${arraySize}${type}`] = value;
       }
-      updateAllGraphs(sort);
-  }
+      updateAllGraphs();
+    }
 }
+
+
+
+// Inicialização do gráfico de BARRAS
+const ctxLine = document.getElementById('barChart').getContext('2d');
 // GRÁFICO EM COLUNAS
+
 const data = {
   time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
   memory: [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory], // em GB
   iterations: [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations] // Corrigido para "iterations"
 };
-
-// Função pra atualizar gráficos
-function updateAllGraphs(sort){
-    updateBarChart();
-    updatePieChart();
-    updateBarChartWAP();
-    updatePolarAreaChart();
-
-}
-
-
-// Inicialização do gráfico de BARRAS
-const ctxLine = document.getElementById('barChart').getContext('2d');
 let barChart = new Chart(ctxLine, {
+  
   type: 'bar',
   data: {
     labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
@@ -175,40 +201,59 @@ let barChart = new Chart(ctxLine, {
 
 
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
-function updateBarChart() {
+// Função para atualizar o gráfico de BARRAS de acordo com a escolha
+function updateBarChart(selectedQuantity) {
   const selectedMetric = document.getElementById('selectedMetric').value;
   let label, yAxisUnit, barColors;
-    console.log(selectedMetric)
-
+  
   // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
   switch (selectedMetric) {
     case 'time':
-        label = 'Time';
-        yAxisUnit = 's';
-        barChart.data.datasets[0].data = [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time];
-        barColors = ['#FFA6C9','#CDA1DB ','#4B9F6E','#f4a261'];
-        break;
+      label = 'Time';
+      yAxisUnit = 's';
+      barChart.data.datasets[0].data = [
+        graphValues1[`bubblesort${selectedQuantity}time`], 
+        graphValues1[`insertionsort${selectedQuantity}time`], 
+        graphValues1[`selectionsort${selectedQuantity}time`], 
+        graphValues1[`heapsort${selectedQuantity}time`]
+      ];
+      barColors = ['#FFA6C9','#CDA1DB','#4B9F6E','#f4a261'];
+      break;
     case 'memory':
-        label = 'Memory';
-        yAxisUnit = 'KBs';
-        barChart.data.datasets[0].data = [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory];
-        barColors = ['#FFA6C9','#CDA1DB ','#4B9F6E','#f4a261'];
-        break;
+      label = 'Memory';
+      yAxisUnit = 'KBs';
+      barChart.data.datasets[0].data = [
+        graphValues1[`bubblesort${selectedQuantity}memory`], 
+        graphValues1[`insertionsort${selectedQuantity}memory`], 
+        graphValues1[`selectionsort${selectedQuantity}memory`], 
+        graphValues1[`heapsort${selectedQuantity}memory`]
+      ];
+      barColors = ['#FFA6C9','#CDA1DB','#4B9F6E','#f4a261'];
+      break;
     case 'iterations':
-        label = 'Iterations';
-        yAxisUnit = '';
-        barChart.data.datasets[0].data = [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations];
-        barColors = ['#FFA6C9','#CDA1DB ','#4B9F6E','#f4a261'];
-        break;
-}
+      label = 'Iterations';
+      yAxisUnit = '';
+      barChart.data.datasets[0].data = [
+        graphValues1[`bubblesort${selectedQuantity}iterations`], 
+        graphValues1[`insertionsort${selectedQuantity}iterations`], 
+        graphValues1[`selectionsort${selectedQuantity}iterations`], 
+        graphValues1[`heapsort${selectedQuantity}iterations`]
+      ];
+      barColors = ['#FFA6C9','#CDA1DB','#4B9F6E','#f4a261'];
+      break;
+  }
 
-// Atualiza a cor dos gráficos
-barChart.data.datasets[0].backgroundColor = barColors;
-barChart.data.datasets[0].label = label;
-barChart.options.scales.y.ticks.callback = function(value) {
+  // Atualiza a cor dos gráficos
+  barChart.data.datasets[0].backgroundColor = barColors;
+  barChart.data.datasets[0].label = label;
+  
+  // Atualiza a unidade do eixo Y
+  barChart.options.scales.y.ticks.callback = function(value) {
     return value + yAxisUnit;
-};
-barChart.update();
+  };
+
+  // Atualiza o gráfico
+  barChart.update();
 }
 
 
@@ -271,26 +316,36 @@ let myPieChart = new Chart(ctxPie, {
 });
 
 // Função para atualizar o gráfico de pizza com base na métrica selecionada
-function updatePieChart() {
+function updatePieChart(selectedQuantity) {
     var metric = document.getElementById('selectedMetric').value;
     var data;
-    var labels;
+    labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
 
     switch (metric) {
         case 'time':
-            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time];
+            data = [
+              graphValues1[`bubblesort${selectedQuantity}time`], 
+              graphValues1[`insertionsort${selectedQuantity}time`], 
+              graphValues1[`selectionsort${selectedQuantity}time`], 
+              graphValues1[`heapsort${selectedQuantity}time`]
+            ];
             break;
         case 'memory':
-            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory];
-            break;
+            data = [
+              graphValues1[`bubblesort${selectedQuantity}memory`], 
+              graphValues1[`insertionsort${selectedQuantity}memory`], 
+              graphValues1[`selectionsort${selectedQuantity}memory`], 
+              graphValues1[`heapsort${selectedQuantity}memory`]
+            ];
         case 'iterations':
-            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-            data = [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations];
+            data = [
+              graphValues1[`bubblesort${selectedQuantity}iterations`], 
+              graphValues1[`insertionsort${selectedQuantity}iterations`], 
+              graphValues1[`selectionsort${selectedQuantity}iterations`], 
+              graphValues1[`heapsort${selectedQuantity}iterations`]
+            ];
             break;
         default:
-            labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
             data = [0, 0, 0, 0];
     }
 
@@ -510,7 +565,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
 
 
 // Função para atualizar o gráfico Polar Area com base na métrica selecionada
-function updatePolarAreaChart() {
+function updatePolarAreaChart(selectedQuantity) {
   var metric = document.getElementById('selectedMetric').value;
   var data;
   var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
@@ -518,26 +573,26 @@ function updatePolarAreaChart() {
   switch (metric) {
       case 'time':
           data = [
-              graphValues.bubblesort.time,
-              graphValues.insertionsort.time,
-              graphValues.selectionsort.time,
-              graphValues.heapsort.time
+            graphValues1[`bubblesort${selectedQuantity}time`], 
+            graphValues1[`insertionsort${selectedQuantity}time`], 
+            graphValues1[`selectionsort${selectedQuantity}time`], 
+            graphValues1[`heapsort${selectedQuantity}time`]
           ];
           break;
       case 'memory':
           data = [
-              graphValues.bubblesort.memory,
-              graphValues.insertionsort.memory,
-              graphValues.selectionsort.memory,
-              graphValues.heapsort.memory
+            graphValues1[`bubblesort${selectedQuantity}memory`], 
+            graphValues1[`insertionsort${selectedQuantity}memory`], 
+            graphValues1[`selectionsort${selectedQuantity}memory`], 
+            graphValues1[`heapsort${selectedQuantity}memory`]
           ];
           break;
       case 'iterations':
           data = [
-              graphValues.bubblesort.iterations,
-              graphValues.insertionsort.iterations,
-              graphValues.selectionsort.iterations,
-              graphValues.heapsort.iterations
+            graphValues1[`bubblesort${selectedQuantity}iterations`], 
+            graphValues1[`insertionsort${selectedQuantity}iterations`], 
+            graphValues1[`selectionsort${selectedQuantity}iterations`], 
+            graphValues1[`heapsort${selectedQuantity}iterations`]
           ];
           break;
       default:
