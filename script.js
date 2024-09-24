@@ -447,40 +447,66 @@ function updateBarChartWAP() {
 
 
 
-
 const ctxPolarAreaChart = document.getElementById('polarAreaChart').getContext('2d');
 let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
   type: 'polarArea',
-    data: {
-        labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
-        datasets: [{
-            label: 'Metrics',
-            data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // Dados iniciais
-            backgroundColor: [
-                '#FFA6C9',
-                '#CDA1DB',
-                '#4B9F6E',
-                '#f4a261'
-            ],
-            borderColor: 'rgba(0, 0, 0, 1)',
-            borderWidth: 1.5
-        }]
+  data: {
+    labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
+    datasets: [{
+      label: 'Metrics',
+      data: [
+        graphValues.bubblesort.time,
+        graphValues.insertionsort.time,
+        graphValues.selectionsort.time,
+        graphValues.heapsort.time
+      ], // Dados iniciais
+      backgroundColor: [
+        '#FFA6C9',
+        '#CDA1DB',
+        '#4B9F6E',
+        '#f4a261'
+      ],
+      borderColor: 'rgba(0, 0, 0, 1)',
+      borderWidth: 1.5
+    }]
+  },
+  options: {
+    responsive: true,
+    layout: {
+      padding: { top: 20, bottom: 20 }
     },
-    options: {
-        responsive: true,
-        layout: {
-            padding: { top: 20, bottom: 20 }
+    scales: {
+      r: {
+        grid: {
+          color: '#FFFFFF' // Define a cor da grade como branco
         },
-        plugins: {
-            legend: {
-                labels: { color: '#FFFFFF', font: { size: 16 } },
-                position: 'top',
-                align: 'center',
-                padding: 20
-            }
+        ticks: {
+          color: '#FFFFFF', // Define a cor dos ticks como branco
+          font: {
+            size: 18 // Aumenta o tamanho da fonte dos ticks
+          }
         }
+      }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: '#FFFFFF', // Cor do texto da legenda
+          font: {
+            size: 18 // Aumenta o tamanho da fonte da legenda
+          }
+        },
+        position: 'top',
+        align: 'center',
+        padding: 20,
+        // Remove o fundo da legenda
+        backgroundColor: 'rgba(0, 0, 0, 0)' // Define o fundo como transparente
+      }
     }
+  }
 });
+
+
 
 
 // Função para atualizar o gráfico Polar Area com base na métrica selecionada
