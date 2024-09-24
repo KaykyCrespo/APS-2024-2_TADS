@@ -384,6 +384,7 @@ main {
                 border: 0.25vw solid #4995A6;
                 border-radius: 0.25vw;
                 width: min-content;
+                
 
                 select {
                     cursor: pointer;

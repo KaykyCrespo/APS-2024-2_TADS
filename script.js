@@ -86,6 +86,8 @@ function updateAllGraphs(sort){
     updateBarChart();
     updatePieChart();
     updateBarChartWAP();
+    updatePolarAreaChart();
+
 }
 
 
@@ -100,7 +102,7 @@ let barChart = new Chart(ctxLine, {
       data: data.time,
       backgroundColor: '#7FFFD4', // Cor de fundo das barras
       borderColor: '#000000', // Cor da borda das barras
-      borderWidth: 2.5
+      borderWidth: 1.5
     }]
   },
   options: {
@@ -175,7 +177,7 @@ let barChart = new Chart(ctxLine, {
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart() {
   const selectedMetric = document.getElementById('selectedMetric').value;
-  let label, yAxisUnit;
+  let label, yAxisUnit, barColors;
     console.log(selectedMetric)
 
   // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
@@ -184,19 +186,24 @@ function updateBarChart() {
         label = 'Time';
         yAxisUnit = 's';
         barChart.data.datasets[0].data = [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time];
+        barColors = ['#FFA6C9','#CDA1DB ','#4B9F6E','#f4a261'];
         break;
     case 'memory':
         label = 'Memory';
         yAxisUnit = 'KBs';
         barChart.data.datasets[0].data = [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory];
+        barColors = ['#FFA6C9','#CDA1DB ','#4B9F6E','#f4a261'];
         break;
     case 'iterations':
         label = 'Iterations';
         yAxisUnit = '';
         barChart.data.datasets[0].data = [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations];
+        barColors = ['#FFA6C9','#CDA1DB ','#4B9F6E','#f4a261'];
         break;
 }
 
+// Atualiza a cor dos gráficos
+barChart.data.datasets[0].backgroundColor = barColors;
 barChart.data.datasets[0].label = label;
 barChart.options.scales.y.ticks.callback = function(value) {
     return value + yAxisUnit;
@@ -216,9 +223,8 @@ barChart.update();
 
 
 // Inicialização do gráfico de pizza
-var ctxPie = document.getElementById('pieChart').getContext('2d');
-
-var myPieChart = new Chart(ctxPie, {
+const ctxPie = document.getElementById('pieChart').getContext('2d');
+let myPieChart = new Chart(ctxPie, {
   type: 'pie',
   data: {
       labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
@@ -226,9 +232,9 @@ var myPieChart = new Chart(ctxPie, {
           label: 'Votes',
           data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
           backgroundColor: [
-              '#FF69B4',
-              '#800080',
-              '#7FFFD4',
+              '#FFA6C9',
+              '#CDA1DB ',
+              '#4B9F6E   ',
               '#f4a261'
           ],
           borderColor: [
@@ -237,22 +243,32 @@ var myPieChart = new Chart(ctxPie, {
               'rgba(0, 0, 0, 1)',
               'rgba(0, 0, 0, 1)'
           ],
-          borderWidth: 2.5
+          borderWidth: 1.5
       }]
   },
   options: {
-      responsive: true,
-      plugins: {
-          title: {
-              display: true,
-              font: {
-                  size: 20
-              }
-          }
+    responsive: true,
+    layout: {
+      padding: {
+        top: 20, // Margem superior
+        bottom: 20 // Margem inferior
       }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: '#FFFFFF',  // Cor do texto da legenda
+          font: {
+            size: 16 // Tamanho da fonte da legenda
+          }
+        },
+        position: 'top', // Centraliza a legenda no topo
+        align: 'center', // Alinha a legenda ao centro
+        padding: 20 // Adiciona espaçamento entre os itens da legenda e o gráfico
+      },
+    }
   }
 });
-
 
 // Função para atualizar o gráfico de pizza com base na métrica selecionada
 function updatePieChart() {
@@ -311,7 +327,12 @@ let barChartWAP = new Chart(ctxWAP, {
       datasets: [{
           label: 'WAP Metric',
           data: [],
-          backgroundColor: '#f4a261', // Cor de fundo das barras
+          backgroundColor: [
+            '#FFA6C9', // Cor para Bubblesort
+            '#CDA1DB', // Cor para Insertionsort
+            '#4B9F6E', // Cor para Selectionsort
+            '#f4a261'  // Cor para Heapsort
+        ],
           borderColor: '#000000', // Cor da borda das barras
           borderWidth: 2.5
       }]
@@ -412,46 +433,99 @@ function updateBarChartWAP() {
 
 
 
-const ctx = document.getElementById('polarAreaChart').getContext('2d');
 
-// Define the data for the Polar Area Chart
-const data1 = {
-    labels: ['Red', 'Blue', 'Yellow', 'Purple'],
-    datasets: [{
-        label: 'My Dataset',
-        data: [11, 16, 7, 3, 14],
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.6)',
-            'rgba(54, 162, 235, 0.6)',
-            'rgba(255, 206, 86, 0.6)',
-            'rgba(75, 192, 192, 0.6)',
-        ],
-        borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-        ],
-        borderWidth: 1
-    }]
-};
 
-// Define the chart configuration
-const config = {
-    type: 'polarArea',
-    data: data1,
+
+
+
+
+
+
+
+
+
+
+
+
+
+const ctxPolarAreaChart = document.getElementById('polarAreaChart').getContext('2d');
+let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
+  type: 'polarArea',
+    data: {
+        labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
+        datasets: [{
+            label: 'Metrics',
+            data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // Dados iniciais
+            backgroundColor: [
+                '#FFA6C9',
+                '#CDA1DB',
+                '#4B9F6E',
+                '#f4a261'
+            ],
+            borderColor: 'rgba(0, 0, 0, 1)',
+            borderWidth: 1.5
+        }]
+    },
     options: {
         responsive: true,
-        scales: {
-            r: {
-                beginAtZero: true
+        layout: {
+            padding: { top: 20, bottom: 20 }
+        },
+        plugins: {
+            legend: {
+                labels: { color: '#FFFFFF', font: { size: 16 } },
+                position: 'top',
+                align: 'center',
+                padding: 20
             }
         }
     }
-};
+});
 
-// Initialize the Polar Area Chart
-const polarAreaChart = new Chart(ctx, config);
+
+// Função para atualizar o gráfico Polar Area com base na métrica selecionada
+function updatePolarAreaChart() {
+  var metric = document.getElementById('selectedMetric').value;
+  var data;
+  var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
+
+  switch (metric) {
+      case 'time':
+          data = [
+              graphValues.bubblesort.time,
+              graphValues.insertionsort.time,
+              graphValues.selectionsort.time,
+              graphValues.heapsort.time
+          ];
+          break;
+      case 'memory':
+          data = [
+              graphValues.bubblesort.memory,
+              graphValues.insertionsort.memory,
+              graphValues.selectionsort.memory,
+              graphValues.heapsort.memory
+          ];
+          break;
+      case 'iterations':
+          data = [
+              graphValues.bubblesort.iterations,
+              graphValues.insertionsort.iterations,
+              graphValues.selectionsort.iterations,
+              graphValues.heapsort.iterations
+          ];
+          break;
+      default:
+          data = [0, 0, 0, 0]; // Valores padrão caso nenhuma métrica seja selecionada
+  }
+
+  myPolarAreaChart.data.labels = labels;
+  myPolarAreaChart.data.datasets[0].data = data; // Atualiza os dados do gráfico
+  myPolarAreaChart.update(); // Atualiza o gráfico
+}
+
+
+
+
 
 
 

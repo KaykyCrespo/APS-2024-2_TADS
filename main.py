@@ -89,8 +89,8 @@ def resetInputValues(event):
 
 def calculate_color(value, min_value, max_value):
     # Definindo as cores de início e fim (R, G, B)
-    start_color = (0, 0, 255)  # Azul
-    end_color = (255, 0, 0)    # Vermelho
+    start_color = (70, 100, 140)  # Azul
+    end_color = (140, 50, 70)    # Vermelho
 
     # Calculando a proporção do valor entre o mínimo e o máximo
     ratio = (value - min_value) / (max_value - min_value) if max_value != min_value else 0
