@@ -8,6 +8,31 @@
     scroll-behavior: smooth;
 }
 
+/* Esconder o input radio */
+input[type="radio"] {
+    display: none;
+}
+
+/* Estilo para o label que será a aparência do radio button */
+label {
+    cursor: pointer;
+    display: inline-block;
+    width: 1.25vw;
+    height: 1.25vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Imagem para o estado "não marcado" */
+input[type="radio"]:not(:checked)+label {
+    background-image: url('imgs/unchecked.png');
+}
+
+/* Imagem para o estado "marcado" */
+input[type="radio"]:checked+label {
+    background-image: url('imgs/checked.png');
+}
+
 main {
     display: flex;
 
@@ -15,12 +40,10 @@ main {
         background-color: #012326;
         width: 50%;
         display: flex;
-        justify-content: center;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
-
-
+        gap: 3vw;
 
         /* Primeira div de título, descrição */
         >:nth-of-type(1) {
@@ -28,6 +51,7 @@ main {
             flex-direction: column;
             gap: 1.5vh;
             width: 80%;
+
 
             h1 {
                 color: white;
@@ -46,21 +70,20 @@ main {
 
             p:last-child {
                 color: white;
-                font-size: 1vw;
+                font-size: 1.25vw;
                 font-family: 'Open sans';
                 width: 80%;
             }
 
         }
 
-        /* Segundo div onde está as estatisticas e teste manual*/
+        /* Segundo div onde está as estatisticas*/
         >:nth-of-type(2) {
             width: 80%;
-            display: flex;
+            display: none;
             flex-direction: column;
+            transition: 0.5s;
             gap: 3vw;
-            overflow-x: auto;
-            max-height: 26vw;
 
             /*Div estatisticas*/
             section:first-child {
@@ -75,13 +98,13 @@ main {
                 }
 
                 /* Div onde contem blocos pequenos de estatisticas*/
-                >:nth-of-type(1) {
+                #small-statistics-blocks-container {
                     margin-top: 1vw;
                     display: flex;
                     justify-content: space-between;
 
                     /* Configurações de */
-                    div {
+                    .small-statistics-blocks {
                         border-radius: 0.5vw 0.5vw 0 0.5vw;
                         display: flex;
                         flex-direction: column;
@@ -108,7 +131,7 @@ main {
                 }
 
                 /* Div onde contem blocos grande de estatisticas*/
-                >:nth-of-type(2) {
+                #big-statistics-blocks-container {
                     display: flex;
                     justify-content: space-between;
                     gap: 3vw;
@@ -117,7 +140,7 @@ main {
 
 
                     /* Configurações do bloco*/
-                    div {
+                    .big-statistics-blocks {
                         border-radius: 0.6vw 0.6vw 0 0.6vw;
                         border: 0.25vw solid #78B8BF;
                         width: 50%;
@@ -142,142 +165,6 @@ main {
                 }
             }
 
-            /*Div testes de array simples */
-            section:last-child {
-                display: flex;
-                flex-direction: column;
-                gap: 1.4vw;
-
-                div:nth-of-type(1) {
-                    h1 {
-                        font-size: 2vw;
-                        font-family: 'Poppins';
-                        color: white;
-                    }
-
-                    h2 {
-                        color: white;
-                        font-size: 1vw;
-                        font-weight: normal;
-                        font-family: 'Open sans';
-                        width: 80%;
-                    }
-                }
-
-                div:nth-of-type(2) {
-                    display: flex;
-                    flex-direction: column;
-
-                    label {
-                        width: 100%;
-                        color: #78B8BF;
-                        font-family: 'Open sans';
-                        font-size: 0.9vw;
-                        margin-bottom: 0.5vw;
-                    }
-
-                    input {
-                        transition: 0.2s;
-                        width: 90%;
-                        background: none;
-                        border-radius: 0 0.5vw 0.5vw 0.5vw;
-                        padding: 0.55vw;
-                        border: 0.25vw solid #78B8BF;
-                        color: white;
-                        font-family: 'Open sans';
-                        font-size: 1vw;
-
-                        &:focus {
-                            border: 0.25vw solid #8bcddc;
-                            outline: none;
-                        }
-                    }
-                }
-
-                div:nth-of-type(3) {
-                    display: flex;
-                    flex-direction: column;
-
-                    label {
-                        width: 100%;
-                        color: #78B8BF;
-                        font-family: 'Open sans';
-                        font-size: 0.9vw;
-                        margin-bottom: 0.5vw;
-                    }
-
-                    input {
-                        cursor: not-allowed;
-                        transition: 0.2s;
-                        width: 90%;
-                        background: #4995A6;
-                        border-radius: 0 0.5vw 0.5vw 0.5vw;
-                        padding: 0.55vw;
-                        border: none;
-                        color: white;
-                        font-family: 'Open sans';
-                        font-size: 1vw;
-
-                        &:focus {
-                            outline: none;
-                        }
-                    }
-                }
-
-                div:nth-of-type(4) {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    width: 90%;
-
-                    p {
-                        position: relative;
-                        display: inline-block;
-                        color: #000;
-                        /* Cor inicial do texto */
-                        transition: color 0.3s ease;
-                        /* Transição suave para a cor do texto */
-                        cursor: pointer;
-                        height: fit-content;
-                        font-family: 'Poppins';
-                        font-size: 1vw;
-                        color: #4995A6;
-                        border-bottom: 0.1vw solid #4995A6;
-
-                    }
-
-                    button {
-                        display: flex;
-                        gap: 0.5vw;
-                        background: none;
-                        border: 0.2vw solid #78B8BF;
-                        border-radius: 0.5vw 0.5vw 0 0.5vw;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 0.75vw;
-                        transition: 0.2s;
-
-                        h1 {
-                            color: white;
-                            font-family: 'Poppins';
-                            font-weight: normal;
-                            font-size: 1vw;
-                        }
-
-                        img {
-                            height: 0.75vw;
-                            width: 1.1vw;
-                        }
-
-
-                        &:hover {
-                            cursor: pointer;
-                            background-color: #78b8bf37;
-                            transition: 0.2s;
-                        }
-                    }
-                }
-            }
         }
 
 
@@ -384,7 +271,7 @@ main {
                 border: 0.25vw solid #4995A6;
                 border-radius: 0.25vw;
                 width: min-content;
-                
+
 
                 select {
                     cursor: pointer;
@@ -411,10 +298,10 @@ main {
         /* Div final contendo os botões de reset e fazer teste*/
         >:nth-of-type(6) {
             width: 80%;
-            margin-top: 5vw;
-
             display: flex;
+            align-items: center;
             justify-content: space-between;
+            margin: 1.8vw;
 
             p {
                 position: relative;
@@ -478,6 +365,7 @@ main {
         justify-content: center;
         align-items: center;
         width: 30%;
+
         /* Tive que botar essa div pra fazer o traço no lado direito*/
         >:nth-of-type(1) {
             border-right: 0.11vw solid rgba(255, 255, 255, 0.37);
@@ -505,7 +393,6 @@ main {
 
             /* Section de resultados de arrays desorganizados/organizados*/
             >:nth-of-type(2) {
-
                 margin-top: 2.5vw;
                 display: flex;
                 flex-direction: column;
@@ -616,7 +503,163 @@ main {
     }
 }
 
+#manual-test-container {
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    background-color: #2a6168;
+
+    /*Div testes de array simples */
+    section:last-child {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25vw;
+        margin: 1.5vw 0;
+
+
+        div:nth-of-type(1) {
+            h1 {
+                font-size: 2vw;
+                font-family: 'Poppins';
+                color: white;
+            }
+
+            h2 {
+                color: white;
+                font-size: 1vw;
+                font-weight: normal;
+                font-family: 'Open sans';
+            }
+        }
+
+        /* Div dos inputs de teste automatico */
+        div:nth-of-type(2) {
+            display: flex;
+            justify-content: space-between;
+
+            label {
+                width: 100%;
+                color: #78B8BF;
+                font-family: 'Open sans';
+                font-size: 0.9vw;
+                margin-bottom: 0.5vw;
+                cursor: default;
+            }
+
+            /* Div do input do usuario */
+            div:nth-of-type(1) {
+                display: flex;
+                flex-direction: column;
+                
+                input:nth-of-type(1) {
+                    width: 35vw;
+                    transition: 0.2s;
+                    background: none;
+                    border-radius: 0 0.5vw 0.5vw 0.5vw;
+                    padding: 0.55vw;
+                    border: 0.25vw solid #78B8BF;
+                    color: white;
+                    font-family: 'Open sans';
+                    font-size: 1vw;
+    
+                    &:focus {
+                        border: 0.25vw solid #8bcddc;
+                        outline: none;
+                    }
+                }
+
+            }
+
+            /* Div da resposta do teste */
+            div:nth-of-type(2){
+                display: flex;
+                flex-direction: column;
+
+                input:nth-of-type(1) {
+                    width: 35vw;
+                    cursor: not-allowed;
+                    transition: 0.2s;
+                    background: #4995A6;
+                    border-radius: 0 0.5vw 0.5vw 0.5vw;
+                    padding: 0.75vw;
+                    border: none;
+                    color: white;
+                    font-family: 'Open sans';
+                    font-size: 1vw;
+    
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+
+
+        }
+
+        div:nth-of-type(3) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+                position: relative;
+                display: inline-block;
+                color: #000;
+                /* Cor inicial do texto */
+                transition: color 0.3s ease;
+                /* Transição suave para a cor do texto */
+                cursor: pointer;
+                height: fit-content;
+                font-family: 'Poppins';
+                font-size: 1vw;
+                color: #4995A6;
+                border-bottom: 0.1vw solid #4995A6;
+
+            }
+
+            button {
+                display: flex;
+                gap: 0.5vw;
+                background: none;
+                border: 0.2vw solid #78B8BF;
+                border-radius: 0.5vw 0.5vw 0 0.5vw;
+                justify-content: center;
+                align-items: center;
+                padding: 0.75vw;
+                transition: 0.2s;
+
+                h1 {
+                    color: white;
+                    font-family: 'Poppins';
+                    font-weight: normal;
+                    font-size: 1vw;
+                }
+
+                img {
+                    height: 0.75vw;
+                    width: 1.1vw;
+                }
+
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #78b8bf37;
+                    transition: 0.2s;
+                }
+            }
+        }
+    }
+
+}
+
 @media only screen and (max-width: 428px) {
+    label {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+    
     main {
         flex-direction: column;
         justify-content: center;
@@ -626,67 +669,219 @@ main {
             padding: 4.5vw 0;
             height: fit-content;
             width: 100%;
-            
-        /* Primeira div de título, descrição */
-        >:nth-of-type(1) {
-            h1 {
-                color: white;
-                font-family: "Keania One", sans-serif;
-                font-size: 4.5vw;
-                margin: 0;
-                padding: 0;
+            gap: 7.5vw;
 
-            }
 
-            p {
-                font-family: 'Open sans';
-                color: #78B8BF;
-                font-size: 1vw;
-            }
+            /* Primeira div de título, descrição */
+            >:nth-of-type(1) {
+                gap: 1.5vw;
+                width: 65%;
 
-            p:last-child {
-                color: white;
-                font-size: 1vw;
-                font-family: 'Open sans';
-                width: 80%;
-            }
+                h1 {
+                    text-align: center;
+                    color: white;
+                    font-family: "Keania One", sans-serif;
+                    font-size: 5vw;
+                }
 
-        }
+                p {
+                    text-align: center;
+                    font-family: 'Open sans';
+                    color: #78B8BF;
+                    font-size: 1.5vw;
+                }
 
-            >:nth-of-type(2){
-                overflow: visible;
-                max-height: none;
-
-                section:first-child{
+                p:last-child {
+                    color: white;
+                    font-size: 2vw;
+                    font-family: 'Open sans';
                     width: 100%;
                 }
 
-            section:last-child {
+            }
 
-                div:nth-of-type(2) {
-                    input {
-                        width: 100%;
-                    }
-                }
+            /* Segunda div de estatísticas */
+            >:nth-of-type(2) {
+                width: 65%;
 
-                div:nth-of-type(3) {
-                    input {
-                        width: 100%;
-                    }
-                }
-
-                div:nth-of-type(4) {
+                section:first-child {
                     width: 100%;
-                }
-            }
-                
-            }
-        }
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 4vw;
+
+                    h1 {
+                        display: flex;
+                        align-items: center;
+                        font-size: 3vw;
+                    }
+
+                    #small-statistics-blocks-container {
+                        width: 100%;
     
+                        /* Configurações de */
+                        .small-statistics-blocks {
+                            padding: 2vw 1.25vw;
+                            
+                            p {
+                                font-size: 1.5vw;
+                            }
+    
+                            h2 {
+                                font-size: 2vw;
+                            }
+                        }
+                    }
+
+                    #big-statistics-blocks-container {
+                        width: 100%;
+    
+                        /* Configurações do bloco*/
+                        .big-statistics-blocks {
+                            padding: 2vw 0.5vw;
+                            align-items: center;
+                            border-radius: 0.8vw 0.8vw 0 0.8vw;
+    
+                            p {
+                                font-size: 1.5vw;
+                            }
+    
+                            h2 {
+                                font-family: 'Poppins';
+                                font-size: 2vw;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
         #right-side {
-            padding: 4.5vw 0;
-            height: fit-content;
             width: 100%;
+    
+            /* Estilos para seleção de opções */
+            .div-options {
+                display: flex;
+                gap: 2.25vw;
+    
+                .options {
+                    display: flex;
+                    align-items: center;
+                    gap: 1.25vw;
+    
+                    p {
+                        color: white;
+                        font-family: 'Open sans';
+                        font-size: 2.5vw;
+                    }
+                }
+            }
+    
+            /* Estilo para a linha que fica entre os inputs */
+            .vertical-line {
+                height: 5vw;
+                width: 80%;
+                border-left: 0.1vw solid #ffffffc2;
+    
+            }
+    
+    
+            /* Primeira div, selecionar o tipo de sort */
+            >:nth-of-type(1) {
+                width: 80%;
+    
+                h1 {
+                    margin-bottom: 1.5vh;
+                    font-size: 3vw;
+                    margin-bottom: 0.75vw;
+                }
+            }
+    
+            /* Segunda div, selecionar os números */
+            >:nth-of-type(3) {
+                width: 80%;
+    
+                h1 {
+                    font-size: 3vw;
+                }
+    
+                h2 {
+                    font-size: 2vw;
+                }
+    
+            }
+    
+    
+            /* Terceira div, como vai ser a comparação de desempenho */
+            >:nth-of-type(5) {
+                width: 80%;
+    
+                h1 {
+                    font-size: 3vw;
+                }
+    
+                h2 {
+                    font-size: 2vw;
+    
+                }
+    
+                /* Div da dropdown de repetir ou não números*/
+                >div:nth-of-type(1) {
+                    border: 0.75vw solid #4995A6;
+    
+    
+                    select {
+                        font-size: 2vw;
+                        padding: 1.5vw 2vw;
+    
+                        option {
+                            color: black;
+                            font-family: 'Arial', sans-serif;
+                            font-weight: bold;
+                            cursor: pointer;
+                            font-size: 4vw;
+                        }
+                    }
+                }
+    
+            }
+    
+    
+            /* Div final contendo os botões de reset e fazer teste*/
+            >:nth-of-type(6) {
+    
+                p {
+                    font-size: 2.5vw;
+                }
+    
+                button {
+                    display: flex;
+                    gap: 2vw;
+                    background: none;
+                    border: 0.75vw solid #4995A6;
+                    border-radius: 0.5vw 0.5vw 0 0.5vw;
+                    padding: 1.5vw 4vw;
+                    transition: 0.2s;
+    
+                    h1 {
+                        font-size: 2.5vw;
+                    }
+    
+                    img {
+                        height: 2vw;
+                        width: 3vw;
+                    }
+    
+    
+                    &:hover {
+                        cursor: pointer;
+                        background-color: #78b8bf37;
+                        transition: 0.2s;
+                    }
+                }
+            }
         }
     }
 
@@ -694,32 +889,225 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-        
+        justify-content: center;
+
 
         #perfomance-results-left {
-            border: 5px solid black;
             width: 80%;
-            margin: 0 ;
+            margin: 0;
 
+            >:nth-of-type(1){
+                border: none;
+
+                >:nth-of-type(1){
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    h1 {
+                        text-align: center;
+                        width: 100%;
+                        font-size: 3vw;
+                    }
+
+                    p{
+                        font-size: 2vw;
+                        text-align: center;
+                        width: 70%;
+                    }
+                }
+
+                >:nth-of-type(2){
+                    margin-top: 5vw;
+
+                    >:nth-of-type(1),
+                    >:nth-of-type(2) {
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        h2 {
+                            font-size: 2.2vw;
+                        }
+
+                        /* Estilos para caixa de arrays*/
+                        div {
+                            height: 30vw;
+                            max-height: 30vw;
+
+                            p {
+                                font-size: 2vw;
+                            }
+                        }
+
+                    }
+                }
+            }
         }
 
         #perfomance-results-right {
-            width: 80%;
-            margin: 0;
-            border: 5px solid black;
+        width: 60%;
+        padding: 5vw 0;
+        margin: 0;
+
+            >div:nth-of-type(1){
+            justify-content: space-between;
+
+                >div:nth-of-type(1),
+                >div:nth-of-type(2) {
+                    display: flex;
+                    border: 0.25vw solid #4995A6;
+                    border-radius: 0.25vw;
+    
+                    p {
+                        color: white;
+                        font-family: 'Open sans';
+                        background-color: #4995A6;
+                        padding: 0.5vw;
+                        font-size: 2vw;
+                    }
+    
+                    select {
+                        cursor: pointer;
+                        color: white;
+                        font-family: 'Poppins';
+                        font-weight: bold;
+                        font-size: 1.5vw;
+                        padding: 0 1vw;
+                        background: none;
+                        border: none;
+    
+    
+    
+                        & option {
+                            color: black;
+                            font-family: 'Arial', sans-serif;
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
 
             >div:nth-of-type(2) {
+                border: 1px solid red;
                 display: flex;
                 height: 18vw;
-    
+
             }
-    
+
             >div:nth-of-type(3) {
+                border: 1px solid red;
                 display: flex;
                 height: 18vw;
             }
         }
+
     }
+
+    #manual-test-container {
+        display: flex;
+        justify-content: center ;
+        align-items: center;
+        background-color: #2a6168;
+    
+        /*Div testes de array simples */
+        section:last-child {
+            width: 35vw;
+            margin: 3vw 0;
+            flex-direction: column;
+
+            div:nth-of-type(1) {
+                h1 {
+                    font-size: 3vw;
+                }
+    
+                h2 {
+                    font-size: 2vw;
+                }
+            }
+    
+            /* Div dos inputs de teste automatico */
+            >div:nth-of-type(2) {
+                display: flex;
+                flex-direction: column;
+                gap: 3vw;
+
+                label {
+                    font-size: 1.25vw;
+                    margin-bottom: -0.75vw;
+                }
+    
+                /* Div do input do usuario */
+                div:nth-of-type(1) {
+                    display: flex;
+                    flex-direction: column;
+    
+                    
+                    input:nth-of-type(1) {
+                        width: 35vw;
+                        padding: 1.25vw 0.55vw;
+                        font-size: 1vw;
+                    }
+    
+                }
+    
+                /* Div da resposta do teste */
+                div:nth-of-type(2){
+                    display: flex;
+                    flex-direction: column;
+    
+                    input:nth-of-type(1) {
+                        width: 35vw;
+                        border-radius: 0 0.5vw 0.5vw 0.5vw;
+                        padding: 1.25vw 0.55vw;
+                    }
+                }
+    
+    
+    
+            }
+    
+            div:nth-of-type(3) {
+    
+                p {
+                    font-size: 2vw;
+                }
+    
+                button {
+                    display: flex;
+                    gap: 2vw;
+                    background: none;
+                    border: 0.75vw solid #4995A6;
+                    border-radius: 0.3vw 0.3vw 0 0.3vw;
+                    padding: 0.75vw 1.75vw;
+                    transition: 0.2s;
+    
+                    h1 {
+                        font-size: 1.5vw;
+                    }
+    
+                    img {
+                        height: 2vw;
+                        width: 3vw;
+                    }
+    
+    
+                    &:hover {
+                        cursor: pointer;
+                        background-color: #78b8bf37;
+                        transition: 0.2s;
+                    }
+                }
+            }
+        }
+    
+    }
+
+    
+    
 }
 
 /* Estilos para a barra de rolagem em navegadores Webkit (Chrome, Safari) */
@@ -739,30 +1127,7 @@ main {
 }
 
 
-/* Esconder o input radio */
-input[type="radio"] {
-    display: none;
-}
 
-/* Estilo para o label que será a aparência do radio button */
-label {
-    cursor: pointer;
-    display: inline-block;
-    width: 1.25vw;
-    height: 1.25vw;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-/* Imagem para o estado "não marcado" */
-input[type="radio"]:not(:checked)+label {
-    background-image: url('imgs/unchecked.png');
-}
-
-/* Imagem para o estado "marcado" */
-input[type="radio"]:checked+label {
-    background-image: url('imgs/checked.png');
-}
 
 
 #alert-box {
@@ -1029,5 +1394,3 @@ canvas {
     margin-left: 2.5vw;
     /* Espaçamento entre os gráficos */
 }
-
-

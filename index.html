@@ -29,57 +29,36 @@
                     In addition to monitoring the execution time, memory used and iterations performed.
                 </p>
             </div>
-            <div>
+            <div id="general-statistics-container">
                 <section>
                     <h1 id="lang-title-statistics">General statistics</h1>
-                    <div>
-                        <div>
+                    <div id="small-statistics-blocks-container">
+                        <div class="small-statistics-blocks">
                             <p>Bubblesort used</p>
                             <h2 id="bubblesort-count">0</h2>
                         </div>
-                        <div>
+                        <div class="small-statistics-blocks">
                             <p>Insertionsort used</p>
                             <h2 id="insertionsort-count">0</h2>
                         </div>
-                        <div>
+                        <div class="small-statistics-blocks">
                             <p>Selectionsort used</p>
                             <h2 id="selectionsort-count">0</h2>
                         </div>
-                        <div>
+                        <div class="small-statistics-blocks">
                             <p>Heapsort used</p>
                             <h2 id="heapsort-count">0</h2>
                         </div>
                     </div>
-                    <div>
-                        <div>
+                    <div id="big-statistics-blocks-container">
+                        <div class="big-statistics-blocks">
                             <p id="lang-total-iterations">Total iterations :</p>
                             <h2 id="iterations-count">0</h2>
                         </div>
-                        <div>
+                        <div class="big-statistics-blocks">
                             <p id="lang-total-sec">Total time (sec):</p>
                             <h2 id="totaltime-count">0s</h2>
                         </div>
-                    </div>
-                </section>
-                <section>
-                    <div>
-                        <h1 id="lang-try-yourself">Try it for yourself</h1>
-                        <h2 id="lang-try-yourself-description">Here you test sorting a array that you came up with!</h2>
-                    </div>
-                    <div>
-                        <label id="lang-example">Try putting a number sequence below (ex : 1, 145, 56, 2235, 5922, 3)</label>
-                        <input type="text" name="userArrayInput" id="userArrayInput">
-                    </div>
-                    <div>
-                        <label id="lang-example-result">Here's the result:</label>
-                        <input type="text" name="arraySortedResponse" id="arraySortedResponse" readonly>
-                    </div>
-                    <div>
-                        <p id="resetar" py-click="resetInputValues">reset</p>
-                        <button class="make-test-button" py-click="makeManualTest">
-                            <h1 id="lang-button-make-test">Make test</h1>
-                            <img src="imgs/check.png" alt="">
-                        </button>
                     </div>
                 </section>
             </div>
@@ -153,15 +132,15 @@
                 </div>
             </div>
             <div class="vertical-line"> </div>
-            <div >
+            <div>
                 <h1 id="lang-array-build">Array build</h1>
                 <h2 id="lang-array-build-info">This will affect on how the random array are made</h2>
                 <div>
-                        <select id="ordinationType" name="ordinationType" py-change="setOrdinationType">
-                            <option value="unique" id="lang-array-unique">Never repeat numbers</option>
-                            <option value="repeat" id="lang-array-repeat">Repeat numbers</option>
-                        </select>
-                    </div>
+                    <select id="ordinationType" name="ordinationType" py-change="setOrdinationType">
+                        <option value="unique" id="lang-array-unique">Never repeat numbers</option>
+                        <option value="repeat" id="lang-array-repeat">Repeat numbers</option>
+                    </select>
+                </div>
             </div>
             <div class="button-container">
                 <p id="resetar" py-click="resetInputValues">reset</p>
@@ -172,12 +151,13 @@
             </div>
         </section>
     </main>
-    <div id="perfomance-results-container">
+    <section id="perfomance-results-container">
         <div id="perfomance-results-left">
             <div>
                 <section>
                     <h1 id="lang-performance-results-title">Perfomance results</h1>
-                    <p id="lang-performance-results-description">This session will be used to demonstrate statistics and information about the sorting algorithms used.</p>
+                    <p id="lang-performance-results-description">This session will be used to demonstrate statistics and
+                        information about the sorting algorithms used.</p>
                     <p id="lang-selected-sort">Sort type used: <strong id="selected-sort-type">Null</strong></p>
                 </section>
                 <section>
@@ -200,15 +180,15 @@
         <div id="perfomance-results-right">
             <div>
                 <div>
-                <p id="lang-results-size">Results from (size)</p>
-                <select id="selectedQuantity" onchange="updateAllGraphs()">
-                    <option value="250">250</option>
-                    <option value="500">500</option>
-                    <option value="1000">1.000</option>
-                    <option value="2500">2.500</option>
-                    <option value="7500">7.500</option>
-                    <option value="15000">15.000</option>
-                </select>
+                    <p id="lang-results-size">Results from (size)</p>
+                    <select id="selectedQuantity" onchange="updateAllGraphs()">
+                        <option value="250">250</option>
+                        <option value="500">500</option>
+                        <option value="1000">1.000</option>
+                        <option value="2500">2.500</option>
+                        <option value="7500">7.500</option>
+                        <option value="15000">15.000</option>
+                    </select>
                 </div>
                 <div>
                     <p for="selectedMetric" id="lang-metric-label">Metric</p>
@@ -217,7 +197,7 @@
                         <option value="memory" id="lang-memory-use">Memory use</option>
                         <option value="iterations" id="lang-iterations">Iterations</option>
                     </select>
-                    </div>
+                </div>
             </div>
             <div>
                 <canvas id="pieChart"></canvas>
@@ -229,7 +209,32 @@
             </div>
 
         </div>
-    </div>
+    </section>
+    <section id="manual-test-container">
+        <section>
+            <div>
+                <h1 id="lang-try-yourself">Try it for yourself</h1>
+                <h2 id="lang-try-yourself-description">Here you test sorting a array that you came up with!</h2>
+            </div>
+            <div>
+                <div>
+                    <label id="lang-example">Try putting a number sequence below (ex : 1, 145, 56)</label>
+                    <input type="text" name="userArrayInput" id="userArrayInput">
+                </div>
+                <div>
+                    <label id="lang-example-result">Here's the result:</label>
+                    <input type="text" name="arraySortedResponse" id="arraySortedResponse" readonly>
+                </div>
+            </div>
+            <div>
+                <p id="resetar" py-click="resetInputValues">reset</p>
+                <button class="make-test-button" py-click="makeManualTest">
+                    <h1 id="lang-button-make-test">Make test</h1>
+                    <img src="imgs/check.png" alt="">
+                </button>
+            </div>
+        </section>
+    </section>
 
     <script type="py" src="main.py"></script>
     <script src="script.js" defer></script>

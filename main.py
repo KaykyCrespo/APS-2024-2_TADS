@@ -131,6 +131,8 @@ def makeTest(event):
     sortedArray = document.getElementById("sorted-array");
     sortTypeSelected = document.getElementById("selected-sort-type");
 
+    
+
     def performanceTest(sort):
 
         def measureMemoryUsage(array):
@@ -170,10 +172,19 @@ def makeTest(event):
         updateGraphValues(sort, 'iterations', sort_type(sortArraySize))
         updateGraphValues(sort, 'memory', measureMemoryUsage(originalUnsortedArray))
         
+        print("time for ", sort, " = ", f"{elapsed_time_perf_counter:.6f}")
+        print("memory for ", sort, " = ", measureMemoryUsage(originalUnsortedArray))
+        print("iterations for ", sort, " = ", sort_type(sortArraySize))
+        
     
     if sortType and sortArraySize:
         performanceTest(sortType);
         sortTypeSelected.innerHTML = sortType.title();
+        statisticsContainer = document.getElementById("general-statistics-container")
+        
+        if statisticsContainer.style.display != "flex": 
+            statisticsContainer.style.display = "flex"
+            
 
         unsortedArray.innerHTML = render_colored_array(originalUnsortedArray)
         sortedArray.innerHTML = render_colored_array(sortArraySize)
