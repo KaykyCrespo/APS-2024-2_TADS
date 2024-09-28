@@ -77,7 +77,7 @@ input[type="radio"]:checked+label {
         h2 {
             font-family: 'Poppins';
             font-size: 1.25vw;
-            color: white;
+            color: #ffffff;
         }
 
         /* Div de linguagens */
@@ -142,7 +142,7 @@ main {
 
 
             h1 {
-                color: white;
+                color: #ffffff;
                 font-family: "Keania One", sans-serif;
                 font-size: 4.5vw;
                 margin: 0;
@@ -157,7 +157,7 @@ main {
             }
 
             p:last-child {
-                color: white;
+                color: #ffffff;
                 font-size: 1.25vw;
                 font-family: 'Open sans';
                 width: 80%;
@@ -182,7 +182,7 @@ main {
                 h1 {
                     font-size: 2vw;
                     font-family: 'Poppins';
-                    color: white;
+                    color: #ffffff;
                 }
 
                 /* Div onde contem blocos pequenos de estatisticas*/
@@ -201,7 +201,7 @@ main {
                         padding: 0.4vw 0.3vw;
 
                         p {
-                            color: white;
+                            color: #ffffff;
                             font-family: 'Open sans';
                             font-size: 0.8vw;
                             text-align: center;
@@ -212,7 +212,7 @@ main {
                             text-align: center;
                             font-family: 'Poppins';
                             font-size: 1.25vw;
-                            color: white;
+                            color: #ffffff;
 
                         }
                     }
@@ -239,7 +239,7 @@ main {
 
 
                         p {
-                            color: white;
+                            color: #ffffff;
                             font-family: 'Open sans';
                             font-size: 1vw;
                         }
@@ -247,7 +247,7 @@ main {
                         h2 {
                             font-family: 'Poppins';
                             font-size: 1.25vw;
-                            color: white;
+                            color: #ffffff;
                         }
                     }
                 }
@@ -280,7 +280,7 @@ main {
                 gap: 0.5vw;
 
                 p {
-                    color: white;
+                    color: #ffffff;
                     font-family: 'Open sans';
                     font-size: 1.25vw;
                 }
@@ -305,7 +305,7 @@ main {
                 font-family: 'Poppins';
                 font-size: 1.6vw;
                 margin-bottom: 0.75vw;
-                color: white;
+                color: #ffffff;
             }
         }
 
@@ -317,7 +317,7 @@ main {
                 margin-bottom: 1.5vh;
                 font-family: 'Poppins';
                 font-size: 1.6vw;
-                color: white;
+                color: #ffffff;
                 margin: 0;
             }
 
@@ -340,7 +340,7 @@ main {
             h1 {
                 font-family: 'Poppins';
                 font-size: 1.6vw;
-                color: white;
+                color: #ffffff;
                 margin: 0;
             }
 
@@ -363,7 +363,7 @@ main {
 
                 select {
                     cursor: pointer;
-                    color: white;
+                    color: #ffffff;
                     font-family: 'Poppins';
                     font-weight: normal;
                     font-size: 0.9vw;
@@ -419,7 +419,7 @@ main {
                 transition: 0.2s;
 
                 h1 {
-                    color: white;
+                    color: #ffffff;
                     font-family: 'Poppins';
                     font-weight: normal;
                     font-size: 1vw;
@@ -471,7 +471,7 @@ main {
                     justify-content: center;
                     
                     strong {
-                        color: white;
+                        color: #ffffff;
                         font-family: 'Poppins';
                         font-size: 1vw;
                         margin-left: 0.5vw;
@@ -480,13 +480,13 @@ main {
 
 
                 h1 {
-                    color: white;
+                    color: #ffffff;
                     font-family: 'Poppins';
                     font-size: 2vw;
                 }
 
                 p {
-                    color: white;
+                    color: #ffffff;
                     font-size: 1vw;
                     font-family: 'Open sans';
                 }
@@ -504,7 +504,7 @@ main {
                 >:nth-of-type(1),
                 >:nth-of-type(2) {
                     h2 {
-                        color: white;
+                        color: #ffffff;
                         font-size: 1vw;
                         font-weight: normal;
                         font-family: 'Open sans';
@@ -556,7 +556,7 @@ main {
                 border-radius: 0.25vw;
 
                 p {
-                    color: white;
+                    color: #ffffff;
                     font-family: 'Open sans';
                     background-color: #4995A6;
                     padding: 0.5vw;
@@ -564,7 +564,7 @@ main {
 
                 select {
                     cursor: pointer;
-                    color: white;
+                    color: #ffffff;
                     font-family: 'Poppins';
                     font-weight: bold;
                     font-size: 0.9vw;
@@ -618,11 +618,11 @@ main {
             h1 {
                 font-size: 2vw;
                 font-family: 'Poppins';
-                color: white;
+                color: #ffffff;
             }
 
             h2 {
-                color: white;
+                color: #ffffff;
                 font-size: 1vw;
                 font-weight: normal;
                 font-family: 'Open sans';
@@ -655,7 +655,7 @@ main {
                     border-radius: 0 0.5vw 0.5vw 0.5vw;
                     padding: 0.55vw;
                     border: 0.25vw solid #78B8BF;
-                    color: white;
+                    color: #ffffff;
                     font-family: 'Open sans';
                     font-size: 1vw;
     
@@ -680,7 +680,7 @@ main {
                     border-radius: 0 0.5vw 0.5vw 0.5vw;
                     padding: 0.75vw;
                     border: none;
-                    color: white;
+                    color: #ffffff;
                     font-family: 'Open sans';
                     font-size: 1vw;
     
@@ -727,7 +727,7 @@ main {
                 transition: 0.2s;
 
                 h1 {
-                    color: white;
+                    color: #ffffff;
                     font-family: 'Poppins';
                     font-weight: normal;
                     font-size: 1vw;
@@ -775,7 +775,7 @@ main {
 
                 h1 {
                     text-align: center;
-                    color: white;
+                    color: #ffffff;
                     font-family: "Keania One", sans-serif;
                     font-size: 5vw;
                 }
@@ -788,7 +788,7 @@ main {
                 }
 
                 p:last-child {
-                    color: white;
+                    color: #ffffff;
                     font-size: 2vw;
                     font-family: 'Open sans';
                     width: 100%;
@@ -845,7 +845,7 @@ main {
                             h2 {
                                 font-family: 'Poppins';
                                 font-size: 2vw;
-                                color: white;
+                                color: #ffffff;
                             }
                         }
                     }
@@ -868,7 +868,7 @@ main {
                     gap: 1.25vw;
     
                     p {
-                        color: white;
+                        color: #ffffff;
                         font-family: 'Open sans';
                         font-size: 2.5vw;
                     }
@@ -1058,7 +1058,7 @@ main {
                     border-radius: 0.25vw;
     
                     p {
-                        color: white;
+                        color: #ffffff;
                         font-family: 'Open sans';
                         background-color: #4995A6;
                         padding: 0.5vw;
@@ -1067,7 +1067,7 @@ main {
     
                     select {
                         cursor: pointer;
-                        color: white;
+                        color: #ffffff;
                         font-family: 'Poppins';
                         font-weight: bold;
                         font-size: 1.5vw;
@@ -1248,7 +1248,7 @@ main {
 
     p {
         font-family: 'Open sans';
-        color: white;
+        color: #ffffff;
         font-size: 0.8vw;
     }
 
@@ -1325,7 +1325,7 @@ main {
     /* Ensures that the gradient does not overflow the button */
 
     h1 {
-        color: white;
+        color: #ffffff;
         font-family: 'Poppins';
         font-weight: normal;
         font-size: 1vw;
