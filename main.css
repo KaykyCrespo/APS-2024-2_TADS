@@ -465,6 +465,20 @@ main {
                 align-items: flex-start;
                 gap: 1vw;
 
+                >div:nth-of-type(1){
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    strong {
+                        color: white;
+                        font-family: 'Poppins';
+                        font-size: 1vw;
+                        margin-left: 0.5vw;
+                    }
+                }
+
+
                 h1 {
                     color: white;
                     font-family: 'Poppins';

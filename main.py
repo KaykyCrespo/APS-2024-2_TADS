@@ -51,15 +51,11 @@ def updateStatistics(name, value):
     
     element = document.getElementById(elementIds.get(name))
     
-    current_value_str = element.innerHTML
-    current_value = float(current_value_str.replace('s', '').replace(' ', '') or '0')
-    
-    # Convert the new value to a number
-    value = float(value)
-    
-    # Update the element with the new sum
-    new_value = current_value + value
-    element.innerHTML = f"{new_value:.3f}s" if name == 'totalTime' else str(int(new_value))
+
+    if element:
+        current_value = float(element.innerHTML.replace('s', '').replace(' ', '') or '0')
+        new_value = current_value + float(value)
+        element.innerHTML = f"{new_value:.3f}s" if name == 'totalTime' else str(int(new_value))
 
 def makeManualTest(event):
     userArray = document.getElementById("userArrayInput").value.strip()
@@ -81,12 +77,16 @@ def resetInputValues(event):
     global sortArraySize
     global sortType
     
-    sortArraySize = []
-    sortType = ""
-    resetInputs()
-    document.getElementById("unsorted-array").innerHTML = "[]"
-    document.getElementById("sorted-array").innerHTML = "[]"
-    showAlertBox("Success! Input values have been reset.", "success")
+    try:
+        sortArraySize = []
+        sortType = ""
+        resetInputs()
+        document.getElementById("unsorted-array").innerHTML = "[]"
+        document.getElementById("sorted-array").innerHTML = "[]"
+        showAlertBox("Success! Input values have been reset.", "success")
+    except Exception as e:
+        showAlertBox(f"Error! {e}", "error")
+
 
 def calculate_color(value, min_value, max_value):
     # Definindo as cores de início e fim (R, G, B)
@@ -193,7 +193,7 @@ def makeTest(event):
         resetInputValues(event);
         showAlertBox("Array sorted with success.", "success");
     else:
-        showAlertBox("Error! Some fields isn't checked.", "error");      
+        showAlertBox("Error! Some fields isn't checked.", "error");
 
 def resetInputValues(event):
     global sortArraySize
