@@ -7,6 +7,7 @@ let showSettingsDropdown = false;
 
 const sortingAlgorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
 const sizes = [250, 500, 1000, 2500, 7500, 15000];
+const selectedQuantity = 250; // Defina a quantidade inicial de números
 
 const graphValues1 = {};
 
@@ -136,13 +137,23 @@ const data = {
   iterations: [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations] // Corrigido para "iterations"
 };
 
+
+const ctxLine = document.getElementById('barChart').getContext('2d');
 let barChart = new Chart(ctxLine, {
   type: 'bar',
   data: {
     labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
     datasets: [{
-      label: '', // Este será atualizado como título
-      data: data.time,
+      label: ``, // Título inicial com a quantidade
+      data: [
+        graphValues1[`bubblesort${selectedQuantity}time`],
+        graphValues1[`insertionsort${selectedQuantity}time`],
+        graphValues1[`selectionsort${selectedQuantity}time`],
+        graphValues1[`heapsort${selectedQuantity}time`]
+      ],
+      backgroundColor: ['#FFA6C9', '#CDA1DB', '#4B9F6E', '#f4a261'],
+      borderColor: '#000000', // Cor da borda das barras
+      borderWidth: 1.5 // Largura da borda
     }]
   },
   options: {
@@ -150,6 +161,7 @@ let barChart = new Chart(ctxLine, {
     layout: {
       padding: {
         top: 20, // Margem superior
+        bottom: 20 // Margem inferior
       }
     },
     scales: {
@@ -161,11 +173,13 @@ let barChart = new Chart(ctxLine, {
           },
           color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
           font: {
-            size: 20 // Tamanho da fonte dos ticks do eixo Y
+            size: 15 // Tamanho da fonte dos ticks do eixo Y
           }
         },
         grid: {
-          color: '#FFFFFF' // Cor das linhas de grade do eixo Y
+          color: 'rgba(255, 255, 255, 0.3)', // Cor das linhas de grade (suave)
+          lineWidth: 1, // Largura das linhas de grade
+          borderDash: [5, 5] // Estilo tracejado para as linhas de grade
         }
       },
       x: {
@@ -176,7 +190,9 @@ let barChart = new Chart(ctxLine, {
           }
         },
         grid: {
-          color: '#FFFFFF' // Cor das linhas de grade do eixo X
+          color: 'rgba(255, 255, 255, 0.3)', // Cor das linhas de grade (suave)
+          lineWidth: 1, // Largura das linhas de grade
+          borderDash: [5, 5] // Estilo tracejado para as linhas de grade
         }
       }
     },
@@ -204,10 +220,11 @@ let barChart = new Chart(ctxLine, {
         },
         title: {
           display: true,
-          text: 'EXECUTION TIME', // Título inicial que será atualizado
+          text: `SIZE: ${selectedQuantity} | EXECUTION TIME`, // Título inicial que será atualizado
           color: '#FFFFFF', // Define a cor do título da legenda como branco
           font: {
-            size: 18 // Aumentado para um tamanho maior
+            size: 18, // Aumentado para um tamanho maior
+            weight: 'bold' // Define o título em negrito
           },
         }
       },
@@ -227,7 +244,10 @@ let barChart = new Chart(ctxLine, {
           size: 14 // Tamanho da fonte do corpo do tooltip
         }
       }
-    }
+    },
+    // Definindo a borda do gráfico
+    borderColor: '#000000', // Cor da borda do gráfico
+    borderWidth: 1.5, // Largura da borda do gráfico
   }
 });
 
@@ -239,7 +259,7 @@ function updateBarChart(selectedQuantity) {
   // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
   switch (selectedMetric) {
     case 'time':
-      label = 'EXECUTION TIME';
+      label = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Atualizado para incluir a quantidade
       yAxisUnit = 's';
       barChart.data.datasets[0].data = [
         graphValues1[`bubblesort${selectedQuantity}time`], 
@@ -247,21 +267,19 @@ function updateBarChart(selectedQuantity) {
         graphValues1[`selectionsort${selectedQuantity}time`], 
         graphValues1[`heapsort${selectedQuantity}time`]
       ];
-      barColors = ['#FFA6C9','#CDA1DB','#4B9F6E','#f4a261'];
       break;
     case 'memory':
-      label = 'MEMORY';
-      yAxisUnit = 'Gb'; // Corrigido para GB
+      label = `SIZE: ${selectedQuantity} | MEMORY`; // Atualizado para incluir a quantidade
+      yAxisUnit = 'GB'; // Corrigido para GB
       barChart.data.datasets[0].data = [
         graphValues1[`bubblesort${selectedQuantity}memory`], 
         graphValues1[`insertionsort${selectedQuantity}memory`], 
         graphValues1[`selectionsort${selectedQuantity}memory`], 
         graphValues1[`heapsort${selectedQuantity}memory`]
       ];
-      barColors = ['#FFA6C9','#CDA1DB','#4B9F6E','#f4a261'];
       break;
     case 'iterations':
-      label = 'ITERATIONS';
+      label = `SIZE: ${selectedQuantity} | ITERATIONS`; // Atualizado para incluir a quantidade
       yAxisUnit = '';
       barChart.data.datasets[0].data = [
         graphValues1[`bubblesort${selectedQuantity}iterations`], 
@@ -269,19 +287,16 @@ function updateBarChart(selectedQuantity) {
         graphValues1[`selectionsort${selectedQuantity}iterations`], 
         graphValues1[`heapsort${selectedQuantity}iterations`]
       ];
-      barColors = ['#FFA6C9','#CDA1DB','#4B9F6E','#f4a261'];
       break;
   }
 
   // Atualiza o título do gráfico
   barChart.options.plugins.legend.title.text = label; // Atualiza o título
-  // Atualiza a cor dos gráficos
-  barChart.data.datasets[0].backgroundColor = barColors;
+  // Atualiza o gráfico
   barChart.options.scales.y.ticks.callback = function(value) {
     return value + yAxisUnit; // Atualiza a unidade do eixo Y
   };
 
-  // Atualiza o gráfico
   barChart.update();
 }
 
@@ -296,6 +311,10 @@ function updateBarChart(selectedQuantity) {
 
 
 
+
+
+
+// Inicialização do gráfico de pizza
 // Inicialização do gráfico de pizza
 const ctxPie = document.getElementById('pieChart').getContext('2d');
 let myPieChart = new Chart(ctxPie, {
@@ -303,12 +322,12 @@ let myPieChart = new Chart(ctxPie, {
   data: {
       labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
       datasets: [{
-          label: 'Votes',
+          label: '',
           data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
           backgroundColor: [
               '#FFA6C9',
-              '#CDA1DB ',
-              '#4B9F6E   ',
+              '#CDA1DB',
+              '#4B9F6E',
               '#f4a261'
           ],
           borderColor: [
@@ -340,16 +359,25 @@ let myPieChart = new Chart(ctxPie, {
         align: 'center', // Alinha a legenda ao centro
         padding: 20 // Adiciona espaçamento entre os itens da legenda e o gráfico
       },
+      title: {
+        display: true,
+        text: 'SIZE: 250 | EXECUTION TIME', // Título inicial que será atualizado
+        color: '#FFFFFF', // Cor do título
+        font: {
+          size: 18, // Tamanho do título
+          weight: 'bold' // Negrito
+        },
+      }
     }
   }
 });
 
 // Função para atualizar o gráfico de pizza com base na métrica selecionada
 function updatePieChart(selectedQuantity) {
-    var metric = document.getElementById('selectedMetric').value;
-    var data;
-    labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-
+  var metric = document.getElementById('selectedMetric').value;
+  var data;
+  var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
+  var titleText; // Variável para o título
 
     switch (metric) {
         case 'time':
@@ -381,10 +409,46 @@ function updatePieChart(selectedQuantity) {
         default:
             data = [0, 0, 0, 0];
     }
+  // Define o título de acordo com a métrica selecionada
+  switch (metric) {
+      case 'time':
+          data = [
+            graphValues1[`bubblesort${selectedQuantity}time`], 
+            graphValues1[`insertionsort${selectedQuantity}time`], 
+            graphValues1[`selectionsort${selectedQuantity}time`], 
+            graphValues1[`heapsort${selectedQuantity}time`]
+          ];
+          titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título para tempo
+          break;
+      case 'memory':
+          data = [
+            graphValues1[`bubblesort${selectedQuantity}memory`], 
+            graphValues1[`insertionsort${selectedQuantity}memory`], 
+            graphValues1[`selectionsort${selectedQuantity}memory`], 
+            graphValues1[`heapsort${selectedQuantity}memory`]
+          ];
+          titleText = `SIZE: ${selectedQuantity} | MEMORY`; // Título para memória
+          break;
+      case 'iterations':
+          data = [
+            graphValues1[`bubblesort${selectedQuantity}iterations`], 
+            graphValues1[`insertionsort${selectedQuantity}iterations`], 
+            graphValues1[`selectionsort${selectedQuantity}iterations`], 
+            graphValues1[`heapsort${selectedQuantity}iterations`]
+          ];
+          titleText = `SIZE: ${selectedQuantity} | ITERATIONS`; // Título para iterações
+          break;
+      default:
+          data = [0, 0, 0, 0]; // Valores padrão
+          titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título padrão
+  }
 
-    myPieChart.data.labels = labels;
-    myPieChart.data.datasets[0].data = data;
-    myPieChart.update();
+  // Atualiza os dados e o título do gráfico
+  myPieChart.data.labels = labels;
+  myPieChart.data.datasets[0].data = data;
+  myPieChart.options.plugins.title.text = titleText; // Atualiza o título do gráfico
+
+  myPieChart.update(); // Atualiza o gráfico
 }
 
 
@@ -404,7 +468,9 @@ function updatePieChart(selectedQuantity) {
 
 
 
-// Inicialização do gráfico de BARRAS
+
+
+// Inicialização do gráfico de WAP
 const ctxWAP = document.getElementById('barChartWAP').getContext('2d');
 let barChartWAP = new Chart(ctxWAP, {
   type: 'bar',
@@ -420,7 +486,7 @@ let barChartWAP = new Chart(ctxWAP, {
         '#f4a261'  // Cor para Heapsort
       ],
       borderColor: '#000000', // Cor da borda das barras
-      borderWidth: 2.5
+      borderWidth: 1.5
     }]
   },
   options: {
@@ -440,11 +506,13 @@ let barChartWAP = new Chart(ctxWAP, {
           },
           color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
           font: {
-            size: 20 // Tamanho da fonte dos ticks do eixo Y
+            size: 15 // Tamanho da fonte dos ticks do eixo Y
           }
         },
         grid: {
-          color: '#FFFFFF' // Cor das linhas de grade do eixo Y
+          color: 'rgba(255, 255, 255, 0.3)', // Cor das linhas de grade (mais suave)
+          lineWidth: 1, // Largura das linhas de grade
+          borderDash: [5, 5] // Estilo tracejado para as linhas de grade
         }
       },
       x: {
@@ -455,17 +523,19 @@ let barChartWAP = new Chart(ctxWAP, {
           }
         },
         grid: {
-          color: '#FFFFFF' // Cor das linhas de grade do eixo X
+          color: 'rgba(255, 255, 255, 0.3)', // Cor das linhas de grade (mais suave)
+          lineWidth: 1, // Largura das linhas de grade
+          borderDash: [5, 5] // Estilo tracejado para as linhas de grade
         }
       }
     },
     plugins: {
       title: {
         display: true,
-        text: 'WAP Metric', // Texto do título
+        text: 'SIZE: 250 | WAP METRIC', // Título inicial que será atualizado
         color: '#FFFFFF', // Cor do título
         font: {
-          size: 16 // Tamanho da fonte do título
+          size: 18 // Tamanho da fonte do título
         }
       },
       legend: {
@@ -509,9 +579,6 @@ let barChartWAP = new Chart(ctxWAP, {
   }
 });
 
-// Resto do código permanece o mesmo...
-
-
 // Função para calcular o WAP para cada algoritmo
 function wap() {
     const algorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
@@ -527,11 +594,13 @@ function wap() {
 }
 
 // Função para atualizar o gráfico de BARRAS com a métrica WAP
-function updateBarChartWAP() {
+function updateBarChartWAP(selectedQuantity) { // Adicione selectedQuantity como parâmetro
     const data = wap(); // Calcula os valores para WAP
 
     barChartWAP.data.datasets[0].data = data; // Atualiza os dados do gráfico com os resultados WAP
-    barChartWAP.data.datasets[0].label = 'WAP Metric'; // Atualiza o rótulo do conjunto de dados
+
+    // Atualiza o título do gráfico com a quantidade selecionada
+    barChartWAP.options.plugins.title.text = `SIZE: ${selectedQuantity} | WAP METRIC`; // Atualiza o título dinamicamente
     
     // Mantém o formato dos ticks do eixo Y
     barChartWAP.options.scales.y.ticks.callback = function(value) {
@@ -553,6 +622,8 @@ function updateBarChartWAP() {
 
 
 
+
+// Inicialização do gráfico Polar Area
 const ctxPolarAreaChart = document.getElementById('polarAreaChart').getContext('2d');
 let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
   type: 'polarArea',
@@ -588,13 +659,25 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         ticks: {
           color: '#FFFFFF',
           font: {
-            size: 18
+            size: 15
           },
-          backdropColor: 'transparent' // Remove o fundo dos números
+          // Aqui, adicionamos a unidade ao lado do número
+          callback: function(value) {
+            return value + 's'; // Você pode personalizar aqui para 'GB' se necessário
+          },
+          backdropColor: 'transparent', // Remove o fundo dos números
+          // Aqui, definimos o número mínimo e máximo de ticks
+          count: 5, // Número de ticks que você deseja
+          max: Math.max(
+            graphValues.bubblesort.time,
+            graphValues.insertionsort.time,
+            graphValues.selectionsort.time,
+            graphValues.heapsort.time
+          ) + 10 // Ajuste para garantir que o gráfico tenha espaço
         },
         pointLabels: {
           font: {
-            size: 18
+            size: 1
           },
           color: '#FFFFFF' // Cor dos rótulos das áreas
         }
@@ -625,8 +708,18 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         align: 'center',
         padding: 20,
         backgroundColor: 'rgba(0, 0, 0, 0)' 
+      },
+      title: {
+        display: true,
+        text: 'SIZE: 250 | EXECUTION TIME', // Título inicial que será atualizado
+        color: '#FFFFFF', // Cor do título
+        font: {
+          size: 18, // Tamanho do título
+          weight: 'bold' // Negrito
+        },
       }
     },
+    
     animation: {
       duration: 1000, // 1 segundo de duração da transição
       easing: 'easeInOutQuad' // Tipo de animação
@@ -634,11 +727,13 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
   }
 });
 
-// Função para atualizar o gráfico Polar Area com base na métrica selecionada
+/// Função para atualizar o gráfico Polar Area com base na métrica selecionada
 function updatePolarAreaChart(selectedQuantity) {
   var metric = document.getElementById('selectedMetric').value;
   var data;
   var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
+  var titleText = 'EXECUTION TIME'; // Título padrão
+  var yAxisUnit = ''; // Inicializa a unidade do eixo Y
 
   switch (metric) {
       case 'time':
@@ -648,6 +743,8 @@ function updatePolarAreaChart(selectedQuantity) {
             graphValues1[`selectionsort${selectedQuantity}time`], 
             graphValues1[`heapsort${selectedQuantity}time`]
           ];
+          titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Atualizado para incluir a quantidade
+          yAxisUnit = 's'; // Unidade em segundos
           break;
       case 'memory':
           data = [
@@ -656,6 +753,8 @@ function updatePolarAreaChart(selectedQuantity) {
             graphValues1[`selectionsort${selectedQuantity}memory`], 
             graphValues1[`heapsort${selectedQuantity}memory`]
           ];
+          titleText = `SIZE: ${selectedQuantity} | MEMORY`; // Atualizado para incluir a quantidade
+          yAxisUnit = 'GB'; // Unidade em GB
           break;
       case 'iterations':
           data = [
@@ -664,15 +763,26 @@ function updatePolarAreaChart(selectedQuantity) {
             graphValues1[`selectionsort${selectedQuantity}iterations`], 
             graphValues1[`heapsort${selectedQuantity}iterations`]
           ];
+          titleText = `SIZE: ${selectedQuantity} | ITERATIONS`; // Atualizado para incluir a quantidade
+          yAxisUnit = ''; // Unidade em segundos
           break;
       default:
-          data = [0, 0, 0, 0]; // Valores padrão caso nenhuma métrica seja selecionada
+          data = [0, 0, 0, 0]; // Valores padrão
   }
 
   myPolarAreaChart.data.labels = labels;
   myPolarAreaChart.data.datasets[0].data = data; // Atualiza os dados do gráfico
+  myPolarAreaChart.options.plugins.title.text = titleText; // Atualiza o título do gráfico
+
+  // Atualiza a unidade no eixo Y dependendo da métrica selecionada
+  myPolarAreaChart.options.scales.r.ticks.callback = function(value) {
+    return value + (metric === 'memory' ? ' GB' : 's'); // Muda para GB ou s baseado na métrica
+  };
+
   myPolarAreaChart.update(); // Atualiza o gráfico
 }
+
+
 
 
 
