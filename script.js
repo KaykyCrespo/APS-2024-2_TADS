@@ -129,8 +129,6 @@ function setGraphValues(sort, type, value) {
 
 
 // Inicialização do gráfico de BARRAS
-const ctxLine = document.getElementById('barChart').getContext('2d');
-
 const data = {
   time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
   memory: [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory], // em GB
