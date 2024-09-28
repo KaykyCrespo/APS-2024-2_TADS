@@ -3,6 +3,8 @@
 const alertBox = document.getElementById("alert-box");
 const alertMessage = document.getElementById("alert-message");
 
+let showSettingsDropdown = false;
+
 const sortingAlgorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
 const sizes = [250, 500, 1000, 2500, 7500, 15000];
 
@@ -17,7 +19,6 @@ sortingAlgorithms.forEach(algorithm => {
     };
   });
 });
-
 
 
 const graphValues = {
@@ -43,6 +44,29 @@ const graphValues = {
   }
 }
 
+
+function handleShowSettings(){
+    const settingsDropdown = document.getElementById("settings-dropdown");
+    const settingsButton = document.getElementById("settings-button");
+    const settingsButtonImg = document.getElementById("setting-button-img");
+    
+    
+    showSettingsDropdown = !showSettingsDropdown
+    
+    if (showSettingsDropdown){
+      settingsDropdown.style.visibility = "visible"
+      settingsDropdown.style.opacity = "1"
+      settingsButton.style.borderRadius = "0.5vw 0.5vw 0 0" 
+      settingsButtonImg.style.transform = "rotate(90deg)"
+
+    } else {
+      settingsDropdown.style.visibility = "hidden"
+      settingsDropdown.style.opacity = "0"
+      settingsButton.style.borderRadius = "0.5vw" 
+      settingsButtonImg.style.transform = "rotate(0deg)"
+
+    }
+}
 
 // Função pra atualizar gráficos
 function updateAllGraphs(){
@@ -101,7 +125,6 @@ function setGraphValues(sort, type, value) {
       updateAllGraphs();
     }
 }
-
 
 
 // Inicialização do gráfico de BARRAS
@@ -327,6 +350,7 @@ function updatePieChart(selectedQuantity) {
     var data;
     labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
 
+
     switch (metric) {
         case 'time':
             data = [
@@ -337,13 +361,16 @@ function updatePieChart(selectedQuantity) {
             ];
             break;
         case 'memory':
+            console.log("Métrica no memory", metric)
             data = [
               graphValues1[`bubblesort${selectedQuantity}memory`], 
               graphValues1[`insertionsort${selectedQuantity}memory`], 
               graphValues1[`selectionsort${selectedQuantity}memory`], 
               graphValues1[`heapsort${selectedQuantity}memory`]
             ];
+            break;
         case 'iterations':
+            console.log("Métrica no iterations ", metric)
             data = [
               graphValues1[`bubblesort${selectedQuantity}iterations`], 
               graphValues1[`insertionsort${selectedQuantity}iterations`], 
