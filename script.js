@@ -1,172 +1,237 @@
 document.addEventListener('DOMContentLoaded', () => {
   const langEl = document.querySelector('.langWrap');
-  const links = document.querySelectorAll('.langWrap a');
+  const links = document.querySelectorAll('a[language]');
+
 
   // Selecionar todos os elementos que precisam ser atualizados com a tradução
   const langElements = {
-      "lang-title": document.querySelector('#lang-title'),
-      "lang-title-principal": document.querySelector('#lang-title-principal'),
-      "lang-sub-title": document.querySelector('#lang-sub-title'),
-      "lang-explanation": document.querySelector('#lang-explanation'),
-      "lang-title-statistics": document.querySelector('#lang-title-statistics'),
-      "lang-total-iterations": document.querySelector('#lang-total-iterations'),
-      "lang-total-sec": document.querySelector('#lang-total-sec'),
-      "lang-try-yourself": document.querySelector('#lang-try-yourself'),
-      "lang-try-yourself-description": document.querySelector('#lang-try-yourself-description'),
-      "lang-example": document.querySelector('#lang-example'),
-      "lang-example-result": document.querySelector('#lang-example-result'),
-      "lang-selection-sort": document.querySelector('#lang-selection-sort'),
-      "lang-how-many-numbers": document.querySelector('#lang-how-many-numbers'),
-      "lang-random-numbers-info": document.querySelector('#lang-random-numbers-info'),
-      "lang-array-build": document.querySelector('#lang-array-build'),
-      "lang-array-build-info": document.querySelector('#lang-array-build-info'),
-      "lang-array-unique": document.querySelector('#lang-array-unique'),
-      "lang-array-repeat": document.querySelector('#lang-array-repeat'),
-      "lang-performance-results-title": document.querySelector('#lang-performance-results-title'),
-      "lang-performance-results-description": document.querySelector('#lang-performance-results-description'),
-      "lang-selected-sort": document.querySelector('#lang-selected-sort'),
-      "lang-unsorted-array-title": document.querySelector('#lang-unsorted-array-title'),
-      "lang-sort-array": document.querySelector('#lang-sort-array'),
-      "lang-results-size": document.querySelector('#lang-results-size'),
-      "lang-metric-label": document.querySelector('#lang-metric-label'),
-      "lang-execution-time": document.querySelector('#lang-execution-time'),
-      "lang-memory-use": document.querySelector('#lang-memory-use'),
-      "lang-iterations": document.querySelector('#lang-iterations'),
-      "resetar": document.querySelectorAll('#resetar'),
-      "lang-button-make-test": document.querySelectorAll('#lang-button-make-test')
+    "lang-title": document.querySelector('#lang-title'),
+    "lang-title-principal": document.querySelector('#lang-title-principal'),
+    "lang-sub-title": document.querySelector('#lang-sub-title'),
+    "lang-explanation": document.querySelector('#lang-explanation'),
+    "lang-title-statistics": document.querySelector('#lang-title-statistics'),
+    "lang-total-iterations": document.querySelector('#lang-total-iterations'),
+    "lang-total-sec": document.querySelector('#lang-total-sec'),
+    "lang-try-yourself": document.querySelector('#lang-try-yourself'),
+    "lang-try-yourself-description": document.querySelector('#lang-try-yourself-description'),
+    "lang-example": document.querySelector('#lang-example'),
+    "lang-example-result": document.querySelector('#lang-example-result'),
+    "lang-selection-sort": document.querySelector('#lang-selection-sort'),
+    "lang-how-many-numbers": document.querySelector('#lang-how-many-numbers'),
+    "lang-random-numbers-info": document.querySelector('#lang-random-numbers-info'),
+    "lang-array-build": document.querySelector('#lang-array-build'),
+    "lang-array-build-info": document.querySelector('#lang-array-build-info'),
+    "lang-array-unique": document.querySelector('#lang-array-unique'),
+    "lang-array-repeat": document.querySelector('#lang-array-repeat'),
+    "lang-performance-results-title": document.querySelector('#lang-performance-results-title'),
+    "lang-performance-results-description": document.querySelector('#lang-performance-results-description'),
+    "lang-selected-sort": document.querySelector('#lang-selected-sort'),
+    "lang-unsorted-array-title": document.querySelector('#lang-unsorted-array-title'),
+    "lang-sort-array": document.querySelector('#lang-sort-array'),
+    "lang-results-size": document.querySelector('#lang-results-size'),
+    "lang-metric-label": document.querySelector('#lang-metric-label'),
+    "lang-execution-time": document.querySelector('#lang-execution-time'),
+    "lang-memory-use": document.querySelector('#lang-memory-use'),
+    "lang-iterations": document.querySelector('#lang-iterations'),
+    "resetar": document.querySelectorAll('#resetar'),
+    "lang-button-make-test": document.querySelectorAll('#lang-button-make-test')
   };
 
   // Tradução de dados
-  var data = {
-      "english": {
-          "lang-title": "Array Buddy",
-          "lang-title-principal": "Array Buddy",
-          "lang-sub-title": "By Caio Pacheco, Kayky Crespo & Elias",
-          "lang-explanation": "Using Array Buddy, analyze, visualize, and compare the performance of different Sorting algorithms is easy. In addition to monitoring the execution time, memory used and iterations performed.",
-          "lang-title-statistics": "General statistics",
-          "lang-total-iterations": "Total iterations :",
-          "lang-total-sec": "Total time (sec):",
-          "lang-try-yourself": "Try it for yourself",
-          "lang-try-yourself-description": "Here you test sorting a array that you came up with!",
-          "lang-example": "Try putting a number sequence below (ex : 1, 145, 56, 2235, 5922, 3)",
-          "lang-example-result": "Here's the result:",
-          "resetar": "reset",
-          "lang-button-make-test": "Make test",
-          "lang-selection-sort": "Select array sort type",
-          "lang-how-many-numbers": "How many numbers?",
-          "lang-random-numbers-info": "All numbers are going to be randomly generated",
-          "lang-array-build": "Array build",
-          "lang-array-build-info": "This will affect on how the random array are made",
-          "lang-array-unique": "Never repeat numbers",
-          "lang-array-repeat": "Repeat numbers",
-          "lang-performance-results-title": "Performance results",
-          "lang-performance-results-description": "This section will demonstrate statistics and information about the sorting algorithms used.",
-          "lang-selected-sort": "Sort type used:",
-          "lang-unsorted-array-title": "Unsorted array:",
-          "lang-sort-array": "Sorted array:",
-          "lang-results-size": "Results from (size)",
-          "lang-metric-label": "Metric",
-          "lang-execution-time": "Execution time",
-          "lang-memory-use": "Memory use",
-          "lang-iterations": "Iterations",
-      },
-      "portuguese": {
-        "lang-title": "Array Buddy",
-        "lang-title-principal": "Array Buddy",
-        "lang-sub-title": "Criado por Caio Pacheco, Kayky Crespo & Elias",
-        "lang-explanation": "Usar o Array Buddy para analisar, visualizar e comparar o desempenho de diferentes algoritmos de ordenação é fácil. Além de monitorar o tempo de execução, a memória utilizada e as iterações realizadas.",
-        "lang-title-statistics": "Estatísticas Gerais",
-        "lang-total-iterations": "Total de interações:",
-        "lang-total-sec": "Tempo total (seg):",
-        "lang-try-yourself": "Experimente você mesmo",
-        "lang-try-yourself-description": "Aqui você testa a ordenação de um array que você criou!",
-        "lang-example": "Tente colocar uma sequência de números abaixo (ex: 1, 145, 56, 2235, 5922, 3)",
-        "lang-example-result": "Aqui está o resultado:",
-        "resetar": "resetar",
-        "lang-button-make-test": "Fazer teste",
-        "lang-selection-sort": "Selecione o tipo de ordenação do array",
-        "lang-how-many-numbers": "Quantos números?",
-        "lang-random-numbers-info": "Todos os números serão gerados aleatoriamente",
-        "lang-array-build": "Construção do array",
-        "lang-array-build-info": "Isso afetará como o array aleatório é feito",
-        "lang-array-unique": "Nunca repetir números",
-        "lang-array-repeat": "Repetir números",
-        "lang-performance-results-title": "Resultados de desempenho",
-        "lang-performance-results-description": "Esta seção demonstrará estatísticas e informações sobre os algoritmos de ordenação utilizados.",
-        "lang-selected-sort": "Tipo de ordenação utilizado:",
-        "lang-unsorted-array-title": "Array não ordenado:",
-        "lang-sort-array": "Array ordenado:",
-        "lang-results-size": "Resultados de (tamanho)",
-        "lang-metric-label": "Métrica",
-        "lang-execution-time": "Tempo de execução",
-        "lang-memory-use": "Uso de memória",
-        "lang-iterations": "Iterações"
-      }
+  const data = {
+    "english": {
+      "lang-title": "Array Buddy",
+      "lang-title-principal": "Array Buddy",
+      "lang-sub-title": "By Caio Pacheco, Kayky Crespo & Elias",
+      "lang-explanation": "Using Array Buddy, analyze, visualize, and compare the performance of different Sorting algorithms is easy. In addition to monitoring the execution time, memory used, and iterations performed.",
+      "lang-title-statistics": "General statistics",
+      "lang-total-iterations": "Total iterations:",
+      "lang-total-sec": "Total time (sec):",
+      "lang-try-yourself": "Try it for yourself",
+      "lang-try-yourself-description": "Here you test sorting an array that you came up with!",
+      "lang-example": "Try putting a number sequence below (ex: 1, 145, 56, 2235, 5922, 3)",
+      "lang-example-result": "Here's the result:",
+      "resetar": "reset",
+      "lang-button-make-test": "Make test",
+      "lang-selection-sort": "Select array sort type",
+      "lang-how-many-numbers": "How many numbers?",
+      "lang-random-numbers-info": "All numbers are going to be randomly generated",
+      "lang-array-build": "Array build",
+      "lang-array-build-info": "This will affect how the random array is made",
+      "lang-array-unique": "Never repeat numbers",
+      "lang-array-repeat": "Repeat numbers",
+      "lang-performance-results-title": "Performance results",
+      "lang-performance-results-description": "This section will demonstrate statistics and information about the sorting algorithms used.",
+      "lang-selected-sort": "Sort type used:",
+      "lang-unsorted-array-title": "Unsorted array:",
+      "lang-sort-array": "Sorted array:",
+      "lang-results-size": "Results from (size)",
+      "lang-metric-label": "Metric",
+      "lang-execution-time": "Execution time",
+      "lang-memory-use": "Memory use",
+      "lang-iterations": "Iterations",
+    },
+    "portuguese": {
+      "lang-title": "Array Buddy",
+      "lang-title-principal": "Array Buddy",
+      "lang-sub-title": "Criado por Caio Pacheco, Kayky Crespo & Elias",
+      "lang-explanation": "Usar o Array Buddy para analisar, visualizar e comparar o desempenho de diferentes algoritmos de ordenação é fácil. Além de monitorar o tempo de execução, a memória utilizada e as iterações realizadas.",
+      "lang-title-statistics": "Estatísticas Gerais",
+      "lang-total-iterations": "Total de interações:",
+      "lang-total-sec": "Tempo total (seg):",
+      "lang-try-yourself": "Experimente você mesmo",
+      "lang-try-yourself-description": "Aqui você testa a ordenação de um array que você criou!",
+      "lang-example": "Tente colocar uma sequência de números abaixo (ex: 1, 145, 56, 2235, 5922, 3)",
+      "lang-example-result": "Aqui está o resultado:",
+      "resetar": "resetar",
+      "lang-button-make-test": "Fazer teste",
+      "lang-selection-sort": "Selecione o tipo de ordenação do array",
+      "lang-how-many-numbers": "Quantos números?",
+      "lang-random-numbers-info": "Todos os números serão gerados aleatoriamente",
+      "lang-array-build": "Construção do array",
+      "lang-array-build-info": "Isso afetará como o array aleatório é feito",
+      "lang-array-unique": "Nunca repetir números",
+      "lang-array-repeat": "Repetir números",
+      "lang-performance-results-title": "Resultados de desempenho",
+      "lang-performance-results-description": "Esta seção demonstrará estatísticas e informações sobre os algoritmos de ordenação utilizados.",
+      "lang-selected-sort": "Tipo de ordenação utilizado:",
+      "lang-unsorted-array-title": "Array não ordenado:",
+      "lang-sort-array": "Array ordenado:",
+      "lang-results-size": "Resultados de (tamanho)",
+      "lang-metric-label": "Métrica",
+      "lang-execution-time": "Tempo de execução",
+      "lang-memory-use": "Uso de memória",
+      "lang-iterations": "Iterações"
+    }
   };
 
-// Adicionar um método para redefinir o estado
-function resetTestState() {
-  // Limpe ou redefina as variáveis globais ou elementos necessários
-  sortType = "";
-  sortArraySize = [];
-  document.getElementById("unsorted-array").innerHTML = "[]";
-  document.getElementById("sorted-array").innerHTML = "[]";
+  // Adicionar um método para redefinir o estado
+  function resetTestState() {
+    sortType = ""; // Certifique-se de que sortType esteja definido em um escopo acessível
+    sortArraySize = []; // Certifique-se de que sortArraySize esteja definido em um escopo acessível
+    document.getElementById("unsorted-array").innerHTML = "[]";
+    document.getElementById("sorted-array").innerHTML = "[]";
+  }
+
+  function addLanguageToggleEvents() {
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const activeElement = langEl.querySelector('.active');
+        if (activeElement) {
+          activeElement.classList.remove('active');
+        }
+        link.classList.add('active');
+
+        const selectedLanguage = link.getAttribute('language');
+        if (!data[selectedLanguage]) {
+          console.error(`Translation for language "${selectedLanguage}" not found.`);
+          return;
+        }
+
+        Object.keys(langElements).forEach(key => {
+          const element = langElements[key];
+          const translation = data[selectedLanguage][key];
+
+          if (element) {
+            if (element instanceof NodeList) {
+              element.forEach(el => {
+                el.textContent = translation || '';
+              });
+            } else {
+              element.textContent = translation || '';
+            }
+          } else {
+            console.warn(`Element with key "${key}" not found in DOM.`);
+          }
+        });
+
+        resetTestState();
+      });
+    });
+  }
+
+  // Set default language to English
+  const defaultLanguage = 'english';
+  const defaultLink = document.querySelector(`a[language='${defaultLanguage}']`);
+  if (defaultLink) {
+    defaultLink.click();
+  }
+
+  // Show an alert indicating that English is being used
+  showAlertBox('default_alert_message', 'error');
+
+  addLanguageToggleEvents();
+});
+
+
+
+var alert_messages = {
+  'english': {
+    'empty_input': "Input cannot be empty.",
+    'manual_sort_success': "Manual array sorted with success.",
+    'invalid_input': "Invalid input on manual sort test. Please enter integers separated by commas.",
+    'input_reset_success': "Success! Input values have been reset.",
+    'input_reset_error': "Error! {error}",
+    'fields_not_checked': "Error! Some fields aren't checked.",
+    'default_alert_message': "No language selected, using default settings.",
+  },
+  'portuguese': {
+    'empty_input': "O campo não pode estar vazio.",
+    'manual_sort_success': "Array manual ordenado com sucesso.",
+    'invalid_input': "Entrada inválida no teste de ordenação manual. Por favor, insira inteiros separados por vírgulas.",
+    'input_reset_success': "Sucesso! Valores de entrada foram redefinidos.",
+    'input_reset_error': "Erro! {error}",
+    'fields_not_checked': "Erro! Alguns campos não estão selecionados.",
+    'default_alert_message': "Nenhuma língua selecionada, usando configurações padrão.",
+  }
+};
+
+function showAlertBox(messageKey, category) {
+  // Get the current language
+  const currentLanguageElement = document.querySelector('.active');
+  if (!currentLanguageElement) {
+    console.error("No language is currently selected.");
+    return; // Exit if no language is active
+  }
+
+  const currentLanguage = currentLanguageElement.getAttribute('language');
+
+  // Get the corresponding message for the current language
+  const message = alert_messages[currentLanguage][messageKey] || alert_messages['english'][messageKey];
+
+  // Set the alert message in the alert box
+  alertMessage.innerHTML = message;
+  alertBox.style.display = "flex";
+
+  // Change the background color based on the category
+  if (category === 'success') {
+    alertBox.style.backgroundColor = 'green';
+  } else {
+    alertBox.style.backgroundColor = '#f36464';
+  }
+
+  // Hide the alert after 3 seconds
+  setTimeout(() => {
+    alertBox.style.display = "none";
+  }, 3000);
 }
 
 
 
 
-  // Adicionar evento de clique a cada link de idioma
-  links.forEach(el => {
-      el.addEventListener('click', (e) => {
-          e.preventDefault(); // Previne o comportamento padrão do link
 
-          // Remove classe 'active' do link atual e adiciona ao novo
-          const activeElement = langEl.querySelector('.active');
-          if (activeElement) {
-              activeElement.classList.remove('active');
-          }
-          el.classList.add('active');
 
-          // Obtém o idioma selecionado
-          const attr = el.getAttribute('language');
 
-          // Verifica se o idioma selecionado existe nos dados
-          if (!data[attr]) {
-              console.error(`Tradução para o idioma "${attr}" não encontrada.`);
-              return;
-          }
 
-          // Atualiza todos os textos de acordo com o idioma selecionado
-          Object.keys(langElements).forEach(key => {
-              const element = langElements[key];
-              const translation = data[attr][key];
-
-              if (element) {
-                  if (element instanceof NodeList) {
-                      element.forEach(el => {
-                          el.textContent = translation;
-                      });
-                  } else {
-                      element.textContent = translation;
-                  }
-              } else {
-                  console.warn(`Elemento com a chave "${key}" não encontrado no DOM.`);
-              }
-          });
-          // Resetar o estado do teste após mudar o idioma
-        resetTestState();
-      });
-  });
-      });
 
 
 
 
 // Qualquer motivo que seja puramente estético usar JavaScript caso não Pyscript
-
-const alertBox = document.getElementById("alert-box");
-const alertMessage = document.getElementById("alert-message");
+const alertBox = document.getElementById('alert-box');
+const alertMessage = document.getElementById('alert-message');
 
 let showSettingsDropdown = false;
 
@@ -185,7 +250,6 @@ sortingAlgorithms.forEach(algorithm => {
     };
   });
 });
-
 
 const graphValues = {
   bubblesort: {
@@ -210,32 +274,30 @@ const graphValues = {
   }
 }
 
+function handleShowSettings() {
+  const settingsDropdown = document.getElementById("settings-dropdown");
+  const settingsButton = document.getElementById("settings-button");
+  const settingsButtonImg = document.getElementById("setting-button-img");
 
-function handleShowSettings(){
-    const settingsDropdown = document.getElementById("settings-dropdown");
-    const settingsButton = document.getElementById("settings-button");
-    const settingsButtonImg = document.getElementById("setting-button-img");
-    
-    
-    showSettingsDropdown = !showSettingsDropdown
-    
-    if (showSettingsDropdown){
-      settingsDropdown.style.visibility = "visible"
-      settingsDropdown.style.opacity = "1"
-      settingsButton.style.borderRadius = "0.5vw 0.5vw 0 0" 
-      settingsButtonImg.style.transform = "rotate(90deg)"
 
-    } else {
-      settingsDropdown.style.visibility = "hidden"
-      settingsDropdown.style.opacity = "0"
-      settingsButton.style.borderRadius = "0.5vw" 
-      settingsButtonImg.style.transform = "rotate(0deg)"
+  showSettingsDropdown = !showSettingsDropdown
 
-    }
+  if (showSettingsDropdown) {
+    settingsDropdown.style.visibility = "visible"
+    settingsDropdown.style.opacity = "1"
+    settingsButton.style.borderRadius = "0.5vw 0.5vw 0 0"
+    settingsButtonImg.style.transform = "rotate(90deg)"
+
+  } else {
+    settingsDropdown.style.visibility = "hidden"
+    settingsDropdown.style.opacity = "0"
+    settingsButton.style.borderRadius = "0.5vw"
+    settingsButtonImg.style.transform = "rotate(0deg)"
+
+  }
 }
-
 // Função pra atualizar gráficos
-function updateAllGraphs(){
+function updateAllGraphs() {
   const selectedQuantity = document.getElementById("selectedQuantity").value
   updateBarChart(selectedQuantity);
   updatePieChart(selectedQuantity);
@@ -245,44 +307,26 @@ function updateAllGraphs(){
 
 window.onload = resetInputs;
 
-function showAlertBox(message, category){
-  alertMessage.innerHTML = message;
-  alertBox.style.display = "flex";
-
-  if (category === 'success') {
-      alertBox.style.backgroundColor = 'green';
-  } else {
-      alertBox.style.backgroundColor = '#f36464';
-  }
-
-  setTimeout(() => {
-      alertBox.style.display = "none";
-  }, 3000);
-}
-
 function resetInputs() {
   document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
-      radio.checked = false;
+    radio.checked = false;
   });
   document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
-      radio.checked = false;
+    radio.checked = false;
   });
   document.getElementById("userArrayInput").value = null
   document.getElementById("arraySortedResponse").value = null
 }
-
-
-
 // Função para definir os valores dos graficos
 function setGraphValues(sort, type, value) {
   arraySize = document.querySelector('input[name="arraySize"]:checked').value
   if (graphValues[sort]) {
-      if (type in graphValues[sort]) {
-          graphValues[sort][type] = value;
-          graphValues1[`${sort}${arraySize}${type}`] = value;
-      }
-      updateAllGraphs();
+    if (type in graphValues[sort]) {
+      graphValues[sort][type] = value;
+      graphValues1[`${sort}${arraySize}${type}`] = value;
     }
+    updateAllGraphs();
+  }
 }
 
 
@@ -345,7 +389,7 @@ let barChart = new Chart(ctxLine, {
       y: {
         beginAtZero: true,
         ticks: {
-          callback: function(value) {
+          callback: function (value) {
             return value + 's'; // Unidade inicial em segundos
           },
           color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
@@ -377,7 +421,7 @@ let barChart = new Chart(ctxLine, {
       legend: {
         display: true, // Mantém a legenda visível
         labels: {
-          generateLabels: function(chart) {
+          generateLabels: function (chart) {
             const labels = [];
             chart.data.datasets.forEach((dataset, i) => {
               labels.push({
@@ -407,7 +451,7 @@ let barChart = new Chart(ctxLine, {
       },
       tooltip: {
         callbacks: {
-          title: function(tooltipItems) {
+          title: function (tooltipItems) {
             return tooltipItems[0].label;
           }
         },
@@ -428,54 +472,96 @@ let barChart = new Chart(ctxLine, {
   }
 });
 
+
+
+
+
+
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart(selectedQuantity) {
   const selectedMetric = document.getElementById('selectedMetric').value;
-  let label, yAxisUnit, barColors;
+  const selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
+  let label, yAxisUnit;
 
-  // Alterar o conjunto de dados e o eixo Y de acordo com a métrica selecionada
-  switch (selectedMetric) {
-    case 'time':
-      label = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Atualizado para incluir a quantidade
-      yAxisUnit = 's';
-      barChart.data.datasets[0].data = [
-        graphValues1[`bubblesort${selectedQuantity}time`], 
-        graphValues1[`insertionsort${selectedQuantity}time`], 
-        graphValues1[`selectionsort${selectedQuantity}time`], 
-        graphValues1[`heapsort${selectedQuantity}time`]
-      ];
-      break;
-    case 'memory':
-      label = `SIZE: ${selectedQuantity} | MEMORY`; // Atualizado para incluir a quantidade
-      yAxisUnit = 'GB'; // Corrigido para GB
-      barChart.data.datasets[0].data = [
-        graphValues1[`bubblesort${selectedQuantity}memory`], 
-        graphValues1[`insertionsort${selectedQuantity}memory`], 
-        graphValues1[`selectionsort${selectedQuantity}memory`], 
-        graphValues1[`heapsort${selectedQuantity}memory`]
-      ];
-      break;
-    case 'iterations':
-      label = `SIZE: ${selectedQuantity} | ITERATIONS`; // Atualizado para incluir a quantidade
-      yAxisUnit = '';
-      barChart.data.datasets[0].data = [
-        graphValues1[`bubblesort${selectedQuantity}iterations`], 
-        graphValues1[`insertionsort${selectedQuantity}iterations`], 
-        graphValues1[`selectionsort${selectedQuantity}iterations`], 
-        graphValues1[`heapsort${selectedQuantity}iterations`]
-      ];
-      break;
+  // Define a estrutura do switch baseado na linguagem
+  if (selectedLanguage === 'english') {
+    switch (selectedMetric) {
+      case 'time':
+        label = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Texto em inglês
+        yAxisUnit = 's';
+        barChart.data.datasets[0].data = [
+          graphValues1[`bubblesort${selectedQuantity}time`],
+          graphValues1[`insertionsort${selectedQuantity}time`],
+          graphValues1[`selectionsort${selectedQuantity}time`],
+          graphValues1[`heapsort${selectedQuantity}time`]
+        ];
+        break;
+      case 'memory':
+        label = `SIZE: ${selectedQuantity} | MEMORY USE`; // Texto em inglês
+        yAxisUnit = 'MB'; // Corrigido para GB
+        barChart.data.datasets[0].data = [
+          graphValues1[`bubblesort${selectedQuantity}memory`],
+          graphValues1[`insertionsort${selectedQuantity}memory`],
+          graphValues1[`selectionsort${selectedQuantity}memory`],
+          graphValues1[`heapsort${selectedQuantity}memory`]
+        ];
+        break;
+      case 'iterations':
+        label = `SIZE: ${selectedQuantity} | ITERATIONS`; // Texto em inglês
+        yAxisUnit = '';
+        barChart.data.datasets[0].data = [
+          graphValues1[`bubblesort${selectedQuantity}iterations`],
+          graphValues1[`insertionsort${selectedQuantity}iterations`],
+          graphValues1[`selectionsort${selectedQuantity}iterations`],
+          graphValues1[`heapsort${selectedQuantity}iterations`]
+        ];
+        break;
+    }
+  } else if (selectedLanguage === 'portuguese') {
+    switch (selectedMetric) {
+      case 'time':
+        label = `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em português
+        yAxisUnit = 's';
+        barChart.data.datasets[0].data = [
+          graphValues1[`bubblesort${selectedQuantity}time`],
+          graphValues1[`insertionsort${selectedQuantity}time`],
+          graphValues1[`selectionsort${selectedQuantity}time`],
+          graphValues1[`heapsort${selectedQuantity}time`]
+        ];
+        break;
+      case 'memory':
+        label = `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em português
+        yAxisUnit = 'MB'; // Corrigido para GB
+        barChart.data.datasets[0].data = [
+          graphValues1[`bubblesort${selectedQuantity}memory`],
+          graphValues1[`insertionsort${selectedQuantity}memory`],
+          graphValues1[`selectionsort${selectedQuantity}memory`],
+          graphValues1[`heapsort${selectedQuantity}memory`]
+        ];
+        break;
+      case 'iterations':
+        label = `TAMANHO: ${selectedQuantity} | INTERAÇÕES`; // Texto em português
+        yAxisUnit = '';
+        barChart.data.datasets[0].data = [
+          graphValues1[`bubblesort${selectedQuantity}iterations`],
+          graphValues1[`insertionsort${selectedQuantity}iterations`],
+          graphValues1[`selectionsort${selectedQuantity}iterations`],
+          graphValues1[`heapsort${selectedQuantity}iterations`]
+        ];
+        break;
+    }
   }
 
   // Atualiza o título do gráfico
   barChart.options.plugins.legend.title.text = label; // Atualiza o título
   // Atualiza o gráfico
-  barChart.options.scales.y.ticks.callback = function(value) {
+  barChart.options.scales.y.ticks.callback = function (value) {
     return value + yAxisUnit; // Atualiza a unidade do eixo Y
   };
 
   barChart.update();
 }
+
 
 
 
@@ -497,24 +583,24 @@ const ctxPie = document.getElementById('pieChart').getContext('2d');
 let myPieChart = new Chart(ctxPie, {
   type: 'pie',
   data: {
-      labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
-      datasets: [{
-          label: '',
-          data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
-          backgroundColor: [
-              '#FFA6C9',
-              '#CDA1DB',
-              '#4B9F6E',
-              '#f4a261'
-          ],
-          borderColor: [
-              'rgba(0, 0, 0, 1)',
-              'rgba(0, 0, 0, 1)',
-              'rgba(0, 0, 0, 1)',
-              'rgba(0, 0, 0, 1)'
-          ],
-          borderWidth: 1.5
-      }]
+    labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
+    datasets: [{
+      label: '',
+      data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
+      backgroundColor: [
+        '#FFA6C9',
+        '#CDA1DB',
+        '#4B9F6E',
+        '#f4a261'
+      ],
+      borderColor: [
+        'rgba(0, 0, 0, 1)',
+        'rgba(0, 0, 0, 1)',
+        'rgba(0, 0, 0, 1)',
+        'rgba(0, 0, 0, 1)'
+      ],
+      borderWidth: 1.5
+    }]
   },
   options: {
     responsive: true,
@@ -556,68 +642,68 @@ function updatePieChart(selectedQuantity) {
   var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
   var titleText; // Variável para o título
 
-    switch (metric) {
-        case 'time':
-            data = [
-              graphValues1[`bubblesort${selectedQuantity}time`], 
-              graphValues1[`insertionsort${selectedQuantity}time`], 
-              graphValues1[`selectionsort${selectedQuantity}time`], 
-              graphValues1[`heapsort${selectedQuantity}time`]
-            ];
-            break;
-        case 'memory':
-            console.log("Métrica no memory", metric)
-            data = [
-              graphValues1[`bubblesort${selectedQuantity}memory`], 
-              graphValues1[`insertionsort${selectedQuantity}memory`], 
-              graphValues1[`selectionsort${selectedQuantity}memory`], 
-              graphValues1[`heapsort${selectedQuantity}memory`]
-            ];
-            break;
-        case 'iterations':
-            console.log("Métrica no iterations ", metric)
-            data = [
-              graphValues1[`bubblesort${selectedQuantity}iterations`], 
-              graphValues1[`insertionsort${selectedQuantity}iterations`], 
-              graphValues1[`selectionsort${selectedQuantity}iterations`], 
-              graphValues1[`heapsort${selectedQuantity}iterations`]
-            ];
-            break;
-        default:
-            data = [0, 0, 0, 0];
-    }
+  switch (metric) {
+    case 'time':
+      data = [
+        graphValues1[`bubblesort${selectedQuantity}time`],
+        graphValues1[`insertionsort${selectedQuantity}time`],
+        graphValues1[`selectionsort${selectedQuantity}time`],
+        graphValues1[`heapsort${selectedQuantity}time`]
+      ];
+      break;
+    case 'memory':
+      console.log("Métrica no memory", metric)
+      data = [
+        graphValues1[`bubblesort${selectedQuantity}memory`],
+        graphValues1[`insertionsort${selectedQuantity}memory`],
+        graphValues1[`selectionsort${selectedQuantity}memory`],
+        graphValues1[`heapsort${selectedQuantity}memory`]
+      ];
+      break;
+    case 'iterations':
+      console.log("Métrica no iterations ", metric)
+      data = [
+        graphValues1[`bubblesort${selectedQuantity}iterations`],
+        graphValues1[`insertionsort${selectedQuantity}iterations`],
+        graphValues1[`selectionsort${selectedQuantity}iterations`],
+        graphValues1[`heapsort${selectedQuantity}iterations`]
+      ];
+      break;
+    default:
+      data = [0, 0, 0, 0];
+  }
   // Define o título de acordo com a métrica selecionada
   switch (metric) {
-      case 'time':
-          data = [
-            graphValues1[`bubblesort${selectedQuantity}time`], 
-            graphValues1[`insertionsort${selectedQuantity}time`], 
-            graphValues1[`selectionsort${selectedQuantity}time`], 
-            graphValues1[`heapsort${selectedQuantity}time`]
-          ];
-          titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título para tempo
-          break;
-      case 'memory':
-          data = [
-            graphValues1[`bubblesort${selectedQuantity}memory`], 
-            graphValues1[`insertionsort${selectedQuantity}memory`], 
-            graphValues1[`selectionsort${selectedQuantity}memory`], 
-            graphValues1[`heapsort${selectedQuantity}memory`]
-          ];
-          titleText = `SIZE: ${selectedQuantity} | MEMORY`; // Título para memória
-          break;
-      case 'iterations':
-          data = [
-            graphValues1[`bubblesort${selectedQuantity}iterations`], 
-            graphValues1[`insertionsort${selectedQuantity}iterations`], 
-            graphValues1[`selectionsort${selectedQuantity}iterations`], 
-            graphValues1[`heapsort${selectedQuantity}iterations`]
-          ];
-          titleText = `SIZE: ${selectedQuantity} | ITERATIONS`; // Título para iterações
-          break;
-      default:
-          data = [0, 0, 0, 0]; // Valores padrão
-          titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título padrão
+    case 'time':
+      data = [
+        graphValues1[`bubblesort${selectedQuantity}time`],
+        graphValues1[`insertionsort${selectedQuantity}time`],
+        graphValues1[`selectionsort${selectedQuantity}time`],
+        graphValues1[`heapsort${selectedQuantity}time`]
+      ];
+      titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título para tempo
+      break;
+    case 'memory':
+      data = [
+        graphValues1[`bubblesort${selectedQuantity}memory`],
+        graphValues1[`insertionsort${selectedQuantity}memory`],
+        graphValues1[`selectionsort${selectedQuantity}memory`],
+        graphValues1[`heapsort${selectedQuantity}memory`]
+      ];
+      titleText = `SIZE: ${selectedQuantity} | MEMORY`; // Título para memória
+      break;
+    case 'iterations':
+      data = [
+        graphValues1[`bubblesort${selectedQuantity}iterations`],
+        graphValues1[`insertionsort${selectedQuantity}iterations`],
+        graphValues1[`selectionsort${selectedQuantity}iterations`],
+        graphValues1[`heapsort${selectedQuantity}iterations`]
+      ];
+      titleText = `SIZE: ${selectedQuantity} | ITERATIONS`; // Título para iterações
+      break;
+    default:
+      data = [0, 0, 0, 0]; // Valores padrão
+      titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título padrão
   }
 
   // Atualiza os dados e o título do gráfico
@@ -678,7 +764,7 @@ let barChartWAP = new Chart(ctxWAP, {
       y: {
         beginAtZero: true,
         ticks: {
-          callback: function(value) {
+          callback: function (value) {
             return value + ' WAP'; // Exibe o valor com ' WAP'
           },
           color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
@@ -718,7 +804,7 @@ let barChartWAP = new Chart(ctxWAP, {
       legend: {
         display: true, // Mantém a legenda visível
         labels: {
-          generateLabels: function(chart) {
+          generateLabels: function (chart) {
             return chart.data.datasets.map((dataset, i) => {
               return {
                 text: dataset.label, // Exibe o título do conjunto de dados
@@ -738,7 +824,7 @@ let barChartWAP = new Chart(ctxWAP, {
       },
       tooltip: {
         callbacks: {
-          title: function(tooltipItems) {
+          title: function (tooltipItems) {
             return tooltipItems[0].label;
           },
         },
@@ -758,33 +844,33 @@ let barChartWAP = new Chart(ctxWAP, {
 
 // Função para calcular o WAP para cada algoritmo
 function wap() {
-    const algorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
-    
-    return algorithms.map(tipo => {
-        let interaionsWAP = graphValues[tipo].iterations;
-        let timeWAP = graphValues[tipo].time;
-        let memoryWAP = graphValues[tipo].memory;
+  const algorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
 
-        // Calcula o WAP com base na fórmula
-        return ((interaionsWAP / 10000000) * 2) + (timeWAP * 14) + (memoryWAP * 4) / 20;
-    });
+  return algorithms.map(tipo => {
+    let interaionsWAP = graphValues[tipo].iterations;
+    let timeWAP = graphValues[tipo].time;
+    let memoryWAP = graphValues[tipo].memory;
+
+    // Calcula o WAP com base na fórmula
+    return ((interaionsWAP / 10000000) * 2) + (timeWAP * 14) + (memoryWAP * 4) / 20;
+  });
 }
 
 // Função para atualizar o gráfico de BARRAS com a métrica WAP
 function updateBarChartWAP(selectedQuantity) { // Adicione selectedQuantity como parâmetro
-    const data = wap(); // Calcula os valores para WAP
+  const data = wap(); // Calcula os valores para WAP
 
-    barChartWAP.data.datasets[0].data = data; // Atualiza os dados do gráfico com os resultados WAP
+  barChartWAP.data.datasets[0].data = data; // Atualiza os dados do gráfico com os resultados WAP
 
-    // Atualiza o título do gráfico com a quantidade selecionada
-    barChartWAP.options.plugins.title.text = `SIZE: ${selectedQuantity} | WAP METRIC`; // Atualiza o título dinamicamente
-    
-    // Mantém o formato dos ticks do eixo Y
-    barChartWAP.options.scales.y.ticks.callback = function(value) {
-        return value + ' WAP'; // Mantém a unidade WAP
-    };
-    
-    barChartWAP.update(); // Atualiza o gráfico para refletir as mudanças
+  // Atualiza o título do gráfico com a quantidade selecionada
+  barChartWAP.options.plugins.title.text = `SIZE: ${selectedQuantity} | WAP METRIC`; // Atualiza o título dinamicamente
+
+  // Mantém o formato dos ticks do eixo Y
+  barChartWAP.options.scales.y.ticks.callback = function (value) {
+    return value + ' WAP'; // Mantém a unidade WAP
+  };
+
+  barChartWAP.update(); // Atualiza o gráfico para refletir as mudanças
 }
 
 
@@ -839,7 +925,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
             size: 15
           },
           // Aqui, adicionamos a unidade ao lado do número
-          callback: function(value) {
+          callback: function (value) {
             return value + 's'; // Você pode personalizar aqui para 'GB' se necessário
           },
           backdropColor: 'transparent', // Remove o fundo dos números
@@ -867,9 +953,9 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
             size: 16 // Define o tamanho da fonte para 16
           },
           color: '#FFFFFF', // Cor do texto da legenda (branca)
-          generateLabels: function(chart) {
+          generateLabels: function (chart) {
             const originalColors = ['#FFA6C9', '#CDA1DB', '#4B9F6E', '#f4a261'];
-            return chart.data.labels.map(function(label, index) {
+            return chart.data.labels.map(function (label, index) {
               return {
                 text: label,
                 fillStyle: originalColors[index], // Cor original sem transparência para a legenda
@@ -884,7 +970,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         position: 'top',
         align: 'center',
         padding: 20,
-        backgroundColor: 'rgba(0, 0, 0, 0)' 
+        backgroundColor: 'rgba(0, 0, 0, 0)'
       },
       title: {
         display: true,
@@ -896,7 +982,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         },
       }
     },
-    
+
     animation: {
       duration: 1000, // 1 segundo de duração da transição
       easing: 'easeInOutQuad' // Tipo de animação
@@ -913,38 +999,38 @@ function updatePolarAreaChart(selectedQuantity) {
   var yAxisUnit = ''; // Inicializa a unidade do eixo Y
 
   switch (metric) {
-      case 'time':
-          data = [
-            graphValues1[`bubblesort${selectedQuantity}time`], 
-            graphValues1[`insertionsort${selectedQuantity}time`], 
-            graphValues1[`selectionsort${selectedQuantity}time`], 
-            graphValues1[`heapsort${selectedQuantity}time`]
-          ];
-          titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Atualizado para incluir a quantidade
-          yAxisUnit = 's'; // Unidade em segundos
-          break;
-      case 'memory':
-          data = [
-            graphValues1[`bubblesort${selectedQuantity}memory`], 
-            graphValues1[`insertionsort${selectedQuantity}memory`], 
-            graphValues1[`selectionsort${selectedQuantity}memory`], 
-            graphValues1[`heapsort${selectedQuantity}memory`]
-          ];
-          titleText = `SIZE: ${selectedQuantity} | MEMORY`; // Atualizado para incluir a quantidade
-          yAxisUnit = 'GB'; // Unidade em GB
-          break;
-      case 'iterations':
-          data = [
-            graphValues1[`bubblesort${selectedQuantity}iterations`], 
-            graphValues1[`insertionsort${selectedQuantity}iterations`], 
-            graphValues1[`selectionsort${selectedQuantity}iterations`], 
-            graphValues1[`heapsort${selectedQuantity}iterations`]
-          ];
-          titleText = `SIZE: ${selectedQuantity} | ITERATIONS`; // Atualizado para incluir a quantidade
-          yAxisUnit = ''; // Unidade em segundos
-          break;
-      default:
-          data = [0, 0, 0, 0]; // Valores padrão
+    case 'time':
+      data = [
+        graphValues1[`bubblesort${selectedQuantity}time`],
+        graphValues1[`insertionsort${selectedQuantity}time`],
+        graphValues1[`selectionsort${selectedQuantity}time`],
+        graphValues1[`heapsort${selectedQuantity}time`]
+      ];
+      titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Atualizado para incluir a quantidade
+      yAxisUnit = 's'; // Unidade em segundos
+      break;
+    case 'memory':
+      data = [
+        graphValues1[`bubblesort${selectedQuantity}memory`],
+        graphValues1[`insertionsort${selectedQuantity}memory`],
+        graphValues1[`selectionsort${selectedQuantity}memory`],
+        graphValues1[`heapsort${selectedQuantity}memory`]
+      ];
+      titleText = `SIZE: ${selectedQuantity} | MEMORY`; // Atualizado para incluir a quantidade
+      yAxisUnit = 'MB'; // Unidade em GB
+      break;
+    case 'iterations':
+      data = [
+        graphValues1[`bubblesort${selectedQuantity}iterations`],
+        graphValues1[`insertionsort${selectedQuantity}iterations`],
+        graphValues1[`selectionsort${selectedQuantity}iterations`],
+        graphValues1[`heapsort${selectedQuantity}iterations`]
+      ];
+      titleText = `SIZE: ${selectedQuantity} | ITERATIONS`; // Atualizado para incluir a quantidade
+      yAxisUnit = ''; // Unidade em segundos
+      break;
+    default:
+      data = [0, 0, 0, 0]; // Valores padrão
   }
 
   myPolarAreaChart.data.labels = labels;
@@ -952,7 +1038,7 @@ function updatePolarAreaChart(selectedQuantity) {
   myPolarAreaChart.options.plugins.title.text = titleText; // Atualiza o título do gráfico
 
   // Atualiza a unidade no eixo Y dependendo da métrica selecionada
-  myPolarAreaChart.options.scales.r.ticks.callback = function(value) {
+  myPolarAreaChart.options.scales.r.ticks.callback = function (value) {
     return value + (metric === 'memory' ? ' GB' : 's'); // Muda para GB ou s baseado na métrica
   };
 

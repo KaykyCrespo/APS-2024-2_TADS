@@ -57,35 +57,50 @@ def updateStatistics(name, value):
         new_value = current_value + float(value)
         element.innerHTML = f"{new_value:.3f}s" if name == 'totalTime' else str(int(new_value))
 
-def makeManualTest(event):
-    userArray = document.getElementById("userArrayInput").value.strip()
-    if not userArray:
-        showAlertBox("Input cannot be empty.", "error")
+
+
+
+
+
+
+
+def make_manual_test(event):
+    user_array = document.getElementById("userArrayInput").value.strip()
+    
+    if not user_array:
+        showAlertBox("empty_input", "error")
         return
 
     try:
-        stringList = userArray.split(',')
-        integerList = [int(x.strip()) for x in stringList if x.strip()]
-        responseArray = document.getElementById("arraySortedResponse")
-        responseArray.value = sorted(integerList)
-        showAlertBox("Manual array sorted with success.", "success")
+        string_list = user_array.split(',')
+        integer_list = [int(x.strip()) for x in string_list if x.strip()]
+        
+        # Aqui você deve adicionar a lógica para exibir o array ordenado
+        response_array = document.getElementById("arraySortedResponse")
+        response_array.value = sorted(integer_list)
+        
+        showAlertBox("manual_sort_success", "success")
     except ValueError:
-        showAlertBox("Invalid input on manual sort test. Please enter integers separated by commas.", "error")
-        resetInputs()
+        showAlertBox("invalid_input", "error")
 
-def resetInputValues(event):
-    global sortArraySize
-    global sortType
+
+def reset_input_values(event):
+    global sort_array_size
+    global sort_type
     
     try:
-        sortArraySize = []
-        sortType = ""
+        sort_array_size = []
+        sort_type = ""
         resetInputs()
+        
+        # Supondo que você tenha elementos para mostrar arrays não ordenados e ordenados
         document.getElementById("unsorted-array").innerHTML = "[]"
         document.getElementById("sorted-array").innerHTML = "[]"
-        showAlertBox("Success! Input values have been reset.", "success")
+        
+        showAlertBox("input_reset_success", "success")
     except Exception as e:
-        showAlertBox(f"Error! {e}", "error")
+        showAlertBox("input_reset_error", "error")
+
 
 
 def calculate_color(value, min_value, max_value):
@@ -148,7 +163,6 @@ def makeTest(event):
             updateStatistics('totalTime', f"{elapsed_time_perf_counter:.6f}");
             updateStatistics('totalIterations', sort_type(sortArraySize));
 
-
         sort_functions = {
         "bubblesort": bubble_sort,
         "insertionsort": insertionSort,
@@ -191,9 +205,9 @@ def makeTest(event):
         
         window.location.hash = "#perfomance-results-container";
         resetInputValues(event);
-        showAlertBox("Array sorted with success.", "success");
+        showAlertBox("manual_sort_success", "success")
     else:
-        showAlertBox("Error! Some fields isn't checked.", "error");
+        showAlertBox("fields_not_checked", "error")
 
 def resetInputValues(event):
     global sortArraySize
@@ -203,9 +217,10 @@ def resetInputValues(event):
         sortArraySize = []
         sortType = "";
         resetInputs();
-        showAlertBox("Success! Input values has been reseted.", "success")
+        showAlertBox("input_reset_success", "success")
     except Exception as e:
-        showAlertBox(f"Error! {e}", "error")  
+        showAlertBox("input_reset_error", "error")
+
 
 def bubble_sort(lista):
     iteration_count = 0
