@@ -176,6 +176,7 @@ var alert_messages = {
     'input_reset_error': "Error! {error}",
     'fields_not_checked': "Error! Some fields aren't checked.",
     'default_alert_message': "No language selected, using default settings.",
+    'select_ordanation': "Select if numbers will be created randomly or not"
   },
   'portuguese': {
     'empty_input': "O campo não pode estar vazio.",
@@ -185,6 +186,7 @@ var alert_messages = {
     'input_reset_error': "Erro! {error}",
     'fields_not_checked': "Erro! Alguns campos não estão selecionados.",
     'default_alert_message': "Nenhuma língua selecionada, usando configurações padrão.",
+    'select_ordanation': "Selecione se os números irão ser criados aleatórios ou não"
   }
 };
 

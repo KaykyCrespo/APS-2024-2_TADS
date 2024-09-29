@@ -21,23 +21,35 @@ def setSortType(event):
     sortType = document.querySelector('input[name="sortOption"]:checked').value;
     #print("Sort type selected : ", sortType)
 
-# Método para escolher numeros aleátorios e colocar no Array
+# Método para escolher números aleatórios e colocá-los no Array
 def setArraySortSize(event):
     global sortArraySize
     global ordinationType
-    
-    sortArraySize = []
-    quantity = int(document.querySelector('input[name="arraySize"]:checked').value)
-    document.getElementById("selectedQuantity").value = quantity;
 
+    # Captura o tamanho do array escolhido
+    quantity = int(document.querySelector('input[name="arraySize"]:checked').value)
+    document.getElementById("selectedQuantity").value = quantity
+
+    # Verifica se o tipo de ordenação foi escolhido
+    if not ordinationType:
+        showAlertBox("select_ordanation","error")
+
+        return  # Interrompe a execução até que o tipo de ordenação seja escolhido
+
+    # Inicializa a lista de números
+    sortArraySize = []
+
+    # Valida se é para repetir ou não os números
     if ordinationType == "unique":
+        if quantity > 20000:
+            return  # Impede que números sejam gerados se o tamanho for maior que o intervalo
         # Gerar números únicos sem repetição
         sortArraySize = random.sample(range(0, 20000), quantity)
-    else:
+    elif ordinationType == "repeat":
         # Gerar números com repetição
-        for i in range(quantity):
-            sortArraySize.append(random.randint(0, 20000))
-    #print("Random arrays numbers with size", int(document.querySelector('input[name="arraySize"]:checked').value),":", sortArraySize)
+        sortArraySize = [random.randint(0, 20000) for _ in range(quantity)]
+
+
 
 def updateStatistics(name, value):
     elementIds = {
@@ -56,13 +68,6 @@ def updateStatistics(name, value):
         current_value = float(element.innerHTML.replace('s', '').replace(' ', '') or '0')
         new_value = current_value + float(value)
         element.innerHTML = f"{new_value:.3f}s" if name == 'totalTime' else str(int(new_value))
-
-
-
-
-
-
-
 
 def make_manual_test(event):
     user_array = document.getElementById("userArrayInput").value.strip()
@@ -83,7 +88,6 @@ def make_manual_test(event):
     except ValueError:
         showAlertBox("invalid_input", "error")
 
-
 def reset_input_values(event):
     global sort_array_size
     global sort_type
@@ -100,8 +104,6 @@ def reset_input_values(event):
         showAlertBox("input_reset_success", "success")
     except Exception as e:
         showAlertBox("input_reset_error", "error")
-
-
 
 def calculate_color(value, min_value, max_value):
     # Definindo as cores de início e fim (R, G, B)
