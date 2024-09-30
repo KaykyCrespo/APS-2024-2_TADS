@@ -15,7 +15,7 @@
 
 <body>
     <div id="settings-container">
-        <div id="settings-button" onclick="handleShowSettings()">
+        <div id="settings-button">
             <img src="imgs/gear.png" id="setting-button-img">
         </div>
         <div id="settings-dropdown">
@@ -159,8 +159,8 @@
                 <h2 id="lang-array-build-info">This will affect on how the random array are made</h2>
                 <div>
                     <select id="ordinationType" name="ordinationType" py-change="setOrdinationType">
-                        <option value="unique" id="lang-array-unique">Never repeat numbers</option>
                         <option value="repeat" id="lang-array-repeat">Repeat numbers</option>
+                        <option value="unique" id="lang-array-unique">Never repeat numbers</option>
                     </select>
                 </div>
             </div>

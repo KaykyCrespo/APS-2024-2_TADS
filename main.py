@@ -4,7 +4,7 @@ import math, random, time
 
 
 sortType = "";
-ordinationType  = "";
+ordinationType  = "repeat";
 sortArraySize = [];
 userArray = [];
 
@@ -25,16 +25,13 @@ def setSortType(event):
 def setArraySortSize(event):
     global sortArraySize
     global ordinationType
-
+    
+    print("Array sort type : ", sortType)
+    print("Ordination type ", ordinationType)
+    
     # Captura o tamanho do array escolhido
     quantity = int(document.querySelector('input[name="arraySize"]:checked').value)
-    document.getElementById("selectedQuantity").value = quantity
-
-    # Verifica se o tipo de ordenação foi escolhido
-    if not ordinationType:
-        showAlertBox("select_ordanation","error")
-
-        return  # Interrompe a execução até que o tipo de ordenação seja escolhido
+    document.getElementById("selectedQuantity").value = quantity;
 
     # Inicializa a lista de números
     sortArraySize = []
@@ -48,6 +45,8 @@ def setArraySortSize(event):
     elif ordinationType == "repeat":
         # Gerar números com repetição
         sortArraySize = [random.randint(0, 20000) for _ in range(quantity)]
+        
+    print("Array : ", sortArraySize)
 
 
 
@@ -143,13 +142,16 @@ def makeTest(event):
     global sortArraySize
     global sortType
     originalUnsortedArray = sortArraySize.copy();
+    
+
 
     unsortedArray = document.getElementById("unsorted-array");
     sortedArray = document.getElementById("sorted-array");
     sortTypeSelected = document.getElementById("selected-sort-type");
 
     
-
+    
+    
     def performanceTest(sort):
 
         def measureMemoryUsage(array):
@@ -178,8 +180,6 @@ def makeTest(event):
         sort_type(sortArraySize)
         end_time = time.perf_counter()
         elapsed_time_perf_counter = end_time - start_time
-        print(f"Tempo decorrido com perf_counter: {elapsed_time_perf_counter:.6f} segundos")
-        
 
         updateAllStatistics();
         

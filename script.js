@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Tradução de dados
-  const data = {
+  const languageData = {
     "english": {
       "lang-title": "Array Buddy",
       "lang-title-principal": "Array Buddy",
@@ -105,14 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Adicionar um método para redefinir o estado
-  function resetTestState() {
-    sortType = ""; // Certifique-se de que sortType esteja definido em um escopo acessível
-    sortArraySize = []; // Certifique-se de que sortArraySize esteja definido em um escopo acessível
-    document.getElementById("unsorted-array").innerHTML = "[]";
-    document.getElementById("sorted-array").innerHTML = "[]";
-  }
-
   function addLanguageToggleEvents() {
     links.forEach(link => {
       link.addEventListener('click', (e) => {
@@ -125,14 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
         link.classList.add('active');
 
         const selectedLanguage = link.getAttribute('language');
-        if (!data[selectedLanguage]) {
+        if (!languageData[selectedLanguage]) {
           console.error(`Translation for language "${selectedLanguage}" not found.`);
           return;
         }
 
         Object.keys(langElements).forEach(key => {
           const element = langElements[key];
-          const translation = data[selectedLanguage][key];
+          const translation = languageData[selectedLanguage][key];
 
           if (element) {
             if (element instanceof NodeList) {
@@ -147,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
 
-        resetTestState();
+        resetInputs();
       });
     });
   }
@@ -176,7 +168,6 @@ var alert_messages = {
     'input_reset_error': "Error! {error}",
     'fields_not_checked': "Error! Some fields aren't checked.",
     'default_alert_message': "No language selected, using default settings.",
-    'select_ordanation': "Select if numbers will be created randomly or not"
   },
   'portuguese': {
     'empty_input': "O campo não pode estar vazio.",
@@ -186,7 +177,6 @@ var alert_messages = {
     'input_reset_error': "Erro! {error}",
     'fields_not_checked': "Erro! Alguns campos não estão selecionados.",
     'default_alert_message': "Nenhuma língua selecionada, usando configurações padrão.",
-    'select_ordanation': "Selecione se os números irão ser criados aleatórios ou não"
   }
 };
 
@@ -277,6 +267,7 @@ const graphValues = {
 }
 
 
+
 // Função para abrir ou fechar o dropdown
 function toggleDropdown(event) {
   const settingsDropdown = document.getElementById("settings-dropdown");
@@ -300,7 +291,6 @@ function toggleDropdown(event) {
     }
   }
 }
-
 // Função para abrir o dropdown
 function openDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsDropdown.style.visibility = "visible";
@@ -308,7 +298,6 @@ function openDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsButton.style.borderRadius = "0.5vw 0.5vw 0 0";
   settingsButtonImg.style.transform = "rotate(90deg)";
 }
-
 // Função para fechar o dropdown
 function closeDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsDropdown.style.visibility = "hidden";
@@ -316,10 +305,8 @@ function closeDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsButton.style.borderRadius = "0.5vw";
   settingsButtonImg.style.transform = "rotate(0deg)";
 }
-
 // Adiciona o event listener para controlar a visibilidade do dropdown
 document.addEventListener('click', toggleDropdown);
-
 // Fecha o dropdown ao clicar nas bandeiras
 const flags = document.querySelectorAll("#settings-dropdown a");
 flags.forEach(flag => {
@@ -332,6 +319,9 @@ flags.forEach(flag => {
 });
 
 
+
+
+
 // Função pra atualizar gráficos
 function updateAllGraphs() {
   const selectedQuantity = document.getElementById("selectedQuantity").value
@@ -341,8 +331,8 @@ function updateAllGraphs() {
   updatePolarAreaChart(selectedQuantity);
 }
 
-window.onload = resetInputs;
 
+window.onload = resetInputs;
 function resetInputs() {
   document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
     radio.checked = false;
@@ -350,9 +340,17 @@ function resetInputs() {
   document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
     radio.checked = false;
   });
+  sortType = ""; // Certifique-se de que sortType esteja definido em um escopo acessível
+  sortArraySize = []; // Certifique-se de que sortArraySize esteja definido em um escopo acessível
+  document.getElementById("unsorted-array").innerHTML = "[]";
+  document.getElementById("sorted-array").innerHTML = "[]";
   document.getElementById("userArrayInput").value = null
   document.getElementById("arraySortedResponse").value = null
+  document.getElementById("ordinationType").value = "repeat"
+  
 }
+
+
 // Função para definir os valores dos graficos
 function setGraphValues(sort, type, value) {
   arraySize = document.querySelector('input[name="arraySize"]:checked').value
