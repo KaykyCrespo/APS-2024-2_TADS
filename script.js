@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const langEl = document.querySelector('.langWrap');
   const links = document.querySelectorAll('a[language]');
+  addLanguageToggleEvents();
 
 
   // Selecionar todos os elementos que precisam ser atualizados com a tradução
@@ -80,8 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-total-iterations": "Total de interações:",
       "lang-total-sec": "Tempo total (seg):",
       "lang-try-yourself": "Experimente você mesmo",
-      "lang-try-yourself-description": "Aqui você testa a ordenação de um array que você criou!",
-      "lang-example": "Tente colocar uma sequência de números abaixo (ex: 1, 145, 56, 2235, 5922, 3)",
+      "lang-try-yourself-description": "Aqui você pode testar uma ordenação de array manualmente!",
+      "lang-example": "Tente colocar uma sequência de números (ex: 1, 145, 56, 2235, 5922, 3)",
       "lang-example-result": "Aqui está o resultado:",
       "resetar": "resetar",
       "lang-button-make-test": "Fazer teste",
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-how-many-numbers": "Quantos números?",
       "lang-random-numbers-info": "Todos os números serão gerados aleatoriamente",
       "lang-array-build": "Construção do array",
-      "lang-array-build-info": "Isso afetará como o array aleatório é feito",
+      "lang-array-build-info": "Isso afetará como o array aleatório é gerado",
       "lang-array-unique": "Nunca repetir números",
       "lang-array-repeat": "Repetir números",
       "lang-performance-results-title": "Resultados de desempenho",
@@ -139,10 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
 
+        
         resetInputs();
+        updateAllGraphs();
       });
     });
-  }
+    }
 
   // Set default language to English
   const defaultLanguage = 'english';
@@ -151,13 +154,13 @@ document.addEventListener('DOMContentLoaded', () => {
     defaultLink.click();
   }
 
-  // Show an alert indicating that English is being used
-  showAlertBox('default_alert_message', 'error');
-
-  addLanguageToggleEvents();
 });
 
 
+// Qualquer motivo que seja puramente estético usar JavaScript caso não Pyscript
+const alertBox = document.getElementById('alert-box');
+const alertMessage = document.getElementById('alert-message');
+let showSettingsDropdown = false;
 
 var alert_messages = {
   'english': {
@@ -221,11 +224,7 @@ function showAlertBox(messageKey, category) {
 
 
 
-// Qualquer motivo que seja puramente estético usar JavaScript caso não Pyscript
-const alertBox = document.getElementById('alert-box');
-const alertMessage = document.getElementById('alert-message');
 
-let showSettingsDropdown = false;
 
 const sortingAlgorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
 const sizes = [250, 500, 1000, 2500, 7500, 15000];
@@ -342,11 +341,12 @@ function resetInputs() {
   });
   sortType = ""; // Certifique-se de que sortType esteja definido em um escopo acessível
   sortArraySize = []; // Certifique-se de que sortArraySize esteja definido em um escopo acessível
-  document.getElementById("unsorted-array").innerHTML = "[]";
-  document.getElementById("sorted-array").innerHTML = "[]";
   document.getElementById("userArrayInput").value = null
   document.getElementById("arraySortedResponse").value = null
   document.getElementById("ordinationType").value = "repeat"
+  document.getElementById("selectedMetric").value = "time"
+  document.getElementById("selectedQuantity").value = "250"
+
   
 }
 
@@ -443,38 +443,10 @@ function updatePieChart(selectedQuantity) {
   var metric = document.getElementById('selectedMetric').value;
   var data;
   var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-  var titleText; // Variável para o título
+  let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
 
-  switch (metric) {
-    case 'time':
-      data = [
-        graphValues1[`bubblesort${selectedQuantity}time`],
-        graphValues1[`insertionsort${selectedQuantity}time`],
-        graphValues1[`selectionsort${selectedQuantity}time`],
-        graphValues1[`heapsort${selectedQuantity}time`]
-      ];
-      break;
-    case 'memory':
-      console.log("Métrica no memory", metric)
-      data = [
-        graphValues1[`bubblesort${selectedQuantity}memory`],
-        graphValues1[`insertionsort${selectedQuantity}memory`],
-        graphValues1[`selectionsort${selectedQuantity}memory`],
-        graphValues1[`heapsort${selectedQuantity}memory`]
-      ];
-      break;
-    case 'iterations':
-      console.log("Métrica no iterations ", metric)
-      data = [
-        graphValues1[`bubblesort${selectedQuantity}iterations`],
-        graphValues1[`insertionsort${selectedQuantity}iterations`],
-        graphValues1[`selectionsort${selectedQuantity}iterations`],
-        graphValues1[`heapsort${selectedQuantity}iterations`]
-      ];
-      break;
-    default:
-      data = [0, 0, 0, 0];
-  }
+  var title; // Variável para o título
+
   // Define o título de acordo com a métrica selecionada
   switch (metric) {
     case 'time':
@@ -484,7 +456,7 @@ function updatePieChart(selectedQuantity) {
         graphValues1[`selectionsort${selectedQuantity}time`],
         graphValues1[`heapsort${selectedQuantity}time`]
       ];
-      titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título para tempo
+      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em inglês
       break;
     case 'memory':
       data = [
@@ -493,7 +465,7 @@ function updatePieChart(selectedQuantity) {
         graphValues1[`selectionsort${selectedQuantity}memory`],
         graphValues1[`heapsort${selectedQuantity}memory`]
       ];
-      titleText = `SIZE: ${selectedQuantity} | MEMORY`; // Título para memória
+      title =  selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em inglês
       break;
     case 'iterations':
       data = [
@@ -502,17 +474,17 @@ function updatePieChart(selectedQuantity) {
         graphValues1[`selectionsort${selectedQuantity}iterations`],
         graphValues1[`heapsort${selectedQuantity}iterations`]
       ];
-      titleText = `SIZE: ${selectedQuantity} | ITERATIONS`; // Título para iterações
+      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ITERATIONS` : `TAMANHO: ${selectedQuantity} | ITERAÇÕES`; // Texto em inglês
       break;
     default:
       data = [0, 0, 0, 0]; // Valores padrão
-      titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título padrão
+      title = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título padrão
   }
 
   // Atualiza os dados e o título do gráfico
   myPieChart.data.labels = labels;
   myPieChart.data.datasets[0].data = data;
-  myPieChart.options.plugins.title.text = titleText; // Atualiza o título do gráfico
+  myPieChart.options.plugins.title.text = title; // Atualiza o título do gráfico
 
   myPieChart.update(); // Atualiza o gráfico
 }
@@ -662,14 +634,13 @@ let barChart = new Chart(ctxLine, {
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart(selectedQuantity) {
   const selectedMetric = document.getElementById('selectedMetric').value;
-  const selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
-  let label, yAxisUnit;
+  let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
+  let title, yAxisUnit;
 
   // Define a estrutura do switch baseado na linguagem
-  if (selectedLanguage === 'english') {
     switch (selectedMetric) {
       case 'time':
-        label = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Texto em inglês
+        title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em inglês
         yAxisUnit = 's';
         barChart.data.datasets[0].data = [
           graphValues1[`bubblesort${selectedQuantity}time`],
@@ -679,7 +650,7 @@ function updateBarChart(selectedQuantity) {
         ];
         break;
       case 'memory':
-        label = `SIZE: ${selectedQuantity} | MEMORY USE`; // Texto em inglês
+        title =  selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em inglês
         yAxisUnit = 'MB'; // Corrigido para GB
         barChart.data.datasets[0].data = [
           graphValues1[`bubblesort${selectedQuantity}memory`],
@@ -689,7 +660,7 @@ function updateBarChart(selectedQuantity) {
         ];
         break;
       case 'iterations':
-        label = `SIZE: ${selectedQuantity} | ITERATIONS`; // Texto em inglês
+        title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ITERATIONS` : `TAMANHO: ${selectedQuantity} | ITERAÇÕES`; // Texto em inglês
         yAxisUnit = '';
         barChart.data.datasets[0].data = [
           graphValues1[`bubblesort${selectedQuantity}iterations`],
@@ -699,43 +670,8 @@ function updateBarChart(selectedQuantity) {
         ];
         break;
     }
-  } else if (selectedLanguage === 'portuguese') {
-    switch (selectedMetric) {
-      case 'time':
-        label = `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em português
-        yAxisUnit = 's';
-        barChart.data.datasets[0].data = [
-          graphValues1[`bubblesort${selectedQuantity}time`],
-          graphValues1[`insertionsort${selectedQuantity}time`],
-          graphValues1[`selectionsort${selectedQuantity}time`],
-          graphValues1[`heapsort${selectedQuantity}time`]
-        ];
-        break;
-      case 'memory':
-        label = `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em português
-        yAxisUnit = 'MB'; // Corrigido para GB
-        barChart.data.datasets[0].data = [
-          graphValues1[`bubblesort${selectedQuantity}memory`],
-          graphValues1[`insertionsort${selectedQuantity}memory`],
-          graphValues1[`selectionsort${selectedQuantity}memory`],
-          graphValues1[`heapsort${selectedQuantity}memory`]
-        ];
-        break;
-      case 'iterations':
-        label = `TAMANHO: ${selectedQuantity} | INTERAÇÕES`; // Texto em português
-        yAxisUnit = '';
-        barChart.data.datasets[0].data = [
-          graphValues1[`bubblesort${selectedQuantity}iterations`],
-          graphValues1[`insertionsort${selectedQuantity}iterations`],
-          graphValues1[`selectionsort${selectedQuantity}iterations`],
-          graphValues1[`heapsort${selectedQuantity}iterations`]
-        ];
-        break;
-    }
-  }
-
   // Atualiza o título do gráfico
-  barChart.options.plugins.legend.title.text = label; // Atualiza o título
+  barChart.options.plugins.legend.title.text = title; // Atualiza o título
   // Atualiza o gráfico
   barChart.options.scales.y.ticks.callback = function (value) {
     return value + yAxisUnit; // Atualiza a unidade do eixo Y
@@ -889,8 +825,9 @@ function updatePolarAreaChart(selectedQuantity) {
   var metric = document.getElementById('selectedMetric').value;
   var data;
   var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-  var titleText = 'EXECUTION TIME'; // Título padrão
+  var title; // Título padrão
   var yAxisUnit = ''; // Inicializa a unidade do eixo Y
+  let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
 
   switch (metric) {
     case 'time':
@@ -900,7 +837,7 @@ function updatePolarAreaChart(selectedQuantity) {
         graphValues1[`selectionsort${selectedQuantity}time`],
         graphValues1[`heapsort${selectedQuantity}time`]
       ];
-      titleText = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Atualizado para incluir a quantidade
+      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em inglês
       yAxisUnit = 's'; // Unidade em segundos
       break;
     case 'memory':
@@ -910,7 +847,7 @@ function updatePolarAreaChart(selectedQuantity) {
         graphValues1[`selectionsort${selectedQuantity}memory`],
         graphValues1[`heapsort${selectedQuantity}memory`]
       ];
-      titleText = `SIZE: ${selectedQuantity} | MEMORY`; // Atualizado para incluir a quantidade
+      title =  selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em inglês
       yAxisUnit = 'MB'; // Unidade em GB
       break;
     case 'iterations':
@@ -920,7 +857,7 @@ function updatePolarAreaChart(selectedQuantity) {
         graphValues1[`selectionsort${selectedQuantity}iterations`],
         graphValues1[`heapsort${selectedQuantity}iterations`]
       ];
-      titleText = `SIZE: ${selectedQuantity} | ITERATIONS`; // Atualizado para incluir a quantidade
+      title = `SIZE: ${selectedQuantity} | ITERATIONS`; // Atualizado para incluir a quantidade
       yAxisUnit = ''; // Unidade em segundos
       break;
     default:
@@ -929,7 +866,7 @@ function updatePolarAreaChart(selectedQuantity) {
 
   myPolarAreaChart.data.labels = labels;
   myPolarAreaChart.data.datasets[0].data = data; // Atualiza os dados do gráfico
-  myPolarAreaChart.options.plugins.title.text = titleText; // Atualiza o título do gráfico
+  myPolarAreaChart.options.plugins.title.text = title; // Atualiza o título do gráfico
 
   // Atualiza a unidade no eixo Y dependendo da métrica selecionada
   myPolarAreaChart.options.scales.r.ticks.callback = function (value) {
@@ -1083,17 +1020,18 @@ function wap() {
 // Função para atualizar o gráfico de BARRAS com a métrica WAP
 function updateBarChartWAP(selectedQuantity) { // Adicione selectedQuantity como parâmetro
   const data = wap(); // Calcula os valores para WAP
+  let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
+  console.log(selectedLanguage)
 
   barChartWAP.data.datasets[0].data = data; // Atualiza os dados do gráfico com os resultados WAP
-
-  // Atualiza o título do gráfico com a quantidade selecionada
-  barChartWAP.options.plugins.title.text = `SIZE: ${selectedQuantity} | WAP METRIC`; // Atualiza o título dinamicamente
 
   // Mantém o formato dos ticks do eixo Y
   barChartWAP.options.scales.y.ticks.callback = function (value) {
     return value + ' WAP'; // Mantém a unidade WAP
   };
 
+  var title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | WAP METRIC` : `TAMANHO: ${selectedQuantity} | MÉTRICA WAP`; // Texto em inglês;
+  barChartWAP.options.plugins.title.text = title;
   barChartWAP.update(); // Atualiza o gráfico para refletir as mudanças
 }
 

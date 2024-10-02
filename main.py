@@ -188,10 +188,6 @@ def makeTest(event):
         updateGraphValues(sort, 'iterations', sort_type(sortArraySize))
         updateGraphValues(sort, 'memory', measureMemoryUsage(originalUnsortedArray))
         
-        print("time for ", sort, " = ", f"{elapsed_time_perf_counter:.6f}")
-        print("memory for ", sort, " = ", measureMemoryUsage(originalUnsortedArray))
-        print("iterations for ", sort, " = ", sort_type(sortArraySize))
-        
     
     if sortType and sortArraySize:
         performanceTest(sortType);
@@ -202,6 +198,7 @@ def makeTest(event):
             statisticsContainer.style.display = "flex"
             
 
+        print(unsortedArray)
         unsortedArray.innerHTML = render_colored_array(originalUnsortedArray)
         sortedArray.innerHTML = render_colored_array(sortArraySize)
         
