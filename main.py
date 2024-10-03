@@ -129,6 +129,7 @@ def makeTest(event):
     unsortedArray = document.getElementById("unsorted-array");
     sortedArray = document.getElementById("sorted-array");
     sortTypeSelected = document.getElementById("selected-sort-type");
+    generalStatistics = document.getElementById("general-statistics-container");
 
     def performanceTest(sort):
 
@@ -176,8 +177,14 @@ def makeTest(event):
         sortedArray.innerHTML = render_colored_array(Array)
         window.location.hash = "#perfomance-results-container"
         
+        if generalStatistics.style.display != "flex":
+            generalStatistics.style.display = "flex"
+        
         resetInputs();
         showAlertBox("manual_sort_success", "success")
+        
+        
+        
     else:
         showAlertBox("fields_not_checked", "error")
 
