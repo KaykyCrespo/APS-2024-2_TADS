@@ -5,50 +5,51 @@ import math, random, time
 
 sortType = "";
 ordinationType  = "repeat";
-sortArraySize = [];
+Array = [];
+ArraySize = 0;
 userArray = [];
 
 
-# Método para escolher o tipo de ordenação: com repetição ou sem repetição de números
-def setOrdinationType(event):
-    global ordinationType
-    ordinationType = document.getElementById("ordinationType").value
-    # ordinationType será "unique" ou "repeat" dependendo da seleção do usuário
+def printaAporratoda(name):
+    print("----------------------------------")
+    print("Aonde isso foi chamado", name)
+    
+    print("Sort type : ", sortType)
+    print("Array size :", ArraySize)
+    print("Ordination type :", ordinationType)
+    print("Array :", Array)
+    print("----------------------------------")
+
 
 #Método para definir o tipo de sort escolhido
 def setSortType(event):
     global sortType
     sortType = document.querySelector('input[name="sortOption"]:checked').value;
     #print("Sort type selected : ", sortType)
+    
 
-# Método para escolher números aleatórios e colocá-los no Array
+# Método para escolher tamanho dos array
 def setArraySortSize(event):
-    global sortArraySize
-    global ordinationType
-    
-    print("Array sort type : ", sortType)
-    print("Ordination type ", ordinationType)
-    
-    # Captura o tamanho do array escolhido
+    global ArraySize        
     quantity = int(document.querySelector('input[name="arraySize"]:checked').value)
-    document.getElementById("selectedQuantity").value = quantity;
+    ArraySize = quantity
+    
+     
 
-    # Inicializa a lista de números
-    sortArraySize = []
+# Método para escolher o tipo de ordenação: com repetição ou sem repetição de números
+def setOrdinationType(event):
+    global ordinationType
+    global Array
+    ordinationType = document.getElementById("ordinationType").value
 
     # Valida se é para repetir ou não os números
     if ordinationType == "unique":
-        if quantity > 20000:
-            return  # Impede que números sejam gerados se o tamanho for maior que o intervalo
         # Gerar números únicos sem repetição
-        sortArraySize = random.sample(range(0, 20000), quantity)
+        Array = random.sample(range(0, 15000), ArraySize)
     elif ordinationType == "repeat":
         # Gerar números com repetição
-        sortArraySize = [random.randint(0, 20000) for _ in range(quantity)]
+        Array = [random.randint(0, 15000) for _ in range(ArraySize)]
         
-    print("Array : ", sortArraySize)
-
-
 
 def updateStatistics(name, value):
     elementIds = {
@@ -68,7 +69,7 @@ def updateStatistics(name, value):
         new_value = current_value + float(value)
         element.innerHTML = f"{new_value:.3f}s" if name == 'totalTime' else str(int(new_value))
 
-def make_manual_test(event):
+def makeManualTest(event):
     user_array = document.getElementById("userArrayInput").value.strip()
     
     if not user_array:
@@ -87,23 +88,6 @@ def make_manual_test(event):
     except ValueError:
         showAlertBox("invalid_input", "error")
 
-def reset_input_values(event):
-    global sort_array_size
-    global sort_type
-    
-    try:
-        sort_array_size = []
-        sort_type = ""
-        resetInputs()
-        
-        # Supondo que você tenha elementos para mostrar arrays não ordenados e ordenados
-        document.getElementById("unsorted-array").innerHTML = "[]"
-        document.getElementById("sorted-array").innerHTML = "[]"
-        
-        showAlertBox("input_reset_success", "success")
-    except Exception as e:
-        showAlertBox("input_reset_error", "error")
-
 def calculate_color(value, min_value, max_value):
     # Definindo as cores de início e fim (R, G, B)
     start_color = (70, 100, 140)  # Azul
@@ -119,7 +103,6 @@ def calculate_color(value, min_value, max_value):
 
     # Retorna a cor no formato RGB
     return f'rgb({r},{g},{b})'
-
 def render_colored_array(array):
     min_value = min(array)
     max_value = max(array)
@@ -139,19 +122,14 @@ def render_colored_array(array):
     return colored_html
 
 def makeTest(event):
-    global sortArraySize
+
+    global Array
     global sortType
-    originalUnsortedArray = sortArraySize.copy();
     
-
-
     unsortedArray = document.getElementById("unsorted-array");
     sortedArray = document.getElementById("sorted-array");
     sortTypeSelected = document.getElementById("selected-sort-type");
 
-    
-    
-    
     def performanceTest(sort):
 
         def measureMemoryUsage(array):
@@ -165,7 +143,7 @@ def makeTest(event):
         def updateAllStatistics():
             updateStatistics(sort, 1);
             updateStatistics('totalTime', f"{elapsed_time_perf_counter:.6f}");
-            updateStatistics('totalIterations', sort_type(sortArraySize));
+            updateStatistics('totalIterations', sort_type(Array));
 
         sort_functions = {
         "bubblesort": bubble_sort,
@@ -177,7 +155,7 @@ def makeTest(event):
         sort_type = sort_functions.get(sort)
 
         start_time = time.perf_counter()
-        sort_type(sortArraySize)
+        sort_type(Array)
         end_time = time.perf_counter()
         elapsed_time_perf_counter = end_time - start_time
 
@@ -185,40 +163,23 @@ def makeTest(event):
         
         #Dando update nos gráficos com tempo, iterações e memória.
         updateGraphValues(sort, 'time', f"{elapsed_time_perf_counter:.6f}")
-        updateGraphValues(sort, 'iterations', sort_type(sortArraySize))
-        updateGraphValues(sort, 'memory', measureMemoryUsage(originalUnsortedArray))
-        
+        updateGraphValues(sort, 'iterations', sort_type(Array))
+        updateGraphValues(sort, 'memory', measureMemoryUsage(UnsortedArray))
     
-    if sortType and sortArraySize:
-        performanceTest(sortType);
+    if sortType and ArraySize:
+        setOrdinationType(event)
+        UnsortedArray = Array.copy();
+        performanceTest(sortType)
+        
         sortTypeSelected.innerHTML = sortType.title();
-        statisticsContainer = document.getElementById("general-statistics-container")
+        unsortedArray.innerHTML = render_colored_array(UnsortedArray)
+        sortedArray.innerHTML = render_colored_array(Array)
+        window.location.hash = "#perfomance-results-container"
         
-        if statisticsContainer.style.display != "flex": 
-            statisticsContainer.style.display = "flex"
-            
-
-        print(unsortedArray)
-        unsortedArray.innerHTML = render_colored_array(originalUnsortedArray)
-        sortedArray.innerHTML = render_colored_array(sortArraySize)
-        
-        window.location.hash = "#perfomance-results-container";
-        resetInputValues(event);
+        resetInputs();
         showAlertBox("manual_sort_success", "success")
     else:
         showAlertBox("fields_not_checked", "error")
-
-def resetInputValues(event):
-    global sortArraySize
-    global sortType
-    
-    try:
-        sortArraySize = []
-        sortType = "";
-        resetInputs();
-        showAlertBox("input_reset_success", "success")
-    except Exception as e:
-        showAlertBox("input_reset_error", "error")
 
 
 def bubble_sort(lista):

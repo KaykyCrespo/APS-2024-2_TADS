@@ -318,19 +318,6 @@ flags.forEach(flag => {
 });
 
 
-
-
-
-// Função pra atualizar gráficos
-function updateAllGraphs() {
-  const selectedQuantity = document.getElementById("selectedQuantity").value
-  updateBarChart(selectedQuantity);
-  updatePieChart(selectedQuantity);
-  updateBarChartWAP(selectedQuantity);
-  updatePolarAreaChart(selectedQuantity);
-}
-
-
 window.onload = resetInputs;
 function resetInputs() {
   document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
@@ -350,7 +337,6 @@ function resetInputs() {
   
 }
 
-
 // Função para definir os valores dos graficos
 function setGraphValues(sort, type, value) {
   arraySize = document.querySelector('input[name="arraySize"]:checked').value
@@ -362,6 +348,21 @@ function setGraphValues(sort, type, value) {
     updateAllGraphs();
   }
 }
+
+// Função pra atualizar gráficos
+function updateAllGraphs() {
+  const selectedQuantity = document.getElementById("selectedQuantity").value
+  updateBarChart(selectedQuantity);
+  updatePieChart(selectedQuantity);
+  updateBarChartWAP(selectedQuantity);
+  updatePolarAreaChart(selectedQuantity);
+}
+
+
+
+
+
+
 
 
 
@@ -1021,7 +1022,6 @@ function wap() {
 function updateBarChartWAP(selectedQuantity) { // Adicione selectedQuantity como parâmetro
   const data = wap(); // Calcula os valores para WAP
   let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
-  console.log(selectedLanguage)
 
   barChartWAP.data.datasets[0].data = data; // Atualiza os dados do gráfico com os resultados WAP
 
