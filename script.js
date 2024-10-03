@@ -871,7 +871,7 @@ function updatePolarAreaChart(selectedQuantity) {
 
   // Atualiza a unidade no eixo Y dependendo da métrica selecionada
   myPolarAreaChart.options.scales.r.ticks.callback = function (value) {
-    return value + (metric === 'memory' ? ' GB' : 's'); // Muda para GB ou s baseado na métrica
+    return value + (metric === 'memory' ? ' MB' : 's'); // Muda para GB ou s baseado na métrica
   };
 
   myPolarAreaChart.update(); // Atualiza o gráfico
