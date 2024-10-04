@@ -230,40 +230,17 @@ const sortingAlgorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heap
 const sizes = [250, 500, 1000, 2500, 7500, 15000];
 const selectedQuantity = 250; // Defina a quantidade inicial de números
 
-const graphValues1 = {};
+const graphValues = {};
 
 sortingAlgorithms.forEach(algorithm => {
   sizes.forEach(size => {
-    graphValues1[`${algorithm}${size}`] = {
+    graphValues[`${algorithm}${size}`] = {
       time: null,
       memory: null,
       iterations: null
     };
   });
 });
-
-const graphValues = {
-  bubblesort: {
-    time: null,
-    memory: null,
-    iterations: null
-  },
-  insertionsort: {
-    time: null,
-    memory: null,
-    iterations: null
-  },
-  selectionsort: {
-    time: null,
-    memory: null,
-    iterations: null
-  },
-  heapsort: {
-    time: null,
-    memory: null,
-    iterations: null
-  }
-}
 
 
 
@@ -328,34 +305,31 @@ function resetInputs() {
   });
   sortType = ""; // Certifique-se de que sortType esteja definido em um escopo acessível
   sortArraySize = []; // Certifique-se de que sortArraySize esteja definido em um escopo acessível
+
   document.getElementById("userArrayInput").value = null
   document.getElementById("arraySortedResponse").value = null
   document.getElementById("ordinationType").value = "repeat"
   document.getElementById("selectedMetric").value = "time"
   document.getElementById("selectedQuantity").value = "250"
 
-  
 }
 
 // Função para definir os valores dos graficos
 function setGraphValues(sort, type, value) {
   arraySize = document.querySelector('input[name="arraySize"]:checked').value
-  if (graphValues[sort]) {
-    if (type in graphValues[sort]) {
-      graphValues[sort][type] = value;
-      graphValues1[`${sort}${arraySize}${type}`] = value;
-    }
-    updateAllGraphs();
-  }
+  graphValues[`${sort}${arraySize}${type}`] = value;
+  updateAllGraphs();
 }
+
 
 // Função pra atualizar gráficos
 function updateAllGraphs() {
   const selectedQuantity = document.getElementById("selectedQuantity").value
+
   updateBarChart(selectedQuantity);
   updatePieChart(selectedQuantity);
-  updateBarChartWAP(selectedQuantity);
   updatePolarAreaChart(selectedQuantity);
+  updateBarChartWAP(selectedQuantity);
 }
 
 
@@ -390,7 +364,7 @@ let myPieChart = new Chart(ctxPie, {
     labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
     datasets: [{
       label: '',
-      data: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time],
+      data: [null, null, null, null],
       backgroundColor: [
         '#FFA6C9',
         '#CDA1DB',
@@ -452,28 +426,28 @@ function updatePieChart(selectedQuantity) {
   switch (metric) {
     case 'time':
       data = [
-        graphValues1[`bubblesort${selectedQuantity}time`],
-        graphValues1[`insertionsort${selectedQuantity}time`],
-        graphValues1[`selectionsort${selectedQuantity}time`],
-        graphValues1[`heapsort${selectedQuantity}time`]
+        graphValues[`bubblesort${selectedQuantity}time`],
+        graphValues[`insertionsort${selectedQuantity}time`],
+        graphValues[`selectionsort${selectedQuantity}time`],
+        graphValues[`heapsort${selectedQuantity}time`]
       ];
       title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em inglês
       break;
     case 'memory':
       data = [
-        graphValues1[`bubblesort${selectedQuantity}memory`],
-        graphValues1[`insertionsort${selectedQuantity}memory`],
-        graphValues1[`selectionsort${selectedQuantity}memory`],
-        graphValues1[`heapsort${selectedQuantity}memory`]
+        graphValues[`bubblesort${selectedQuantity}memory`],
+        graphValues[`insertionsort${selectedQuantity}memory`],
+        graphValues[`selectionsort${selectedQuantity}memory`],
+        graphValues[`heapsort${selectedQuantity}memory`]
       ];
       title =  selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em inglês
       break;
     case 'iterations':
       data = [
-        graphValues1[`bubblesort${selectedQuantity}iterations`],
-        graphValues1[`insertionsort${selectedQuantity}iterations`],
-        graphValues1[`selectionsort${selectedQuantity}iterations`],
-        graphValues1[`heapsort${selectedQuantity}iterations`]
+        graphValues[`bubblesort${selectedQuantity}iterations`],
+        graphValues[`insertionsort${selectedQuantity}iterations`],
+        graphValues[`selectionsort${selectedQuantity}iterations`],
+        graphValues[`heapsort${selectedQuantity}iterations`]
       ];
       title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ITERATIONS` : `TAMANHO: ${selectedQuantity} | ITERAÇÕES`; // Texto em inglês
       break;
@@ -512,9 +486,9 @@ function updatePieChart(selectedQuantity) {
 
 // Inicialização do gráfico de BARRAS
 const data = {
-  time: [graphValues.bubblesort.time, graphValues.insertionsort.time, graphValues.selectionsort.time, graphValues.heapsort.time], // em segundos
-  memory: [graphValues.bubblesort.memory, graphValues.insertionsort.memory, graphValues.selectionsort.memory, graphValues.heapsort.memory], // em GB
-  iterations: [graphValues.bubblesort.iterations, graphValues.insertionsort.iterations, graphValues.selectionsort.iterations, graphValues.heapsort.iterations] // Corrigido para "iterations"
+  time: [null, null, null, null], // em segundos
+  memory: [null, null, null, null], // em GB
+  iterations: [null, null, null, null] // Corrigido para "iterations"
 };
 
 const ctxLine = document.getElementById('barChart').getContext('2d');
@@ -525,10 +499,10 @@ let barChart = new Chart(ctxLine, {
     datasets: [{
       label: ``, // Título inicial com a quantidade
       data: [
-        graphValues1[`bubblesort${selectedQuantity}time`],
-        graphValues1[`insertionsort${selectedQuantity}time`],
-        graphValues1[`selectionsort${selectedQuantity}time`],
-        graphValues1[`heapsort${selectedQuantity}time`]
+        graphValues[`bubblesort${selectedQuantity}time`],
+        graphValues[`insertionsort${selectedQuantity}time`],
+        graphValues[`selectionsort${selectedQuantity}time`],
+        graphValues[`heapsort${selectedQuantity}time`]
       ],
       backgroundColor: ['#FFA6C9', '#CDA1DB', '#4B9F6E', '#f4a261'],
       borderColor: '#000000', // Cor da borda das barras
@@ -644,30 +618,30 @@ function updateBarChart(selectedQuantity) {
         title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em inglês
         yAxisUnit = 's';
         barChart.data.datasets[0].data = [
-          graphValues1[`bubblesort${selectedQuantity}time`],
-          graphValues1[`insertionsort${selectedQuantity}time`],
-          graphValues1[`selectionsort${selectedQuantity}time`],
-          graphValues1[`heapsort${selectedQuantity}time`]
+          graphValues[`bubblesort${selectedQuantity}time`],
+          graphValues[`insertionsort${selectedQuantity}time`],
+          graphValues[`selectionsort${selectedQuantity}time`],
+          graphValues[`heapsort${selectedQuantity}time`]
         ];
         break;
       case 'memory':
         title =  selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em inglês
         yAxisUnit = 'MB'; // Corrigido para GB
         barChart.data.datasets[0].data = [
-          graphValues1[`bubblesort${selectedQuantity}memory`],
-          graphValues1[`insertionsort${selectedQuantity}memory`],
-          graphValues1[`selectionsort${selectedQuantity}memory`],
-          graphValues1[`heapsort${selectedQuantity}memory`]
+          graphValues[`bubblesort${selectedQuantity}memory`],
+          graphValues[`insertionsort${selectedQuantity}memory`],
+          graphValues[`selectionsort${selectedQuantity}memory`],
+          graphValues[`heapsort${selectedQuantity}memory`]
         ];
         break;
       case 'iterations':
         title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ITERATIONS` : `TAMANHO: ${selectedQuantity} | ITERAÇÕES`; // Texto em inglês
         yAxisUnit = '';
         barChart.data.datasets[0].data = [
-          graphValues1[`bubblesort${selectedQuantity}iterations`],
-          graphValues1[`insertionsort${selectedQuantity}iterations`],
-          graphValues1[`selectionsort${selectedQuantity}iterations`],
-          graphValues1[`heapsort${selectedQuantity}iterations`]
+          graphValues[`bubblesort${selectedQuantity}iterations`],
+          graphValues[`insertionsort${selectedQuantity}iterations`],
+          graphValues[`selectionsort${selectedQuantity}iterations`],
+          graphValues[`heapsort${selectedQuantity}iterations`]
         ];
         break;
     }
@@ -726,10 +700,10 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
     datasets: [{
       label: 'Metrics',
       data: [
-        graphValues.bubblesort.time,
-        graphValues.insertionsort.time,
-        graphValues.selectionsort.time,
-        graphValues.heapsort.time
+        null,
+        null,
+        null,
+        null
       ],
       backgroundColor: [
         'rgba(255, 166, 201, 0.5)', // Transparência de 50%
@@ -763,10 +737,10 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
           // Aqui, definimos o número mínimo e máximo de ticks
           count: 5, // Número de ticks que você deseja
           max: Math.max(
-            graphValues.bubblesort.time,
-            graphValues.insertionsort.time,
-            graphValues.selectionsort.time,
-            graphValues.heapsort.time
+            null,
+            null,
+            null,
+            null
           ) + 10 // Ajuste para garantir que o gráfico tenha espaço
         },
         pointLabels: {
@@ -833,30 +807,30 @@ function updatePolarAreaChart(selectedQuantity) {
   switch (metric) {
     case 'time':
       data = [
-        graphValues1[`bubblesort${selectedQuantity}time`],
-        graphValues1[`insertionsort${selectedQuantity}time`],
-        graphValues1[`selectionsort${selectedQuantity}time`],
-        graphValues1[`heapsort${selectedQuantity}time`]
+        graphValues[`bubblesort${selectedQuantity}time`],
+        graphValues[`insertionsort${selectedQuantity}time`],
+        graphValues[`selectionsort${selectedQuantity}time`],
+        graphValues[`heapsort${selectedQuantity}time`]
       ];
       title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em inglês
       yAxisUnit = 's'; // Unidade em segundos
       break;
     case 'memory':
       data = [
-        graphValues1[`bubblesort${selectedQuantity}memory`],
-        graphValues1[`insertionsort${selectedQuantity}memory`],
-        graphValues1[`selectionsort${selectedQuantity}memory`],
-        graphValues1[`heapsort${selectedQuantity}memory`]
+        graphValues[`bubblesort${selectedQuantity}memory`],
+        graphValues[`insertionsort${selectedQuantity}memory`],
+        graphValues[`selectionsort${selectedQuantity}memory`],
+        graphValues[`heapsort${selectedQuantity}memory`]
       ];
       title =  selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em inglês
       yAxisUnit = 'MB'; // Unidade em GB
       break;
     case 'iterations':
       data = [
-        graphValues1[`bubblesort${selectedQuantity}iterations`],
-        graphValues1[`insertionsort${selectedQuantity}iterations`],
-        graphValues1[`selectionsort${selectedQuantity}iterations`],
-        graphValues1[`heapsort${selectedQuantity}iterations`]
+        graphValues[`bubblesort${selectedQuantity}iterations`],
+        graphValues[`insertionsort${selectedQuantity}iterations`],
+        graphValues[`selectionsort${selectedQuantity}iterations`],
+        graphValues[`heapsort${selectedQuantity}iterations`]
       ];
       title = `SIZE: ${selectedQuantity} | ITERATIONS`; // Atualizado para incluir a quantidade
       yAxisUnit = ''; // Unidade em segundos
@@ -1007,12 +981,13 @@ let barChartWAP = new Chart(ctxWAP, {
 // Função para calcular o WAP para cada algoritmo
 function wap() {
   const algorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
+  arraySize = document.querySelector('input[name="arraySize"]:checked').value
 
   return algorithms.map(tipo => {
-    let interaionsWAP = graphValues[tipo].iterations;
-    let timeWAP = graphValues[tipo].time;
-    let memoryWAP = graphValues[tipo].memory;
-
+    
+    let interaionsWAP = graphValues[`${tipo}${arraySize}${"iterations"}`];
+    let timeWAP = graphValues[`${tipo}${arraySize}${"time"}`];
+    let memoryWAP = graphValues[`${tipo}${arraySize}${"memory"}`];
     // Calcula o WAP com base na fórmula
     return ((interaionsWAP / 10000000) * 2) + (timeWAP * 14) + (memoryWAP * 4) / 20;
   });

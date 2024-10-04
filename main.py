@@ -1,4 +1,4 @@
-from js import document, window, navigator, showAlertBox, resetInputs, setGraphValues
+from js import document, window, navigator, showAlertBox, resetInputs, setGraphValues, sessionStorage
 import sys
 import math, random, time
 
