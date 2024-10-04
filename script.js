@@ -983,13 +983,61 @@ function wap() {
   const algorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
   arraySize = document.querySelector('input[name="arraySize"]:checked').value
 
+// Definir divisores dinâmicos baseados no tamanho do array
+let iterationDivisor, interationsWeight, timeWeight, memoryWeight;
+
+switch (arraySize) {
+  case '250':
+    iterationDivisor = 1000000;
+    interationsWeight = 2;
+    timeWeight = 14;
+    memoryWeight = 4;
+    break;
+  case '500':
+    iterationDivisor = 5000000;
+    interationsWeight = 2;
+    timeWeight = 14;
+    memoryWeight = 4;
+    break;
+  case '1000':
+    iterationDivisor = 10000000;
+    interationsWeight = 2;
+    timeWeight = 14;
+    memoryWeight = 4;
+    break;
+  case '2500':
+    iterationDivisor = 10000;
+    interationsWeight = 2;
+    timeWeight = 14;
+    memoryWeight = 4;
+    break;
+  case '7500':
+    iterationDivisor = 100000;
+    interationsWeight = 2;
+    timeWeight = 14;
+    memoryWeight = 4;
+    break;
+  case '15000':
+    iterationDivisor = 1000000;
+    interationsWeight = 2;
+    timeWeight = 14;
+    memoryWeight = 4;
+    break;
+  default:
+    iterationDivisor = 10000000; // Default caso não tenha valor selecionado
+    interationsWeight = 2;
+    timeWeight = 14;
+    memoryWeight = 4;
+}
+
+
   return algorithms.map(tipo => {
     
     let interaionsWAP = graphValues[`${tipo}${arraySize}${"iterations"}`];
     let timeWAP = graphValues[`${tipo}${arraySize}${"time"}`];
     let memoryWAP = graphValues[`${tipo}${arraySize}${"memory"}`];
     // Calcula o WAP com base na fórmula
-    return ((interaionsWAP / 10000000) * 2) + (timeWAP * 14) + (memoryWAP * 4) / 20;
+    return ((interaionsWAP / iterationDivisor) * interationsWeight ) + (timeWAP * timeWeight) + (memoryWAP * memoryWeight) / 20;
   });
 }
 

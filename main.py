@@ -89,6 +89,7 @@ def makeManualTest(event):
         showAlertBox("invalid_input", "error")
 
 def calculate_color(value, min_value, max_value):
+
     # Definindo as cores de início e fim (R, G, B)
     start_color = (70, 100, 140)  # Azul
     end_color = (140, 50, 70)    # Vermelho
@@ -103,6 +104,7 @@ def calculate_color(value, min_value, max_value):
 
     # Retorna a cor no formato RGB
     return f'rgb({r},{g},{b})'
+
 def render_colored_array(array):
     min_value = min(array)
     max_value = max(array)
