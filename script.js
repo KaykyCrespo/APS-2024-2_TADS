@@ -979,14 +979,13 @@ let barChartWAP = new Chart(ctxWAP, {
 });
 
 // Função para calcular o WAP para cada algoritmo
-function wap() {
+function wap(selectedQuantity) {
   const algorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
-  arraySize = document.querySelector('input[name="arraySize"]:checked').value
 
 // Definir divisores dinâmicos baseados no tamanho do array
 let iterationDivisor, interationsWeight, timeWeight, memoryWeight;
 
-switch (arraySize) {
+switch (selectedQuantity) {
   case '250':
     iterationDivisor = 10000;
     interationsWeight = 2;
@@ -1033,9 +1032,9 @@ switch (arraySize) {
 
   return algorithms.map(tipo => {
     
-    let interaionsWAP = graphValues[`${tipo}${arraySize}${"iterations"}`];
-    let timeWAP = graphValues[`${tipo}${arraySize}${"time"}`];
-    let memoryWAP = graphValues[`${tipo}${arraySize}${"memory"}`];
+    let interaionsWAP = graphValues[`${tipo}${selectedQuantity}${"iterations"}`];
+    let timeWAP = graphValues[`${tipo}${selectedQuantity}${"time"}`];
+    let memoryWAP = graphValues[`${tipo}${selectedQuantity}${"memory"}`];
     // Calcula o WAP com base na fórmula
     return ((interaionsWAP / iterationDivisor) * interationsWeight ) + (timeWAP * timeWeight) + (memoryWAP * memoryWeight) / 30;
   });
@@ -1043,7 +1042,7 @@ switch (arraySize) {
 
 // Função para atualizar o gráfico de BARRAS com a métrica WAP
 function updateBarChartWAP(selectedQuantity) { // Adicione selectedQuantity como parâmetro
-  const data = wap(); // Calcula os valores para WAP
+  const data = wap(selectedQuantity); // Calcula os valores para WAP
   let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
 
   barChartWAP.data.datasets[0].data = data; // Atualiza os dados do gráfico com os resultados WAP
