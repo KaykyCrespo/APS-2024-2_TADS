@@ -403,7 +403,7 @@ let myPieChart = new Chart(ctxPie, {
       title: {
         display: true,
         text: 'SIZE: 250 | EXECUTION TIME', // Título inicial que será atualizado
-        color: '#B2E2E7', // Cor do título
+        color: '##2a6168 ', // Cor do título
         font: {
           size: 18, // Tamanho do título
           weight: 'bold' // Negrito
@@ -497,7 +497,7 @@ let barChart = new Chart(ctxLine, {
   data: {
     labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
     datasets: [{
-      label: ``, // Título inicial com a quantidade
+      label: '', // Título inicial com a quantidade
       data: [
         graphValues[`bubblesort${selectedQuantity}time`],
         graphValues[`insertionsort${selectedQuantity}time`],
@@ -532,7 +532,7 @@ let barChart = new Chart(ctxLine, {
         grid: {
           color: 'rgba(255, 255, 255, 0.3)', // Cor das linhas de grade (suave)
           lineWidth: 1, // Largura das linhas de grade
-          borderDash: [6,6], // Estilo tracejado para as linhas de grade
+          borderDash: [6, 6], // Estilo tracejado para as linhas de grade
           drawBorder: true, // Desenha a borda do eixo Y
         }
       },
@@ -603,8 +603,30 @@ let barChart = new Chart(ctxLine, {
     // Definindo a borda do gráfico
     borderColor: '#000000', // Cor da borda do gráfico
     borderWidth: 1.5, // Largura da borda do gráfico
-  }
+  },
+  // Adicionando o plugin para desenhar a linha à direita
+  plugins: [{
+    id: 'lineRightPlugin',
+    afterDraw: function(chart) {
+      const ctx = chart.ctx;
+      const chartArea = chart.chartArea;
+
+      // Define a cor e largura da linha
+      ctx.save();
+      ctx.strokeStyle = '#FFFFFF'; // Cor da linha
+      ctx.lineWidth = 1.2;
+
+      // Desenha a linha vertical à direita
+      ctx.beginPath();
+      ctx.moveTo(chartArea.right, chartArea.top);
+      ctx.lineTo(chartArea.right, chartArea.bottom);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }]
 });
+
+
 
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart(selectedQuantity) {
@@ -870,6 +892,7 @@ function updatePolarAreaChart(selectedQuantity) {
 
 
 // Inicialização do gráfico de WAP
+// Inicialização do gráfico de WAP
 const ctxWAP = document.getElementById('barChartWAP').getContext('2d');
 let barChartWAP = new Chart(ctxWAP, {
   type: 'bar',
@@ -975,8 +998,29 @@ let barChartWAP = new Chart(ctxWAP, {
         }
       }
     }
-  }
+  },
+  // Adicionando o plugin para desenhar a linha à direita
+  plugins: [{
+    id: 'lineRightPlugin',
+    afterDraw: function(chart) {
+      const ctx = chart.ctx;
+      const chartArea = chart.chartArea;
+
+      // Define a cor e largura da linha
+      ctx.save();
+      ctx.strokeStyle = '#FFFFFF'; // Cor da linha
+      ctx.lineWidth = 1.2;
+
+      // Desenha a linha vertical à direita
+      ctx.beginPath();
+      ctx.moveTo(chartArea.right, chartArea.top);
+      ctx.lineTo(chartArea.right, chartArea.bottom);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }]
 });
+
 
 // Função para calcular o WAP para cada algoritmo
 function wap(selectedQuantity) {
