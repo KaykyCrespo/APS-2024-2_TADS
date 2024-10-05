@@ -988,46 +988,46 @@ let iterationDivisor, interationsWeight, timeWeight, memoryWeight;
 
 switch (arraySize) {
   case '250':
-    iterationDivisor = 1000000;
-    interationsWeight = 2;
-    timeWeight = 14;
-    memoryWeight = 4;
-    break;
-  case '500':
-    iterationDivisor = 5000000;
-    interationsWeight = 2;
-    timeWeight = 14;
-    memoryWeight = 4;
-    break;
-  case '1000':
-    iterationDivisor = 10000000;
-    interationsWeight = 2;
-    timeWeight = 14;
-    memoryWeight = 4;
-    break;
-  case '2500':
     iterationDivisor = 10000;
     interationsWeight = 2;
     timeWeight = 14;
-    memoryWeight = 4;
+    memoryWeight = 14;
     break;
-  case '7500':
+  case '500':
+    iterationDivisor = 10000;
+    interationsWeight = 2;
+    timeWeight = 14;
+    memoryWeight = 14;
+    break;
+  case '1000':
+    iterationDivisor = 10000;
+    interationsWeight = 2;
+    timeWeight = 14;
+    memoryWeight = 14;
+    break;
+  case '2500':
     iterationDivisor = 100000;
     interationsWeight = 2;
     timeWeight = 14;
-    memoryWeight = 4;
+    memoryWeight = 14;
     break;
-  case '15000':
+  case '7500':
     iterationDivisor = 1000000;
     interationsWeight = 2;
     timeWeight = 14;
-    memoryWeight = 4;
+    memoryWeight = 14;
     break;
-  default:
-    iterationDivisor = 10000000; // Default caso não tenha valor selecionado
+  case '15000':
+    iterationDivisor = 10000000;
     interationsWeight = 2;
     timeWeight = 14;
-    memoryWeight = 4;
+    memoryWeight = 14;
+    break;
+  default:
+    iterationDivisor = 1; // Default caso não tenha valor selecionado
+    interationsWeight = 1;
+    timeWeight = 1;
+    memoryWeight = 1;
 }
 
 
@@ -1037,7 +1037,7 @@ switch (arraySize) {
     let timeWAP = graphValues[`${tipo}${arraySize}${"time"}`];
     let memoryWAP = graphValues[`${tipo}${arraySize}${"memory"}`];
     // Calcula o WAP com base na fórmula
-    return ((interaionsWAP / iterationDivisor) * interationsWeight ) + (timeWAP * timeWeight) + (memoryWAP * memoryWeight) / 20;
+    return ((interaionsWAP / iterationDivisor) * interationsWeight ) + (timeWAP * timeWeight) + (memoryWAP * memoryWeight) / 30;
   });
 }
 
