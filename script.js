@@ -892,7 +892,6 @@ function updatePolarAreaChart(selectedQuantity) {
 
 
 // Inicialização do gráfico de WAP
-// Inicialização do gráfico de WAP
 const ctxWAP = document.getElementById('barChartWAP').getContext('2d');
 let barChartWAP = new Chart(ctxWAP, {
   type: 'bar',
