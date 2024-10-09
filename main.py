@@ -1,6 +1,5 @@
 from js import document, window, navigator, showAlertBox, resetInputs, setGraphValues, setArraySize
 import sys
-import python_sorts
 import math, random, time
 
 
@@ -9,17 +8,6 @@ ordinationType  = "repeat";
 Array = [];
 ArraySize = 0;
 userArray = [];
-
-
-def printaAporratoda(name):
-    print("----------------------------------")
-    print("Aonde isso foi chamado", name)
-    
-    print("Sort type : ", sortType)
-    print("Array size :", ArraySize)
-    print("Ordination type :", ordinationType)
-    print("Array :", Array)
-    print("----------------------------------")
 
 
 #Método para definir o tipo de sort escolhido
