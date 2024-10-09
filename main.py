@@ -1,5 +1,6 @@
-from js import document, window, navigator, showAlertBox, resetInputs, setGraphValues, sessionStorage
+from js import document, window, navigator, showAlertBox, resetInputs, setGraphValues, setArraySize
 import sys
+import python_sorts
 import math, random, time
 
 
@@ -25,7 +26,6 @@ def printaAporratoda(name):
 def setSortType(event):
     global sortType
     sortType = document.querySelector('input[name="sortOption"]:checked').value;
-    #print("Sort type selected : ", sortType)
     
 
 # Método para escolher tamanho dos array
@@ -33,6 +33,7 @@ def setArraySortSize(event):
     global ArraySize        
     quantity = int(document.querySelector('input[name="arraySize"]:checked').value)
     ArraySize = quantity
+    setArraySize(quantity)
     
      
 
@@ -124,17 +125,8 @@ def render_colored_array(array):
     return colored_html
 
 def makeTest(event):
-
-    global Array
-    global sortType
     
-    unsortedArray = document.getElementById("unsorted-array");
-    sortedArray = document.getElementById("sorted-array");
-    sortTypeSelected = document.getElementById("selected-sort-type");
-    generalStatistics = document.getElementById("general-statistics-container");
-
-    def performanceTest(sort):
-
+    def performanceTest(sortType, Array):
         def measureMemoryUsage(array):
             return sys.getsizeof(array) / 1024
 
@@ -144,7 +136,7 @@ def makeTest(event):
                 setGraphValues(name, type, value)
 
         def updateAllStatistics():
-            updateStatistics(sort, 1);
+            updateStatistics(sortType, 1);
             updateStatistics('totalTime', f"{elapsed_time_perf_counter:.6f}");
             updateStatistics('totalIterations', sort_type(Array));
 
@@ -155,7 +147,7 @@ def makeTest(event):
         "heapsort": heapSort
         }
 
-        sort_type = sort_functions.get(sort)
+        sort_type = sort_functions.get(sortType)
 
         start_time = time.perf_counter()
         sort_type(Array)
@@ -165,53 +157,65 @@ def makeTest(event):
         updateAllStatistics();
         
         #Dando update nos gráficos com tempo, iterações e memória.
-        updateGraphValues(sort, 'time', f"{elapsed_time_perf_counter:.6f}")
-        updateGraphValues(sort, 'iterations', sort_type(Array))
-        updateGraphValues(sort, 'memory', measureMemoryUsage(UnsortedArray))
+        updateGraphValues(sortType, 'time', f"{elapsed_time_perf_counter:.6f}")
+        updateGraphValues(sortType, 'iterations', sort_type(Array))
+        updateGraphValues(sortType, 'memory', measureMemoryUsage(Array))
     
-    if sortType and ArraySize:
-        setOrdinationType(event)
-        UnsortedArray = Array.copy();
-        performanceTest(sortType)
-        
-        sortTypeSelected.innerHTML = sortType.title();
-        unsortedArray.innerHTML = render_colored_array(UnsortedArray)
-        sortedArray.innerHTML = render_colored_array(Array)
-        window.location.hash = "#perfomance-results-container"
-        
+    def showGeneralStatistics():
         if generalStatistics.style.display != "flex":
             generalStatistics.style.display = "flex"
+            
+            
+    unsortedArray = document.getElementById("unsorted-array");
+    sortedArray = document.getElementById("sorted-array");
+    sortTypeSelected = document.getElementById("selected-sort-type");
+    generalStatistics = document.getElementById("general-statistics-container");
+
+    
+    if sortType and ArraySize:
         
-        resetInputs();
+
+        setOrdinationType(event)
+        showGeneralStatistics()
+        
+        ArrayCopy = Array.copy();
+        sortTypeCopy = sortType
+        
+        sortTypeSelected.innerHTML = sortType.title();
+        unsortedArray.innerHTML = render_colored_array(ArrayCopy)
+        sortedArray.innerHTML = render_colored_array(sorted(ArrayCopy))
+        window.location.hash = "#perfomance-results-container"
+        
+        resetInputs()
+        
+        performanceTest(sortTypeCopy, ArrayCopy)
+
         showAlertBox("manual_sort_success", "success")
-        
-        
-        
     else:
         showAlertBox("fields_not_checked", "error")
 
 
-def bubble_sort(lista):
+def bubble_sort(array):
     iteration_count = 0
-    for n in range(len(lista) - 1, 0, -1):
+    for n in range(len(array) - 1, 0, -1):
         for i in range(n):
             iteration_count += 1
-            if lista[i] > lista[i + 1]:
+            if array[i] > array[i + 1]:
                 swapped = True
-                lista[i], lista[i + 1] = lista[i + 1], lista[i]
+                array[i], array[i + 1] = array[i + 1], array[i]
     
     return iteration_count
-def insertionSort(lista):
+def insertionSort(array):
     iteration_count = 0
-    for i in range(1, len(lista)):
+    for i in range(1, len(array)):
         iteration_count += 1
-        key = lista[i]
+        key = array[i]
         j = i - 1
-        while j >= 0 and key < lista[j]:
-            lista[j + 1] = lista[j]
+        while j >= 0 and key < array[j]:
+            array[j + 1] = array[j]
             j -= 1
             iteration_count += 1
-        lista[j + 1] = key    
+        array[j + 1] = key    
         iteration_count += 1
     return iteration_count     
 def selectionSort(array):
@@ -224,36 +228,36 @@ def selectionSort(array):
                 min_index = j
         (array[ind], array[min_index]) = (array[min_index], array[ind])   
     return iteration_count
-def heapSort(arr):
+def heapSort(array):
     iteration_count = 0
-    def heapify(arr, n, i):
+    def heapify(array, n, i):
         nonlocal iteration_count
         
         largest = i  # Inicializa largest como o índice i (raiz).
         l = 2 * i + 1  # Índice do filho esquerdo.
         r = 2 * i + 2  # Índice do filho direito.
 
-        if l < n and arr[i] < arr[l]:
+        if l < n and array[i] < array[l]:
             largest = l
         iteration_count += 1
 
-        if r < n and arr[largest] < arr[r]:
+        if r < n and array[largest] < array[r]:
             largest = r
         iteration_count += 1
 
         if largest != i:
-            arr[i], arr[largest] = arr[largest], arr[i]  # Swap
+            array[i], array[largest] = array[largest], array[i]  # Swap
             iteration_count += 1
-            heapify(arr, n, largest)  # Heapifica a subárvore.
+            heapify(array, n, largest)  # Heapifica a subárvore.
 
-    n = len(arr)  # Move a definição de n para o início da função.
+    n = len(array)  # Move a definição de n para o início da função.
 
     for i in range(n // 2 - 1, -1, -1):
-        heapify(arr, n, i)
+        heapify(array, n, i)
 
     for i in range(n - 1, 0, -1):
-        arr[i], arr[0] = arr[0], arr[i]  # Troca
+        array[i], array[0] = array[0], array[i]  # Troca
         iteration_count += 1
-        heapify(arr, i, 0)  # Não precisa mais do valor original de n aqui.
+        heapify(array, i, 0)  # Não precisa mais do valor original de n aqui.
         
     return iteration_count

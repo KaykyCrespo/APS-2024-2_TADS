@@ -157,7 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Qualquer motivo que seja puramente estético usar JavaScript caso não Pyscript
+
+
 const alertBox = document.getElementById('alert-box');
 const alertMessage = document.getElementById('alert-message');
 let showSettingsDropdown = false;
@@ -228,8 +229,6 @@ function showAlertBox(messageKey, category) {
 
 const sortingAlgorithms = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort'];
 const sizes = [250, 500, 1000, 2500, 7500, 15000];
-const selectedQuantity = 250; // Defina a quantidade inicial de números
-
 const graphValues = {};
 
 sortingAlgorithms.forEach(algorithm => {
@@ -297,14 +296,14 @@ flags.forEach(flag => {
 
 window.onload = resetInputs;
 function resetInputs() {
+
+
   document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
     radio.checked = false;
   });
   document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
     radio.checked = false;
   });
-  sortType = ""; // Certifique-se de que sortType esteja definido em um escopo acessível
-  sortArraySize = []; // Certifique-se de que sortArraySize esteja definido em um escopo acessível
 
   document.getElementById("userArrayInput").value = null
   document.getElementById("arraySortedResponse").value = null
@@ -312,46 +311,40 @@ function resetInputs() {
   document.getElementById("selectedMetric").value = "time"
   document.getElementById("selectedQuantity").value = "250"
 
+  console.log("resetou")
 }
 
-// Função para definir os valores dos graficos
+
+let arraySize = null;
+function setArraySize(size){
+  arraySize = size
+}
+
 function setGraphValues(sort, type, value) {
-  arraySize = document.querySelector('input[name="arraySize"]:checked').value
   graphValues[`${sort}${arraySize}${type}`] = value;
-  updateAllGraphs();
+  updateAllGraphs("makeTest");
 }
-
 
 // Função pra atualizar gráficos
-function updateAllGraphs() {
-  const selectedQuantity = document.getElementById("selectedQuantity").value
+function updateAllGraphs(beingCalledBy) {
+  let selectedQuantity = null;
+
+  if (beingCalledBy === "makeTest"){
+    // Irá pegar o valor do tamanho do array selecionado e usar como métrica
+    document.getElementById("selectedQuantity").value = arraySize
+    selectedQuantity = document.getElementById("selectedQuantity").value
+  } else {
+    // Caso não, ira utilizar a seleção do usuario
+    selectedQuantity = document.getElementById("selectedQuantity").value
+  }
+
 
   updateBarChart(selectedQuantity);
   updatePieChart(selectedQuantity);
   updatePolarAreaChart(selectedQuantity);
   updateBarChartWAP(selectedQuantity);
+  console.log("atualizou")
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -465,31 +458,6 @@ function updatePieChart(selectedQuantity) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Inicialização do gráfico de BARRAS
-const data = {
-  time: [null, null, null, null], // em segundos
-  memory: [null, null, null, null], // em GB
-  iterations: [null, null, null, null] // Corrigido para "iterations"
-};
 
 const ctxLine = document.getElementById('barChart').getContext('2d');
 let barChart = new Chart(ctxLine, {
@@ -626,8 +594,6 @@ let barChart = new Chart(ctxLine, {
   }]
 });
 
-
-
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart(selectedQuantity) {
   const selectedMetric = document.getElementById('selectedMetric').value;
@@ -676,40 +642,6 @@ function updateBarChart(selectedQuantity) {
 
   barChart.update();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -872,22 +804,6 @@ function updatePolarAreaChart(selectedQuantity) {
 
   myPolarAreaChart.update(); // Atualiza o gráfico
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1099,29 +1015,3 @@ function updateBarChartWAP(selectedQuantity) { // Adicione selectedQuantity como
   barChartWAP.options.plugins.title.text = title;
   barChartWAP.update(); // Atualiza o gráfico para refletir as mudanças
 }
-
-
-
-
-
-
-/**
-// Plugin para exibir valores ao lado de cada barra
-const valueDisplayPlugin = {
-  afterDatasetsDraw: function(chart) {
-      const ctx = chart.ctx;
-      chart.data.datasets.forEach(function(dataset, i) {
-          const meta = chart.getDatasetMeta(i);
-          if (!meta.hidden) {
-              meta.data.forEach(function(element, index) {
-                  const dataValue = dataset.data[index];
-                  const position = element.tooltipPosition();
-                  ctx.font = '12px Arial';
-                  ctx.fillStyle = 'black';
-                  ctx.fillText(dataValue, position.x, position.y - 10); // Exibe o valor acima da barra
-              });
-          }
-      });
-  }
-};
- */
