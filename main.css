@@ -8,16 +8,12 @@
     scroll-behavior: smooth;
 }
 
-main {
-    display: flex;
-}
-
-        /* Esconder o input radio */
+/* Esconder o input radio */
 input[type="radio"] {
     display: none;
 }
 
-        /* Estilo para o label que será a aparência do radio button */
+/* Estilo para o label que será a aparência do radio button */
 label {
     cursor: pointer;
     display: inline-block;
@@ -27,15 +23,1317 @@ label {
     background-repeat: no-repeat;
 }
 
-        /* Imagem para o estado "não marcado" */
-input[type="radio"]:not(:checked) + label {
+/* Imagem para o estado "não marcado" */
+input[type="radio"]:not(:checked)+label {
     background-image: url('imgs/unchecked.png');
 }
 
-        /* Imagem para o estado "marcado" */
-input[type="radio"]:checked + label {
+/* Imagem para o estado "marcado" */
+input[type="radio"]:checked+label {
     background-image: url('imgs/checked.png');
 }
+
+#settings-container {
+    position: absolute;
+    left: 5vw;
+    top: 7.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    /* Div do botão com engrenagem*/
+    >div:nth-of-type(1){
+        transition: 0.25s;
+        width: 2.25vw;
+        cursor: pointer;
+        background-color: var(--quinternary-color);
+        padding: 0.5vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5vw;
+
+        img {
+            width: 1.25vw;
+            transition: 0.5s;
+        }
+    }
+
+    /* Div dropdown*/
+    >div:nth-of-type(2){
+        transition: 0.25s;
+        visibility: hidden;
+        opacity: 0;
+        right: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2vw;
+        background-color: var(--quinternary-color);
+        display: flex;
+        padding: 1vw;
+        border-radius: 0 0.5vw 0.5vw 0.5vw;
+
+        h2 {
+            font-family: 'Poppins';
+            font-size: 1.25vw;
+            color: var(--white);
+        }
+
+        /* Div de linguagens */
+        >div:nth-of-type(1){
+            display: flex;
+            flex-direction: column;
+            gap: 0.5vw;
+            height: 4vw;
+
+            >div:nth-of-type(1){
+                display: flex;
+                justify-content: space-evenly;
+
+                img {
+                    width: 2vw;
+                    height: 1.5vw;
+                    transition: 0.2s;
+                    cursor: pointer;
+
+                    &:hover{
+                        transform: scale(1.1);
+                        transition: 0.2s;
+                    }
+                }
+            }
+        }
+
+        /* Div ativar modo escuro */
+        >div:nth-of-type(2){
+            height: 4vw;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5vw;
+
+            h4 {
+                text-align: center;
+            }
+        }
+    }
+
+
+}
+
+main {
+    display: flex;
+
+    #left-side {
+        background-color: var(--primary-color);
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3vw;
+
+        /* Primeira div de título, descrição */
+        >:nth-of-type(1) {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh;
+            width: 80%;
+
+
+            h1 {
+                color: var(--white);
+                font-family: "Keania One", sans-serif;
+                font-size: 4.5vw;
+                margin: 0;
+                padding: 0;
+
+            }
+
+            p {
+                font-family: 'Open sans';
+                color: var(--sixternary-color);
+                font-size: 1vw;
+            }
+
+            p:last-child {
+                color: var(--white);
+                font-size: 1.25vw;
+                font-family: 'Open sans';
+                width: 80%;
+            }
+
+        }
+
+        /* Segundo div onde está as estatisticas*/
+        >:nth-of-type(2) {
+            width: 80%;
+            display: none;
+            flex-direction: column;
+            transition: 0.5s;
+            gap: 3vw;
+
+            /*Div estatisticas*/
+            section:first-child {
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+
+                h1 {
+                    font-size: 2vw;
+                    font-family: 'Poppins';
+                    color: var(--white);
+                }
+
+                /* Div onde contem blocos pequenos de estatisticas*/
+                #small-statistics-blocks-container {
+                    margin-top: 1vw;
+                    display: flex;
+                    justify-content: space-between;
+
+                    /* Configurações de */
+                    .small-statistics-blocks {
+                        border-radius: 0.5vw 0.5vw 0 0.5vw;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        background-color: var(--quinternary-color);
+                        padding: 0.4vw 0.3vw;
+
+                        p {
+                            color: var(--white);
+                            font-family: 'Open sans';
+                            font-size: 0.8vw;
+                            text-align: center;
+                            width: 70%;
+                        }
+
+                        h2 {
+                            text-align: center;
+                            font-family: 'Poppins';
+                            font-size: 1.25vw;
+                            color: var(--white);
+
+                        }
+                    }
+                }
+
+                /* Div onde contem blocos grande de estatisticas*/
+                #big-statistics-blocks-container {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 3vw;
+                    border-radius: 0.5vw 0.5vw 0 0.5vw;
+                    margin-top: 2.25vw;
+
+
+                    /* Configurações do bloco*/
+                    .big-statistics-blocks {
+                        border-radius: 0.6vw 0.6vw 0 0.6vw;
+                        border: 0.25vw solid var(--sixternary-color);
+                        width: 50%;
+                        display: flex;
+                        align-items: center;
+                        padding: 1.2vw 0.3vw;
+                        justify-content: space-around;
+
+
+                        p {
+                            color: var(--white);
+                            font-family: 'Open sans';
+                            font-size: 1vw;
+                        }
+
+                        h2 {
+                            font-family: 'Poppins';
+                            font-size: 1.25vw;
+                            color: var(--white);
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+    }
+
+    #right-side {
+        background-color: var(--secondary-color);
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 5vw 0vw;
+        align-items: center;
+        gap: 1.5vw;
+
+
+        /* Estilos para seleção de opções */
+        .div-options {
+            display: flex;
+            gap: 2vw;
+
+            .options {
+                display: flex;
+                align-items: center;
+                gap: 0.5vw;
+
+                p {
+                    color: var(--white);
+                    font-family: 'Open sans';
+                    font-size: 1.25vw;
+                }
+            }
+        }
+
+        /* Estilo para a linha que fica entre os inputs */
+        .vertical-line {
+            height: 3vw;
+            width: 80%;
+            border-left: 0.1vw solid var(--white-transparent);
+
+        }
+
+
+        /* Primeira div, selecionar o tipo de sort */
+        >:nth-of-type(1) {
+            width: 80%;
+
+            h1 {
+                margin-bottom: 1.5vh;
+                font-family: 'Poppins';
+                font-size: 1.6vw;
+                margin-bottom: 0.75vw;
+                color: var(--white);
+            }
+        }
+
+        /* Segunda div, selecionar os números */
+        >:nth-of-type(3) {
+            width: 80%;
+
+            h1 {
+                margin-bottom: 1.5vh;
+                font-family: 'Poppins';
+                font-size: 1.6vw;
+                color: var(--white);
+                margin: 0;
+            }
+
+            h2 {
+                color: var(--white);
+                font-family: 'Open sans';
+                font-weight: normal;
+                font-size: 1.2vw;
+                margin-bottom: 1vw;
+
+            }
+
+        }
+
+
+        /* Terceira div, como vai ser a comparação de desempenho */
+        >:nth-of-type(5) {
+            width: 80%;
+
+            h1 {
+                font-family: 'Poppins';
+                font-size: 1.6vw;
+                color: var(--white);
+                margin: 0;
+            }
+
+            h2 {
+                color: var(--white);
+                font-family: 'Open sans';
+                font-weight: normal;
+                font-size: 1.2vw;
+                margin-bottom: 1vw;
+
+            }
+
+            /* Div da dropdown de repetir ou não números*/
+            >div:nth-of-type(1) {
+                display: flex;
+                border: 0.25vw solid var(--border-color);
+                border-radius: 0.25vw;
+                width: min-content;
+
+
+                select {
+                    cursor: pointer;
+                    color: var(--white);
+                    font-family: 'Poppins';
+                    font-weight: normal;
+                    font-size: 0.9vw;
+                    padding: 0.5vw 1vw;
+                    background: none;
+                    border: none;
+
+                    option {
+                        color: var(--black);
+                        font-family: 'Arial', sans-serif;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
+
+
+        /* Div final contendo os botões de reset e fazer teste*/
+        >:nth-of-type(6) {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 1.8vw;
+
+            p {
+                position: relative;
+                display: inline-block;
+                color: var(--black);
+                /* Cor inicial do texto */
+                transition: color 0.3s ease;
+                /* Transição suave para a cor do texto */
+                cursor: pointer;
+                height: fit-content;
+                font-family: 'Poppins';
+                font-size: 1vw;
+                color: var(--border-color);
+                border-bottom: 0.1vw solid var(--border-color);
+
+            }
+
+            button {
+                display: flex;
+                gap: 0.5vw;
+                background: none;
+                border: 0.2vw solid var(--sixternary-color);
+                border-radius: 0.5vw 0.5vw 0 0.5vw;
+                justify-content: center;
+                align-items: center;
+                padding: 0.75vw;
+                transition: 0.2s;
+
+                h1 {
+                    color: var(--white);
+                    font-family: 'Poppins';
+                    font-weight: normal;
+                    font-size: 1vw;
+                }
+
+                img {
+                    height: 0.75vw;
+                    width: 1.1vw;
+                }
+
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: var(--sixternary-transparent);
+                    transition: 0.2s;
+                }
+            }
+        }
+    }
+}
+
+#perfomance-results-container {
+    display: flex;
+    background-color: var(--tertiary-color);
+    padding: 4.5vw 0;
+
+    #perfomance-results-left {
+        margin-left: 4.5vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+
+        /* Tive que botar essa div pra fazer o traço no lado direito*/
+        >:nth-of-type(1) {
+            border-right: 0.11vw solid var(--bar-perfomance-results);
+
+
+            >:nth-of-type(1) {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1vw;
+                width: 90%;
+
+                >div:nth-of-type(1){
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    strong {
+                        color: var(--white);
+                        font-family: 'Poppins';
+                        font-size: 1vw;
+                        margin-left: 0.5vw;
+                    }
+                }
+
+
+                h1 {
+                    color: var(--white);
+                    font-family: 'Poppins';
+                    font-size: 2vw;
+                }
+
+                p {
+                    color: var(--white);
+                    font-size: 1vw;
+                    font-family: 'Open sans';
+                }
+
+            }
+
+            /* Section de resultados de arrays desorganizados/organizados*/
+            >:nth-of-type(2) {
+                margin-top: 2.5vw;
+                display: flex;
+                flex-direction: column;
+                gap: 2vw;
+
+                /* Divs que contem Unsorted/Sorted Array */
+                >:nth-of-type(1),
+                >:nth-of-type(2) {
+                    h2 {
+                        color: var(--white);
+                        font-size: 1vw;
+                        font-weight: normal;
+                        font-family: 'Open sans';
+                        margin-bottom: 0.5vw;
+                        margin-left: 0.5vw;
+                    }
+
+
+                    /* Estilos para caixa de arrays*/
+                    div {
+                        overflow-y: auto;
+                        background-color: var(--primary-color);
+                        width: 75%;
+                        padding: 0.7vw 1vw;
+                        border-radius: 0.5vw;
+                        height: 12vw;
+                        max-height: 12vw;
+
+                        p {
+                            color: var(--sixternary-color);
+                            font-family: 'Open sans';
+                            font-size: 1vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #perfomance-results-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 65%;
+        margin-left: 3.5vw;
+
+
+        >div:nth-of-type(1) {
+            display: flex;
+            gap: 2.5vw;
+            margin-bottom: 2vw;
+
+
+            >div:nth-of-type(1),
+            >div:nth-of-type(2) {
+                display: flex;
+                display: flex;
+                border: 0.25vw solid var(--border-color);
+                border-radius: 0.25vw;
+
+                p {
+                    color: var(--white);
+                    font-family: 'Open sans';
+                    background-color: var(--border-color);
+                    padding: 0.5vw;
+                }
+
+                select {
+                    cursor: pointer;
+                    color: var(--white);
+                    font-family: 'Poppins';
+                    font-weight: bold;
+                    font-size: 0.9vw;
+                    padding: 0 1vw;
+                    background: none;
+                    border: none;
+
+
+
+                    & option {
+                        color: var(--black);
+                        font-family: 'Arial', sans-serif;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
+
+        >div:nth-of-type(2) {
+            display: flex;
+            height: 17vw;
+
+        }
+
+        >div:nth-of-type(3) {
+            display: flex;
+            height: 17vw;
+            margin-top: 3vw;
+        }
+    }
+}
+
+#manual-test-container {
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    background-color: var(--quaternary-color);
+
+    /*Div testes de array simples */
+    section:last-child {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25vw;
+        margin: 1.5vw 0;
+
+
+        div:nth-of-type(1) {
+            h1 {
+                font-size: 2vw;
+                font-family: 'Poppins';
+                color: var(--white);
+            }
+
+            h2 {
+                color: var(--white);
+                font-size: 1vw;
+                font-weight: normal;
+                font-family: 'Open sans';
+            }
+        }
+
+        /* Div dos inputs de teste automatico */
+        div:nth-of-type(2) {
+            display: flex;
+            justify-content: space-between;
+
+            label {
+                width: 100%;
+                color: var(--sixternary-color);
+                font-family: 'Open sans';
+                font-size: 0.9vw;
+                margin-bottom: 0.5vw;
+                cursor: default;
+            }
+
+            /* Div do input do usuario */
+            div:nth-of-type(1) {
+                display: flex;
+                flex-direction: column;
+                
+                input:nth-of-type(1) {
+                    width: 35vw;
+                    transition: 0.2s;
+                    background: none;
+                    border-radius: 0 0.5vw 0.5vw 0.5vw;
+                    padding: 0.55vw;
+                    border: 0.25vw solid var(--sixternary-color);
+                    color: var(--white);
+                    font-family: 'Open sans';
+                    font-size: 1vw;
+    
+                    &:focus {
+                        border: 0.25vw solid var(--focus-manual-test);
+                        outline: none;
+                    }
+                }
+
+            }
+
+            /* Div da resposta do teste */
+            div:nth-of-type(2){
+                display: flex;
+                flex-direction: column;
+
+                input:nth-of-type(1) {
+                    width: 35vw;
+                    cursor: not-allowed;
+                    transition: 0.2s;
+                    background: var(--border-color);
+                    border-radius: 0 0.5vw 0.5vw 0.5vw;
+                    padding: 0.75vw;
+                    border: none;
+                    color: var(--white);
+                    font-family: 'Open sans';
+                    font-size: 1vw;
+    
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+
+
+        }
+
+        div:nth-of-type(3) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+                position: relative;
+                display: inline-block;
+                color: var(--black);
+                /* Cor inicial do texto */
+                transition: color 0.3s ease;
+                /* Transição suave para a cor do texto */
+                cursor: pointer;
+                height: fit-content;
+                font-family: 'Poppins';
+                font-size: 1vw;
+                color: var(--border-color);
+                border-bottom: 0.1vw solid var(--border-color);
+
+            }
+
+            button {
+                display: flex;
+                gap: 0.5vw;
+                background: none;
+                border: 0.2vw solid var(--sixternary-color);
+                border-radius: 0.5vw 0.5vw 0 0.5vw;
+                justify-content: center;
+                align-items: center;
+                padding: 0.75vw;
+                transition: 0.2s;
+
+                h1 {
+                    color: var(--white);
+                    font-family: 'Poppins';
+                    font-weight: normal;
+                    font-size: 1vw;
+                }
+
+                img {
+                    height: 0.75vw;
+                    width: 1.1vw;
+                }
+
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: var(--sixternary-transparent);
+                    transition: 0.2s;
+                }
+            }
+        }
+    }
+
+}
+
+footer {
+    background-color: var(--quinternary-color);
+    padding: 1.5vw 4.5vw;
+
+    /* Div de cima do footer*/
+    >div:nth-of-type(1){
+        display: flex;
+        align-items: center;
+        gap: 7.5vw;
+        border-bottom: 0.1vw solid var(--white);
+        padding-bottom: 1vw;
+
+        h1{
+            color: var(--white);
+            font-family: "Keania One", sans-serif;
+            font-size: 3vw;
+            cursor: pointer;
+        }
+
+        h2 {
+            font-family: 'Poppins';
+            font-size: 1vw;
+            font-weight: 400;
+            color: var(--white);
+            border-left: 0.1vw solid var(--white);
+            padding-left: 2vw;
+        }
+    }
+
+    /* Div inferior do footer*/
+    >div:nth-of-type(2){
+        display: flex;
+        justify-content: space-between;
+        padding-top: 1vw;
+
+
+        /* Div contendo copyright, privacidade e etc*/
+        >div:nth-of-type(1){
+            display: flex;
+            align-items: center;
+            gap: 3vw;
+
+            h2 {
+                font-family: 'Open sans';
+                font-weight: 400;
+                font-size: 0.75vw;
+                color: var(--white);
+                cursor: pointer;
+            }
+        }
+
+        /* Div icones redes sociais*/
+        >div:nth-of-type(2){
+            display: flex;
+            gap: 1vw;
+
+            img {
+                width: 1.5vw;
+                height: 1.5vw;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 428px) {
+    label {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+    
+    main {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        #left-side {
+            padding: 4.5vw 0;
+            height: fit-content;
+            width: 100%;
+            gap: 7.5vw;
+
+
+            /* Primeira div de título, descrição */
+            >:nth-of-type(1) {
+                gap: 1.5vw;
+                width: 65%;
+
+                h1 {
+                    text-align: center;
+                    color: var(--white);
+                    font-family: "Keania One", sans-serif;
+                    font-size: 5vw;
+                }
+
+                p {
+                    text-align: center;
+                    font-family: 'Open sans';
+                    color: var(--sixternary-color);
+                    font-size: 1.5vw;
+                }
+
+                p:last-child {
+                    color: var(--white);
+                    font-size: 2vw;
+                    font-family: 'Open sans';
+                    width: 100%;
+                }
+
+            }
+
+            /* Segunda div de estatísticas */
+            >:nth-of-type(2) {
+                width: 65%;
+
+                section:first-child {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 4vw;
+
+                    h1 {
+                        display: flex;
+                        align-items: center;
+                        font-size: 3vw;
+                    }
+
+                    #small-statistics-blocks-container {
+                        width: 100%;
+    
+                        /* Configurações de */
+                        .small-statistics-blocks {
+                            padding: 2vw 1.25vw;
+                            
+                            p {
+                                font-size: 1.5vw;
+                            }
+    
+                            h2 {
+                                font-size: 2vw;
+                            }
+                        }
+                    }
+
+                    #big-statistics-blocks-container {
+                        width: 100%;
+    
+                        /* Configurações do bloco*/
+                        .big-statistics-blocks {
+                            padding: 2vw 0.5vw;
+                            align-items: center;
+                            border-radius: 0.8vw 0.8vw 0 0.8vw;
+    
+                            p {
+                                font-size: 1.5vw;
+                            }
+    
+                            h2 {
+                                font-family: 'Poppins';
+                                font-size: 2vw;
+                                color: var(--white);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        #right-side {
+            width: 100%;
+    
+            /* Estilos para seleção de opções */
+            .div-options {
+                display: flex;
+                gap: 2.25vw;
+    
+                .options {
+                    display: flex;
+                    align-items: center;
+                    gap: 1.25vw;
+    
+                    p {
+                        color: var(--white);
+                        font-family: 'Open sans';
+                        font-size: 2.5vw;
+                    }
+                }
+            }
+    
+            /* Estilo para a linha que fica entre os inputs */
+            .vertical-line {
+                height: 5vw;
+                width: 80%;
+                border-left: 0.1vw solid var(--white-transparent);
+    
+            }
+    
+    
+            /* Primeira div, selecionar o tipo de sort */
+            >:nth-of-type(1) {
+                width: 80%;
+    
+                h1 {
+                    margin-bottom: 1.5vh;
+                    font-size: 3vw;
+                    margin-bottom: 0.75vw;
+                }
+            }
+    
+            /* Segunda div, selecionar os números */
+            >:nth-of-type(3) {
+                width: 80%;
+    
+                h1 {
+                    font-size: 3vw;
+                }
+    
+                h2 {
+                    font-size: 2vw;
+                }
+    
+            }
+    
+    
+            /* Terceira div, como vai ser a comparação de desempenho */
+            >:nth-of-type(5) {
+                width: 80%;
+    
+                h1 {
+                    font-size: 3vw;
+                }
+    
+                h2 {
+                    font-size: 2vw;
+    
+                }
+    
+                /* Div da dropdown de repetir ou não números*/
+                >div:nth-of-type(1) {
+                    border: 0.75vw solid var(--border-color);
+    
+    
+                    select {
+                        font-size: 2vw;
+                        padding: 1.5vw 2vw;
+    
+                        option {
+                            color: var(--black);
+                            font-family: 'Arial', sans-serif;
+                            font-weight: bold;
+                            cursor: pointer;
+                            font-size: 4vw;
+                        }
+                    }
+                }
+    
+            }
+    
+    
+            /* Div final contendo os botões de reset e fazer teste*/
+            >:nth-of-type(6) {
+    
+                p {
+                    font-size: 2.5vw;
+                }
+    
+                button {
+                    display: flex;
+                    gap: 2vw;
+                    background: none;
+                    border: 0.75vw solid var(--border-color);
+                    border-radius: 0.5vw 0.5vw 0 0.5vw;
+                    padding: 1.5vw 4vw;
+                    transition: 0.2s;
+    
+                    h1 {
+                        font-size: 2.5vw;
+                    }
+    
+                    img {
+                        height: 2vw;
+                        width: 3vw;
+                    }
+    
+    
+                    &:hover {
+                        cursor: pointer;
+                        background-color: var(--sixternary-transparent);
+                        transition: 0.2s;
+                    }
+                }
+            }
+        }
+    }
+
+    #perfomance-results-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+        #perfomance-results-left {
+            width: 80%;
+            margin: 0;
+
+            >:nth-of-type(1){
+                border: none;
+
+                >:nth-of-type(1){
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    h1 {
+                        text-align: center;
+                        width: 100%;
+                        font-size: 3vw;
+                    }
+
+                    p{
+                        font-size: 2vw;
+                        text-align: center;
+                        width: 70%;
+                    }
+                }
+
+                >:nth-of-type(2){
+                    margin-top: 5vw;
+
+                    >:nth-of-type(1),
+                    >:nth-of-type(2) {
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        h2 {
+                            font-size: 2.2vw;
+                        }
+
+                        /* Estilos para caixa de arrays*/
+                        div {
+                            height: 30vw;
+                            max-height: 30vw;
+
+                            p {
+                                font-size: 2vw;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        #perfomance-results-right {
+        width: 60%;
+        padding: 5vw 0;
+        margin: 0;
+
+            >div:nth-of-type(1){
+            justify-content: space-between;
+
+                >div:nth-of-type(1),
+                >div:nth-of-type(2) {
+                    display: flex;
+                    border: 0.25vw solid var(--border-color);
+                    border-radius: 0.25vw;
+    
+                    p {
+                        color: var(--white);
+                        font-family: 'Open sans';
+                        background-color: var(--border-color);
+                        padding: 0.5vw;
+                        font-size: 2vw;
+                    }
+    
+                    select {
+                        cursor: pointer;
+                        color: var(--white);
+                        font-family: 'Poppins';
+                        font-weight: bold;
+                        font-size: 1.5vw;
+                        padding: 0 1vw;
+                        background: none;
+                        border: none;
+    
+    
+    
+                        & option {
+                            color: var(--black);
+                            font-family: 'Arial', sans-serif;
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            >div:nth-of-type(2) {
+                border: 1px solid red;
+                display: flex;
+                height: 18vw;
+
+            }
+
+            >div:nth-of-type(3) {
+                border: 1px solid red;
+                display: flex;
+                height: 18vw;
+            }
+        }
+
+    }
+
+    #manual-test-container {
+        display: flex;
+        justify-content: center ;
+        align-items: center;
+        background-color: var(--quaternary-color);
+    
+        /*Div testes de array simples */
+        section:last-child {
+            width: 35vw;
+            margin: 3vw 0;
+            flex-direction: column;
+
+            div:nth-of-type(1) {
+                h1 {
+                    font-size: 3vw;
+                }
+    
+                h2 {
+                    font-size: 2vw;
+                }
+            }
+    
+            /* Div dos inputs de teste automatico */
+            >div:nth-of-type(2) {
+                display: flex;
+                flex-direction: column;
+                gap: 3vw;
+
+                label {
+                    font-size: 1.25vw;
+                    margin-bottom: -0.75vw;
+                }
+    
+                /* Div do input do usuario */
+                div:nth-of-type(1) {
+                    display: flex;
+                    flex-direction: column;
+    
+                    
+                    input:nth-of-type(1) {
+                        width: 35vw;
+                        padding: 1.25vw 0.55vw;
+                        font-size: 1vw;
+                    }
+    
+                }
+    
+                /* Div da resposta do teste */
+                div:nth-of-type(2){
+                    display: flex;
+                    flex-direction: column;
+    
+                    input:nth-of-type(1) {
+                        width: 35vw;
+                        border-radius: 0 0.5vw 0.5vw 0.5vw;
+                        padding: 1.25vw 0.55vw;
+                    }
+                }
+    
+    
+    
+            }
+    
+            div:nth-of-type(3) {
+    
+                p {
+                    font-size: 2vw;
+                }
+    
+                button {
+                    display: flex;
+                    gap: 2vw;
+                    background: none;
+                    border: 0.75vw solid var(--border-color);
+                    border-radius: 0.3vw 0.3vw 0 0.3vw;
+                    padding: 0.75vw 1.75vw;
+                    transition: 0.2s;
+    
+                    h1 {
+                        font-size: 1.5vw;
+                    }
+    
+                    img {
+                        height: 2vw;
+                        width: 3vw;
+                    }
+    
+    
+                    &:hover {
+                        cursor: pointer;
+                        background-color: var(--sixternary-transparent);
+                        transition: 0.2s;
+                    }
+                }
+            }
+        }
+    
+    }
+
+    footer {
+        padding: 5vw 4.5vw;
+
+        >div:nth-of-type(1){
+            flex-direction: column;
+            gap: 0;
+            padding-bottom: 4vw;
+
+            h1 {
+                font-size: 5vw;
+            }
+
+            h2 {
+                border-left: none;
+                font-size: 2vw;
+
+            }
+        }
+
+        >div:nth-of-type(2){
+            padding-top: 4vw;
+            flex-direction: column;
+            align-items: center;
+            gap: 2vw;            
+
+            >div:nth-of-type(1){
+                flex-direction: column;
+                gap: 1vw;
+
+                h2 {
+                    font-size: 1.75vw;
+                }
+            }
+
+            >div:nth-of-type(2){
+
+                img {
+                    width: 2.5vw;
+                    height: 2.5vw;
+                }
+            }
+        }
+    }
+
+    
+    
+}
+
+/* Estilos para a barra de rolagem em navegadores Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--white);
+    /* Cor da barra de rolagem */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--secondary-color);
+    /* Cor da trilha de rolagem */
+}
+
+
+
 
 
 #alert-box {
@@ -44,7 +1342,7 @@ input[type="radio"]:checked + label {
     justify-content: center;
     gap: 0.75vw;
     width: fit-content;
-    background-color: #f36464;
+    background-color: var(--alert-red);
     position: fixed;
     left: 50%;
     top: 5%;
@@ -60,466 +1358,52 @@ input[type="radio"]:checked + label {
 
     p {
         font-family: 'Open sans';
-        color: white;
+        color: var(--white);
         font-size: 0.8vw;
     }
-    
-}
-
-#left-side {
-    background-color: #012326;
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 2vw;
-
-
-    /* Primeira div de título, descrição */
-    >:nth-of-type(1){
-        display: flex;
-        flex-direction: column;
-        gap: 1.5vh;
-        width: 80%;
-        margin-top: 9vh;
-
-        h1 {
-            color: white;
-            font-family: "Keania One", sans-serif;
-            font-size: 4.5vw;
-            margin: 0;
-            padding: 0;
-
-        } 
-
-        p {
-            font-family: 'Open sans';
-            color: #78B8BF;
-            font-size: 1vw;
-        }
-
-        p:last-child {
-            color: white;
-            font-size: 1vw;
-            font-family: 'Open sans';
-            width: 80%;
-        }
-    }
-
-    /* Segundo div onde está as estatisticas */
-    >:nth-of-type(2){
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        gap: 3vw;
-        overflow-x: auto;
-        max-height: 25vw;
-
-        /*Div estatisticas*/
-        section:first-child{
-            display: flex;
-            flex-direction: column;
-            width: 90%;
-
-
-            h1 {
-                font-size: 2vw;
-                font-family: 'Poppins';
-                color: white;
-            }
-
-            /* Div onde contem blocos pequenos de estatisticas*/
-            >:nth-of-type(1){
-                margin-top: 1vw;
-                display: flex;
-                justify-content: space-between;
-
-                /* Configurações de */
-                div {
-                    border-radius: 0.5vw 0.5vw 0 0.5vw;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    background-color: #457E83;
-                    padding: 0.4vw 0.3vw;
-
-                    p {
-                        color: white;
-                        font-family: 'Open sans';
-                        font-size: 0.8vw;
-                        text-align: center;
-                        width: 70%;
-                    }
-
-                    h2 {
-                        text-align: center;
-                        font-family: 'Poppins';
-                        font-size: 1.25vw;
-                        color: white;
-
-                    }
-                }
-            }
-
-            /* Div onde contem blocos grande de estatisticas*/
-            >:nth-of-type(2){
-                display: flex;  
-                justify-content: space-between;
-                gap: 3vw;
-                border-radius: 0.5vw 0.5vw 0 0.5vw;
-                margin-top: 2.25vw;
-
-
-                /* Configurações do bloco*/
-                div {
-                    border-radius: 0.6vw 0.6vw 0 0.6vw;
-                    border: 0.25vw solid #78B8BF;
-                    width: 50%;
-                    display: flex;
-                    align-items: center;
-                    padding: 1.2vw 0.3vw;
-                    justify-content: space-around;
-                    
-
-                    p {
-                        color: white;
-                        font-family: 'Open sans';
-                        font-size: 1vw;
-                    }
-
-                    h2 {
-                        font-family: 'Poppins';
-                        font-size: 1.25vw;
-                        color: white;
-                    }
-                }
-            }
-        }
-
-        /*Div testes de array simples */
-        section:last-child{
-            display: flex;
-            flex-direction: column;
-            gap: 2.5vw;
-
-            div:nth-of-type(1){
-                h1 {
-                    font-size: 2vw;
-                    font-family: 'Poppins';
-                    color: white;
-                }
-    
-                h2 {
-                    color: white;
-                    font-size: 1vw;
-                    font-weight: normal;
-                    font-family: 'Open sans';
-                    width: 80%;
-                }
-            }
-
-            div:nth-of-type(2){
-                display: flex;
-                flex-direction: column;                
-
-                label {
-                    width: 100%;
-                    color: #78B8BF;
-                    font-family: 'Open sans';
-                    font-size: 0.9vw;
-                    margin-bottom: 0.5vw;
-                }
-
-                input {
-                    transition: 0.2s;
-                    width: 90%;
-                    background: none;
-                    border-radius: 0 0.5vw 0.5vw 0.5vw;
-                    padding: 0.55vw;
-                    border: 0.25vw solid #78B8BF;
-                    color: white;
-                    font-family: 'Open sans';
-                    font-size: 1vw;
-
-                    &:focus{
-                        border: 0.25vw solid #8bcddc;
-                        outline: none;
-                    }
-                }
-            }
-
-            div:nth-of-type(3){
-                display: flex;
-                flex-direction: column;                
-
-                label {
-                    width: 100%;
-                    color: #78B8BF;
-                    font-family: 'Open sans';
-                    font-size: 0.9vw;
-                    margin-bottom: 0.5vw;
-                }
-
-                input {
-                    cursor: not-allowed;
-                    transition: 0.2s;
-                    width: 90%;
-                    background: #4995A6;
-                    border-radius: 0 0.5vw 0.5vw 0.5vw;
-                    padding: 0.55vw;
-                    border: none;
-                    color: white;
-                    font-family: 'Open sans';
-                    font-size: 1vw;
-
-                    &:focus{
-                        outline: none;
-                    }
-                }
-            }
-
-            div:nth-of-type(4){
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 90%;
-
-                p {
-                    position: relative;
-                    display: inline-block;
-                    color: #000; /* Cor inicial do texto */
-                    transition: color 0.3s ease; /* Transição suave para a cor do texto */
-                    cursor: pointer;
-                    height: fit-content;
-                    font-family: 'Poppins';
-                    font-size: 1vw;
-                    color: #4995A6;
-                    border-bottom: 0.1vw solid #4995A6;
-        
-                }
-
-                button {
-                    display: flex;
-                    gap: 0.5vw;
-                    background: none;
-                    border: 0.2vw solid #78B8BF;
-                    border-radius: 0.5vw 0.5vw 0 0.5vw;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 0.75vw;
-                    transition: 0.2s;
-        
-                    h1 {
-                        color: white;
-                        font-family: 'Poppins';
-                        font-weight: normal;
-                        font-size: 1vw;
-                    }
-        
-                    img {
-                        height: 0.75vw;
-                        width: 1.1vw;
-                    }
-        
-        
-                    &:hover {
-                        cursor: pointer;
-                        background-color: #78b8bf37;
-                        transition: 0.2s;
-                    }
-                }
-            }
-        }
-    }
-
 
 }
 
-#right-side {
-    background-color: #013A40;
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5vw;
 
-
-    /* Estilos para seleção de opções */
-    .div-options {
-        display: flex;
-        gap: 2vw;
-
-        .options {
-            display: flex;
-            align-items: center;
-            gap: 0.5vw;
-    
-            p {
-                color: white;
-                font-family: 'Open sans';
-                font-size: 1.25vw;
-            }
-        }
-    }
-    
-    /* Estilo para a linha que fica entre os inputs */
-    .vertical-line{
-        height: 3vw;
-        width: 80%;
-        border-left: 0.1vw solid #ffffffc2;
-        
-    }
-
-
-    /* Primeira div, selecionar o tipo de sort */
-    >:nth-of-type(1){
-        margin-top: 10vh;
-        width: 80%;
-
-
-        h1 {
-            margin-bottom: 1.5vh;
-            font-family: 'Poppins';
-            font-size: 1.6vw;
-            margin-bottom: 0.75vw;
-            color: white;
-        }
-    }
-
-    /* Segunda div, selecionar os números */
-    >:nth-of-type(3) {
-        width: 80%;
-
-        h1 {
-            margin-bottom: 1.5vh;
-            font-family: 'Poppins';
-            font-size: 1.6vw;
-            color: white;
-            margin: 0;
-        }
-
-        h2 {
-            color: white;
-            font-family: 'Open sans';
-            font-weight: normal;
-            font-size: 1.2vw;
-            margin-bottom: 1vw;
-
-        }
-
-    }
-
-
-    /* Terceira div, como vai ser a comparação de desempenho */
-    >:nth-of-type(5) {
-        width: 80%;
-
-        h1 {
-            font-family: 'Poppins';
-            font-size: 1.6vw;
-            color: white;
-            margin: 0;
-        }
-
-        h2 {
-            color: white;
-            font-family: 'Open sans';
-            font-weight: normal;
-            font-size: 1.2vw;
-            margin-bottom: 1vw;
-
-        }
-
-    }
-
-
-    /* Div final contendo os botões de reset e fazer teste*/
-    >:nth-of-type(6) {
-        width: 80%;
-        margin-top: 5vw;
-
-        display: flex;
-        justify-content: space-between;
-
-        p {
-            position: relative;
-            display: inline-block;
-            color: #000; /* Cor inicial do texto */
-            transition: color 0.3s ease; /* Transição suave para a cor do texto */
-            cursor: pointer;
-            height: fit-content;
-            font-family: 'Poppins';
-            font-size: 1vw;
-            color: #4995A6;
-            border-bottom: 0.1vw solid #4995A6;
-
-        }
-
-        button {
-            display: flex;
-            gap: 0.5vw;
-            background: none;
-            border: 0.2vw solid #78B8BF;
-            border-radius: 0.5vw 0.5vw 0 0.5vw;
-            justify-content: center;
-            align-items: center;
-            padding: 0.75vw;
-            transition: 0.2s;
-
-            h1 {
-                color: white;
-                font-family: 'Poppins';
-                font-weight: normal;
-                font-size: 1vw;
-            }
-
-            img {
-                height: 0.75vw;
-                width: 1.1vw;
-            }
-
-
-            &:hover {
-                cursor: pointer;
-                background-color: #78b8bf37;
-                transition: 0.2s;
-            }
-        }
-    }
-}
 
 /*Transição para o botão de resetar*/
 /*INICIO*/
 
+#resetar {
 
-.resetar::after {
-    content: '';
-    position: absolute;
-    bottom: -3px; /* Posição da linha abaixo do texto */
-    left: 0;
-    width: 0; /* A linha começa com largura 0 */
-    height: 2px;
-    background-color: #78b8bf37;; /* Cor inicial da linha */
-    transition: width 0.3s ease, background-color 0.3s ease; /* Transição suave para largura e cor */
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        /* Posição da linha abaixo do texto */
+        left: 0;
+        width: 0;
+        /* A linha começa com largura 0 */
+        height: 2px;
+        background-color: var(--sixternary-transparent);
+        ;
+        /* Cor inicial da linha */
+        transition: width 0.3s ease, background-color 0.3s ease;
+        /* Transição suave para largura e cor */
+    }
+
+    &:hover {
+        color: var(--sixternary-transparent);
+        ;
+        /* Cor do texto ao passar o mouse */
+    }
+
+    &:hover::after {
+        width: 100%;
+        /* Quando o hover acontece, a linha expande até 100% */
+        background-color: var(--reset);
+        /* Cor alterada levemente ao passar o mouse */
+    }
 }
 
-.resetar:hover {
-    color: #78b8bf37;; /* Cor do texto ao passar o mouse */
-}
-
-.resetar:hover::after {
-    width: 100%; /* Quando o hover acontece, a linha expande até 100% */
-    background-color: #5a9ca8; /* Cor alterada levemente ao passar o mouse */
-}
-/*Transição para o botão de resetar*/
 /*FIM*/
 
 
-/*Transição para o botão de MAKE TEST*/
 /*INICIO*/
 .button-container {
     width: 80%;
@@ -532,8 +1416,8 @@ input[type="radio"]:checked + label {
         height: fit-content;
         font-family: 'Poppins';
         font-size: 1vw;
-        color: #4995A6;
-        border-bottom: 0.1vw solid #4995A6;
+        color: var(--border-color);
+        border-bottom: 0.1vw solid var(--border-color);
     }
 }
 
@@ -542,61 +1426,66 @@ input[type="radio"]:checked + label {
     display: flex;
     gap: 0.5vw;
     background: none;
-    border: 0.2vw solid #78B8BF;
+    border: 0.2vw solid var(--sixternary-color);
     justify-content: center;
     align-items: center;
     padding: 0.75vw;
     transition: 0.3s ease;
-    overflow: hidden; /* Ensures that the gradient does not overflow the button */
+    overflow: hidden;
+    /* Ensures that the gradient does not overflow the button */
+
+    h1 {
+        color: var(--white);
+        font-family: 'Poppins';
+        font-weight: normal;
+        font-size: 1vw;
+        z-index: 2;
+    }
+
+    img {
+        height: 0.75vw;
+        width: 1.1vw;
+        z-index: 2;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0.2vw solid transparent;
+        /* Initial border */
+        box-shadow: 0 0 0 0.2vw var(--sixternary-color);
+        /* Initial border shadow */
+        transition: box-shadow 0.3s ease, border 0.3s ease;
+        z-index: 1;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, var(--sixternary-color));
+        transition: width 0.3s ease;
+        z-index: 0;
+    }
+
+    &:hover::before {
+        box-shadow: 0 0 0 0.4vw var(--sixternary-color);
+        /* Stronger border shadow on hover */
+    }
+
+    &:hover::after {
+        width: 10vw;
+        /*Gradualfillonhover*/
+    }
 }
 
-.make-test-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0.2vw solid transparent; /* Initial border */
-    box-shadow: 0 0 0 0.2vw #78B8BF; /* Initial border shadow */
-    transition: box-shadow 0.3s ease, border 0.3s ease;
-    z-index: 1;
-}
-
-.make-test-button::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, #78B8BF);
-    transition: width 0.3s ease;
-    z-index: 0;
-}
-
-.make-test-button:hover::before {
-    box-shadow: 0 0 0 0.4vw #78B8BF; /* Stronger border shadow on hover */
-}
-
-.make-test-button:hover::after {
-    width: 10vw;/*Gradualfillonhover*/
-}
-
-.make-test-button h1 {
-    color: white;
-    font-family: 'Poppins';
-    font-weight: normal;
-    font-size: 1vw;
-    z-index: 2;
-}
-
-.make-test-button img {
-    height: 0.75vw;
-    width: 1.1vw;
-    z-index: 2;
-}
-/*Transição para o botão de MAKE TEST*/
 /*FIM*/
 
 
@@ -605,179 +1494,109 @@ input[type="radio"]:checked + label {
 .square-radio {
     position: relative;
     appearance: none;
-    width: 2vw; /* Ajuste conforme necessário */
-    height: 2vw; /* Ajuste conforme necessário */
-    background-color: #f0f0f0;
-    border: 2px solid #78B8BF;
-    border-radius: 0.2vw; /* Mantém o botão com bordas arredondadas */
+    width: 2vw;
+    /* Ajuste conforme necessário */
+    height: 2vw;
+    /* Ajuste conforme necessário */
+    background-color: var(--square-radio);
+    border: 2px solid var(--sixternary-color);
+    border-radius: 0.2vw;
+    /* Mantém o botão com bordas arredondadas */
     cursor: pointer;
     outline: none;
-    transition: 
-        background-color 0.3s ease, /* Transição suave para a cor de fundo */
-        border-color 0.3s ease, /* Transição suave para a cor da borda */
-        box-shadow 0.3s ease, /* Transição suave para a sombra */
-        transform 0.1s ease, /* Transição suave para o efeito de clique */
-        border-width 0.3s ease; /* Transição suave para a largura da borda */
-}
+    transition:
+        background-color 0.3s ease,
+        /* Transição suave para a cor de fundo */
+        border-color 0.3s ease,
+        /* Transição suave para a cor da borda */
+        box-shadow 0.3s ease,
+        /* Transição suave para a sombra */
+        transform 0.1s ease,
+        /* Transição suave para o efeito de clique */
+        border-width 0.3s ease;
+    /* Transição suave para a largura da borda */
 
-.square-radio:checked {
-    background-color: #78B8BF;
-    border-color: #78b8bf37; /* Cor de borda quando selecionado */
-    border-width: 2px; /* Mantém a borda consistente quando selecionado */
-}
+    &:checked {
+        background-color: var(--sixternary-color);
+        border-color: var(--sixternary-transparent);
+        /* Cor de borda quando selecionado */
+        border-width: 2px;
+        /* Mantém a borda consistente quando selecionado */
+    }
 
-.square-radio:focus {
-    box-shadow: 0 0 0 3px rgba(120, 184, 191, 0.5); /* Adiciona uma borda externa suave quando o botão está em foco */
-}
+    &:focus {
+        box-shadow: 0 0 0 3px var(--square-radio-focus);
+        /* Adiciona uma borda externa suave quando o botão está em foco */
+    }
 
-.square-radio:active {
-    background-color: #5a9ca8; /* Cor mais escura quando pressionado */
-    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra interna para simular o efeito de pressionado */
-    transform: scale(0.95); /* Leve efeito de escala para simular o clique */
-    border-width: 2px; /* Mantém a largura da borda quando pressionado */
-}
+    &:active {
+        background-color: var(--reset);
+        /* Cor mais escura quando pressionado */
+        box-shadow: inset 0 0 0 2px var(--square-radio-active);
+        /* Adiciona uma sombra interna para simular o efeito de pressionado */
+        transform: scale(0.95);
+        /* Leve efeito de escala para simular o clique */
+        border-width: 2px;
+        /* Mantém a largura da borda quando pressionado */
+    }
 
-.square-radio::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50%; /* Ajustado para menor espaço em branco */
-    height: 50%; /* Ajustado para menor espaço em branco */
-    border-radius: 0.2vw; /* Mantém a borda arredondada no meio */
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease; /* Transição suave para a opacidade */
-    opacity: 0;
-}
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        /* Ajustado para menor espaço em branco */
+        height: 50%;
+        /* Ajustado para menor espaço em branco */
+        border-radius: 0.2vw;
+        /* Mantém a borda arredondada no meio */
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s ease;
+        /* Transição suave para a opacidade */
+        opacity: 0;
+    }
 
-.square-radio:checked::after {
-    opacity: 1;
+    &:checked::after {
+        opacity: 1;
+    }
 }
 
 
 /*Dropdown da escolha do grafico*/
-#dropdown{
+#dropdown {
     position: relative;
     display: inline-block;
-}
-
-#dropdown select{
-    width: 200px;
-    height: 40px;
-    padding: 5px 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #003B40;
-    border: 1px solid #3a767d;
-    border-radius: 5px;
-    appearance: none;
-    cursor: pointer;
-}
-
-#dropdown::after{
-    content: '\25BC';
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    color: #fff;
-    pointer-events: none;
-}
-
-#perfomance-results-container {
-    display: flex;
-    height: 100vh;
-    background-color: #00303C;   
-
-    #perfomance-results-left{
-        margin-left: 4.5vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 30%;
-        
-        /* Tive que botar essa div pra fazer o traço no lado direito*/
-        >:nth-of-type(1) {
-            border-right: 0.11vw solid rgba(255, 255, 255, 0.37);
 
 
-            >:nth-of-type(1){
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1vw;
-
-            h1 {
-                color: white;
-                font-family: 'Poppins';
-                font-size: 2vw;
-            }
-
-            p {
-                color: white;
-                font-size: 1vw;
-                font-family: 'Open sans';
-            }
-
-            }
-
-        /* Section de resultados de arrays desorganizados/organizados*/
-        >:nth-of-type(2) {
-
-            margin-top: 2.5vw;
-            display: flex;
-            flex-direction: column;
-            gap: 2vw;
-
-            /* Divs que contem Unsorted/Sorted Array */
-            >:nth-of-type(1), >:nth-of-type(2) {
-                h2 {
-                    color: white;
-                    font-size: 1vw;
-                    font-weight: normal;
-                    font-family: 'Open sans';
-                    margin-bottom: 0.5vw;
-                    margin-left: 0.5vw;
-                }
-                
-
-                /* Estilos para caixa de arrays*/
-                div {
-                    overflow-y: auto;
-                    background-color: #012326;
-                    width: 75%;
-                    padding: 0.7vw 1vw;
-                    border-radius: 0.5vw;
-                    height: 12vw;
-                    max-height: 12vw;
-
-                    p{
-                        color: #78B8BF;
-                        font-family: 'Open sans';
-                        font-size: 1vw;
-                    }
-                }
-
-            }
-
-
-
-        }
-
+    select {
+        width: 200px;
+        height: 40px;
+        padding: 5px 10px;
+        font-size: 16px;
+        color: var(--white);
+        background-color: var(--primary-dropdown);
+        border: 1px solid var(--seconday-dropdown);
+        border-radius: 5px;
+        appearance: none;
+        cursor: pointer;
     }
 
+    &::after {
+        content: '\25BC';
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: var(--white);
+        pointer-events: none;
     }
-
-    #perfomance-results-right{
-        display: flex;
-        flex-wrap: wrap;
-        width: 65%;
-        border: 1px solid red   ;
-    }
-
 }
 
-#myChart{
-    margin-top: 8vh;
+
+
+
+canvas {
+    margin-left: 2.5vw;
+    /* Espaçamento entre os gráficos */
 }
