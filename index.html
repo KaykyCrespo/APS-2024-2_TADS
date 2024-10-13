@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="">
 
 <head>
     <meta charset='utf-8'>
@@ -10,6 +10,7 @@
     <script type="module" src="https://pyscript.net/releases/2024.8.2/core.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='colors.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='darkmode.css'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src='main.js'></script>
 </head>
@@ -33,7 +34,10 @@
             </div>
             <div>
                 <h2>Dark mode</h2>
-                <h4>---</h4>
+                <div id="switch" onclick="toggleMode()">
+                    <button></button> <!--bolinha com imagem-->
+                    <span></span>	<!--campo em que a bilinha desliza-->
+                </div>
             </div>
         </div>
     </div>

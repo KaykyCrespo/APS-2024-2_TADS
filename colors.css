@@ -28,4 +28,13 @@
     --white-transparent: #ffffffc2;
     --sixternary-transparent: #38B8BF37;
 
+    /* dark mode */
+    --primary-dark: #0A0B0D;
+    --secondary-dark: #2D3540;
+    --tertiary-dark: #1C2026;
+    --quaternary-dark:#7d8185;
+    --quinternary-dark: #465059;
+
+    --primary-dark-transparent: #0a0b0db9;
+    --secondary-dark-transparent: #2d3540e5;
   }

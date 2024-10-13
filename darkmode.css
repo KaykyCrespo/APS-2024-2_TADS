@@ -1,0 +1,309 @@
+:root{
+	--switch-bg-url: url(imgs/sun.svg);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --surface-color: rgba(255, 255, 255, 0.1);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+}
+
+.light{
+	--highlight-color: rgba(0, 0, 0, 0.2);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+}
+
+#switch{
+	position: relative;
+	width: 64px;
+	margin: 4px auto;
+}
+
+#switch button{
+	width: 32px;
+	height: 32px;
+	background: #fff var(--switch-bg-url) no-repeat center;
+	border: none;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	z-index: 1;
+	transform: translateY(-50%);
+	animation: slide-back 0.4s;
+}
+
+.light #switch button{
+	animation: slide-in 0.4s forwards; /*mantenha as propriedades finais - "to"*/
+}
+
+#switch button:hover{
+	outline: 8px solid var(--highlight-color);
+}
+
+#switch span{
+	display: block;
+	width: 64px;
+	height: 24px;
+	background: var(--surface-color);
+	border: 1px solid var(--stroke-color);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 9999px;
+}
+
+@media (min-width: 700px){
+	:root {
+		--bg-url: #000;
+	}
+
+	.light{
+		main{
+            #left-side {
+                background-color: var(--primary-dark);
+
+                >:nth-of-type(1) {
+                    p {
+                        color: var(--quaternary-dark);
+                    }
+                }
+
+                >:nth-of-type(2) {
+                    section:first-child {
+                        #small-statistics-blocks-container {
+                            .small-statistics-blocks {
+                                background-color: var(--quaternary-color);
+                            }
+                        }
+
+                        #big-statistics-blocks-container {
+                            .big-statistics-blocks {
+                                border: 0.25vw solid var(--quaternary-color);
+                            }
+                        }
+                    } 
+                }
+            }
+
+            #right-side {
+                background-color: var(--secondary-dark);
+
+                >:nth-of-type(5) {
+                    >div:nth-of-type(1) {
+                        border: 0.25vw solid var(--quaternary-dark);
+                    }
+                }
+
+                >:nth-of-type(6) {
+                    button {
+                        border: 0.2vw solid var(--quaternary-dark);
+                    }
+
+                    p{
+                        color: var(--quaternary-dark);
+                        border-bottom: 0.1vw solid var(--quaternary-dark);
+                    }
+                }
+            }
+        }
+
+        #perfomance-results-container{
+            background-color: var(--tertiary-dark);
+
+            #perfomance-results-left {
+                >:nth-of-type(1) {
+                    >:nth-of-type(2){
+                        >:nth-of-type(1),
+                         >:nth-of-type(2) {
+                            div {
+                                p {
+                                    color: var(--quaternary-color);
+                                }
+                            }
+                         }
+                    }
+                }
+
+                >:nth-of-type(1) {
+                    >:nth-of-type(2){
+                        >:nth-of-type(1),
+                         >:nth-of-type(2) {
+                            div {
+                                background-color: var(--primary-dark);
+                            }
+                         }
+                    }
+                }
+            }
+
+            #perfomance-results-right {
+                >div:nth-of-type(1) {
+                    >div:nth-of-type(1),
+                    >div:nth-of-type(2) {
+                        border: 0.25vw solid var(--quinternary-dark);
+
+                        p {
+                            background-color: var(--quinternary-dark);
+                        }
+                    }
+                }
+            }
+        }
+
+        #manual-test-container{
+            background-color: var(--secondary-dark);
+
+            section:last-child {
+                div:nth-of-type(2) {
+                    label {
+                        color: var(--quaternary-dark);
+                    }
+
+                    div:nth-of-type(1) {
+                        input:nth-of-type(1){
+                            border: 0.25vw solid var(--quaternary-dark);
+                        }
+                    }
+
+                    div:nth-of-type(2){
+                        input:nth-of-type(1) {
+                            background: var(--quaternary-dark);
+                        }
+                    }
+ 
+                }
+
+                div:nth-of-type(3) {
+                    p {
+                        color: var(--quaternary-dark);
+                        border-bottom: 0.1vw solid var(--quaternary-dark);
+                    }
+
+                    button {
+                        border: 0.75vw solid var(--quaternary-dark);
+
+                        &:hover {
+                            background-color: var(--primary-dark-transparent);
+                        }
+                    }
+ 
+                }
+            }
+        }
+
+        @media only screen and (max-width: 428px) {
+            main {
+                #left-side {
+                    >:nth-of-type(1) {
+                        p {
+                            color: var(--quaternary-dark);
+                        }
+                    }
+                }
+
+                #right-side {
+                    >:nth-of-type(5) {
+                        >div:nth-of-type(1) {
+                            border: 0.75vw solid var(--quaternary-dark);
+                        }
+                    }
+
+                    >:nth-of-type(6) {
+                        button {
+                            border: 0.75vw solid var(--quaternary-dark);
+                        }
+                    }
+                }
+            }
+
+            #perfomance-results-container {
+                #perfomance-results-right {
+                    >div:nth-of-type(1){
+                        >div:nth-of-type(1),
+                        >div:nth-of-type(2) {
+                            border: 0.25vw solid var(--quaternary-dark);
+
+                            p {
+                                background-color: var(--quaternary-dark);
+                            }
+                        }
+                    }
+                }
+            }
+
+            #manual-test-container{
+                background-color: var(--secondary-dark);
+
+                section:last-child {
+                    div:nth-of-type(3) {
+                        button {
+                            border: solid var(--quaternary-dark);
+                        }
+
+                        &:hover {
+                            background-color: var(--secondary-dark-transparent);
+                        }
+                    }
+                }
+            }
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--secondary-dark);
+            /* Cor da trilha de rolagem */
+        }
+
+        .button-container {
+            p {
+                color: var(--quaternary-dark);
+                border-bottom: 0.1vw solid var(--quaternary-dark);
+            }
+        }
+
+        .make-test-button {
+            border: 0.2vw solid var(--quaternary-dark);
+
+            &::before {
+                box-shadow: 0 0 0 0.2vw var(--quaternary-dark);
+            }
+
+            &::after {
+                background: linear-gradient(90deg, transparent, var(--quaternary-dark));
+            }
+
+            &:hover::before {
+                box-shadow: 0 0 0 0.4vw var(--quaternary-dark);
+            }
+        }
+
+        .square-radio {
+            border: 2px solid var(--quaternary-dark);
+
+            &:checked {
+                background-color: var(--quaternary-dark);
+                border-color: var(--secondary-dark-transparent);
+            }
+        }
+	}
+}
+
+/*Animações*/
+@keyframes slide-in{
+	from {
+		left: 0;
+	}
+
+	to {
+		left: 50%;
+	}
+
+}
+
+@keyframes slide-back{
+	from {
+		left: 50%;
+	}
+
+	to {
+		left: 0;
+	}
+
+}

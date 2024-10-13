@@ -1,3 +1,17 @@
+function toggleMode() {
+	const html = document.documentElement // acessando a minha variável através do .documentElement 
+
+	if(html.classList.contains('light')) {
+		html.classList.remove('light') //Se na lista de classe do html conter 'light', remover
+	}
+	else {
+		html.classList.add('light') //Caso contrário, adicionar
+	}
+
+	//html.classList.toggle("light")
+
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const langEl = document.querySelector('.langWrap');
   const links = document.querySelectorAll('a[language]');
