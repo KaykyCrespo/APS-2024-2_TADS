@@ -1,12 +1,12 @@
 :root{
 	--switch-bg-url: url(imgs/sun.svg);
-    --highlight-color: rgba(255, 255, 255, 0.2);
+    --highdark-color: rgba(255, 255, 255, 0.2);
     --surface-color: rgba(255, 255, 255, 0.1);
     --stroke-color: rgba(255, 255, 255, 0.5);
 }
 
-.light{
-	--highlight-color: rgba(0, 0, 0, 0.2);
+.dark{
+	--highdark-color: rgba(0, 0, 0, 0.2);
     --surface-color: rgba(0, 0, 0, 0.05);
     --stroke-color: rgba(0, 0, 0, 0.5);
 }
@@ -31,12 +31,12 @@
 	animation: slide-back 0.4s;
 }
 
-.light #switch button{
+.dark #switch button{
 	animation: slide-in 0.4s forwards; /*mantenha as propriedades finais - "to"*/
 }
 
 #switch button:hover{
-	outline: 8px solid var(--highlight-color);
+	outline: 8px solid var(--highdark-color);
 }
 
 #switch span{
@@ -55,7 +55,7 @@
 		--bg-url: #000;
 	}
 
-	.light{
+	.dark{
 		main{
             #left-side {
                 background-color: var(--primary-dark);
@@ -86,6 +86,10 @@
             #right-side {
                 background-color: var(--secondary-dark);
 
+                .vertical-line {
+                    border-left: 0.1vw solid var(--quaternary-dark);
+                }
+
                 >:nth-of-type(5) {
                     >div:nth-of-type(1) {
                         border: 0.25vw solid var(--quaternary-dark);
@@ -95,6 +99,10 @@
                 >:nth-of-type(6) {
                     button {
                         border: 0.2vw solid var(--quaternary-dark);
+
+                        &:hover {
+                            background-color: var(--primary-dark-transparent);
+                        }
                     }
 
                     p{
@@ -110,6 +118,8 @@
 
             #perfomance-results-left {
                 >:nth-of-type(1) {
+                    border-right: 0.11vw solid var(--quaternary-dark);
+
                     >:nth-of-type(2){
                         >:nth-of-type(1),
                          >:nth-of-type(2) {
@@ -161,6 +171,10 @@
                         input:nth-of-type(1){
                             border: 0.25vw solid var(--quaternary-dark);
                         }
+
+                        &:focus {
+                            border: 0.25vw solid var(--quaternary-dark);
+                        }
                     }
 
                     div:nth-of-type(2){
@@ -178,7 +192,7 @@
                     }
 
                     button {
-                        border: 0.75vw solid var(--quaternary-dark);
+                        border: 0.2vw solid var(--quaternary-dark);
 
                         &:hover {
                             background-color: var(--primary-dark-transparent);
@@ -200,6 +214,10 @@
                 }
 
                 #right-side {
+                    .vertical-line {
+                        border-left: 0.1vw solid var(--quaternary-dark);
+                    }
+
                     >:nth-of-type(5) {
                         >div:nth-of-type(1) {
                             border: 0.75vw solid var(--quaternary-dark);
@@ -209,6 +227,10 @@
                     >:nth-of-type(6) {
                         button {
                             border: 0.75vw solid var(--quaternary-dark);
+
+                            &:hover {
+                                background-color: var(--primary-dark-transparent);
+                            }
                         }
                     }
                 }
@@ -246,6 +268,20 @@
             }
         }
 
+        #resetar {
+            &::after {
+                background-color: var(--primary-dark-transparent);
+            }
+
+            &:hover {
+                color: var(--primary-dark-transparent);
+            }
+
+            &:hover::after {
+                background-color: var(--quaternary-dark);
+            }
+        }
+
         ::-webkit-scrollbar-track {
             background-color: var(--secondary-dark);
             /* Cor da trilha de rolagem */
@@ -275,12 +311,33 @@
         }
 
         .square-radio {
+            background-color: var(--quaternary-dark);
             border: 2px solid var(--quaternary-dark);
 
             &:checked {
                 background-color: var(--quaternary-dark);
-                border-color: var(--secondary-dark-transparent);
+                border-color: var(--primary-dark-transparent);
             }
+
+            &:focus {
+                box-shadow: 0 0 0 3px var(--quinternary-dark);
+            }
+
+            &:active {
+                background-color: var(--quaternary-dark);
+                box-shadow: inset 0 0 0 2px var(--primary-dark);
+            }
+        }
+
+        #dropdown {
+            select {
+                background-color: var(--primary-dark);
+                border: 1px solid var(--seconday-dark);
+            }
+        }
+
+        footer {
+            background-color: var(--tertiary-dark);
         }
 	}
 }

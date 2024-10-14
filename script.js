@@ -1,14 +1,14 @@
 function toggleMode() {
 	const html = document.documentElement // acessando a minha variável através do .documentElement 
 
-	if(html.classList.contains('light')) {
-		html.classList.remove('light') //Se na lista de classe do html conter 'light', remover
+	if(html.classList.contains('dark')) {
+		html.classList.remove('dark') //Se na lista de classe do html conter 'dark', remover
 	}
 	else {
-		html.classList.add('light') //Caso contrário, adicionar
+		html.classList.add('dark') //Caso contrário, adicionar
 	}
 
-	//html.classList.toggle("light")
+	//html.classList.toggle("dark")
 
 }
 

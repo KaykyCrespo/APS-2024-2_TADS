@@ -1380,7 +1380,6 @@ footer {
         /* A linha começa com largura 0 */
         height: 2px;
         background-color: var(--sixternary-transparent);
-        ;
         /* Cor inicial da linha */
         transition: width 0.3s ease, background-color 0.3s ease;
         /* Transição suave para largura e cor */
@@ -1388,7 +1387,6 @@ footer {
 
     &:hover {
         color: var(--sixternary-transparent);
-        ;
         /* Cor do texto ao passar o mouse */
     }
 
