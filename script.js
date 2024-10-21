@@ -356,6 +356,7 @@ function resetInputsMakeTest() {
 function resetInputsTryYourself() {
   document.getElementById("userArrayInput").value = null
   document.getElementById("arraySortedResponse").value = null
+
 }
 
 
@@ -449,8 +450,60 @@ let myPieChart = new Chart(ctxPie, {
         },
       }
     }
-  }
+  },
+  plugins: [{
+    id: 'borderedTitlePlugin',
+    beforeDraw: (chart) => {
+      const title = chart.options.plugins.title;
+      if (title.display && title.text) {
+        const ctx = chart.ctx;
+        const fontSize = title.font.size;
+        const fontWeight = title.font.weight;
+        const fontFamily = Chart.defaults.font.family;
+
+        ctx.save();
+        ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const textWidth = ctx.measureText(title.text).width;
+        const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+        const y = chart.chartArea.top / 2;
+
+        // Definir o tamanho da borda
+        const padding = 10;
+        const borderWidth = textWidth + padding * 2;
+        const borderHeight = fontSize + padding;
+        const borderRadius = 4; // Raio para arredondar os cantos (valor reduzido)
+
+        // Desenhar o retângulo de fundo com bordas arredondadas
+        ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
+        ctx.beginPath();
+        ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
+        ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.closePath();
+        ctx.fill();
+
+        // Desenhar o texto por cima
+        ctx.fillStyle = title.color;
+        ctx.fillText(title.text, x, y);
+        ctx.restore();
+      }
+    }
+  }]
 });
+
+
+
+
+
+
 
 // Função para atualizar o gráfico de pizza com base na métrica selecionada
 function updatePieChart(selectedQuantity) {
@@ -590,7 +643,7 @@ let barChart = new Chart(ctxLine, {
         title: {
           display: true,
           text: `SIZE: ${selectedQuantity} | EXECUTION TIME`, // Título inicial que será atualizado
-          color: '#FFFFFF ', // Define a cor do título da legenda como branco
+          color: '#FFFFFF', // Define a cor do título da legenda como branco
           font: {
             size: 18, // Aumentado para um tamanho maior
             weight: 'bold' // Define o título em negrito
@@ -614,31 +667,67 @@ let barChart = new Chart(ctxLine, {
         }
       }
     },
-    // Definindo a borda do gráfico
     borderColor: '#000000', // Cor da borda do gráfico
     borderWidth: 1.5, // Largura da borda do gráfico
   },
-  // Adicionando o plugin para desenhar a linha à direita
   plugins: [{
-    id: 'lineRightPlugin',
-    afterDraw: function(chart) {
-      const ctx = chart.ctx;
-      const chartArea = chart.chartArea;
+    id: 'borderedTitlePluginBar',
+    beforeDraw: (chart) => {
+      const title = chart.options.plugins.legend.title;
+      if (title.display && title.text) {
+        const ctx = chart.ctx;
+        const fontSize = title.font.size;
+        const fontWeight = title.font.weight;
+        const fontFamily = Chart.defaults.font.family;
 
-      // Define a cor e largura da linha
-      ctx.save();
-      ctx.strokeStyle = '#FFFFFF'; // Cor da linha
-      ctx.lineWidth = 1.2;
+        ctx.save();
+        ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const textWidth = ctx.measureText(title.text).width;
+        const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+        const y = chart.chartArea.top / 2;
 
-      // Desenha a linha vertical à direita
-      ctx.beginPath();
-      ctx.moveTo(chartArea.right, chartArea.top);
-      ctx.lineTo(chartArea.right, chartArea.bottom);
-      ctx.stroke();
-      ctx.restore();
+        const padding = 10;
+        const borderWidth = textWidth + padding * 2;
+        const borderHeight = fontSize + padding;
+        const borderRadius = 8; // Aumentado para deixar os cantos mais arredondados
+
+        ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
+        ctx.beginPath();
+        ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
+        ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = title.color;
+        ctx.fillText(title.text, x, y);
+        ctx.restore();
+      }
     }
   }]
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart(selectedQuantity) {
@@ -729,23 +818,15 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
           font: {
             size: 15
           },
-          // Aqui, adicionamos a unidade ao lado do número
           callback: function (value) {
-            return value + 's'; // Você pode personalizar aqui para 'GB' se necessário
+            return value + 's'; // Personalize para 'GB' se necessário
           },
           backdropColor: 'transparent', // Remove o fundo dos números
-          // Aqui, definimos o número mínimo e máximo de ticks
-          count: 5, // Número de ticks que você deseja
-          max: Math.max(
-            null,
-            null,
-            null,
-            null
-          ) + 10 // Ajuste para garantir que o gráfico tenha espaço
+          count: 5 // Número de ticks desejado
         },
         pointLabels: {
           font: {
-            size: 1
+            size: 15
           },
           color: '#FFFFFF' // Cor dos rótulos das áreas
         }
@@ -787,13 +868,62 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         },
       }
     },
-
     animation: {
       duration: 1000, // 1 segundo de duração da transição
       easing: 'easeInOutQuad' // Tipo de animação
     }
-  }
+  },
+  plugins: [{
+    id: 'borderedTitlePluginPolar',
+    beforeDraw: (chart) => {
+      const title = chart.options.plugins.title;
+      if (title.display && title.text) {
+        const ctx = chart.ctx;
+        const fontSize = title.font.size;
+        const fontWeight = title.font.weight;
+        const fontFamily = Chart.defaults.font.family;
+
+        ctx.save();
+        ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const textWidth = ctx.measureText(title.text).width;
+        const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+        const y = chart.chartArea.top / 2;
+
+        const padding = 10;
+        const borderWidth = textWidth + padding * 2;
+        const borderHeight = fontSize + padding;
+        const borderRadius = 8; // Aumentado para deixar os cantos mais arredondados
+
+        ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
+        ctx.beginPath();
+        ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
+        ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = title.color;
+        ctx.fillText(title.text, x, y);
+        ctx.restore();
+      }
+    }
+  }]
 });
+
+
+
+
+
+
+
 
 /// Função para atualizar o gráfico Polar Area com base na métrica selecionada
 function updatePolarAreaChart(selectedQuantity) {
@@ -919,7 +1049,7 @@ let barChartWAP = new Chart(ctxWAP, {
         color: '#FFFFFF', // Cor do título
         font: {
           size: 18 // Tamanho da fonte do título
-        }
+        },
       },
       legend: {
         display: true, // Mantém a legenda visível
@@ -979,8 +1109,52 @@ let barChartWAP = new Chart(ctxWAP, {
       ctx.stroke();
       ctx.restore();
     }
+  },
+  {
+    id: 'borderedTitlePlugin',
+    beforeDraw: (chart) => {
+      const title = chart.options.plugins.title;
+      if (title.display && title.text) {
+        const ctx = chart.ctx;
+        const fontSize = title.font.size;
+        const fontWeight = title.font.weight;
+        const fontFamily = Chart.defaults.font.family;
+
+        ctx.save();
+        ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const textWidth = ctx.measureText(title.text).width;
+        const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+        const y = chart.chartArea.top / 2;
+
+        const padding = 10;
+        const borderWidth = textWidth + padding * 2;
+        const borderHeight = fontSize + padding;
+        const borderRadius = 8; // Aumentado para deixar os cantos mais arredondados
+
+        ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
+        ctx.beginPath();
+        ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
+        ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = title.color;
+        ctx.fillText(title.text, x, y);
+        ctx.restore();
+      }
+    }
   }]
 });
+
 
 
 // Função para calcular o WAP para cada algoritmo
