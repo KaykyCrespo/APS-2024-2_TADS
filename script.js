@@ -49,7 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     "lang-memory-use": document.querySelector('#lang-memory-use'),
     "lang-iterations": document.querySelector('#lang-iterations'),
     "resetar": document.querySelectorAll('#resetar'),
-    "lang-button-make-test": document.querySelectorAll('#lang-button-make-test')
+    "lang-button-make-test": document.querySelectorAll('#lang-button-make-test'),
+    "lang-sub-title-footer": document.querySelectorAll('#lang-sub-title-footer'),
+    "lang-terms": document.querySelectorAll('#lang-terms'),
+    "lang-politics": document.querySelectorAll('#lang-politics'),
+    "lang-copyright": document.querySelectorAll('#lang-copyright')
   };
 
   // Tradução de dados
@@ -85,6 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-execution-time": "Execution time",
       "lang-memory-use": "Memory use",
       "lang-iterations": "Iterations",
+      "lang-sub-title-footer": "App for testing array sorts",
+      "lang-terms": "Terms of use",
+      "lang-politics": "Privacy politics",
+      "lang-copyright": "Copyright © ArrayBuddy. All Rights Reserved"
     },
     "portuguese": {
       "lang-title": "Array Buddy",
@@ -116,7 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-metric-label": "Métrica",
       "lang-execution-time": "Tempo de execução",
       "lang-memory-use": "Uso de memória",
-      "lang-iterations": "Iterações"
+      "lang-iterations": "Iterações",
+      "lang-sub-title-footer": "Aplicativo para testar ordenação de arrays",
+      "lang-terms": "Termo de uso",
+      "lang-politics": "Política de Privacidade",
+      "lang-copyright": "Copyright © ArrayBuddy. Todos direitos Reservados"
     }
   };
 
