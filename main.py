@@ -1,4 +1,4 @@
-from js import document, window, showAlertBox, resetInputs, setGraphValues, setArraySize
+from js import document, window, showAlertBox, resetInputsMakeTest, resetInputsTryYourself, setGraphValues, setArraySize
 import sys
 import math, random, time
 
@@ -173,7 +173,8 @@ def makeTest(event):
         sortedArray.innerHTML = render_colored_array(sorted(ArrayCopy))
         window.location.hash = "#perfomance-results-container"
         
-        resetInputs()
+        resetInputsMakeTest()
+        resetInputsTryYourself()
         
         performanceTest(sortTypeCopy, ArrayCopy)
 

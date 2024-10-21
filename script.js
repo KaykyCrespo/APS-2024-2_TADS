@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         
-        resetInputs();
+        resetInputsMakeTest();
         updateAllGraphs();
 
         if (!isInicialized){
@@ -337,10 +337,8 @@ flags.forEach(flag => {
 });
 
 
-window.onload = resetInputs;
-function resetInputs() {
-
-
+window.onload = resetInputsMakeTest && resetInputsTryYourself;
+function resetInputsMakeTest() {
   document.querySelectorAll('input[name="sortOption"]').forEach(radio => {
     radio.checked = false;
   });
@@ -348,14 +346,19 @@ function resetInputs() {
     radio.checked = false;
   });
 
-  document.getElementById("userArrayInput").value = null
-  document.getElementById("arraySortedResponse").value = null
   document.getElementById("ordinationType").value = "repeat"
   document.getElementById("selectedMetric").value = "time"
   document.getElementById("selectedQuantity").value = "250"
 
   console.log("resetou")
 }
+
+function resetInputsTryYourself() {
+  document.getElementById("userArrayInput").value = null
+  document.getElementById("arraySortedResponse").value = null
+}
+
+
 
 
 let arraySize = null;
