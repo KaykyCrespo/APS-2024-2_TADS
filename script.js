@@ -2,13 +2,13 @@ function toggleMode() {
 	const html = document.documentElement // acessando a minha variável através do .documentElement 
 
 	if(html.classList.contains('dark')) {
+    showAlertBox("selected_default_theme", "success")
 		html.classList.remove('dark') //Se na lista de classe do html conter 'dark', remover
 	}
 	else {
+    showAlertBox("selected_dark_theme", "success")
 		html.classList.add('dark') //Caso contrário, adicionar
 	}
-
-	//html.classList.toggle("dark")
 
 }
 
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "portuguese": {
       "lang-title": "Array Buddy",
       "lang-title-principal": "Array Buddy",
-      "lang-sub-title": "Criado por Caio Pacheco, Kayky Crespo & Elias",
+      "lang-sub-title": "Criado por Caio Pacheco, Kayky Crespo, Helen Silva e Elias Souza ",
       "lang-explanation": "Usar o Array Buddy para analisar, visualizar e comparar o desempenho de diferentes algoritmos de ordenação é fácil. Além de monitorar o tempo de execução, a memória utilizada e as iterações realizadas.",
       "lang-title-statistics": "Estatísticas Gerais",
       "lang-total-iterations": "Total de interações:",
@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   function addLanguageToggleEvents() {
+    isInicialized = true
+
     links.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -157,6 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         resetInputs();
         updateAllGraphs();
+
+        if (!isInicialized){
+          showAlertBox("selected_language", "success") 
+        }
+
+        isInicialized = false
       });
     });
     }
@@ -186,6 +194,10 @@ var alert_messages = {
     'input_reset_error': "Error! {error}",
     'fields_not_checked': "Error! Some fields aren't checked.",
     'default_alert_message': "No language selected, using default settings.",
+    'selected_language' : "Language updated to english.",
+    "selected_dark_theme" : "Dark mode enabled.",
+    "selected_default_theme" : "Default mode enabled."
+
   },
   'portuguese': {
     'empty_input': "O campo não pode estar vazio.",
@@ -195,6 +207,9 @@ var alert_messages = {
     'input_reset_error': "Erro! {error}",
     'fields_not_checked': "Erro! Alguns campos não estão selecionados.",
     'default_alert_message': "Nenhuma língua selecionada, usando configurações padrão.",
+    'selected_language' : "Linguagem atualizada para português.",
+    "selected_dark_theme" : "Tema escuro ativado.",
+    "selected_default_theme" : "Tema padrão selecionado."
   }
 };
 
@@ -213,7 +228,8 @@ function showAlertBox(messageKey, category) {
 
   // Set the alert message in the alert box
   alertMessage.innerHTML = message;
-  alertBox.style.display = "flex";
+  alertBox.style.visibility = "visible";
+  alertBox.style.opacity = "1";
 
   // Change the background color based on the category
   if (category === 'success') {
@@ -224,7 +240,8 @@ function showAlertBox(messageKey, category) {
 
   // Hide the alert after 3 seconds
   setTimeout(() => {
-    alertBox.style.display = "none";
+    alertBox.style.visibility = "hidden";
+    alertBox.style.opacity = "0";
   }, 3000);
 }
 
@@ -410,7 +427,7 @@ let myPieChart = new Chart(ctxPie, {
       title: {
         display: true,
         text: 'SIZE: 250 | EXECUTION TIME', // Título inicial que será atualizado
-        color: '##2a6168 ', // Cor do título
+        color: '#FFFFFF', // Cor do título
         font: {
           size: 18, // Tamanho do título
           weight: 'bold' // Negrito
@@ -558,7 +575,7 @@ let barChart = new Chart(ctxLine, {
         title: {
           display: true,
           text: `SIZE: ${selectedQuantity} | EXECUTION TIME`, // Título inicial que será atualizado
-          color: '#B2E2E7 ', // Define a cor do título da legenda como branco
+          color: '#FFFFFF ', // Define a cor do título da legenda como branco
           font: {
             size: 18, // Aumentado para um tamanho maior
             weight: 'bold' // Define o título em negrito
@@ -748,7 +765,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
       title: {
         display: true,
         text: 'SIZE: 250 | EXECUTION TIME', // Título inicial que será atualizado
-        color: '#B2E2E7', // Cor do título
+        color: '#FFFFFF', // Cor do título
         font: {
           size: 18, // Tamanho do título
           weight: 'bold' // Negrito
@@ -884,7 +901,7 @@ let barChartWAP = new Chart(ctxWAP, {
       title: {
         display: true,
         text: 'SIZE: 250 | WAP METRIC', // Título inicial que será atualizado
-        color: '#B2E2E7', // Cor do título
+        color: '#FFFFFF', // Cor do título
         font: {
           size: 18 // Tamanho da fonte do título
         }

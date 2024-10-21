@@ -1,4 +1,4 @@
-from js import document, window, navigator, showAlertBox, resetInputs, setGraphValues, setArraySize
+from js import document, window, showAlertBox, resetInputs, setGraphValues, setArraySize
 import sys
 import math, random, time
 
@@ -8,7 +8,6 @@ ordinationType  = "repeat";
 Array = [];
 ArraySize = 0;
 userArray = [];
-
 
 #Método para definir o tipo de sort escolhido
 def setSortType(event):
