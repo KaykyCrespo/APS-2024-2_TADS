@@ -977,7 +977,6 @@ function updatePolarAreaChart(selectedQuantity) {
 
 
 
-
 // Inicialização do gráfico de WAP
 const ctxWAP = document.getElementById('barChartWAP').getContext('2d');
 let barChartWAP = new Chart(ctxWAP, {
@@ -1039,12 +1038,7 @@ let barChartWAP = new Chart(ctxWAP, {
     },
     plugins: {
       title: {
-        display: true,
-        text: '', // Título inicial vazio
-        color: '#FFFFFF', // Cor do título
-        font: {
-          size: 18 // Tamanho da fonte do título
-        },
+        display: false, // Desativa o título padrão do Chart.js
       },
       legend: {
         display: true, // Mantém a legenda visível
@@ -1148,6 +1142,7 @@ let barChartWAP = new Chart(ctxWAP, {
     }
   ]
 });
+
 
 
 
