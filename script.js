@@ -442,12 +442,12 @@ let myPieChart = new Chart(ctxPie, {
       },
       title: {
         display: true,
-        text: 'SIZE: 250 | EXECUTION TIME', // Título inicial que será atualizado
+        text: '', // Título inicial vazio
         color: '#FFFFFF', // Cor do título
         font: {
           size: 18, // Tamanho do título
           weight: 'bold' // Negrito
-        },
+        }
       }
     }
   },
@@ -473,7 +473,7 @@ let myPieChart = new Chart(ctxPie, {
         const padding = 10;
         const borderWidth = textWidth + padding * 2;
         const borderHeight = fontSize + padding;
-        const borderRadius = 4; // Raio para arredondar os cantos (valor reduzido)
+        const borderRadius = 4; // Raio para arredondar os cantos
 
         // Desenhar o retângulo de fundo com bordas arredondadas
         ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
@@ -501,10 +501,6 @@ let myPieChart = new Chart(ctxPie, {
 
 
 
-
-
-
-
 // Função para atualizar o gráfico de pizza com base na métrica selecionada
 function updatePieChart(selectedQuantity) {
   var metric = document.getElementById('selectedMetric').value;
@@ -512,9 +508,9 @@ function updatePieChart(selectedQuantity) {
   var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
   let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
 
-  var title; // Variável para o título
-
   // Define o título de acordo com a métrica selecionada
+  var titlePrefix = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ` : `TAMANHO: ${selectedQuantity} | `;
+  
   switch (metric) {
     case 'time':
       data = [
@@ -523,7 +519,7 @@ function updatePieChart(selectedQuantity) {
         graphValues[`selectionsort${selectedQuantity}time`],
         graphValues[`heapsort${selectedQuantity}time`]
       ];
-      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em inglês
+      title = titlePrefix + (selectedLanguage === "english" ? "EXECUTION TIME" : "TEMPO DE EXECUÇÃO");
       break;
     case 'memory':
       data = [
@@ -532,7 +528,7 @@ function updatePieChart(selectedQuantity) {
         graphValues[`selectionsort${selectedQuantity}memory`],
         graphValues[`heapsort${selectedQuantity}memory`]
       ];
-      title =  selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em inglês
+      title = titlePrefix + (selectedLanguage === "english" ? "MEMORY USE" : "USO DE MEMORIA");
       break;
     case 'iterations':
       data = [
@@ -541,11 +537,11 @@ function updatePieChart(selectedQuantity) {
         graphValues[`selectionsort${selectedQuantity}iterations`],
         graphValues[`heapsort${selectedQuantity}iterations`]
       ];
-      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ITERATIONS` : `TAMANHO: ${selectedQuantity} | ITERAÇÕES`; // Texto em inglês
+      title = titlePrefix + (selectedLanguage === "english" ? "ITERATIONS" : "ITERAÇÕES");
       break;
     default:
       data = [0, 0, 0, 0]; // Valores padrão
-      title = `SIZE: ${selectedQuantity} | EXECUTION TIME`; // Título padrão
+      title = ''; // Título padrão vazio
   }
 
   // Atualiza os dados e o título do gráfico
@@ -558,13 +554,28 @@ function updatePieChart(selectedQuantity) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Inicialização do gráfico de barra
 const ctxLine = document.getElementById('barChart').getContext('2d');
 let barChart = new Chart(ctxLine, {
   type: 'bar',
   data: {
-    labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
+    labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
     datasets: [{
-      label: '', // Título inicial com a quantidade
+      label: '',
       data: [
         graphValues[`bubblesort${selectedQuantity}time`],
         graphValues[`insertionsort${selectedQuantity}time`],
@@ -572,16 +583,16 @@ let barChart = new Chart(ctxLine, {
         graphValues[`heapsort${selectedQuantity}time`]
       ],
       backgroundColor: ['#FFA6C9', '#CDA1DB', '#4B9F6E', '#f4a261'],
-      borderColor: '#000000', // Cor da borda das barras
-      borderWidth: 1.5 // Largura da borda
+      borderColor: '#000000',
+      borderWidth: 1.5
     }]
   },
   options: {
     responsive: true,
     layout: {
       padding: {
-        top: 20, // Margem superior
-        bottom: 20 // Margem inferior
+        top: 20,
+        bottom: 20
       }
     },
     scales: {
@@ -589,65 +600,59 @@ let barChart = new Chart(ctxLine, {
         beginAtZero: true,
         ticks: {
           callback: function (value) {
-            return value + 's'; // Unidade inicial em segundos
+            return value + 's';
           },
-          color: '#FFFFFF', // Cor do texto dos ticks do eixo Y
+          color: '#FFFFFF',
           font: {
-            size: 15 // Tamanho da fonte dos ticks do eixo Y
+            size: 15
           }
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.3)', // Cor das linhas de grade (suave)
-          lineWidth: 1, // Largura das linhas de grade
-          borderDash: [6, 6], // Estilo tracejado para as linhas de grade
-          drawBorder: true, // Desenha a borda do eixo Y
+          color: 'rgba(255, 255, 255, 0.3)',
+          lineWidth: 1,
+          borderDash: [6, 6],
+          drawBorder: true,
         }
       },
       x: {
         ticks: {
-          color: '#FFFFFF', // Cor do texto dos ticks do eixo X
+          color: '#FFFFFF',
           font: {
-            size: 17 // Tamanho da fonte dos ticks do eixo X
+            size: 17
           }
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.3)', // Cor das linhas de grade (suave)
-          lineWidth: 1, // Largura das linhas de grade
-          borderDash: [], // Estilo tracejado para as linhas de grade
-          drawBorder: true, // Desenha a borda do eixo Y
+          color: 'rgba(255, 255, 255, 0.3)',
+          lineWidth: 1,
+          borderDash: [],
+          drawBorder: true,
         }
       }
     },
     plugins: {
       legend: {
-        display: true, // Mantém a legenda visível
+        display: true,
         labels: {
           generateLabels: function (chart) {
             const labels = [];
             chart.data.datasets.forEach((dataset, i) => {
               labels.push({
-                text: dataset.label, // Exibe apenas o título do conjunto de dados
-                fillStyle: 'rgba(0, 0, 0, 0)', // Cor de preenchimento transparente
-                strokeStyle: 'rgba(0, 0, 0, 0)', // Define a borda transparente
-                lineWidth: 0, // Define a largura da borda como 0
-                index: i // Índice do dataset
+                text: dataset.label,
+                fillStyle: 'rgba(0, 0, 0, 0)',
+                strokeStyle: 'rgba(0, 0, 0, 0)',
+                lineWidth: 0,
+                index: i
               });
             });
             return labels;
           },
-          color: '#FFFFFF', // Define a cor do texto da legenda como branco
+          color: '#FFFFFF',
           font: {
-            size: 16 // Define o tamanho da fonte da legenda
+            size: 16
           },
         },
         title: {
-          display: true,
-          text: `SIZE: ${selectedQuantity} | EXECUTION TIME`, // Título inicial que será atualizado
-          color: '#FFFFFF', // Define a cor do título da legenda como branco
-          font: {
-            size: 18, // Aumentado para um tamanho maior
-            weight: 'bold' // Define o título em negrito
-          },
+          display: false,
         }
       },
       tooltip: {
@@ -656,127 +661,125 @@ let barChart = new Chart(ctxLine, {
             return tooltipItems[0].label;
           }
         },
-        backgroundColor: '#000000', // Cor de fundo do tooltip
-        titleColor: '#FFFFFF', // Cor do texto do título do tooltip
-        bodyColor: '#FFFFFF', // Cor do texto do corpo do tooltip
+        backgroundColor: '#000000',
+        titleColor: '#FFFFFF',
+        bodyColor: '#FFFFFF',
         titleFont: {
-          size: 14 // Tamanho da fonte do título do tooltip
+          size: 14
         },
         bodyFont: {
-          size: 14 // Tamanho da fonte do corpo do tooltip
+          size: 14
         }
       }
     },
-    borderColor: '#000000', // Cor da borda do gráfico
-    borderWidth: 1.5, // Largura da borda do gráfico
+    borderColor: '#000000',
+    borderWidth: 1.5,
   },
   plugins: [{
     id: 'borderedTitlePluginBar',
     beforeDraw: (chart) => {
-      const title = chart.options.plugins.legend.title;
-      if (title.display && title.text) {
-        const ctx = chart.ctx;
-        const fontSize = title.font.size;
-        const fontWeight = title.font.weight;
-        const fontFamily = Chart.defaults.font.family;
+      const titleText = chart.options.plugins.dynamicTitle.title; // Acessa o título dinâmico
+      const ctx = chart.ctx;
+      const fontSize = 18;
+      const fontWeight = 'bold';
+      const fontFamily = Chart.defaults.font.family;
 
-        ctx.save();
-        ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        const textWidth = ctx.measureText(title.text).width;
-        const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
-        const y = chart.chartArea.top / 2;
+      ctx.save();
+      ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const textWidth = ctx.measureText(titleText).width;
+      const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+      const y = chart.chartArea.top / 2;
 
-        const padding = 10;
-        const borderWidth = textWidth + padding * 2;
-        const borderHeight = fontSize + padding;
-        const borderRadius = 8; // Aumentado para deixar os cantos mais arredondados
+      const padding = 10;
+      const borderWidth = textWidth + padding * 2;
+      const borderHeight = fontSize + padding;
+      const borderRadius = 8;
 
-        ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
-        ctx.beginPath();
-        ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
-        ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
-        ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
-        ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
-        ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
-        ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
-        ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
-        ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
-        ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
-        ctx.closePath();
-        ctx.fill();
+      ctx.fillStyle = '#2A6168';
+      ctx.beginPath();
+      ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+      ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
+      ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
+      ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
+      ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
+      ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
+      ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
+      ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
+      ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+      ctx.closePath();
+      ctx.fill();
 
-        ctx.fillStyle = title.color;
-        ctx.fillText(title.text, x, y);
-        ctx.restore();
-      }
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(titleText, x, y);
+      ctx.restore();
     }
   }]
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart(selectedQuantity) {
   const selectedMetric = document.getElementById('selectedMetric').value;
-  let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
+  let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language');
   let title, yAxisUnit;
 
-  // Define a estrutura do switch baseado na linguagem
-    switch (selectedMetric) {
-      case 'time':
-        title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em inglês
-        yAxisUnit = 's';
-        barChart.data.datasets[0].data = [
-          graphValues[`bubblesort${selectedQuantity}time`],
-          graphValues[`insertionsort${selectedQuantity}time`],
-          graphValues[`selectionsort${selectedQuantity}time`],
-          graphValues[`heapsort${selectedQuantity}time`]
-        ];
-        break;
-      case 'memory':
-        title =  selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em inglês
-        yAxisUnit = 'MB'; // Corrigido para GB
-        barChart.data.datasets[0].data = [
-          graphValues[`bubblesort${selectedQuantity}memory`],
-          graphValues[`insertionsort${selectedQuantity}memory`],
-          graphValues[`selectionsort${selectedQuantity}memory`],
-          graphValues[`heapsort${selectedQuantity}memory`]
-        ];
-        break;
-      case 'iterations':
-        title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ITERATIONS` : `TAMANHO: ${selectedQuantity} | ITERAÇÕES`; // Texto em inglês
-        yAxisUnit = '';
-        barChart.data.datasets[0].data = [
-          graphValues[`bubblesort${selectedQuantity}iterations`],
-          graphValues[`insertionsort${selectedQuantity}iterations`],
-          graphValues[`selectionsort${selectedQuantity}iterations`],
-          graphValues[`heapsort${selectedQuantity}iterations`]
-        ];
-        break;
-    }
+  switch (selectedMetric) {
+    case 'time':
+      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`;
+      yAxisUnit = 's';
+      barChart.data.datasets[0].data = [
+        graphValues[`bubblesort${selectedQuantity}time`],
+        graphValues[`insertionsort${selectedQuantity}time`],
+        graphValues[`selectionsort${selectedQuantity}time`],
+        graphValues[`heapsort${selectedQuantity}time`]
+      ];
+      break;
+    case 'memory':
+      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`;
+      yAxisUnit = 'MB';
+      barChart.data.datasets[0].data = [
+        graphValues[`bubblesort${selectedQuantity}memory`],
+        graphValues[`insertionsort${selectedQuantity}memory`],
+        graphValues[`selectionsort${selectedQuantity}memory`],
+        graphValues[`heapsort${selectedQuantity}memory`]
+      ];
+      break;
+    case 'iterations':
+      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ITERATIONS` : `TAMANHO: ${selectedQuantity} | ITERAÇÕES`;
+      yAxisUnit = '';
+      barChart.data.datasets[0].data = [
+        graphValues[`bubblesort${selectedQuantity}iterations`],
+        graphValues[`insertionsort${selectedQuantity}iterations`],
+        graphValues[`selectionsort${selectedQuantity}iterations`],
+        graphValues[`heapsort${selectedQuantity}iterations`]
+      ];
+      break;
+  }
+
   // Atualiza o título do gráfico
-  barChart.options.plugins.legend.title.text = title; // Atualiza o título
-  // Atualiza o gráfico
+  barChart.options.plugins.dynamicTitle = { title }; // Atualiza a estrutura do título dinâmico
   barChart.options.scales.y.ticks.callback = function (value) {
-    return value + yAxisUnit; // Atualiza a unidade do eixo Y
+    return value + yAxisUnit;
   };
 
   barChart.update();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
