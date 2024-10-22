@@ -200,6 +200,15 @@ main {
                         align-items: center;
                         background-color: var(--quinternary-color);
                         padding: 0.4vw 0.3vw;
+                        position: relative;
+
+                        img {
+                            position: absolute;
+                            top: 7px;
+                            right: 5px;
+                            width: 17px; /* Tamanho da imagem */
+                            height: 17px; /* Tamanho da imagem */
+                        }
 
                         p {
                             color: var(--white);
@@ -207,6 +216,7 @@ main {
                             font-size: 0.8vw;
                             text-align: center;
                             width: 70%;
+                            
                         }
 
                         h2 {
