@@ -424,41 +424,35 @@ let myPieChart = new Chart(ctxPie, {
     responsive: true,
     layout: {
       padding: {
-        top: 20, // Margem superior
-        bottom: 20 // Margem inferior
+        top: 60,
+        bottom: 60
       }
     },
     plugins: {
       legend: {
         labels: {
-          color: '#FFFFFF',  // Cor do texto da legenda
+          color: '#FFFFFF',
           font: {
-            size: 16 // Tamanho da fonte da legenda
+            size: 16
           }
         },
-        position: 'top', // Centraliza a legenda no topo
-        align: 'center', // Alinha a legenda ao centro
-        padding: 20 // Adiciona espaçamento entre os itens da legenda e o gráfico
+        position: 'top',
+        align: 'center',
+        padding: 20
       },
       title: {
-        display: true,
-        text: '', // Título inicial vazio
-        color: '#FFFFFF', // Cor do título
-        font: {
-          size: 18, // Tamanho do título
-          weight: 'bold' // Negrito
-        }
+        display: false, // Desativar o título padrão
       }
     }
   },
   plugins: [{
     id: 'borderedTitlePlugin',
     beforeDraw: (chart) => {
-      const title = chart.options.plugins.title;
-      if (title.display && title.text) {
+      const title = chart.options.plugins.dynamicTitle; // Acessa o título dinâmico
+      if (title && title.text) {
         const ctx = chart.ctx;
-        const fontSize = title.font.size;
-        const fontWeight = title.font.weight;
+        const fontSize = 18;
+        const fontWeight = 'bold';
         const fontFamily = Chart.defaults.font.family;
 
         ctx.save();
@@ -467,16 +461,17 @@ let myPieChart = new Chart(ctxPie, {
         ctx.textBaseline = 'middle';
         const textWidth = ctx.measureText(title.text).width;
         const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
-        const y = chart.chartArea.top / 2;
 
-        // Definir o tamanho da borda
+        // Ajuste do valor de 'y' para mover o título mais para cima
+        const y = chart.chartArea.top / 4; // Valor ajustado para ficar mais acima
+
         const padding = 10;
         const borderWidth = textWidth + padding * 2;
         const borderHeight = fontSize + padding;
-        const borderRadius = 4; // Raio para arredondar os cantos
+        const borderRadius = 4;
 
         // Desenhar o retângulo de fundo com bordas arredondadas
-        ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
+        ctx.fillStyle = '#2A6168';
         ctx.beginPath();
         ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
         ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
@@ -491,7 +486,7 @@ let myPieChart = new Chart(ctxPie, {
         ctx.fill();
 
         // Desenhar o texto por cima
-        ctx.fillStyle = title.color;
+        ctx.fillStyle = '#FFFFFF';
         ctx.fillText(title.text, x, y);
         ctx.restore();
       }
@@ -506,11 +501,11 @@ function updatePieChart(selectedQuantity) {
   var metric = document.getElementById('selectedMetric').value;
   var data;
   var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-  let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
+  let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language');
 
   // Define o título de acordo com a métrica selecionada
   var titlePrefix = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ` : `TAMANHO: ${selectedQuantity} | `;
-  
+
   switch (metric) {
     case 'time':
       data = [
@@ -544,26 +539,13 @@ function updatePieChart(selectedQuantity) {
       title = ''; // Título padrão vazio
   }
 
-  // Atualiza os dados e o título do gráfico
+  // Atualiza os dados e o título dinâmico do gráfico
   myPieChart.data.labels = labels;
   myPieChart.data.datasets[0].data = data;
-  myPieChart.options.plugins.title.text = title; // Atualiza o título do gráfico
+  myPieChart.options.plugins.dynamicTitle = { text: title }; // Define o título dinâmico com borda
 
   myPieChart.update(); // Atualiza o gráfico
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -809,7 +791,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
   options: {
     responsive: true,
     layout: {
-      padding: { top: 20, bottom: 20 }
+      padding: { top: 60, bottom: 20 } // Aumenta o espaçamento para o título
     },
     scales: {
       r: {
@@ -899,6 +881,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         const borderHeight = fontSize + padding;
         const borderRadius = 8; // Aumentado para deixar os cantos mais arredondados
 
+        // Desenhar o retângulo de fundo com bordas arredondadas
         ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
         ctx.beginPath();
         ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
@@ -913,6 +896,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         ctx.closePath();
         ctx.fill();
 
+        // Desenhar o texto por cima
         ctx.fillStyle = title.color;
         ctx.fillText(title.text, x, y);
         ctx.restore();
@@ -920,13 +904,6 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
     }
   }]
 });
-
-
-
-
-
-
-
 
 /// Função para atualizar o gráfico Polar Area com base na métrica selecionada
 function updatePolarAreaChart(selectedQuantity) {
@@ -986,6 +963,21 @@ function updatePolarAreaChart(selectedQuantity) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Inicialização do gráfico de WAP
 const ctxWAP = document.getElementById('barChartWAP').getContext('2d');
 let barChartWAP = new Chart(ctxWAP, {
@@ -994,7 +986,7 @@ let barChartWAP = new Chart(ctxWAP, {
     labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'], // Rótulos dos algoritmos
     datasets: [{
       label: '',
-      data: [],
+      data: [], // Inicialmente vazio
       backgroundColor: [
         '#FFA6C9', // Cor para Bubblesort
         '#CDA1DB', // Cor para Insertionsort
@@ -1048,7 +1040,7 @@ let barChartWAP = new Chart(ctxWAP, {
     plugins: {
       title: {
         display: true,
-        text: 'SIZE: 250 | WAP METRIC', // Título inicial que será atualizado
+        text: '', // Título inicial vazio
         color: '#FFFFFF', // Cor do título
         font: {
           size: 18 // Tamanho da fonte do título
@@ -1093,48 +1085,47 @@ let barChartWAP = new Chart(ctxWAP, {
       }
     }
   },
-  // Adicionando o plugin para desenhar a linha à direita
-  plugins: [{
-    id: 'lineRightPlugin',
-    afterDraw: function(chart) {
-      const ctx = chart.ctx;
-      const chartArea = chart.chartArea;
-
-      // Define a cor e largura da linha
-      ctx.save();
-      ctx.strokeStyle = '#FFFFFF'; // Cor da linha
-      ctx.lineWidth = 1.2;
-
-      // Desenha a linha vertical à direita
-      ctx.beginPath();
-      ctx.moveTo(chartArea.right, chartArea.top);
-      ctx.lineTo(chartArea.right, chartArea.bottom);
-      ctx.stroke();
-      ctx.restore();
-    }
-  },
-  {
-    id: 'borderedTitlePlugin',
-    beforeDraw: (chart) => {
-      const title = chart.options.plugins.title;
-      if (title.display && title.text) {
+  plugins: [
+    {
+      id: 'lineRightPlugin',
+      afterDraw: function(chart) {
         const ctx = chart.ctx;
-        const fontSize = title.font.size;
-        const fontWeight = title.font.weight;
+        const chartArea = chart.chartArea;
+
+        // Define a cor e largura da linha
+        ctx.save();
+        ctx.strokeStyle = '#FFFFFF'; // Cor da linha
+        ctx.lineWidth = 1.2;
+
+        // Desenha a linha vertical à direita
+        ctx.beginPath();
+        ctx.moveTo(chartArea.right, chartArea.top);
+        ctx.lineTo(chartArea.right, chartArea.bottom);
+        ctx.stroke();
+        ctx.restore();
+      }
+    },
+    {
+      id: 'borderedTitlePlugin',
+      beforeDraw: (chart) => {
+        const titleText = chart.options.plugins.title.text; // Acessa o título dinâmico
+        const ctx = chart.ctx;
+        const fontSize = 18;
+        const fontWeight = 'bold';
         const fontFamily = Chart.defaults.font.family;
 
         ctx.save();
         ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        const textWidth = ctx.measureText(title.text).width;
+        const textWidth = ctx.measureText(titleText).width;
         const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
         const y = chart.chartArea.top / 2;
 
         const padding = 10;
         const borderWidth = textWidth + padding * 2;
         const borderHeight = fontSize + padding;
-        const borderRadius = 8; // Aumentado para deixar os cantos mais arredondados
+        const borderRadius = 8;
 
         ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
         ctx.beginPath();
@@ -1150,12 +1141,12 @@ let barChartWAP = new Chart(ctxWAP, {
         ctx.closePath();
         ctx.fill();
 
-        ctx.fillStyle = title.color;
-        ctx.fillText(title.text, x, y);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(titleText, x, y);
         ctx.restore();
       }
     }
-  }]
+  ]
 });
 
 
@@ -1234,7 +1225,18 @@ function updateBarChartWAP(selectedQuantity) { // Adicione selectedQuantity como
     return value + ' WAP'; // Mantém a unidade WAP
   };
 
-  var title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | WAP METRIC` : `TAMANHO: ${selectedQuantity} | MÉTRICA WAP`; // Texto em inglês;
-  barChartWAP.options.plugins.title.text = title;
+  // Atualiza o título apenas se ele for diferente do título atual
+  var title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | WAP METRIC` : `TAMANHO: ${selectedQuantity} | MÉTRICA WAP`;
+  
+  // Limpa o texto do título antes de definir um novo
+  if (barChartWAP.options.plugins.title.text !== title) {
+    barChartWAP.options.plugins.title.text = title; // Atualiza o título
+  }
+
+  // Adiciona uma condição para evitar duplicação
+  if (barChartWAP.options.plugins.title.text !== '') {
+    barChartWAP.options.plugins.title.text = title; // Atualiza o título
+  }
+
   barChartWAP.update(); // Atualiza o gráfico para refletir as mudanças
 }
