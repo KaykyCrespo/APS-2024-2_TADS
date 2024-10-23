@@ -459,6 +459,8 @@ let myPieChart = new Chart(ctxPie, {
         ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
+
+        // Medir o comprimento do texto
         const textWidth = ctx.measureText(title.text).width;
         const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
 
@@ -468,7 +470,7 @@ let myPieChart = new Chart(ctxPie, {
         const padding = 10;
         const borderWidth = textWidth + padding * 2;
         const borderHeight = fontSize + padding;
-        const borderRadius = 4;
+        const borderRadius = 6;
 
         // Desenhar o retângulo de fundo com bordas arredondadas
         ctx.fillStyle = '#2A6168';
@@ -550,6 +552,16 @@ function updatePieChart(selectedQuantity) {
 
 
 
+
+
+
+
+
+
+
+
+
+
 // Inicialização do gráfico de barra
 const ctxLine = document.getElementById('barChart').getContext('2d');
 let barChart = new Chart(ctxLine, {
@@ -581,8 +593,10 @@ let barChart = new Chart(ctxLine, {
       y: {
         beginAtZero: true,
         ticks: {
+          // Usar separador de milhares
           callback: function (value) {
-            return value + 's';
+            // Formatar o valor com separadores de milhares e adicionar "s"
+            return new Intl.NumberFormat('de-DE').format(value) + 's';
           },
           color: '#FFFFFF',
           font: {
@@ -677,7 +691,7 @@ let barChart = new Chart(ctxLine, {
       const padding = 10;
       const borderWidth = textWidth + padding * 2;
       const borderHeight = fontSize + padding;
-      const borderRadius = 8;
+      const borderRadius = 6;
 
       ctx.fillStyle = '#2A6168';
       ctx.beginPath();
@@ -699,6 +713,7 @@ let barChart = new Chart(ctxLine, {
     }
   }]
 });
+
 
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
 function updateBarChart(selectedQuantity) {
@@ -741,8 +756,20 @@ function updateBarChart(selectedQuantity) {
 
   // Atualiza o título do gráfico
   barChart.options.plugins.dynamicTitle = { title }; // Atualiza a estrutura do título dinâmico
+  
+  // Ajusta a formatação dos números no eixo Y com base na métrica selecionada
   barChart.options.scales.y.ticks.callback = function (value) {
-    return value + yAxisUnit;
+    switch (selectedMetric) {
+      case 'time':
+        // Formata com separador de milhares e 's' para segundos
+        return new Intl.NumberFormat('de-DE').format(value) + 's';
+      case 'memory':
+        // Formata com separador de milhares e 'MB' para memória
+        return new Intl.NumberFormat('de-DE').format(value) + 'MB';
+      case 'iterations':
+        // Apenas formata o número com separador de milhares (sem unidade)
+        return new Intl.NumberFormat('de-DE').format(value);
+    }
   };
 
   barChart.update();
@@ -849,7 +876,6 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         color: '#FFFFFF', // Cor do título
         font: {
           size: 18, // Tamanho do título
-          weight: 'bold' // Negrito
         },
       }
     },
@@ -867,20 +893,23 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         const fontSize = title.font.size;
         const fontWeight = title.font.weight;
         const fontFamily = Chart.defaults.font.family;
-
+  
+        ctx.clearRect(0, 0, chart.width, chart.chartArea.top); // Limpa a área superior para evitar sobreposição
+  
         ctx.save();
         ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         const textWidth = ctx.measureText(title.text).width;
         const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
         const y = chart.chartArea.top / 2;
-
+  
         const padding = 10;
         const borderWidth = textWidth + padding * 2;
         const borderHeight = fontSize + padding;
-        const borderRadius = 8; // Aumentado para deixar os cantos mais arredondados
-
+        const borderRadius = 6; // Canto arredondado
+  
         // Desenhar o retângulo de fundo com bordas arredondadas
         ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
         ctx.beginPath();
@@ -895,7 +924,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
         ctx.closePath();
         ctx.fill();
-
+  
         // Desenhar o texto por cima
         ctx.fillStyle = title.color;
         ctx.fillText(title.text, x, y);
@@ -903,7 +932,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
       }
     }
   }]
-});
+})  
 
 /// Função para atualizar o gráfico Polar Area com base na métrica selecionada
 function updatePolarAreaChart(selectedQuantity) {
@@ -1119,7 +1148,7 @@ let barChartWAP = new Chart(ctxWAP, {
         const padding = 10;
         const borderWidth = textWidth + padding * 2;
         const borderHeight = fontSize + padding;
-        const borderRadius = 8;
+        const borderRadius = 6;
 
         ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
         ctx.beginPath();

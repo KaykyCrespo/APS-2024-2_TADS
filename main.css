@@ -460,7 +460,7 @@ main {
     padding: 4.5vw 0;
 
     #perfomance-results-left {
-        margin-left: 4.5vw;
+        margin-left: 3vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -553,7 +553,7 @@ main {
         flex-direction: column;
         justify-content: center;
         width: 65%;
-        margin-left: 3.5vw;
+        margin-left: 3vw;
 
 
         >div:nth-of-type(1) {
