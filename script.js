@@ -1,16 +1,24 @@
 function toggleMode() {
-	const html = document.documentElement // acessando a minha variável através do .documentElement 
+  const html = document.documentElement; // acessando a minha variável através do .documentElement 
 
-	if(html.classList.contains('dark')) {
-    showAlertBox("selected_default_theme", "success")
-		html.classList.remove('dark') //Se na lista de classe do html conter 'dark', remover
-	}
-	else {
-    showAlertBox("selected_dark_theme", "success")
-		html.classList.add('dark') //Caso contrário, adicionar
-	}
+  if (html.classList.contains('dark')) {
+    showAlertBox("selected_default_theme", "success");
+    html.classList.remove('dark'); // Se na lista de classe do html conter 'dark', remover
+  } else {
+    showAlertBox("selected_dark_theme", "success");
+    html.classList.add('dark'); // Caso contrário, adicionar
+  }
 
+  // Atualizar o gráfico após mudar o modo
+  myPieChart.update(); // Atualiza o gráfico
+  barChart.update(); // Atualiza o gráfico
+  myPolarAreaChart.update(); // Atualiza o gráfico
+  barChartWAP.update(); // Atualiza o gráfico
 }
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const langEl = document.querySelector('.langWrap');
@@ -493,8 +501,17 @@ let myPieChart = new Chart(ctxPie, {
         const borderHeight = fontSize + padding;
         const borderRadius = 6;
 
+        // Obter a cor da variável CSS para o fundo do título
+        const quinternaryDark = getComputedStyle(document.documentElement).getPropertyValue('--quinternary-dark').trim();
+        const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
+
+        // Verifica se está em modo escuro e ajusta a cor de fundo
+        const backgroundColor = document.documentElement.classList.contains('dark')
+        ? quinternaryDark // Cor de fundo para o modo escuro
+        : borderColor; // Cor de fundo para o modo claro
+
         // Desenhar o retângulo de fundo com bordas arredondadas
-        ctx.fillStyle = '#2A6168';
+        ctx.fillStyle = backgroundColor;
         ctx.beginPath();
         ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
         ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
@@ -516,8 +533,6 @@ let myPieChart = new Chart(ctxPie, {
     }
   }]
 });
-
-
 
 // Função para atualizar o gráfico de pizza com base na métrica selecionada
 function updatePieChart(selectedQuantity) {
@@ -569,6 +584,7 @@ function updatePieChart(selectedQuantity) {
 
   myPieChart.update(); // Atualiza o gráfico
 }
+
 
 
 
@@ -714,7 +730,18 @@ let barChart = new Chart(ctxLine, {
       const borderHeight = fontSize + padding;
       const borderRadius = 6;
 
-      ctx.fillStyle = '#2A6168';
+      // Obter a cor da variável CSS para o fundo do título
+      const quinternaryDark = getComputedStyle(document.documentElement).getPropertyValue('--quinternary-dark').trim();
+      const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
+
+      // Verifica se está em modo escuro e ajusta a cor de fundo
+      const backgroundColor = document.documentElement.classList.contains('dark')
+      ? quinternaryDark // Cor de fundo para o modo escuro
+      : borderColor; // Cor de fundo para o modo claro
+
+      // Desenhar o retângulo de fundo com bordas arredondadas
+      ctx.fillStyle = backgroundColor;
+
       ctx.beginPath();
       ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
       ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
@@ -918,7 +945,18 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
       const borderHeight = fontSize + padding;
       const borderRadius = 6;
   
-      ctx.fillStyle = '#2A6168';
+      // Obter a cor da variável CSS para o fundo do título
+      const quinternaryDark = getComputedStyle(document.documentElement).getPropertyValue('--quinternary-dark').trim();
+      const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
+
+      // Verifica se está em modo escuro e ajusta a cor de fundo
+      const backgroundColor = document.documentElement.classList.contains('dark')
+      ? quinternaryDark // Cor de fundo para o modo escuro
+      : borderColor; // Cor de fundo para o modo claro
+
+      // Desenhar o retângulo de fundo com bordas arredondadas
+      ctx.fillStyle = backgroundColor;
+      
       ctx.beginPath();
       ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
       ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
@@ -1163,7 +1201,18 @@ let barChartWAP = new Chart(ctxWAP, {
         const borderHeight = fontSize + padding;
         const borderRadius = 6;
 
-        ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
+        // Obter a cor da variável CSS para o fundo do título
+        const quinternaryDark = getComputedStyle(document.documentElement).getPropertyValue('--quinternary-dark').trim();
+        const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
+
+        // Verifica se está em modo escuro e ajusta a cor de fundo
+        const backgroundColor = document.documentElement.classList.contains('dark')
+        ? quinternaryDark // Cor de fundo para o modo escuro
+        : borderColor; // Cor de fundo para o modo claro
+
+        // Desenhar o retângulo de fundo com bordas arredondadas
+        ctx.fillStyle = backgroundColor;
+
         ctx.beginPath();
         ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
         ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);

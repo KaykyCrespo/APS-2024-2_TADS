@@ -1168,14 +1168,12 @@ footer {
             }
 
             >div:nth-of-type(2) {
-                border: 1px solid red;
                 display: flex;
                 height: 18vw;
 
             }
 
             >div:nth-of-type(3) {
-                border: 1px solid red;
                 display: flex;
                 height: 18vw;
             }
