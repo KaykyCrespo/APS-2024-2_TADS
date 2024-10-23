@@ -442,6 +442,27 @@ let myPieChart = new Chart(ctxPie, {
       },
       title: {
         display: false, // Desativar o título padrão
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            let label = context.label || '';
+            let value = context.raw; // Obtém o valor do dataset
+            let metric = document.getElementById('selectedMetric').value; // Captura a métrica atual
+
+            // Formata o valor com separador de milhar
+            let formattedValue = value.toLocaleString('pt-BR'); // Formatação em português
+
+            // Adiciona "s" se a métrica for tempo
+            if (metric === 'time') {
+              return `${label}: ${formattedValue}s`; // Exibe o valor com "s"
+            } else if (metric === 'memory') {
+              return `${label}: ${formattedValue}MB`; // Exibe o valor com "MB" para memória
+            } else {
+              return `${label}: ${formattedValue}`; // Exibe somente o valor para iterações
+            }
+          }
+        }
       }
     }
   },
@@ -791,7 +812,6 @@ function updateBarChart(selectedQuantity) {
 
 
 
-
 // Inicialização do gráfico Polar Area
 const ctxPolarAreaChart = document.getElementById('polarAreaChart').getContext('2d');
 let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
@@ -800,12 +820,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
     labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
     datasets: [{
       label: 'Metrics',
-      data: [
-        null,
-        null,
-        null,
-        null
-      ],
+      data: [null, null, null, null],
       backgroundColor: [
         'rgba(255, 166, 201, 0.5)', // Transparência de 50%
         'rgba(205, 161, 219, 0.5)',
@@ -818,7 +833,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
   options: {
     responsive: true,
     layout: {
-      padding: { top: 60, bottom: 20 } // Aumenta o espaçamento para o título
+      padding: { top: 90, bottom: 20 } // Aumenta o espaçamento para o título
     },
     scales: {
       r: {
@@ -831,7 +846,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
             size: 15
           },
           callback: function (value) {
-            return value + 's'; // Personalize para 'GB' se necessário
+            return new Intl.NumberFormat('de-DE').format(value);
           },
           backdropColor: 'transparent', // Remove o fundo dos números
           count: 5 // Número de ticks desejado
@@ -871,12 +886,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
         backgroundColor: 'rgba(0, 0, 0, 0)'
       },
       title: {
-        display: true,
-        text: 'SIZE: 250 | EXECUTION TIME', // Título inicial que será atualizado
-        color: '#FFFFFF', // Cor do título
-        font: {
-          size: 18, // Tamanho do título
-        },
+        display: false // Desativamos o título padrão do Chart.js para evitar duplicação
       }
     },
     animation: {
@@ -887,108 +897,111 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
   plugins: [{
     id: 'borderedTitlePluginPolar',
     beforeDraw: (chart) => {
-      const title = chart.options.plugins.title;
-      if (title.display && title.text) {
-        const ctx = chart.ctx;
-        const fontSize = title.font.size;
-        const fontWeight = title.font.weight;
-        const fontFamily = Chart.defaults.font.family;
+      const titleText = chart.options.plugins.dynamicTitle.title; // Acessa o título dinâmico
+      if (!titleText) return; // Certifique-se de que o título está presente
   
-        ctx.clearRect(0, 0, chart.width, chart.chartArea.top); // Limpa a área superior para evitar sobreposição
+      const ctx = chart.ctx;
+      const fontSize = 18;
+      const fontWeight = 'bold';
+      const fontFamily = Chart.defaults.font.family;
   
-        ctx.save();
-        ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
-
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        const textWidth = ctx.measureText(title.text).width;
-        const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
-        const y = chart.chartArea.top / 2;
+      ctx.save();
+      ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const textWidth = ctx.measureText(titleText).width;
+      const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+      const y = chart.chartArea.top / 2;
   
-        const padding = 10;
-        const borderWidth = textWidth + padding * 2;
-        const borderHeight = fontSize + padding;
-        const borderRadius = 6; // Canto arredondado
+      const padding = 10;
+      const borderWidth = textWidth + padding * 2;
+      const borderHeight = fontSize + padding;
+      const borderRadius = 6;
   
-        // Desenhar o retângulo de fundo com bordas arredondadas
-        ctx.fillStyle = '#2A6168'; // Cor de fundo da borda
-        ctx.beginPath();
-        ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
-        ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
-        ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
-        ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
-        ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
-        ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
-        ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
-        ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
-        ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
-        ctx.closePath();
-        ctx.fill();
+      ctx.fillStyle = '#2A6168';
+      ctx.beginPath();
+      ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+      ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
+      ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
+      ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
+      ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
+      ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
+      ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
+      ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
+      ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+      ctx.closePath();
+      ctx.fill();
   
-        // Desenhar o texto por cima
-        ctx.fillStyle = title.color;
-        ctx.fillText(title.text, x, y);
-        ctx.restore();
-      }
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(titleText, x, y);
+      ctx.restore();
     }
   }]
-})  
+});
 
-/// Função para atualizar o gráfico Polar Area com base na métrica selecionada
+// Função para atualizar o gráfico Polar Area com base na métrica selecionada
 function updatePolarAreaChart(selectedQuantity) {
-  var metric = document.getElementById('selectedMetric').value;
-  var data;
-  var labels = ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'];
-  var title; // Título padrão
-  var yAxisUnit = ''; // Inicializa a unidade do eixo Y
-  let selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language'); // Obtém a linguagem ativa
+  const selectedMetric = document.getElementById('selectedMetric').value;
+  const selectedLanguage = document.querySelector('.langWrap .active').getAttribute('language');
+  let title, data;
 
-  switch (metric) {
+  switch (selectedMetric) {
     case 'time':
+      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`;
       data = [
         graphValues[`bubblesort${selectedQuantity}time`],
         graphValues[`insertionsort${selectedQuantity}time`],
         graphValues[`selectionsort${selectedQuantity}time`],
         graphValues[`heapsort${selectedQuantity}time`]
       ];
-      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | EXECUTION TIME` : `TAMANHO: ${selectedQuantity} | TEMPO DE EXECUÇÃO`; // Texto em inglês
-      yAxisUnit = 's'; // Unidade em segundos
       break;
     case 'memory':
+      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMÓRIA`;
       data = [
         graphValues[`bubblesort${selectedQuantity}memory`],
         graphValues[`insertionsort${selectedQuantity}memory`],
         graphValues[`selectionsort${selectedQuantity}memory`],
         graphValues[`heapsort${selectedQuantity}memory`]
       ];
-      title =  selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | MEMORY USE` : `TAMANHO: ${selectedQuantity} | USO DE MEMORIA`; // Texto em inglês
-      yAxisUnit = 'MB'; // Unidade em GB
       break;
     case 'iterations':
+      title = selectedLanguage === "english" ? `SIZE: ${selectedQuantity} | ITERATIONS` : `TAMANHO: ${selectedQuantity} | ITERAÇÕES`;
       data = [
         graphValues[`bubblesort${selectedQuantity}iterations`],
         graphValues[`insertionsort${selectedQuantity}iterations`],
         graphValues[`selectionsort${selectedQuantity}iterations`],
         graphValues[`heapsort${selectedQuantity}iterations`]
       ];
-      title = `SIZE: ${selectedQuantity} | ITERATIONS`; // Atualizado para incluir a quantidade
-      yAxisUnit = ''; // Unidade em segundos
       break;
-    default:
-      data = [0, 0, 0, 0]; // Valores padrão
   }
 
-  myPolarAreaChart.data.labels = labels;
-  myPolarAreaChart.data.datasets[0].data = data; // Atualiza os dados do gráfico
-  myPolarAreaChart.options.plugins.title.text = title; // Atualiza o título do gráfico
+  // Atualiza os dados do gráfico
+  myPolarAreaChart.data.datasets[0].data = data;
+  myPolarAreaChart.options.plugins.dynamicTitle = { title }; // Atualiza o título
 
-  // Atualiza a unidade no eixo Y dependendo da métrica selecionada
+  // Adiciona a formatação de ticks no gráfico Polar Area
   myPolarAreaChart.options.scales.r.ticks.callback = function (value) {
-    return value + (metric === 'memory' ? ' MB' : 's'); // Muda para GB ou s baseado na métrica
+    switch (selectedMetric) {
+      case 'time':
+        // Formata com separador de milhares e 's' para segundos
+        return new Intl.NumberFormat('de-DE').format(value) + 's';
+      case 'memory':
+        // Formata com separador de milhares e 'MB' para memória
+        return new Intl.NumberFormat('de-DE').format(value) + 'MB';
+      case 'iterations':
+        // Apenas formata o número com separador de milhares (sem unidade)
+        return new Intl.NumberFormat('de-DE').format(value);
+      default:
+        return value; // Retorna o valor original se não houver correspondência
+    }
   };
 
+  myPolarAreaChart.data.datasets[0].data = data; // Atualiza os dados
+  myPolarAreaChart.options.plugins.dynamicTitle = { title }; // Atualiza o título
   myPolarAreaChart.update(); // Atualiza o gráfico
 }
+
+
 
 
 
