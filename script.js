@@ -17,13 +17,18 @@ function toggleMode() {
   barChart.update(); // Atualiza o gráfico
   myPolarAreaChart.update(); // Atualiza o gráfico
   barChartWAP.update(); // Atualiza o gráfico
-
-
-
-
 }
 
 
+document.querySelectorAll('.small-statistics-blocks img').forEach((img) => {
+  img.addEventListener('mouseover', function() {
+      this.parentElement.classList.add('hover'); // Adiciona a classe ao elemento pai
+  });
+  
+  img.addEventListener('mouseout', function() {
+      this.parentElement.classList.remove('hover'); // Remove a classe ao sair o hover
+  });
+});
 
 
 

@@ -200,14 +200,11 @@ main {
                         align-items: center;
                         background-color: var(--quinternary-color);
                         padding: 0.5vw;
+                        height: 7vw;
                         position: relative;
                         flex: 0.5; /* Faz com que todos os blocos cresçam igualmente */
-                        margin: 0 0.5vw; /* Margem lateral para espaçamento entre os blocos */
-
-
-                        /* Efeito ao passar o mouse */
+                        margin: 0 0.6vw; /* Margem lateral para espaçamento entre os blocos */
                         transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza a transformação e a sombra */
-
 
                         /* Efeito ao passar o mouse */
                         &:hover {
@@ -219,23 +216,24 @@ main {
                             position: absolute;
                             width: 17px; /* Tamanho da imagem */
                             height: 17px; /* Tamanho da imagem */
-                            position: absolute;
                             top: 10px; /* Ajuste de posição */
                             right: 10px; /* Ajuste de posição */
                             opacity: 0.8; /* Leve transparência para o ícone */
+                            transition: opacity 0.3s ease;
                         }
 
                         img:hover{
                             opacity: 1; /* Leve transparência para o ícone */
+                            cursor: pointer;
                         }
 
                         p {
                             color: var(--white);
                             font-family: 'Open sans';
-                            font-size: 0.8vw;
+                            font-size: 0.9vw;
                             text-align: center;
                             width: 80%;
-                            margin: 0.3vw 0; /* Adicionando margem superior e inferior */
+                            margin: 1vw 1vw 0 1vw; /* Adicionando margem superior e inferior */
                             padding-right: 0.4vw;
                         }
 
