@@ -1061,6 +1061,10 @@ footer {
                     select {
                         font-size: 2vw;
                         padding: 1.5vw 2vw;
+                        background: url('imgs/arrow.png') no-repeat left center; /* Altere o caminho para a imagem da seta */
+                        background-size: 1.5vw; /* Ajuste o tamanho da seta */
+                        appearance: none; /* Remove a aparência padrão do select */
+                        border: none; /* Remove a borda padrão do select se necessário */
     
                         option {
                             color: var(--black);

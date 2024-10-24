@@ -436,7 +436,12 @@ let myPieChart = new Chart(ctxPie, {
     labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
     datasets: [{
       label: '',
-      data: [null, null, null, null],
+      data: [
+        graphValues[`bubblesort${selectedQuantity}time`],
+        graphValues[`insertionsort${selectedQuantity}time`],
+        graphValues[`selectionsort${selectedQuantity}time`],
+        graphValues[`heapsort${selectedQuantity}time`]
+      ],
       backgroundColor: [
         '#FFA6C9',
         '#CDA1DB',
@@ -467,15 +472,13 @@ let myPieChart = new Chart(ctxPie, {
           font: {
             size: 16
           },
-          boxWidth: 25, // Largura da caixa de cor
-          padding: 10 // Espaçamento ao redor das legendas
         },
         position: 'top',
-        align: 'center', // Alinha as legendas no centro
-        fullSize: true, // Garante que as legendas ocupem o espaço disponível
+        align: 'center',
+        padding: 20
       },
       title: {
-        display: false, // Desativar o título padrão
+        display: false // Desativar o título padrão
       },
       tooltip: {
         callbacks: {
@@ -500,65 +503,131 @@ let myPieChart = new Chart(ctxPie, {
       }
     }
   },
-  plugins: [{
-    id: 'borderedTitlePlugin',
-    beforeDraw: (chart) => {
-      const title = chart.options.plugins.dynamicTitle; // Acessa o título dinâmico
-      if (title && title.text) {
+  plugins: [
+    {
+      id: 'centerWhiteCircle',
+      beforeDraw: function (chart) {
         const ctx = chart.ctx;
-        const fontSize = 18;
-        const fontWeight = 'bold';
-        const fontFamily = Chart.defaults.font.family;
+        const chartArea = chart.chartArea;
+        const centerX = (chartArea.left + chartArea.right) / 2;
+        const centerY = (chartArea.top + chartArea.bottom) / 2;
+
+        const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
+        const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
+        const whiteCircleRadius = innerRadius + (outerRadius - innerRadius) * 0.9;
 
         ctx.save();
-        ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-
-        // Medir o comprimento do texto
-        const textWidth = ctx.measureText(title.text).width;
-        const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
-
-        // Ajuste do valor de 'y' para mover o título mais para cima
-        const y = chart.chartArea.top / 4; // Valor ajustado para ficar mais acima
-
-        const padding = 10;
-        const borderWidth = textWidth + padding * 2;
-        const borderHeight = fontSize + padding;
-        const borderRadius = 6;
-
-        // Obter a cor da variável CSS para o fundo do título
-        const quinternaryDark = getComputedStyle(document.documentElement).getPropertyValue('--quinternary-dark').trim();
-        const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
-
-        // Verifica se está em modo escuro e ajusta a cor de fundo
-        const backgroundColor = document.documentElement.classList.contains('dark')
-        ? quinternaryDark // Cor de fundo para o modo escuro
-        : borderColor; // Cor de fundo para o modo claro
-
-        // Desenhar o retângulo de fundo com bordas arredondadas
-        ctx.fillStyle = backgroundColor;
         ctx.beginPath();
-        ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
-        ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
-        ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
-        ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
-        ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
-        ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
-        ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
-        ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
-        ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
-        ctx.closePath();
-        ctx.fill();
-
-        // Desenhar o texto por cima
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillText(title.text, x, y);
+        ctx.arc(centerX, centerY, whiteCircleRadius, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';  // Cor da borda branca
+        ctx.lineWidth = 2;  // Espessura da borda
+        ctx.stroke();  // Apenas desenha a borda
         ctx.restore();
       }
+    },
+    {
+      id: 'borderedTitlePlugin',
+      beforeDraw: (chart) => {
+        const title = chart.options.plugins.dynamicTitle; // Acessa o título dinâmico
+        if (title && title.text) {
+          const ctx = chart.ctx;
+          const fontSize = 18;
+          const fontWeight = 'bold';
+          const fontFamily = Chart.defaults.font.family;
+
+          ctx.save();
+          ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+
+          // Medir o comprimento do texto
+          const textWidth = ctx.measureText(title.text).width;
+          const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+
+          // Ajuste do valor de 'y' para mover o título mais para cima
+          const y = chart.chartArea.top / 4; // Valor ajustado para ficar mais acima
+
+          const padding = 10;
+          const borderWidth = textWidth + padding * 2;
+          const borderHeight = fontSize + padding;
+          const borderRadius = 6;
+
+          // Obter a cor da variável CSS para o fundo do título
+          const quinternaryDark = getComputedStyle(document.documentElement).getPropertyValue('--quinternary-dark').trim();
+          const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
+
+          // Verifica se está em modo escuro e ajusta a cor de fundo
+          const backgroundColor = document.documentElement.classList.contains('dark')
+            ? quinternaryDark // Cor de fundo para o modo escuro
+            : borderColor; // Cor de fundo para o modo claro
+
+          // Desenhar o retângulo de fundo com bordas arredondadas
+          ctx.fillStyle = backgroundColor;
+          ctx.beginPath();
+          ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+          ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
+          ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
+          ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
+          ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
+          ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
+          ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
+          ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
+          ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+          ctx.closePath();
+          ctx.fill();
+
+          // Desenhar o texto por cima
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillText(title.text, x, y);
+          ctx.restore();
+        }
+      }
+    },
+    {
+      id: 'divideCircle',
+  beforeDraw: function(chart) {
+    const ctx = chart.ctx;
+    const chartArea = chart.chartArea;
+    const centerX = (chartArea.left + chartArea.right) / 2;
+    const centerY = (chartArea.top + chartArea.bottom) / 2;
+
+    const offset = 11; // Ajuste para mover a linha vertical
+    const lineLength = 80; // Comprimento da linha
+    const angleInDegrees = 45; // Novo ângulo em graus
+    const angleInRadians = angleInDegrees * (Math.PI / 180); // Converte para radianos
+
+    ctx.save();
+
+    // Configuração de estilo comum
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)'; // Cor da linha divisória
+    ctx.lineWidth = 1; // Espessura da linha
+
+    // Início da linha vertical
+    ctx.beginPath();
+    ctx.moveTo(centerX, chartArea.top + offset); // Início da linha no topo ajustado
+    ctx.lineTo(centerX, centerY); // Fim da linha no meio do círculo
+    ctx.stroke();
+
+    // Linha a 45 graus
+    ctx.beginPath();
+    const xEnd = centerX + lineLength * Math.cos(angleInRadians);
+    const yEnd = centerY + lineLength * Math.sin(angleInRadians);
+    ctx.moveTo(centerX, centerY); // Início no centro
+    ctx.lineTo(xEnd, yEnd); // Fim a 45 graus
+    ctx.stroke(); // Desenhar a linha
+
+    // Linha horizontal para a esquerda
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY); // Início no centro
+    ctx.lineTo(centerX - lineLength, centerY); // Fim a 80 pixels à esquerda
+    ctx.stroke(); // Desenhar a linha
+
+    ctx.restore();
+      }
     }
-  }]
+  ]
 });
+
 
 // Função para atualizar o gráfico de pizza com base na métrica selecionada
 function updatePieChart(selectedQuantity) {
@@ -656,10 +725,8 @@ let barChart = new Chart(ctxLine, {
       y: {
         beginAtZero: true,
         ticks: {
-          // Usar separador de milhares
           callback: function (value) {
-            // Formatar o valor com separadores de milhares e adicionar "s"
-            return new Intl.NumberFormat('de-DE').format(value) + 's';
+            return new Intl.NumberFormat('de-DE').format(value) + 's'; // Formatar com separador de milhares
           },
           color: '#FFFFFF',
           font: {
@@ -734,59 +801,76 @@ let barChart = new Chart(ctxLine, {
     borderColor: '#000000',
     borderWidth: 1.5,
   },
-  plugins: [{
-    id: 'borderedTitlePluginBar',
-    beforeDraw: (chart) => {
-      const titleText = chart.options.plugins.dynamicTitle.title; // Acessa o título dinâmico
-      const ctx = chart.ctx;
-      const fontSize = 18;
-      const fontWeight = 'bold';
-      const fontFamily = Chart.defaults.font.family;
+  plugins: [
+    {
+      id: 'borderedTitlePluginBar',
+      beforeDraw: (chart) => {
+        const titleText = chart.options.plugins.dynamicTitle.title; // Acessa o título dinâmico
+        const ctx = chart.ctx;
+        const fontSize = 18;
+        const fontWeight = 'bold';
+        const fontFamily = Chart.defaults.font.family;
 
-      ctx.save();
-      ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      const textWidth = ctx.measureText(titleText).width;
-      const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
-      const y = chart.chartArea.top / 2;
+        ctx.save();
+        ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const textWidth = ctx.measureText(titleText).width;
+        const x = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+        const y = chart.chartArea.top / 2;
 
-      const padding = 10;
-      const borderWidth = textWidth + padding * 2;
-      const borderHeight = fontSize + padding;
-      const borderRadius = 6;
+        const padding = 10;
+        const borderWidth = textWidth + padding * 2;
+        const borderHeight = fontSize + padding;
+        const borderRadius = 6;
 
-      // Obter a cor da variável CSS para o fundo do título
-      const quinternaryDark = getComputedStyle(document.documentElement).getPropertyValue('--quinternary-dark').trim();
-      const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
+        const quinternaryDark = getComputedStyle(document.documentElement).getPropertyValue('--quinternary-dark').trim();
+        const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
 
-      // Verifica se está em modo escuro e ajusta a cor de fundo
-      const backgroundColor = document.documentElement.classList.contains('dark')
-      ? quinternaryDark // Cor de fundo para o modo escuro
-      : borderColor; // Cor de fundo para o modo claro
+        const backgroundColor = document.documentElement.classList.contains('dark')
+        ? quinternaryDark
+        : borderColor;
 
-      // Desenhar o retângulo de fundo com bordas arredondadas
-      ctx.fillStyle = backgroundColor;
+        ctx.fillStyle = backgroundColor;
 
-      ctx.beginPath();
-      ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
-      ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
-      ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
-      ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
-      ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
-      ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
-      ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
-      ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
-      ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
-      ctx.closePath();
-      ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.lineTo(x + borderWidth / 2 - borderRadius, y - borderHeight / 2);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y - borderHeight / 2, x + borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.lineTo(x + borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.quadraticCurveTo(x + borderWidth / 2, y + borderHeight / 2, x + borderWidth / 2 - borderRadius, y + borderHeight / 2);
+        ctx.lineTo(x - borderWidth / 2 + borderRadius, y + borderHeight / 2);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y + borderHeight / 2, x - borderWidth / 2, y + borderHeight / 2 - borderRadius);
+        ctx.lineTo(x - borderWidth / 2, y - borderHeight / 2 + borderRadius);
+        ctx.quadraticCurveTo(x - borderWidth / 2, y - borderHeight / 2, x - borderWidth / 2 + borderRadius, y - borderHeight / 2);
+        ctx.closePath();
+        ctx.fill();
 
-      ctx.fillStyle = '#FFFFFF';
-      ctx.fillText(titleText, x, y);
-      ctx.restore();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(titleText, x, y);
+        ctx.restore();
+      }
+    },
+    {
+      id: 'lineRightPlugin', // Plugin para linha à direita
+      afterDraw: function(chart) {
+        const ctx = chart.ctx;
+        const chartArea = chart.chartArea;
+
+        ctx.save();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)'; // Cor da linha igual à da grade
+        ctx.lineWidth = 1.2;
+
+        ctx.beginPath();
+        ctx.moveTo(chartArea.right, chartArea.top);
+        ctx.lineTo(chartArea.right, chartArea.bottom);
+        ctx.stroke();
+        ctx.restore();
+      }
     }
-  }]
+  ]
 });
+
 
 
 // Função para atualizar o gráfico de BARRAS de acordo com a escolha
@@ -891,7 +975,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
     scales: {
       r: {
         grid: {
-          color: '#FFFFFF'
+          color: 'rgba(255, 255, 255, 0.3)'
         },
         ticks: {
           color: '#FFFFFF',
@@ -1187,20 +1271,39 @@ let barChartWAP = new Chart(ctxWAP, {
   },
   plugins: [
     {
-      id: 'lineRightPlugin',
+      id: 'lineRightPlugin', // Plugin para linha à direita
       afterDraw: function(chart) {
         const ctx = chart.ctx;
         const chartArea = chart.chartArea;
 
         // Define a cor e largura da linha
         ctx.save();
-        ctx.strokeStyle = '#FFFFFF'; // Cor da linha
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)'; // Cor da linha igual à da grade
         ctx.lineWidth = 1.2;
 
         // Desenha a linha vertical à direita
         ctx.beginPath();
         ctx.moveTo(chartArea.right, chartArea.top);
         ctx.lineTo(chartArea.right, chartArea.bottom);
+        ctx.stroke();
+        ctx.restore();
+      }
+    },
+    {
+      id: 'lineLeftPlugin',
+      afterDraw: function(chart) {
+        const ctx = chart.ctx;
+        const chartArea = chart.chartArea;
+
+        // Define a cor e largura da linha
+        ctx.save();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)'; // Cor da linha igual à da grade
+        ctx.lineWidth = 1.2;
+
+        // Desenha a linha vertical à esquerda
+        ctx.beginPath();
+        ctx.moveTo(chartArea.left, chartArea.top);
+        ctx.lineTo(chartArea.left, chartArea.bottom);
         ctx.stroke();
         ctx.restore();
       }
@@ -1259,6 +1362,7 @@ let barChartWAP = new Chart(ctxWAP, {
     }
   ]
 });
+
 
 
 
