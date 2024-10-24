@@ -205,12 +205,6 @@ main {
                         flex: 0.5; /* Faz com que todos os blocos cresçam igualmente */
                         margin: 0 0.6vw; /* Margem lateral para espaçamento entre os blocos */
                         transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza a transformação e a sombra */
-
-                        /* Efeito ao passar o mouse */
-                        &:hover {
-                            transform: translateY(-5px); /* Elevar o bloco */
-                            box-shadow: 0 8px 20px rgba(69, 126, 131, 0.3); /* Aumentar a sombra ao passar o mouse */
-                        }
                         
                         img {
                             position: absolute;
@@ -246,6 +240,12 @@ main {
                     }
                 }
 
+                /* Efeito ao passar o mouse */
+                .small-statistics-blocks.hover {
+                    transform: translateY(-5px); /* Elevar o bloco */
+                    box-shadow: 0 8px 20px rgba(69, 126, 131, 0.3); /* Aumentar a sombra ao passar o mouse */
+                }
+                
                 #popup{
                     display: none; /* Inicialmente oculto */
                     position: fixed;

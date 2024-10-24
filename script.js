@@ -20,15 +20,19 @@ function toggleMode() {
 }
 
 
-document.querySelectorAll('.small-statistics-blocks img').forEach((img) => {
+// Adiciona o hover ao bloco pai ao passar o mouse sobre a imagem
+document.querySelectorAll('#small-statistics-blocks-container .small-statistics-blocks img').forEach((img) => {
   img.addEventListener('mouseover', function() {
-      this.parentElement.classList.add('hover'); // Adiciona a classe ao elemento pai
+    this.parentElement.classList.add('hover'); // Adiciona a classe 'hover' ao bloco pai
   });
   
   img.addEventListener('mouseout', function() {
-      this.parentElement.classList.remove('hover'); // Remove a classe ao sair o hover
+    this.parentElement.classList.remove('hover'); // Remove a classe 'hover' ao sair da imagem
   });
 });
+
+
+
 
 
 
@@ -462,11 +466,13 @@ let myPieChart = new Chart(ctxPie, {
           color: '#FFFFFF',
           font: {
             size: 16
-          }
+          },
+          boxWidth: 25, // Largura da caixa de cor
+          padding: 10 // Espaçamento ao redor das legendas
         },
         position: 'top',
-        align: 'center',
-        padding: 20
+        align: 'center', // Alinha as legendas no centro
+        fullSize: true, // Garante que as legendas ocupem o espaço disponível
       },
       title: {
         display: false, // Desativar o título padrão
