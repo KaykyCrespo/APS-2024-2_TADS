@@ -200,42 +200,34 @@ main {
                         align-items: center;
                         background-color: var(--quinternary-color);
                         padding: 0.5vw;
+                        height: 7vw;
                         position: relative;
                         flex: 0.5; /* Faz com que todos os blocos cresçam igualmente */
-                        margin: 0 0.5vw; /* Margem lateral para espaçamento entre os blocos */
-
-
-                        /* Efeito ao passar o mouse */
+                        margin: 0 0.6vw; /* Margem lateral para espaçamento entre os blocos */
                         transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza a transformação e a sombra */
-
-
-                        /* Efeito ao passar o mouse */
-                        &:hover {
-                            transform: translateY(-5px); /* Elevar o bloco */
-                            box-shadow: 0 8px 20px rgba(69, 126, 131, 0.3); /* Aumentar a sombra ao passar o mouse */
-                        }
                         
                         img {
                             position: absolute;
                             width: 17px; /* Tamanho da imagem */
                             height: 17px; /* Tamanho da imagem */
-                            position: absolute;
                             top: 10px; /* Ajuste de posição */
                             right: 10px; /* Ajuste de posição */
                             opacity: 0.8; /* Leve transparência para o ícone */
+                            transition: opacity 0.3s ease;
                         }
 
                         img:hover{
                             opacity: 1; /* Leve transparência para o ícone */
+                            cursor: pointer;
                         }
 
                         p {
                             color: var(--white);
                             font-family: 'Open sans';
-                            font-size: 0.8vw;
+                            font-size: 0.9vw;
                             text-align: center;
                             width: 80%;
-                            margin: 0.3vw 0; /* Adicionando margem superior e inferior */
+                            margin: 1vw 1vw 0 1vw; /* Adicionando margem superior e inferior */
                             padding-right: 0.4vw;
                         }
 
@@ -248,6 +240,12 @@ main {
                     }
                 }
 
+                /* Efeito ao passar o mouse */
+                .small-statistics-blocks.hover {
+                    transform: translateY(-5px); /* Elevar o bloco */
+                    box-shadow: 0 8px 20px rgba(69, 126, 131, 0.3); /* Aumentar a sombra ao passar o mouse */
+                }
+                
                 #popup{
                     display: none; /* Inicialmente oculto */
                     position: fixed;
@@ -1063,6 +1061,10 @@ footer {
                     select {
                         font-size: 2vw;
                         padding: 1.5vw 2vw;
+                        background: url('imgs/arrow.png') no-repeat left center; /* Altere o caminho para a imagem da seta */
+                        background-size: 1.5vw; /* Ajuste o tamanho da seta */
+                        appearance: none; /* Remove a aparência padrão do select */
+                        border: none; /* Remove a borda padrão do select se necessário */
     
                         option {
                             color: var(--black);

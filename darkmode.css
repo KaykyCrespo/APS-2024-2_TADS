@@ -104,6 +104,12 @@
                             }
                         }
 
+                        #popup{
+                            .popup-content{
+                                background-color: var(--quaternary-dark);
+                            }
+                        }
+                        
                         #big-statistics-blocks-container {
                             .big-statistics-blocks {
                                 border: 0.25vw solid var(--quinternary-dark);
