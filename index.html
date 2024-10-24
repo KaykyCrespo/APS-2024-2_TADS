@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div>
-                <h2>Dark mode</h2>
+                <h2 id="mode">Light mode</h2>
                 <div id="switch" >
                     <button onclick="toggleMode()"></button> <!--bolinha com imagem-->
                     <span></span>	<!--campo em que a bilinha desliza-->
@@ -230,7 +230,7 @@
                         <option value="15000">15.000</option>
                     </select>
                 </div>
-                <div>
+                <div >
                     <p for="selectedMetric" id="lang-metric-label">Metric</p>
                     <select id="selectedMetric" onchange="updateAllGraphs()">
                         <option value="time" id="lang-execution-time">Execution time</option>

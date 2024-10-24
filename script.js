@@ -1,12 +1,15 @@
 function toggleMode() {
-  const html = document.documentElement; // acessando a minha variável através do .documentElement 
+  const html = document.documentElement; // acessando a minha variável através do .documentElement
+  mode = document.querySelector('#mode');
 
   if (html.classList.contains('dark')) {
     showAlertBox("selected_default_theme", "success");
     html.classList.remove('dark'); // Se na lista de classe do html conter 'dark', remover
+    mode.textContent = "Light Mode"; // Atualiza o texto para "Light Mode"
   } else {
     showAlertBox("selected_dark_theme", "success");
     html.classList.add('dark'); // Caso contrário, adicionar
+    mode.textContent = "Dark Mode"; // Atualiza o texto para "Dark Mode"
   }
 
   // Atualizar o gráfico após mudar o modo
@@ -14,6 +17,10 @@ function toggleMode() {
   barChart.update(); // Atualiza o gráfico
   myPolarAreaChart.update(); // Atualiza o gráfico
   barChartWAP.update(); // Atualiza o gráfico
+
+
+
+
 }
 
 
@@ -216,7 +223,7 @@ var alert_messages = {
     'default_alert_message': "No language selected, using default settings.",
     'selected_language' : "Language updated to english.",
     "selected_dark_theme" : "Dark mode enabled.",
-    "selected_default_theme" : "Default mode enabled."
+    "selected_default_theme" : "Light mode enabled."
 
   },
   'portuguese': {
@@ -229,7 +236,7 @@ var alert_messages = {
     'default_alert_message': "Nenhuma língua selecionada, usando configurações padrão.",
     'selected_language' : "Linguagem atualizada para português.",
     "selected_dark_theme" : "Tema escuro ativado.",
-    "selected_default_theme" : "Tema padrão selecionado."
+    "selected_default_theme" : "Tema claro selecionado."
   }
 };
 
