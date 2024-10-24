@@ -12,14 +12,8 @@ function toggleMode() {
     mode.textContent = "Dark Mode"; // Atualiza o texto para "Dark Mode"
   }
 
-  // Atualizar o gráfico após mudar o modo
-  myPieChart.update(); // Atualiza o gráfico
-  barChart.update(); // Atualiza o gráfico
-  myPolarAreaChart.update(); // Atualiza o gráfico
-  barChartWAP.update(); // Atualiza o gráfico
 
-
-
+  updateAllGraphs();
 
 }
 
@@ -390,8 +384,26 @@ function setArraySize(size){
   arraySize = size
 }
 
-function setGraphValues(sort, type, value) {
+const updateCounts = {};
+
+function setGraphValues(sort, type, value, arraySize) {
+  let key = `${sort}${type}${arraySize}`;
+  let currentGraphValue = graphValues[`${sort}${arraySize}${type}`] || 0;
+
+  let average = (currentGraphValue + parseFloat(value)) / updateCounts[key]
+
+
+  // Caso a chave não exista, settar para 0
+  if (!updateCounts[key]) {
+    updateCounts[key] = 0;
+  }
+
+  updateCounts[key]++;
+  
+  console.log(`${sort} ${type} (${currentGraphValue} + ${value}) / ${updateCounts[key]} : `, average)
   graphValues[`${sort}${arraySize}${type}`] = value;
+
+
   updateAllGraphs("makeTest");
 }
 
@@ -413,7 +425,6 @@ function updateAllGraphs(beingCalledBy) {
   updatePieChart(selectedQuantity);
   updatePolarAreaChart(selectedQuantity);
   updateBarChartWAP(selectedQuantity);
-  console.log("atualizou")
 }
 
 

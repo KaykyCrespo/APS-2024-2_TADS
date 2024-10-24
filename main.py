@@ -117,10 +117,10 @@ def makeTest(event):
         def measureMemoryUsage(array):
             return sys.getsizeof(array) / 1024
 
-        def updateGraphValues(name, type, value):
+        def updateGraphValues(name, type, value, arraySize):
             supported_sorts = ['bubblesort', 'insertionsort', 'selectionsort', 'heapsort']
             if name in supported_sorts:
-                setGraphValues(name, type, value)
+                setGraphValues(name, type, value, arraySize)
 
         def updateAllStatistics():
             updateStatistics(sortType, 1);
@@ -144,9 +144,9 @@ def makeTest(event):
         updateAllStatistics();
         
         #Dando update nos gráficos com tempo, iterações e memória.
-        updateGraphValues(sortType, 'time', f"{elapsed_time_perf_counter:.6f}")
-        updateGraphValues(sortType, 'iterations', sort_type(Array))
-        updateGraphValues(sortType, 'memory', measureMemoryUsage(Array))
+        updateGraphValues(sortType, 'time', f"{elapsed_time_perf_counter:.6f}", ArraySize)
+        updateGraphValues(sortType, 'iterations', sort_type(Array), ArraySize)
+        updateGraphValues(sortType, 'memory', measureMemoryUsage(Array), ArraySize)
     
     def showGeneralStatistics():
         if generalStatistics.style.display != "flex":
