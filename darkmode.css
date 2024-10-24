@@ -6,6 +6,7 @@
 }
 
 .dark{
+    --switch-bg-url: url(imgs/moon-stars.svg);
 	--highdark-color: rgba(0, 0, 0, 0.2);
     --surface-color: rgba(0, 0, 0, 0.05);
     --stroke-color: rgba(0, 0, 0, 0.5);
