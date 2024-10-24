@@ -61,24 +61,31 @@
                     <h1 id="lang-title-statistics">General statistics</h1>
                     <div id="small-statistics-blocks-container">
                         <div class="small-statistics-blocks">
-                            <img src="imgs/icons8-informação-64.png" alt="Bubblesort" class="sort-icon">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Bubblesort Information')">
                             <p>Bubblesort used</p>
                             <h2 id="bubblesort-count">0</h2>
                         </div>
                         <div class="small-statistics-blocks">
-                            <img src="imgs/icons8-info-26.png" alt="Bubblesort" class="sort-icon">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Insertionsort Information')">
                             <p>Insertionsort used</p>
                             <h2 id="insertionsort-count">0</h2>
                         </div>
                         <div class="small-statistics-blocks">
-                            <img src="imgs/icons8-informações-48 (5).png" alt="Bubblesort" class="sort-icon">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Selectionsort Information')">
                             <p>Selectionsort used</p>
                             <h2 id="selectionsort-count">0</h2>
                         </div>
                         <div class="small-statistics-blocks">
-                            <img src="imgs/icons8-informações-48 (5).png" alt="Bubblesort" class="sort-icon">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Heapsort Information')">
                             <p>Heapsort used</p>
                             <h2 id="heapsort-count">0</h2>
+                        </div>
+                    </div>
+                    <!-- Pop-up -->
+                    <div id="popup" class="popup">
+                        <div class="popup-content">
+                            <span class="close" onclick="closePopup()">&times;</span>
+                            <p id="popup-message"></p>
                         </div>
                     </div>
                     <div id="big-statistics-blocks-container">

@@ -60,6 +60,17 @@
 
 	.dark{
 
+
+        /* Imagem para o estado "não marcado" */
+        input[type="radio"]:not(:checked)+label {
+            background-image: url('imgs/check-dark.png');
+        }
+
+        /* Imagem para o estado "marcado" */
+        input[type="radio"]:checked+label {
+            background-image: url('imgs/checked-dark.png');
+        }
+
         #settings-container {
             /* Div do botão com engrenagem*/
             >div:nth-of-type(1){

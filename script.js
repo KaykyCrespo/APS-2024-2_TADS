@@ -268,6 +268,14 @@ function showAlertBox(messageKey, category) {
 
 
 
+function showPopup(message) {
+  document.getElementById('popup-message').textContent = message; // Define a mensagem do pop-up
+  document.getElementById('popup').style.display = 'flex'; // Exibe o pop-up
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none'; // Oculta o pop-up
+}
 
 
 
