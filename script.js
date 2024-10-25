@@ -77,7 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
     "lang-sub-title-footer": document.querySelectorAll('#lang-sub-title-footer'),
     "lang-terms": document.querySelectorAll('#lang-terms'),
     "lang-politics": document.querySelectorAll('#lang-politics'),
-    "lang-copyright": document.querySelectorAll('#lang-copyright')
+    "lang-copyright": document.querySelectorAll('#lang-copyright'),
+    "lang-bubblesort-used": document.querySelector('#lang-bubblesort-used'),
+"lang-insertionsort-used": document.querySelector('#lang-insertionsort-used'),
+"lang-selectionsort-used": document.querySelector('#lang-selectionsort-used'),
+"lang-heapsort-used": document.querySelector('#lang-heapsort-used'),
   };
 
   // Tradução de dados
@@ -116,7 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-sub-title-footer": "App for testing array sorts",
       "lang-terms": "Terms of use",
       "lang-politics": "Privacy politics",
-      "lang-copyright": "Copyright © ArrayBuddy. All Rights Reserved"
+      "lang-copyright": "Copyright © ArrayBuddy. All Rights Reserved",
+      "lang-bubblesort-used": "Bubblesort used",
+      "lang-insertionsort-used": "Insertionsort used",
+      "lang-selectionsort-used": "Selectionsort used",
+      "lang-heapsort-used": "Heapsort used"
     },
     "portuguese": {
       "lang-title": "Array Buddy",
@@ -152,7 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-sub-title-footer": "Aplicativo para testar ordenação de arrays",
       "lang-terms": "Termo de uso",
       "lang-politics": "Política de Privacidade",
-      "lang-copyright": "Copyright © ArrayBuddy. Todos direitos Reservados"
+      "lang-copyright": "Copyright © ArrayBuddy. Todos direitos Reservados",
+      "lang-bubblesort-used": "Bubblesort usados",
+      "lang-insertionsort-used": "Insertionsort usados",
+      "lang-selectionsort-used": "Selectionsort usados",
+      "lang-heapsort-used": "Heapsort usados"
     }
   };
 
