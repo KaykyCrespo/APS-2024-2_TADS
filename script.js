@@ -79,9 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
     "lang-politics": document.querySelectorAll('#lang-politics'),
     "lang-copyright": document.querySelectorAll('#lang-copyright'),
     "lang-bubblesort-used": document.querySelector('#lang-bubblesort-used'),
-"lang-insertionsort-used": document.querySelector('#lang-insertionsort-used'),
-"lang-selectionsort-used": document.querySelector('#lang-selectionsort-used'),
-"lang-heapsort-used": document.querySelector('#lang-heapsort-used'),
+    "lang-insertionsort-used": document.querySelector('#lang-insertionsort-used'),
+    "lang-selectionsort-used": document.querySelector('#lang-selectionsort-used'),
+    "lang-heapsort-used": document.querySelector('#lang-heapsort-used'),
   };
 
   // Tradução de dados
@@ -389,18 +389,11 @@ function resetInputsMakeTest() {
   document.querySelectorAll('input[name="arraySize"]').forEach(radio => {
     radio.checked = false;
   });
-
-  document.getElementById("ordinationType").value = "repeat"
-  document.getElementById("selectedMetric").value = "time"
-  document.getElementById("selectedQuantity").value = "250"
-
-  console.log("resetou")
 }
 
 function resetInputsTryYourself() {
   document.getElementById("userArrayInput").value = null
   document.getElementById("arraySortedResponse").value = null
-
 }
 
 
@@ -434,7 +427,6 @@ function updateAllGraphs(beingCalledBy) {
   updatePieChart(selectedQuantity);
   updatePolarAreaChart(selectedQuantity);
   updateBarChartWAP(selectedQuantity);
-  console.log("atualizou")
 }
 
 
@@ -448,12 +440,7 @@ let myPieChart = new Chart(ctxPie, {
     labels: ['Bubblesort', 'Insertionsort', 'Selectionsort', 'Heapsort'],
     datasets: [{
       label: '',
-      data: [
-        graphValues[`bubblesort${selectedQuantity}time`],
-        graphValues[`insertionsort${selectedQuantity}time`],
-        graphValues[`selectionsort${selectedQuantity}time`],
-        graphValues[`heapsort${selectedQuantity}time`]
-      ],
+      data: [1, 2, 3, 4], // Inicializando com valores zerados
       backgroundColor: [
         '#FFA6C9',
         '#CDA1DB',
@@ -466,7 +453,7 @@ let myPieChart = new Chart(ctxPie, {
         'rgba(0, 0, 0, 1)',
         'rgba(0, 0, 0, 1)'
       ],
-      borderWidth: 1.5
+      borderWidth: 1.5,
     }]
   },
   options: {
@@ -506,7 +493,7 @@ let myPieChart = new Chart(ctxPie, {
             if (metric === 'time') {
               return `${label}: ${formattedValue}s`; // Exibe o valor com "s"
             } else if (metric === 'memory') {
-              return `${label}: ${formattedValue}MB`; // Exibe o valor com "MB" para memória
+              return `${label}: ${formattedValue} MB`; // Exibe o valor com "MB" para memória
             } else {
               return `${label}: ${formattedValue}`; // Exibe somente o valor para iterações
             }
@@ -516,27 +503,6 @@ let myPieChart = new Chart(ctxPie, {
     }
   },
   plugins: [
-    {
-      id: 'centerWhiteCircle',
-      beforeDraw: function (chart) {
-        const ctx = chart.ctx;
-        const chartArea = chart.chartArea;
-        const centerX = (chartArea.left + chartArea.right) / 2;
-        const centerY = (chartArea.top + chartArea.bottom) / 2;
-
-        const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
-        const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius;
-        const whiteCircleRadius = innerRadius + (outerRadius - innerRadius) * 0.9;
-
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, whiteCircleRadius, 0, 2 * Math.PI);
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';  // Cor da borda branca
-        ctx.lineWidth = 2;  // Espessura da borda
-        ctx.stroke();  // Apenas desenha a borda
-        ctx.restore();
-      }
-    },
     {
       id: 'borderedTitlePlugin',
       beforeDraw: (chart) => {
@@ -595,50 +561,10 @@ let myPieChart = new Chart(ctxPie, {
         }
       }
     },
-    {
-      id: 'divideCircle',
-  beforeDraw: function(chart) {
-    const ctx = chart.ctx;
-    const chartArea = chart.chartArea;
-    const centerX = (chartArea.left + chartArea.right) / 2;
-    const centerY = (chartArea.top + chartArea.bottom) / 2;
-
-    const offset = 11; // Ajuste para mover a linha vertical
-    const lineLength = 80; // Comprimento da linha
-    const angleInDegrees = 45; // Novo ângulo em graus
-    const angleInRadians = angleInDegrees * (Math.PI / 180); // Converte para radianos
-
-    ctx.save();
-
-    // Configuração de estilo comum
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)'; // Cor da linha divisória
-    ctx.lineWidth = 1; // Espessura da linha
-
-    // Início da linha vertical
-    ctx.beginPath();
-    ctx.moveTo(centerX, chartArea.top + offset); // Início da linha no topo ajustado
-    ctx.lineTo(centerX, centerY); // Fim da linha no meio do círculo
-    ctx.stroke();
-
-    // Linha a 45 graus
-    ctx.beginPath();
-    const xEnd = centerX + lineLength * Math.cos(angleInRadians);
-    const yEnd = centerY + lineLength * Math.sin(angleInRadians);
-    ctx.moveTo(centerX, centerY); // Início no centro
-    ctx.lineTo(xEnd, yEnd); // Fim a 45 graus
-    ctx.stroke(); // Desenhar a linha
-
-    // Linha horizontal para a esquerda
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY); // Início no centro
-    ctx.lineTo(centerX - lineLength, centerY); // Fim a 80 pixels à esquerda
-    ctx.stroke(); // Desenhar a linha
-
-    ctx.restore();
-      }
-    }
   ]
 });
+
+
 
 
 // Função para atualizar o gráfico de pizza com base na métrica selecionada
@@ -689,12 +615,22 @@ function updatePieChart(selectedQuantity) {
   myPieChart.data.datasets[0].data = data;
   myPieChart.options.plugins.dynamicTitle = { text: title }; // Define o título dinâmico com borda
 
+  // Desativar tooltips após a atualização
+  myPieChart.options.plugins.tooltip.enabled = true;
+
   myPieChart.update(); // Atualiza o gráfico
 }
 
 
 
+// Forçar a exibição dos dados ao carregar a página
+window.onload = function() {
+  myPieChart.data.datasets[0].data = [1, 2, 3, 4]; // Força os valores corretos
 
+    myPieChart.options.plugins.tooltip.enabled = false;
+
+    myPieChart.update();
+};
 
 
 
@@ -738,9 +674,18 @@ let barChart = new Chart(ctxLine, {
         beginAtZero: true,
         ticks: {
           callback: function (value) {
-            return new Intl.NumberFormat('de-DE').format(value) + 's'; // Formatar com separador de milhares
+            let metric = document.getElementById('selectedMetric').value; // Pega a métrica selecionada
+            if (metric === 'time') {
+              return new Intl.NumberFormat('de-DE').format(value) + ' s'; // Formatar para tempo (segundos)
+            } else if (metric === 'memory') {
+              return new Intl.NumberFormat('de-DE').format(value) + ' MB'; // Formatar para memória
+            } else if (metric === 'iterations') {
+              return new Intl.NumberFormat('de-DE').format(value); // Formatar com separador de milhares para iterações
+            } else {
+              return value; // Valor sem formatação extra
+            }
           },
-          color: '#FFFFFF',
+          color: '#FFFFFF', // Definir a cor dos números do eixo Y como branco
           font: {
             size: 15
           }
@@ -754,7 +699,7 @@ let barChart = new Chart(ctxLine, {
       },
       x: {
         ticks: {
-          color: '#FFFFFF',
+          color: '#FFFFFF', // Definir a cor dos números do eixo X como branco
           font: {
             size: 17
           }
@@ -795,18 +740,21 @@ let barChart = new Chart(ctxLine, {
       },
       tooltip: {
         callbacks: {
-          title: function (tooltipItems) {
-            return tooltipItems[0].label;
+          label: function(tooltipItem) {
+            let value = tooltipItem.raw;
+            let metric = document.getElementById('selectedMetric').value; // Pega a métrica selecionada
+
+            // Adiciona o sufixo correto baseado na métrica
+            if (metric === 'time') {
+              return new Intl.NumberFormat('de-DE').format(value) + 's'; // Sufixo para tempo (segundos)
+            } else if (metric === 'memory') {
+              return new Intl.NumberFormat('de-DE').format(value) + ' MB'; // Sufixo para memória (megabytes)
+            } else if (metric === 'iterations') {
+              return new Intl.NumberFormat('de-DE').format(value) + ''; // Formatar com separador de milhares para iterações
+            } else {
+              return value; // Valor sem sufixo
+            }
           }
-        },
-        backgroundColor: '#000000',
-        titleColor: '#FFFFFF',
-        bodyColor: '#FFFFFF',
-        titleFont: {
-          size: 14
-        },
-        bodyFont: {
-          size: 14
         }
       }
     },
@@ -840,8 +788,8 @@ let barChart = new Chart(ctxLine, {
         const borderColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim();
 
         const backgroundColor = document.documentElement.classList.contains('dark')
-        ? quinternaryDark
-        : borderColor;
+          ? quinternaryDark
+          : borderColor;
 
         ctx.fillStyle = backgroundColor;
 
@@ -935,7 +883,7 @@ function updateBarChart(selectedQuantity) {
         return new Intl.NumberFormat('de-DE').format(value) + 's';
       case 'memory':
         // Formata com separador de milhares e 'MB' para memória
-        return new Intl.NumberFormat('de-DE').format(value) + 'MB';
+        return new Intl.NumberFormat('de-DE').format(value) + ' MB';
       case 'iterations':
         // Apenas formata o número com separador de milhares (sem unidade)
         return new Intl.NumberFormat('de-DE').format(value);
@@ -961,6 +909,7 @@ function updateBarChart(selectedQuantity) {
 
 
 
+// Inicialização do gráfico Polar Area
 // Inicialização do gráfico Polar Area
 const ctxPolarAreaChart = document.getElementById('polarAreaChart').getContext('2d');
 let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
@@ -1036,6 +985,29 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
       },
       title: {
         display: false // Desativamos o título padrão do Chart.js para evitar duplicação
+      },
+      tooltip: {
+        callbacks: {
+          label: function (tooltipItem) {
+            const selectedMetric = document.getElementById('selectedMetric').value; // Obtém a métrica selecionada
+            const value = tooltipItem.raw;
+
+            // Adiciona a unidade com base na métrica
+            let label = tooltipItem.label + ': ' + new Intl.NumberFormat('de-DE').format(value);
+            if (selectedMetric === 'memory') {
+              label += ' MB'; // Adiciona "MB" se a métrica for memória
+            } else if (selectedMetric === 'time') {
+              label += ' s'; // Adiciona "s" se a métrica for tempo
+            }
+
+            return label;
+          }
+        },
+        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Cor de fundo do tooltip
+        titleColor: '#FFFFFF', // Cor do título do tooltip
+        bodyColor: '#FFFFFF', // Cor do corpo do tooltip
+        borderColor: 'rgba(255, 255, 255, 0.5)', // Cor da borda do tooltip
+        borderWidth: 1 // Largura da borda do tooltip
       }
     },
     animation: {
@@ -1099,6 +1071,7 @@ let myPolarAreaChart = new Chart(ctxPolarAreaChart, {
   }]
 });
 
+
 // Função para atualizar o gráfico Polar Area com base na métrica selecionada
 function updatePolarAreaChart(selectedQuantity) {
   const selectedMetric = document.getElementById('selectedMetric').value;
@@ -1147,7 +1120,7 @@ function updatePolarAreaChart(selectedQuantity) {
         return new Intl.NumberFormat('de-DE').format(value) + 's';
       case 'memory':
         // Formata com separador de milhares e 'MB' para memória
-        return new Intl.NumberFormat('de-DE').format(value) + 'MB';
+        return new Intl.NumberFormat('de-DE').format(value) + ' MB';
       case 'iterations':
         // Apenas formata o número com separador de milhares (sem unidade)
         return new Intl.NumberFormat('de-DE').format(value);
@@ -1179,6 +1152,7 @@ function updatePolarAreaChart(selectedQuantity) {
 
 
 
+// Inicialização do gráfico de WAP
 // Inicialização do gráfico de WAP
 const ctxWAP = document.getElementById('barChartWAP').getContext('2d');
 let barChartWAP = new Chart(ctxWAP, {
@@ -1267,6 +1241,10 @@ let barChartWAP = new Chart(ctxWAP, {
         callbacks: {
           title: function (tooltipItems) {
             return tooltipItems[0].label;
+          },
+          // Adiciona um callback para formatar o corpo do tooltip
+          label: function (tooltipItem) {
+            return tooltipItem.raw + ' WAP'; // Exibe o valor com ' WAP'
           },
         },
         backgroundColor: '#000000', // Cor de fundo do tooltip

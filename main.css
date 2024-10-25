@@ -236,6 +236,7 @@ main {
                             font-family: 'Poppins';
                             font-size: 1.25vw;
                             color: var(--white);
+                            margin: 0.35vw;
                         }
                     }
                 }
@@ -1060,22 +1061,23 @@ footer {
     
                     select {
                         font-size: 2vw;
-                        padding: 1.5vw 2vw;
-                        background: url('imgs/arrow.png') no-repeat left center; /* Altere o caminho para a imagem da seta */
-                        background-size: 1.5vw; /* Ajuste o tamanho da seta */
+                        padding: 1.5vw 2vw; /* Espaçamento para o conteúdo */
+                        padding-left: 30px; /* Espaço para a seta */
+                        background: none; /* Remover a seta do background */
                         appearance: none; /* Remove a aparência padrão do select */
-                        border: none; /* Remove a borda padrão do select se necessário */
-    
-                        option {
-                            color: var(--black);
-                            font-family: 'Arial', sans-serif;
-                            font-weight: bold;
-                            cursor: pointer;
-                            font-size: 4vw;
-                        }
+                        border: 1px solid var(--border-color); /* Borda padrão */
+                        color: var(--black); /* Cor do texto */
+                        font-family: 'Arial', sans-serif; /* Fonte do texto */
+                    }
+                    
+                    option {
+                        color: var(--black);
+                        font-family: 'Arial', sans-serif;
+                        font-weight: bold;
+                        cursor: pointer;
+                        font-size: 4vw; /* Tamanho da fonte das opções */
                     }
                 }
-    
             }
     
     
