@@ -24,7 +24,7 @@
             <div class="langWrap">
                 <h2>Languages</h2>
                 <div>
-                    <a href="#" language='portuguese' >
+                    <a href="#" language='portuguese'>
                         <img src="imgs/brazil-flag.png" alt="Portuguese">
                     </a>
                     <a href="#" language='english' class="active">
@@ -34,9 +34,9 @@
             </div>
             <div>
                 <h2 id="mode">Light mode</h2>
-                <div id="switch" >
+                <div id="switch">
                     <button onclick="toggleMode()"></button> <!--bolinha com imagem-->
-                    <span></span>	<!--campo em que a bilinha desliza-->
+                    <span></span> <!--campo em que a bilinha desliza-->
                 </div>
             </div>
         </div>
@@ -61,33 +61,75 @@
                     <h1 id="lang-title-statistics">General statistics</h1>
                     <div id="small-statistics-blocks-container">
                         <div class="small-statistics-blocks">
-                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Bubblesort Information')">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon"
+                                onclick="showPopup('Bubblesort Information')">
                             <p id="lang-bubblesort-used">Bubblesort used</p>
                             <h2 id="bubblesort-count">0</h2>
                         </div>
                         <div class="small-statistics-blocks">
-                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Insertionsort Information')">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon"
+                                onclick="showPopup('Insertionsort Information')">
                             <p id="lang-insertionsort-used">Insertionsort used</p>
                             <h2 id="insertionsort-count">0</h2>
                         </div>
                         <div class="small-statistics-blocks">
-                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Selectionsort Information')">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon"
+                                onclick="showPopup('Selectionsort Information')">
                             <p id="lang-selectionsort-used">Selectionsort used</p>
                             <h2 id="selectionsort-count">0</h2>
                         </div>
                         <div class="small-statistics-blocks">
-                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Heapsort Information')">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon"
+                                onclick="showPopup('Heapsort Information')">
                             <p id="lang-heapsort-used">Heapsort used</p>
                             <h2 id="heapsort-count">0</h2>
                         </div>
                     </div>
-                    <!-- Pop-up -->
+
+
+
+                    <!-- Estrutura do Popup -->
                     <div id="popup" class="popup">
                         <div class="popup-content">
                             <span class="close" onclick="closePopup()">&times;</span>
-                            <p id="popup-message"></p>
+                            <h2 id="popup-title">Popup Title</h2>
+                            <div id="popup-explanation">Explanation goes here.</div>
+                            <div id="popup-code">Code snippet goes here.</div>
+                            <div id="popup-step-by-step">Step by Step explanation goes here.</div>
+                            <div id="popup-details">Additional details go here.</div>
                         </div>
                     </div>
+
+
+
+                    <!-- Estrutura do Popup -->
+                    <div id="popup" class="popup">
+                        <div class="popup-content">
+
+                            <!-- Navbar do Popup -->
+                            <div class="popup-navbar">
+                                <a href="#explication" class="nav-link">Explanation</a>
+                                <a href="#code" class="nav-link">Code</a>
+                                <a href="#step-by-step" class="nav-link">Step by Step</a>
+                                <a href="#details" class="nav-link">Details</a>
+                                <span class="close" onclick="closePopup()">&times;</span>
+                            </div>
+                            <hr> <!-- Linha adicionada aqui -->
+
+
+
+
+
+                            <h2 id="popup-title">Popup Title</h2>
+                            <p id="popup-text">Popup content goes here.</p>
+                        </div>
+                    </div>
+
+
+
+
+
+
                     <div id="big-statistics-blocks-container">
                         <div class="big-statistics-blocks">
                             <p id="lang-total-iterations">Total iterations :</p>
@@ -230,7 +272,7 @@
                         <option value="15000">15.000</option>
                     </select>
                 </div>
-                <div >
+                <div>
                     <p for="selectedMetric" id="lang-metric-label">Metric</p>
                     <select id="selectedMetric" onchange="updateAllGraphs()">
                         <option value="time" id="lang-execution-time">Execution time</option>

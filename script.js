@@ -299,14 +299,55 @@ function showAlertBox(messageKey, category) {
 
 
 
-function showPopup(message) {
-  document.getElementById('popup-message').textContent = message; // Define a mensagem do pop-up
-  document.getElementById('popup').style.display = 'flex'; // Exibe o pop-up
+function showPopup(sortType) {
+  let title = '';
+  let explanation = '';
+  let code = '';
+  let stepByStep = '';
+  let details = '';
+
+  switch (sortType) {
+      case 'Bubblesort Information':
+          title = 'Bubblesort';
+          explanation = 'Bubblesort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.';
+          code = 'function bubbleSort(arr) { /* code here */ }';
+          stepByStep = 'Step 1: Compare the first two elements...';
+          details = 'Bubblesort has an average and worst-case time complexity of O(n^2).';
+          break;
+      case 'Insertionsort Information':
+          title = 'Insertionsort';
+          explanation = 'Insertionsort is a simple sorting algorithm that builds the final sorted array one item at a time.';
+          code = 'function insertionSort(arr) { /* code here */ }';
+          stepByStep = 'Step 1: Start from the second element...';
+          details = 'Insertionsort is efficient for small data sets.';
+          break;
+      case 'Selectionsort Information':
+          title = 'Selectionsort';
+          explanation = 'Selectionsort is an in-place comparison sorting algorithm.';
+          code = 'function selectionSort(arr) { /* code here */ }';
+          stepByStep = 'Step 1: Find the minimum element...';
+          details = 'Selectionsort has a time complexity of O(n^2).';
+          break;
+      case 'Heapsort Information':
+          title = 'Heapsort';
+          explanation = 'Heapsort is a comparison-based sorting algorithm that uses a binary heap data structure.';
+          code = 'function heapSort(arr) { /* code here */ }';
+          stepByStep = 'Step 1: Build a max heap...';
+          details = 'Heapsort has a time complexity of O(n log n).';
+          break;
+  }
+
+  // Atualiza o conteúdo do pop-up
+  document.getElementById('popup-title').innerText = title;
+  document.getElementById('popup-explanation').innerText = explanation;
+  document.getElementById('popup-code').innerText = code;
+  document.getElementById('popup-step-by-step').innerText = stepByStep;
+  document.getElementById('popup-details').innerText = details;
+
+  // Exibe o pop-up
+  document.getElementById('popup').style.display = 'flex';
 }
 
-function closePopup() {
-  document.getElementById('popup').style.display = 'none'; // Oculta o pop-up
-}
 
 
 

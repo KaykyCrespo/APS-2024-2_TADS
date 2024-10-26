@@ -270,6 +270,10 @@ main {
                     height: 40vw;
                 }
                 
+                .popup-navbar{
+
+                }
+
                 .close {
                     position: absolute;
                     top: 10px;
@@ -277,7 +281,21 @@ main {
                     font-size: 24px;
                     cursor: pointer;
                     color: white;
+                
+
+                    a {
+                        
+                    }
+
                 }
+
+
+                hr {
+                    border: 1px solid #ccc; /* Cor e espessura da linha */
+                    margin: 10px 0; /* Espaçamento acima e abaixo da linha */
+                    color: var(--quinternary-color);
+                }
+                
             
 
                 /* Div onde contem blocos grande de estatisticas*/
