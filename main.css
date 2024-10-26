@@ -287,7 +287,7 @@ main {
                     color: white; /* Cor do texto */
                     text-decoration: none; /* Remove o sublinhado */
                     font-weight: bold; /* Negrito para os links */
-                    padding: 10px; /* Espaçamento interno para os links */
+                    padding: 0.6vw; /* Espaçamento interno para os links */
                     margin: 0 1vw; /* Ajuste o intervalo horizontal entre os links */
                     font-family: 'Open Sans', sans-serif; /* Apply Open Sans font */
                     transition: color 0.3s ease, background-color 0.3s ease; /* Transition for smooth effect */
@@ -298,9 +298,9 @@ main {
                 }
 
                 .active {
-                    color: var(--border-color); /* Color of active link */
-                    border-radius: 5px; /* Optional rounded corners */
-                }
+                    color: var(--border-color);
+                    border-radius: 0.3vw;
+}
                 
                 /* Ensure active link has hover effect as well */
                 .nav-link.active:hover {
@@ -311,13 +311,13 @@ main {
                     display: flex; /* Use flexbox to align items horizontally */
                     align-items: flex-start; /* Align items at the start */
                     justify-content: space-between; /* Space between text and image */
-                    margin-top: 20px; /* Optional margin for spacing */
+                    margin-top: 1.3vw; /* Optional margin for spacing */
                     width: 100%; /* Ensure it takes the full width */
                 }
                 
                 .popup-text-content div {
                     color: var(--white); /* Set text color to white */
-                    margin-bottom: 10px; /* Optional: spacing between text sections */
+                    margin-bottom: 0.6vw; /* Optional: spacing between text sections */
                     text-align: left; /* Align text to the left */
                 }
 
@@ -330,14 +330,14 @@ main {
                     margin-top: 8vh;
                     font-family: 'Open Sans', sans-serif;
                     font-weight: bold;
-                    font-size: 20px;
-                    padding: 10px;
+                    font-size: 2vw;
+                    padding: 0.6vw;
                 }
-                            
+
                 #popup-explanation{
-                    
                     font-family: 'Open Sans', sans-serif;
-                    padding: 10px;
+                    padding: 0.6vw;
+                    line-height: 1.5vw;
                 }
 
                 .popup-image {
@@ -351,21 +351,21 @@ main {
 
                 /* Optional: ensure the popup-content does not shrink below a certain size */
                 .popup-content {
-                    min-width: 650px; /* Set a minimum width for the popup */
-                    min-height: 400px; /* Set a minimum height for the popup */
+                    min-width: 42vw; /* Set a minimum width for the popup */
+                    min-height: 26vw; /* Set a minimum height for the popup */
                 }
 
                 .navbar-border {
                     width: 100%; /* Largura total da navbar */
-                    height: 2px; /* Altura da linha - ajuste conforme necessário */
+                    height: 0.1vw; /* Altura da linha - ajuste conforme necessário */
                     background-color: var(--border-color); /* Cor da linha */
                 }
 
                 .close {
                     position: absolute;
-                    top: 10px;
-                    right: 15px;
-                    font-size: 24px;
+                    top: 0.6vw;
+                    right: 0.9vw;
+                    font-size: 1.5vw;
                     cursor: pointer;
                     color: white;
                 

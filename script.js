@@ -305,6 +305,7 @@ function showPopup(sortType) {
   let code = '';
   let stepByStep = '';
   let details = '';
+  let imagePath = '';
 
   switch (sortType) {
       case 'Bubblesort Information':
@@ -313,27 +314,31 @@ function showPopup(sortType) {
           code = '';
           stepByStep = '';
           details = '';
+          imagePath = 'imgs/bubblesortjpg.jpg'
           break;
       case 'Insertionsort Information':
-          title = 'Insertionsort';
-          explanation = 'Insertionsort is a simple sorting algorithm that builds the final sorted array one item at a time.';
-          code = 'function insertionSort(arr) { /* code here */ }';
-          stepByStep = 'Step 1: Start from the second element...';
-          details = 'Insertionsort is efficient for small data sets.';
+          title = 'INSERTIONSORT';
+          explanation = "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!";
+          code = '';
+          stepByStep = '';
+          details = '';
+          imagePath = 'imgs/insertionsort.jpg ';
           break;
       case 'Selectionsort Information':
-          title = 'Selectionsort';
-          explanation = 'Selectionsort is an in-place comparison sorting algorithm.';
-          code = 'function selectionSort(arr) { /* code here */ }';
-          stepByStep = 'Step 1: Find the minimum element...';
-          details = 'Selectionsort has a time complexity of O(n^2).';
+          title = 'SELECTIONSORT';
+          explanation = "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy." ;
+          code = '';
+          stepByStep = '';
+          details = '';
+          imagePath = 'imgs/selectionsort.jpg';
           break;
       case 'Heapsort Information':
-          title = 'Heapsort';
-          explanation = 'Heapsort is a comparison-based sorting algorithm that uses a binary heap data structure.';
-          code = 'function heapSort(arr) { /* code here */ }';
-          stepByStep = 'Step 1: Build a max heap...';
-          details = 'Heapsort has a time complexity of O(n log n).';
+          title = 'HEAPSORT';
+          explanation = "To sort numbers using a heap, we first place all the numbers into a heap, where the largest stone (number) is at the top. Then, we remove this largest stone from the top and reorganize the heap, repeating the process until all the stones are removed. Each time we remove a stone, we count that action as an iteration. In the end, we will have the numbers organized from smallest to largest.";
+          code = '';
+          stepByStep = '';
+          details = '';
+          imagePath = 'imgs/heapsort.jpg';
           break;
   }
 
@@ -343,28 +348,30 @@ function showPopup(sortType) {
   document.getElementById('popup-code').innerText = code;
   document.getElementById('popup-step-by-step').innerText = stepByStep;
   document.getElementById('popup-details').innerText = details;
+  document.querySelector('.popup-image').src = imagePath; // Atualiza a imagem
 
-  // Defina a letra onde quer mudar a cor
-  const letterToChange = 'S'; // Exemplo: mudar a partir da letra 'S'
-  const changeIndex = title.indexOf(letterToChange);
+      // Alterar a cor a partir do segundo "S" no título para 'Selectionsort' e 'Insertionsort'
+      const letterToChange = 'S';
+      let changeIndex = title.indexOf(letterToChange); // Primeiro "S"
 
-  // Verifique se a letra foi encontrada
-  if (changeIndex !== -1) {
-      // Divida a palavra até a letra escolhida
-      const firstPart = title.substring(0, changeIndex);
-      const secondPart = title.substring(changeIndex);
+      if (title === 'SELECTIONSORT' || title === 'INSERTIONSORT') {
+          changeIndex = title.indexOf(letterToChange, changeIndex + 1); // Segundo "S"
+      }
 
-      // Insira as duas partes com cores diferentes
-      document.getElementById('popup-title').innerHTML = 
-          `<span style="color: #4CA6A8;">${firstPart}</span>` +
-          `<span style="color: #FFF;">${secondPart}</span>`;
-  } else {
-      // Caso a letra não seja encontrada, exibe a palavra completa
-      document.getElementById('popup-title').innerText = title;
-  }
- 
-  // Exibe o pop-up
-  document.getElementById('popup').style.display = 'flex';
+      // Verifique se a letra foi encontrada e aplique a alteração
+      if (changeIndex !== -1) {
+          const firstPart = title.substring(0, changeIndex);
+          const secondPart = title.substring(changeIndex);
+
+          document.getElementById('popup-title').innerHTML =
+              `<span style="color: #4CA6A8;">${firstPart}</span>` +
+              `<span style="color: #FFF;">${secondPart}</span>`;
+      } else {
+          document.getElementById('popup-title').innerText = title;
+      }
+
+      // Exibe o pop-up
+      document.getElementById('popup').style.display = 'flex';
 }
 
 
