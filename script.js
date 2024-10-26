@@ -343,6 +343,25 @@ function showPopup(sortType) {
   document.getElementById('popup-code').innerText = code;
   document.getElementById('popup-step-by-step').innerText = stepByStep;
   document.getElementById('popup-details').innerText = details;
+
+  // Defina a letra onde quer mudar a cor
+  const letterToChange = 'S'; // Exemplo: mudar a partir da letra 'S'
+  const changeIndex = title.indexOf(letterToChange);
+
+  // Verifique se a letra foi encontrada
+  if (changeIndex !== -1) {
+      // Divida a palavra até a letra escolhida
+      const firstPart = title.substring(0, changeIndex);
+      const secondPart = title.substring(changeIndex);
+
+      // Insira as duas partes com cores diferentes
+      document.getElementById('popup-title').innerHTML = 
+          `<span style="color: #4CA6A8;">${firstPart}</span>` +
+          `<span style="color: #FFF;">${secondPart}</span>`;
+  } else {
+      // Caso a letra não seja encontrada, exibe a palavra completa
+      document.getElementById('popup-title').innerText = title;
+  }
  
   // Exibe o pop-up
   document.getElementById('popup').style.display = 'flex';

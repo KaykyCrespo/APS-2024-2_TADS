@@ -13,6 +13,14 @@ input[type="radio"] {
     display: none;
 }
 
+.half1 {
+    color: #4CA6A8; /* Azul */
+}
+
+.half2 {
+    color: #FFFFFF; /* Branco */
+}
+
 /* Estilo para o label que será a aparência do radio button */
 label {
     cursor: pointer;
@@ -317,9 +325,19 @@ main {
                     flex: 1; /* Allow text content to grow */
                     margin-right: 1vw; /* Space between text and image */
                 }
-                
+
+                #popup-title{
+                    margin-top: 8vh;
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: bold;
+                    font-size: 20px;
+                    padding: 10px;
+                }
+                            
                 #popup-explanation{
-                    margin: 12vh 1vh;
+                    
+                    font-family: 'Open Sans', sans-serif;
+                    padding: 10px;
                 }
 
                 .popup-image {
