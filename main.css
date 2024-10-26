@@ -261,7 +261,7 @@ main {
                 }
 
                 .popup-content {
-                    background-color: var(--quinternary-color);
+                    background-color: var(--primary-color);
                     border-radius: 0.5vw;
                     padding: 20px;
                     text-align: center;

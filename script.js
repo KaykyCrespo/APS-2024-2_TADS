@@ -37,6 +37,8 @@ document.querySelectorAll('#small-statistics-blocks-container .small-statistics-
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  let isInitialized = false;
+  let hasUpdatedGraphs = false; // Variável para controlar se updateAllGraphs foi chamado
   const langEl = document.querySelector('.langWrap');
   const links = document.querySelectorAll('a[language]');
   addLanguageToggleEvents();
@@ -82,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "lang-insertionsort-used": document.querySelector('#lang-insertionsort-used'),
     "lang-selectionsort-used": document.querySelector('#lang-selectionsort-used'),
     "lang-heapsort-used": document.querySelector('#lang-heapsort-used'),
+    "selected-sort-type": document.querySelector('#selected-sort-type'),
   };
 
   // Tradução de dados
@@ -124,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-bubblesort-used": "Bubblesort used",
       "lang-insertionsort-used": "Insertionsort used",
       "lang-selectionsort-used": "Selectionsort used",
-      "lang-heapsort-used": "Heapsort used"
+      "lang-heapsort-used": "Heapsort used",
+      "selected-sort-type": "None"
     },
     "portuguese": {
       "lang-title": "Array Buddy",
@@ -164,12 +168,21 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-bubblesort-used": "Bubblesort usados",
       "lang-insertionsort-used": "Insertionsort usados",
       "lang-selectionsort-used": "Selectionsort usados",
-      "lang-heapsort-used": "Heapsort usados"
+      "lang-heapsort-used": "Heapsort usados",
+      "selected-sort-type": "Nenhum"
     }
   };
 
+    // Função de inicialização do gráfico de pizza
+    function initializePieChart() {
+      if (!isInitialized) {
+        myPieChart.data.datasets[0].data = [1, 2, 3, 4];
+        myPieChart.options.plugins.tooltip.enabled = false;
+        myPieChart.update();
+      }
+    }
+
   function addLanguageToggleEvents() {
-    isInicialized = true
 
     links.forEach(link => {
       link.addEventListener('click', (e) => {
@@ -204,15 +217,20 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
 
-        
         resetInputsMakeTest();
-        updateAllGraphs();
-
-        if (!isInicialized){
-          showAlertBox("selected_language", "success") 
+        
+        // Atualiza os gráficos apenas se ainda não tiver sido chamado
+        if (!hasUpdatedGraphs) {
+          updateAllGraphs();
+          initializePieChart();
+          hasUpdatedGraphs = true; // Marca que os gráficos foram atualizados
         }
 
-        isInicialized = false
+        if (!isInicialized){
+          showAlertBox("selected_language", "success")
+        }
+
+        isInicialized = true
       });
     });
     }
@@ -223,7 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (defaultLink) {
     defaultLink.click();
   }
-
 });
 
 
@@ -353,6 +370,7 @@ function toggleDropdown(event) {
     }
   }
 }
+
 // Função para abrir o dropdown
 function openDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsDropdown.style.visibility = "visible";
@@ -360,6 +378,7 @@ function openDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsButton.style.borderRadius = "0.5vw 0.5vw 0 0";
   settingsButtonImg.style.transform = "rotate(90deg)";
 }
+
 // Função para fechar o dropdown
 function closeDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsDropdown.style.visibility = "hidden";
@@ -367,8 +386,10 @@ function closeDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsButton.style.borderRadius = "0.5vw";
   settingsButtonImg.style.transform = "rotate(0deg)";
 }
+
 // Adiciona o event listener para controlar a visibilidade do dropdown
 document.addEventListener('click', toggleDropdown);
+
 // Fecha o dropdown ao clicar nas bandeiras
 const flags = document.querySelectorAll("#settings-dropdown a");
 flags.forEach(flag => {
@@ -427,9 +448,18 @@ function updateAllGraphs(beingCalledBy) {
   updatePieChart(selectedQuantity);
   updatePolarAreaChart(selectedQuantity);
   updateBarChartWAP(selectedQuantity);
+
+  isInitialized = true;
 }
 
+// Forçar a exibição dos dados ao carregar a página
+window.onload = function() {
+  myPieChart.data.datasets[0].data = [1, 2, 3, 4]; // Força os valores corretos
 
+    myPieChart.options.plugins.tooltip.enabled = false;
+
+    myPieChart.update();
+};
 
 
 // Inicialização do gráfico de pizza
@@ -621,16 +651,6 @@ function updatePieChart(selectedQuantity) {
   myPieChart.update(); // Atualiza o gráfico
 }
 
-
-
-// Forçar a exibição dos dados ao carregar a página
-window.onload = function() {
-  myPieChart.data.datasets[0].data = [1, 2, 3, 4]; // Força os valores corretos
-
-    myPieChart.options.plugins.tooltip.enabled = false;
-
-    myPieChart.update();
-};
 
 
 
