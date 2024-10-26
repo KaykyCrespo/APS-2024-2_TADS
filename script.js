@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "lang-insertionsort-used": document.querySelector('#lang-insertionsort-used'),
     "lang-selectionsort-used": document.querySelector('#lang-selectionsort-used'),
     "lang-heapsort-used": document.querySelector('#lang-heapsort-used'),
+    "selected-sort-type": document.querySelector('#selected-sort-type'),
   };
 
   // Tradução de dados
@@ -124,7 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-bubblesort-used": "Bubblesort used",
       "lang-insertionsort-used": "Insertionsort used",
       "lang-selectionsort-used": "Selectionsort used",
-      "lang-heapsort-used": "Heapsort used"
+      "lang-heapsort-used": "Heapsort used",
+      "selected-sort-type": "None"
     },
     "portuguese": {
       "lang-title": "Array Buddy",
@@ -164,7 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
       "lang-bubblesort-used": "Bubblesort usados",
       "lang-insertionsort-used": "Insertionsort usados",
       "lang-selectionsort-used": "Selectionsort usados",
-      "lang-heapsort-used": "Heapsort usados"
+      "lang-heapsort-used": "Heapsort usados",
+      "selected-sort-type": "Nenhum"
     }
   };
 
