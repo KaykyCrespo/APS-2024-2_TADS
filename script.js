@@ -349,6 +349,10 @@ function showPopup(sortType) {
 }
 
 
+function closePopup() {
+  document.getElementById('popup').style.display = 'none'; // Oculta o pop-up
+}
+
 
 
 
