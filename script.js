@@ -308,11 +308,11 @@ function showPopup(sortType) {
 
   switch (sortType) {
       case 'Bubblesort Information':
-          title = 'Bubblesort';
-          explanation = 'Bubblesort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.';
-          code = 'function bubbleSort(arr) { /* code here */ }';
-          stepByStep = 'Step 1: Compare the first two elements...';
-          details = 'Bubblesort has an average and worst-case time complexity of O(n^2).';
+          title = 'BUBBLESORT';
+          explanation = "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!";
+          code = '';
+          stepByStep = '';
+          details = '';
           break;
       case 'Insertionsort Information':
           title = 'Insertionsort';
@@ -343,7 +343,7 @@ function showPopup(sortType) {
   document.getElementById('popup-code').innerText = code;
   document.getElementById('popup-step-by-step').innerText = stepByStep;
   document.getElementById('popup-details').innerText = details;
-
+ 
   // Exibe o pop-up
   document.getElementById('popup').style.display = 'flex';
 }

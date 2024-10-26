@@ -263,7 +263,7 @@ main {
                 .popup-content {
                     background-color: var(--primary-color);
                     border-radius: 0.5vw;
-                    padding: 20px;
+                    padding: 2vw 7vh;
                     text-align: center;
                     position: relative;
                     width: 65vw; /* Largura do pop-up */
@@ -272,8 +272,7 @@ main {
                 
                 .popup-navbar {
                     display: flex;
-                    justify-content: space-around; /* Espaço igual entre os links */
-                    margin-bottom: 20px; /* Espaço abaixo da navbar */
+                    font-family: 'Open Sans', sans-serif; /* Apply Open Sans font */
                 }
                 
                 .nav-link {
@@ -281,11 +280,67 @@ main {
                     text-decoration: none; /* Remove o sublinhado */
                     font-weight: bold; /* Negrito para os links */
                     padding: 10px; /* Espaçamento interno para os links */
+                    margin: 0 1vw; /* Ajuste o intervalo horizontal entre os links */
+                    font-family: 'Open Sans', sans-serif; /* Apply Open Sans font */
+                    transition: color 0.3s ease, background-color 0.3s ease; /* Transition for smooth effect */
                 }
                 
                 .nav-link:hover {
-                    color: var(--quinternary-color); /* Cor ao passar o mouse */
-                    text-decoration: underline; /* Sublinhado ao passar o mouse */
+                    color: var(--border-color); /* Cor ao passar o mouse */
+                }
+
+                .active {
+                    color: var(--border-color); /* Color of active link */
+                    border-radius: 5px; /* Optional rounded corners */
+                }
+                
+                /* Ensure active link has hover effect as well */
+                .nav-link.active:hover {
+                    color: var(--border-color); /* Maintain hover color */
+                }
+
+                .popup-content-container {
+                    display: flex; /* Use flexbox to align items horizontally */
+                    align-items: flex-start; /* Align items at the start */
+                    justify-content: space-between; /* Space between text and image */
+                    margin-top: 20px; /* Optional margin for spacing */
+                    width: 100%; /* Ensure it takes the full width */
+                }
+                
+                .popup-text-content div {
+                    color: var(--white); /* Set text color to white */
+                    margin-bottom: 10px; /* Optional: spacing between text sections */
+                    text-align: left; /* Align text to the left */
+                }
+
+                .popup-text-content {
+                    flex: 1; /* Allow text content to grow */
+                    margin-right: 1vw; /* Space between text and image */
+                }
+                
+                #popup-explanation{
+                    margin: 12vh 1vh;
+                }
+
+                .popup-image {
+                    flex: 1; /* Make the image take up half the container width */
+                    width: auto; /* Allow width to be determined by flex */ 
+                    height: auto; /* Maintain aspect ratio */
+                    max-width: 50%; /* Limit maximum width to 50% of container */
+                    border-radius: 0.5vw; /* Optional rounded corners */
+                    margin: 12vh 1vh;
+                }
+
+                /* Optional: ensure the popup-content does not shrink below a certain size */
+                .popup-content {
+                    min-width: 650px; /* Set a minimum width for the popup */
+                    min-height: 400px; /* Set a minimum height for the popup */
+                }
+
+                .navbar-border {
+                    width: 100%; /* Largura total da navbar */
+                    height: 2px; /* Altura da linha - ajuste conforme necessário */
+                    background-color: var(--border-color); /* Cor da linha */
                 }
 
                 .close {
@@ -297,20 +352,8 @@ main {
                     color: white;
                 
 
-                    a {
-
-                    }
-
                 }
 
-
-                hr {
-                    border: 1px solid #ccc; /* Cor e espessura da linha */
-                    margin: 10px 0; /* Espaçamento acima e abaixo da linha */
-                    color: var(--quinternary-color);
-                }
-                
-            
 
                 /* Div onde contem blocos grande de estatisticas*/
                 #big-statistics-blocks-container {
