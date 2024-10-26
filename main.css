@@ -270,8 +270,22 @@ main {
                     height: 40vw;
                 }
                 
-                .popup-navbar{
-
+                .popup-navbar {
+                    display: flex;
+                    justify-content: space-around; /* Espaço igual entre os links */
+                    margin-bottom: 20px; /* Espaço abaixo da navbar */
+                }
+                
+                .nav-link {
+                    color: white; /* Cor do texto */
+                    text-decoration: none; /* Remove o sublinhado */
+                    font-weight: bold; /* Negrito para os links */
+                    padding: 10px; /* Espaçamento interno para os links */
+                }
+                
+                .nav-link:hover {
+                    color: var(--quinternary-color); /* Cor ao passar o mouse */
+                    text-decoration: underline; /* Sublinhado ao passar o mouse */
                 }
 
                 .close {
@@ -284,7 +298,7 @@ main {
                 
 
                     a {
-                        
+
                     }
 
                 }
