@@ -356,6 +356,7 @@ function toggleDropdown(event) {
     }
   }
 }
+
 // Função para abrir o dropdown
 function openDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsDropdown.style.visibility = "visible";
@@ -363,6 +364,7 @@ function openDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsButton.style.borderRadius = "0.5vw 0.5vw 0 0";
   settingsButtonImg.style.transform = "rotate(90deg)";
 }
+
 // Função para fechar o dropdown
 function closeDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsDropdown.style.visibility = "hidden";
@@ -370,8 +372,10 @@ function closeDropdown(settingsDropdown, settingsButton, settingsButtonImg) {
   settingsButton.style.borderRadius = "0.5vw";
   settingsButtonImg.style.transform = "rotate(0deg)";
 }
+
 // Adiciona o event listener para controlar a visibilidade do dropdown
 document.addEventListener('click', toggleDropdown);
+
 // Fecha o dropdown ao clicar nas bandeiras
 const flags = document.querySelectorAll("#settings-dropdown a");
 flags.forEach(flag => {
