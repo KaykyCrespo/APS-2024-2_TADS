@@ -498,31 +498,63 @@ function showPopup(sortType) {
     }
 }
 
-// Adiciona um evento para cada link da navbar
+// Função para mostrar a seção correspondente ao link clicado
+function showSection(targetId) {
+  // Exibe apenas a seção correspondente ao ID fornecido
+  document.querySelectorAll('.popup-text-content div').forEach(section => {
+    if (section.id === 'popup-title') {
+      section.style.display = 'block'; // Garante que o título permaneça visível
+    } else {
+      section.style.display = section.id === targetId ? 'block' : 'none';
+    }
+  });
+}
+
+// Evento para os links da navbar
 document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', (event) => {
-        event.preventDefault();
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
 
-        // Remove a classe 'active' de todos os links
-        document.querySelectorAll('.nav-link').forEach(nav => {
-            nav.classList.remove('active');
-        });
+    // Remove a classe 'active' de todos os links
+    document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
 
-        // Adiciona a classe 'active' ao link clicado
-        link.classList.add('active');
+    // Adiciona a classe 'active' ao link clicado
+    link.classList.add('active');
 
-        const targetId = link.getAttribute('href').substring(1);
-        showSection(targetId); // Exibe a seção clicada e oculta as outras
-    });
+    const targetId = link.getAttribute('href').substring(1);
+    showSection(targetId);
+  });
 });
 
-
-
-
-
+// Função para fechar o popup
 function closePopup() {
-  document.getElementById('popup').style.display = 'none'; // Oculta o pop-up
+  const popup = document.getElementById('popup');
+  popup.style.display = 'none';
+
+  // Resetar o estado para o link "Explanation" ao fechar
+  resetNavbar();
 }
+
+// Função para reabrir o popup e ativar o estado inicial
+function openPopup() {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'block';
+
+  // Garantir que "Explanation" esteja ativo por padrão
+  resetNavbar();
+}
+
+// Função para resetar a navbar ao estado inicial
+function resetNavbar() {
+  document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
+  const explanationLink = document.querySelector('a[href="#popup-explanation"]');
+  explanationLink.classList.add('active');
+
+  // Exibir a seção "Explanation" ao abrir
+  showSection('popup-explanation');
+}
+
+
 
 
 

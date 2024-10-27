@@ -306,7 +306,7 @@ main {
                 .active {
                     color: var(--border-color);
                     border-radius: 0.3vw;
-}
+                }
                 
                 /* Ensure active link has hover effect as well */
                 .nav-link.active:hover {
