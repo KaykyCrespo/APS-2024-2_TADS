@@ -5,14 +5,16 @@ const sortAlgorithms = {
         explanation: "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
         code: `<span class="code-coler-blue"> def </span> <span class="code-coler-red">bubble_sort</span>(array):
                     n = <span class="code-coler-orange"> len </span> (array)
-                    iterations = 0  # Interaction counter
-                    for i in range(n):
-                        for j in range(<span class="code-coler-red"> 0 </span>, n - i - <span class="code-coler-red"> 1 </span>):
-                            iterations += <span class="code-coler-red"> 1 </span>  # Increment the interaction counter
-                            if array[j] > array[j + <span class="code-coler-red"> 1 </span>]:
+                    iterations = 0  <span class="code-coler-gray"> # Interaction counter </span>
+                    <span class="code-coler-blue"> for </span> i <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span>(n):
+                    <span class="code-coler-gray"> # The last i elements are already in the correct position </span>
+                        <span class="code-coler-blue"> for </span> j <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span> (<span class="code-coler-red"> 0 </span>, n - i - <span class="code-coler-red"> 1 </span>):
+                            iterations += <span class="code-coler-red"> 1 </span>  <span class="code-coler-gray"> # Increment the interaction counter </span>
+                            <span class="code-coler-gray"> # Swap if the found element is greater than the next </span>
+                            <span class="code-coler-blue"> if </span> array[j] > array[j + <span class="code-coler-red"> 1 </span>]:
                                 array[j], array[j + <span class="code-coler-red"> 1 </span>] = array[j + <span class="code-coler-red"> 1 </span>], array[j]
-                    return iterations`,
-        code2: `# Example of usage
+                                <span class="code-coler-blue"> return </span> iterations`,
+        code2: `<span class="code-coler-gray"> # Example of usage </span>
                 array = [22, 11, 54, 32]
                 total_iterations = bubble_sort(array)
                 print("Sorted array: ", array)
@@ -40,10 +42,16 @@ const sortAlgorithms = {
                       array[j + 1] = key  # Insert the key in the correct position
                       iterations += 1  # Count the iteration of the key movement
                   return iterations`,
-        code2: '',
-        titleStepByStep: '',
-        subtitleStepByStep: '',
-        stepByStep: '',
+        code2: `     # Exemplo de uso
+        lista = [22, 11, 54, 32]
+        total_interacoes = insertion_sort(lista)
+        print("Lista ordenada : ", lista)
+        print("Total de interações : ", total_interacoes)`,
+        titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
+        subtitleStepByStep: 'First iteration (i = 0):',
+        stepByStep: `Compare the first with the second, is it greater? Yes.
+                     Swap 22 with 11.
+                     The array is now: [11, 22, 54, 32].`,
         details: '',
         imagePath: 'imgs/insertionsort.jpg',
     },
@@ -62,10 +70,16 @@ const sortAlgorithms = {
                           array[i], array[min_index] = array[min_index], array[i]  
                           iterations += 1  # Count the swap
                   return iterations`,
-        code2: '',
-        titleStepByStep: '',
-        subtitleStepByStep: '',
-        stepByStep: '',
+        code2: `     # Example of usage
+        array = [22, 11, 54, 32]
+        total_iterations = selection_sort(array)
+        print("Sorted array: ", arr)
+        print("Total  interactions: ", total_iterations)`,
+        titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
+        subtitleStepByStep: 'First iteration (i = 0):',
+        stepByStep: `Compare the first with the second, is it greater? Yes.
+                       Swap 22 with 11.
+                       The array is now: [11, 22, 54, 32].`,
         details: '',
         imagePath: 'imgs/selectionsort.jpg',
     },
@@ -84,10 +98,26 @@ const sortAlgorithms = {
                       array[i], array[largest] = array[largest], array[i]
                       interactions[0] += 1  # Increment interaction
                       heapify(array, n, largest, interactions)`,
-        code2: '',
-        titleStepByStep: '',
-        subtitleStepByStep: '',
-        stepByStep: '',
+        code2: `def heap_sort(array):
+        n = len(array)
+        interactions = [0];
+    
+        # Build the max heap
+        for i in range(n // 2 - 1, -1, -1):
+            heapify(array, n, i, interacoes)
+    
+           
+        # Extract one element at a time from the heap
+        for i in range(n - 1, 0, -1):
+            array[i], array[0] = array[0], array[i]  # Move the root to the end
+            interactions[0] += 1
+            heapify(array, i, 0, interactions)  # Call heapify
+        return interactions`,
+        titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
+        subtitleStepByStep: 'First iteration (i = 0):',
+        stepByStep: `Compare the first with the second, is it greater? Yes.
+                           Swap 22 with 11.
+                           The array is now: [11, 22, 54, 32].`,
         details: '',
         imagePath: 'imgs/heapsort.jpg',
     }
@@ -134,10 +164,13 @@ function showPopup(sortType) {
         const middleDividerCode = document.getElementById('middle-divider-code');
         const middleDividerStep = document.getElementById('middle-divider-step');
         const middleDividerDetails = document.getElementById('middle-divider-details');
+        const middleDividerHeapsort = document.getElementById('middle-divider-heapsort');
 
         middleDividerCode.classList.toggle('hidden', sectionId !== 'popup-code');
         middleDividerStep.classList.toggle('hidden', sectionId !== 'popup-step-by-step');
         middleDividerDetails.classList.toggle('hidden', sectionId !== 'popup-details');
+        middleDividerHeapsort.classList.toggle('hidden', sectionId !== 'heapsort');
+        middleDividerHeapsort.style.display = sectionId === 'popup-explanation' && sortType === 'Heapsort Information' ? 'block' : 'none'; // Exibe a barra do Heapsort
 
         // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
         const titleStepByStepElement = document.getElementById('popup-title-step-by-step');
