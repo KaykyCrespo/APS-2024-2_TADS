@@ -254,7 +254,7 @@ main {
                     transform: translateY(-5px); /* Elevar o bloco */
                     box-shadow: 0 8px 20px rgba(69, 126, 131, 0.3); /* Aumentar a sombra ao passar o mouse */
                 }
-                
+
                 #popup{
                     display: none; /* Inicialmente oculto */
                     position: fixed;
@@ -291,8 +291,14 @@ main {
                     margin: 0 1vw; /* Ajuste o intervalo horizontal entre os links */
                     font-family: 'Open Sans', sans-serif; /* Apply Open Sans font */
                     transition: color 0.3s ease, background-color 0.3s ease; /* Transition for smooth effect */
+                    text-decoration: none;
                 }
                 
+                .nav-link.active {
+                    color: #4CA6A8; /* Cor da aba ativa */
+                    font-weight: bold; /* Para deixar a aba ativa em negrito */
+                }
+
                 .nav-link:hover {
                     color: var(--border-color); /* Cor ao passar o mouse */
                 }
@@ -359,6 +365,9 @@ main {
                     width: 100%; /* Largura total da navbar */
                     height: 0.1vw; /* Altura da linha - ajuste conforme necessário */
                     background-color: var(--border-color); /* Cor da linha */
+                    border-top: 2px solid #4CA6A8; /* Cor da borda para a aba ativa */
+                    margin-top: -2px;
+                    transition: all 0.3s ease; /* Transição suave */
                 }
 
                 .close {
