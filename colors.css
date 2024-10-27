@@ -37,4 +37,12 @@
 
     --primary-dark-transparent: #0a0b0db9;
     --secondary-dark-transparent: #2d3540e5;
+
+    /* popup */
+    --red: #FF0000;
+    --blue: #0000FF;
+    --orange: #FFA500;
+    --green: #008000;
+    --gray-popup: #AAAAAA;
+    --topics: #4995A6;
   }
