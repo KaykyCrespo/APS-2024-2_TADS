@@ -349,10 +349,18 @@ main {
 
                 #popup-code{
                     font-family: 'Fira Code', monospace;
+                    background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente destacado */
+                    border-radius: 0.3vw; /* Bordas arredondadas */
+                    padding: 1vw; /* Espaçamento interno do código */
+                    margin: 1vw 0; /* Espaçamento acima e abaixo do código */
                 }
 
                 #popup-code2{
                     font-family: 'Fira Code', monospace;
+                    background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente destacado */
+                    border-radius: 0.3vw; /* Bordas arredondadas */
+                    padding: 1vw; /* Espaçamento interno do código */
+                    margin: 1vw 0; /* Espaçamento acima e abaixo do código */
                 }
 
                 .popup-image {
@@ -378,6 +386,51 @@ main {
                     margin-top: -2px;
                     transition: all 0.3s ease; /* Transição suave */
                 }
+
+                .middle-divider {
+                    width: 1px; /* Largura da linha */
+                    height: 75%; /* Altura da linha, pode ajustar conforme necessário */
+                    background-color: #4CA6A8; /* Cor da linha */
+                    position: absolute;
+                    left: 50%; /* Posiciona a linha no centro */
+                    top: 7.5vw;
+                    transform: translateX(-50%);
+                }
+
+                .hidden {
+                    display: none;
+                }
+
+                .code-coler-red {
+                    color: var(--red); /* Use a variável de cor definida */
+                    font-weight: bold; /* Para deixar em negrito, se desejar */
+                }
+
+                .code-coler-blue {
+                    color: var(--blue); /* Use a variável de cor definida */
+                    font-weight: bold; /* Para deixar em negrito, se desejar */
+                }
+
+                .code-coler-orange {
+                    color: var(--orange); /* Use a variável de cor definida */
+                    font-weight: bold; /* Para deixar em negrito, se desejar */
+                }
+
+                .code-coler-green {
+                    color: var(--green); /* Use a variável de cor definida */
+                    font-weight: bold; /* Para deixar em negrito, se desejar */
+                }
+
+                .code-coler-gray {
+                    color: var(--gray-popup); /* Use a variável de cor definida */
+                    font-weight: bold; /* Para deixar em negrito, se desejar */
+                }
+
+                .code-coler-topics {
+                    color: var(--topics); /* Use a variável de cor definida */
+                    font-weight: bold; /* Para deixar em negrito, se desejar */
+                }
+
 
                 .close {
                     position: absolute;

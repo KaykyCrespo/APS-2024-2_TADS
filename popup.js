@@ -1,108 +1,127 @@
-function showPopup(sortType) {
-    let title = '';
-    let explanation = '';
-    let code = '';
-    let code2 = '';
-    let stepByStep = '';
-    let details = '';
-    let imagePath = '';
+// Objeto contendo informações sobre os algoritmos de ordenação
+const sortAlgorithms = {
+    'Bubblesort Information': {
+        title: 'BUBBLESORT',
+        explanation: "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
+        code: `<span class="code-coler-blue"> def </span> <span class="code-coler-red">bubble_sort</span>(array):
+                    n = <span class="code-coler-orange"> len </span> (array)
+                    iterations = 0  # Interaction counter
+                    for i in range(n):
+                        for j in range(<span class="code-coler-red"> 0 </span>, n - i - <span class="code-coler-red"> 1 </span>):
+                            iterations += <span class="code-coler-red"> 1 </span>  # Increment the interaction counter
+                            if array[j] > array[j + <span class="code-coler-red"> 1 </span>]:
+                                array[j], array[j + <span class="code-coler-red"> 1 </span>] = array[j + <span class="code-coler-red"> 1 </span>], array[j]
+                    return iterations`,
+        code2: `# Example of usage
+                array = [22, 11, 54, 32]
+                total_iterations = bubble_sort(array)
+                print("Sorted array: ", array)
+                print("Total iterations: ", total_iterations)`,
+        titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
+        subtitleStepByStep: 'First iteration (i = 0):',
+        stepByStep: `Compare the first with the second, is it greater? Yes.
+                     Swap 22 with 11.
+                     The array is now: [11, 22, 54, 32].`,
+        details: '',
+        imagePath: 'imgs/bubblesort.jpg',
+    },
+    'Insertionsort Information': {
+        title: 'INSERTIONSORT',
+        explanation: "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!",
+        code: `def insertion_sort(array):
+                  iterations = 0 # Counter for iterations
+                  for i in range(1, len(array)):
+                      key = array[i]  # The element to be inserted
+                      j = i - 1  # The index of the previous element
+                      while j >= 0 and array[j] > key:
+                          array[j + 1] = array[j]
+                          j -= 1
+                          iterations += 1 # Increment the iteration counter
+                      array[j + 1] = key  # Insert the key in the correct position
+                      iterations += 1  # Count the iteration of the key movement
+                  return iterations`,
+        code2: '',
+        titleStepByStep: '',
+        subtitleStepByStep: '',
+        stepByStep: '',
+        details: '',
+        imagePath: 'imgs/insertionsort.jpg',
+    },
+    'Selectionsort Information': {
+        title: 'SELECTIONSORT',
+        explanation: "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy.",
+        code: `def selection_sort(array):
+                  iterations = 0  # Interaction counter
+                  for i in range(len(array) - 1): 
+                      min_index = i  
+                      for j in range(i + 1, len(array)):
+                          iterations += 1  # Count the comparison
+                          if array[j] < array[min_index]:  
+                              min_index = j  
+                      if min_index != i: 
+                          array[i], array[min_index] = array[min_index], array[i]  
+                          iterations += 1  # Count the swap
+                  return iterations`,
+        code2: '',
+        titleStepByStep: '',
+        subtitleStepByStep: '',
+        stepByStep: '',
+        details: '',
+        imagePath: 'imgs/selectionsort.jpg',
+    },
+    'Heapsort Information': {
+        title: 'HEAPSORT',
+        explanation: "To sort numbers using a heap, we first place all the numbers into a heap, where the largest stone (number) is at the top. Then, we remove this largest stone from the top and reorganize the heap, repeating the process until all the stones are removed. Each time we remove a stone, we count that action as an iteration. In the end, we will have the numbers organized from smallest to largest.",
+        code: `def heapify(array, n, i, interactions):
+                  largest = i  # Assume root is the largest element
+                  left = 2 * i + 1  # Index of left child
+                  right = 2 * i + 2  # Index of right child
+                  if left < n and array[left] > array[largest]:
+                      largest = left
+                  if right < n and array[right] > array[largest]:
+                      largest = right
+                  if largest != i:
+                      array[i], array[largest] = array[largest], array[i]
+                      interactions[0] += 1  # Increment interaction
+                      heapify(array, n, largest, interactions)`,
+        code2: '',
+        titleStepByStep: '',
+        subtitleStepByStep: '',
+        stepByStep: '',
+        details: '',
+        imagePath: 'imgs/heapsort.jpg',
+    }
+};
 
-    switch (sortType) {
-        case 'Bubblesort Information':
-            title = 'BUBBLESORT';
-            explanation = "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!";
-            code = `def bubble_sort(array):
-                        n = len(array)
-                        iterations = 0  # Interaction counter
-                        for i in range(n):
-                            for j in range(0, n - i - 1):
-                                iterations += 1  # Increment the interaction counter
-                                if array[j] > array[j + 1]:
-                                    array[j], array[j + 1] = array[j + 1], array[j]
-                        return iterations`;
-            code2 = `# Example of usage
-            array = [22, 11, 54, 32]
-            total_iterations = bubble_sort(array)
-            print("Sorted array: ", array)
-            print("Total iterations: ", total_iterations)`;
-            stepByStep = '';
-            details = '';
-            imagePath = 'imgs/bubblesort.jpg';
-            break;
-        case 'Insertionsort Information':
-            title = 'INSERTIONSORT';
-            explanation = "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!";
-            code = `def insertion_sort(array):
-                      iterations = 0 # Counter for iterations
-                      for i in range(1, len(array)):
-                          key = array[i]  # The element to be inserted
-                          j = i - 1  # The index of the previous element
-                          while j >= 0 and array[j] > key:
-                              array[j + 1] = array[j]
-                              j -= 1
-                              iterations += 1 # Increment the iteration counter
-                          array[j + 1] = key  # Insert the key in the correct position
-                          iterations += 1  # Count the iteration of the key movement
-                      return iterations`;
-            code2 = '';
-            stepByStep = '';
-            details = '';
-            imagePath = 'imgs/insertionsort.jpg';
-            break;
-        case 'Selectionsort Information':
-            title = 'SELECTIONSORT';
-            explanation = "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy.";
-            code = `def selection_sort(array):
-                      iterations = 0  # Interaction counter
-                      for i in range(len(array) - 1): 
-                          min_index = i  
-                          for j in range(i + 1, len(array)):
-                              iterations += 1  # Count the comparison
-                              if array[j] < array[min_index]:  
-                                  min_index = j  
-                          if min_index != i: 
-                              array[i], array[min_index] = array[min_index], array[i]  
-                              iterations += 1  # Count the swap
-                      return iterations`;
-            code2 = '';
-            stepByStep = '';
-            details = '';
-            imagePath = 'imgs/selectionsort.jpg';
-            break;
-        case 'Heapsort Information':
-            title = 'HEAPSORT';
-            explanation = "To sort numbers using a heap, we first place all the numbers into a heap, where the largest stone (number) is at the top. Then, we remove this largest stone from the top and reorganize the heap, repeating the process until all the stones are removed. Each time we remove a stone, we count that action as an iteration. In the end, we will have the numbers organized from smallest to largest.";
-            code = `def heapify(array, n, i, interactions):
-                      largest = i  # Inicialmente, assume que a raiz é o maior elemento
-                      left = 2 * i + 1  # Índice do filho à esquerda
-                      right = 2 * i + 2  # Índice do filho à direita
-                      if left < n and array[left] > array[largest]:
-                          largest = left
-                      if right < n and array[right] > array[largest]:
-                          largest = right
-                      if largest != i:
-                          array[i], array[largest] = array[largest], array[i]
-                          interactions[0] += 1  # Incrementa a interação
-                          heapify(array, n, largest , interactions)`;
-            code2 = '';
-            stepByStep = '';
-            details = '';
-            imagePath = 'imgs/heapsort.jpg';
-            break;
+// Função para mostrar o pop-up
+function showPopup(sortType) {
+    const algorithm = sortAlgorithms[sortType];
+
+    if (!algorithm) {
+        console.error("Sort type not recognized.");
+        return;
     }
 
     // Atualiza o conteúdo do pop-up
-    document.getElementById('popup-title').innerHTML = applyColorLogic(title);
-    document.getElementById('popup-explanation').innerText = explanation;
-    document.getElementById('popup-code').innerText = code;
-    document.getElementById('popup-code2').innerText = code2;
-    document.getElementById('popup-step-by-step').innerText = stepByStep;
-    document.getElementById('popup-details').innerText = details;
-    document.querySelector('.popup-image').src = imagePath;
+    document.getElementById('popup-title').innerHTML = applyColorLogic(algorithm.title);
+    document.getElementById('popup-explanation').innerText = algorithm.explanation;
+    document.getElementById('popup-code').innerHTML = algorithm.code; // Alterado para innerHTML
+    document.getElementById('popup-code2').innerHTML = algorithm.code2 || ''; // Alterado para innerHTML
+    document.getElementById('popup-step-by-step').innerText = algorithm.stepByStep || '';
+    document.getElementById('popup-details').innerText = algorithm.details || '';
+    document.querySelector('.popup-image').src = algorithm.imagePath;
 
     // Exibe o pop-up e ativa a aba de explicação
     document.getElementById('popup').style.display = 'flex';
     showSection('popup-explanation'); // Exibe a seção de explicação por padrão ao abrir o popup
+
+    // Fecha o popup ao clicar fora dele
+    window.onclick = function (event) {
+        const popup = document.getElementById('popup');
+        if (event.target === popup) {
+            closePopup();
+        }
+    };
 
     // Função para mostrar e ocultar seções com base no ID
     function showSection(sectionId) {
@@ -111,13 +130,29 @@ function showPopup(sortType) {
             document.getElementById(id).style.display = id === sectionId ? 'block' : 'none';
         });
 
+        // Controle de exibição das barras do meio
+        const middleDividerCode = document.getElementById('middle-divider-code');
+        const middleDividerStep = document.getElementById('middle-divider-step');
+        const middleDividerDetails = document.getElementById('middle-divider-details');
+
+        middleDividerCode.classList.toggle('hidden', sectionId !== 'popup-code');
+        middleDividerStep.classList.toggle('hidden', sectionId !== 'popup-step-by-step');
+        middleDividerDetails.classList.toggle('hidden', sectionId !== 'popup-details');
+
+        // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
+        const titleStepByStepElement = document.getElementById('popup-title-step-by-step');
+        const subtitleStepByStepElement = document.getElementById('popup-subtitle-step-by-step');
+
+        titleStepByStepElement.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
+        subtitleStepByStepElement.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
+
         // Remove a imagem se a seção ativa não for a de explicação
         const imageElement = document.querySelector('.popup-image');
-        imageElement.style.display = sectionId === 'popup-explanation' ? 'block' : 'none'; // Mostra/oculta a imagem
+        imageElement.style.display = sectionId === 'popup-explanation' ? 'block' : 'none';
 
         // Mostra ou oculta o code2 com base na seção ativa
         const code2Element = document.getElementById('popup-code2');
-        code2Element.style.display = sectionId === 'popup-code' ? 'block' : 'none'; // Mostra/oculta code2
+        code2Element.style.display = sectionId === 'popup-code' ? 'block' : 'none';
     }
 
     // Adiciona um evento para cada link da navbar
@@ -155,7 +190,7 @@ function applyColorLogic(title) {
         const firstPart = title.substring(0, changeIndex);
         const secondPart = title.substring(changeIndex);
         return `<span style="color: #4CA6A8;">${firstPart}</span>` +
-               `<span style="color: #FFF;">${secondPart}</span>`;
+            `<span style="color: #FFF;">${secondPart}</span>`;
     } else {
         return title; // Retorna o título original se nenhuma letra for encontrada
     }
