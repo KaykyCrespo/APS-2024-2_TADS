@@ -4,28 +4,28 @@ const sortAlgorithms = {
         title: 'BUBBLESORT',
         explanation: "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
         code: `<span class="code-coler-blue"> def </span> <span class="code-coler-red">bubble_sort</span>(array):<br>
-                    n = <span class="code-coler-orange"> len </span> (array)<br>
-                    iterations = 0 <span class="code-coler-gray"> # Interaction counter </span> <br>
-                    <br>
-                    <span class="code-coler-gray"># Iterate through all of the array</span> <br>
-                    <span class="code-coler-blue"> for </span> i <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span>(n): <br> 
-                    <br>
-                    <span class="code-coler-gray"> # The last i elements are already in the correct position </span> <br>
-                    <span class="code-coler-blue"> for </span> j <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span> (<span class="code-coler-red"> 0 </span>, n - i - <span class="code-coler-red"> 1 </span>): <br>
-                    iterations += <span class="code-coler-red"> 1 </span> <span class="code-coler-gray"> # Increment the interaction counter </span> <br>
-                    <br>
-                    <span class="code-coler-gray"> # Swap if the found element is greater than the next </span> <br>
-                    <span class="code-coler-blue"> if </span> array[j] > array[j + <span class="code-coler-red"> 1 </span>]: <br>
-                    array[j], array[j + <span class="code-coler-red"> 1 </span>] = array[j + <span class="code-coler-red"> 1 </span>], array[j] <br>
-                    <br>
-                    <span class="code-coler-blue"> return </span> iterations`,
+                n = <span class="code-coler-orange"> len </span> (array)<br>
+                iterations = 0 <span class="code-coler-gray"> # Interaction counter </span> <br>
+                <br>
+                <span class="code-coler-gray"># Iterate through all of the array</span> <br>
+                <span class="code-coler-blue"> for </span> i <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span>(n): <br> 
+                <br>
+                <span class="code-coler-gray"> # The last i elements are already in the correct position </span> <br>
+                <span class="code-coler-blue"> for </span> j <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span> (<span class="code-coler-red"> 0 </span>, n - i - <span class="code-coler-red"> 1 </span>): <br>
+                iterations += <span class="code-coler-red"> 1 </span> <span class="code-coler-gray"> # Increment the interaction counter </span> <br>
+                <br>
+                <span class="code-coler-gray"> # Swap if the found element is greater than the next </span> <br>
+                <span class="code-coler-blue"> if </span> array[j] > array[j + <span class="code-coler-red"> 1 </span>]: <br>
+                array[j], array[j + <span class="code-coler-red"> 1 </span>] = array[j + <span class="code-coler-red"> 1 </span>], array[j] <br>
+                <br>
+                <span class="code-coler-blue"> return </span> iterations`,
         code2: `<span class="code-coler-gray"> # Example of usage </span> <br>
                 array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
                 total_iterations = bubble_sort(array) <br>
                 <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
                 <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations) <br>`, 
-        titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
-        subtitleStepByStep: 'First iteration (i = 0):',
+        titleStepByStepElement: 'Assume the following array: [22, 11, 54, 32]:',
+        subtitleStepByStepElement: 'First iteration (i = 0):',
         stepByStep: `Compare the first with the second, is it greater? Yes.
                      Swap 22 with 11.
                      The array is now: [11, 22, 54, 32].`,
@@ -35,23 +35,27 @@ const sortAlgorithms = {
     'Insertionsort Information': {
         title: 'INSERTIONSORT',
         explanation: "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!",
-        code: `def insertion_sort(array):
-                  iterations = 0 # Counter for iterations
-                  for i in range(1, len(array)):
-                      key = array[i]  # The element to be inserted
-                      j = i - 1  # The index of the previous element
-                      while j >= 0 and array[j] > key:
-                          array[j + 1] = array[j]
-                          j -= 1
-                          iterations += 1 # Increment the iteration counter
-                      array[j + 1] = key  # Insert the key in the correct position
-                      iterations += 1  # Count the iteration of the key movement
-                  return iterations`,
-        code2: `     # Exemplo de uso
-        lista = [22, 11, 54, 32]
-        total_interacoes = insertion_sort(lista)
-        print("Lista ordenada : ", lista)
-        print("Total de interações : ", total_interacoes)`,
+        code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">insertion_sort</span>(array): <br>
+                iterations = 0 <span class="code-coler-gray"># Counter for iterations </span> <br>
+                <br>
+                <span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(<span class="code-coler-red">1</span>, <span class="code-coler-orange">len</span>(array)): <br>
+                key = array[i] <span class="code-coler-gray"># The element to be inserted</span> <br>
+                j = i - <span class="code-coler-red">1</span> <span class="code-coler-gray"># The index of the previous element</span> <br>
+                <br>
+                <span class="code-coler-blue">while</span> j >= <span class="code-coler-red">0</span> <span class="code-coler-blue">and</span> array[j] > key: <br>
+                array[j + <span class="code-coler-red">1</span>] = array[j] <br>
+                j -= <span class="code-coler-red">1</span> <br>
+                iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Increment the iteration counter</span> <br>
+                <br>
+                array[j + 1] = key <span class="code-coler-gray"># Insert the key in the correct position</span> <br>
+                iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the iteration of the key movement</span> <br>
+                <br>
+                <span class="code-coler-blue">return</span> iterations`,
+        code2: `<span class="code-coler-gray"># Exemplo de uso</span> <br>
+                lista = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
+                total_interacoes = insertion_sort(lista) <br>
+                <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Lista ordenada : "</span>, lista) <br>
+                <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total de interações : "</span>, total_interacoes)`,
         titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
         subtitleStepByStep: 'First iteration (i = 0):',
         stepByStep: `Compare the first with the second, is it greater? Yes.
@@ -63,23 +67,30 @@ const sortAlgorithms = {
     'Selectionsort Information': {
         title: 'SELECTIONSORT',
         explanation: "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy.",
-        code: `def selection_sort(array):
-                  iterations = 0  # Interaction counter
-                  for i in range(len(array) - 1): 
-                      min_index = i  
-                      for j in range(i + 1, len(array)):
-                          iterations += 1  # Count the comparison
-                          if array[j] < array[min_index]:  
-                              min_index = j  
-                      if min_index != i: 
-                          array[i], array[min_index] = array[min_index], array[i]  
-                          iterations += 1  # Count the swap
-                  return iterations`,
-        code2: `     # Example of usage
-        array = [22, 11, 54, 32]
+        code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">selection_sort</span>(array): <br>
+                iterations = 0  <span class="code-coler-gray"># Interaction counter</span> <br>
+                <br>
+                <span class="code-coler-gray"># Traverse all elements of the array</span> <br>
+                <span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(<span class="code-coler-orange">len</span>(array) - <span class="code-coler-red">1</span>): <br>
+                <br>
+                min_index = i <br>
+                <br>  
+                <span class="code-coler-blue">for</span> j <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(i + <span class="code-coler-red">1</span>, <span class="code-coler-orange">len</span>(array)): <br>
+                iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the comparison</span> <br>
+                <span class="code-coler-blue">if</span> array[j] < array[min_index]: <br>
+                min_index = j <br>
+                <br>
+                <span class="code-coler-gray"># Swap the current element with the smallest element</span> <br>
+                <span class="code-coler-gray"># found, if necessary</span> <br>
+                <span class="code-coler-blue">if</span> min_index != i: <br>
+                array[i], array[min_index] = array[min_index], array[i]  <br>
+                iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the swap</span> <br>
+                <span class="code-coler-blue">return</span> array`,
+        code2: `<span class="code-coler-gray"># Example of usage</span> <br>
+        array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
         total_iterations = selection_sort(array)
-        print("Sorted array: ", arr)
-        print("Total  interactions: ", total_iterations)`,
+        <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, arr) <br>
+        <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total  interactions: "</span>, total_iterations)`, 
         titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
         subtitleStepByStep: 'First iteration (i = 0):',
         stepByStep: `Compare the first with the second, is it greater? Yes.
