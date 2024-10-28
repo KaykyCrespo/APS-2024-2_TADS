@@ -265,23 +265,18 @@ main {
                 /* Efeito ao passar o mouse */
                 .small-statistics-blocks.hover {
                     transform: translateY(-5px);
-                    /* Elevar o bloco */
                     box-shadow: 0 8px 20px rgba(69, 126, 131, 0.3);
-                    /* Aumentar a sombra ao passar o mouse */
                 }
 
                 #popup {
                     display: none;
-                    /* Inicialmente oculto */
                     position: fixed;
                     left: 0;
                     top: 0;
                     width: 100%;
                     height: 100%;
                     background-color: rgba(0, 0, 0, 0.7);
-                    /* Fundo semi-transparente */
                     z-index: 1000;
-                    /* Para garantir que o pop-up fique acima de outros elementos */
                     justify-content: center;
                     align-items: center;
                 }
@@ -305,19 +300,12 @@ main {
 
                 .nav-link {
                     color: white;
-                    /* Cor do texto */
                     text-decoration: none;
-                    /* Remove o sublinhado */
                     font-weight: bold;
-                    /* Negrito para os links */
                     padding: 0.6vw;
-                    /* Espaçamento interno para os links */
                     margin: 0 1vw;
-                    /* Ajuste o intervalo horizontal entre os links */
                     font-family: 'Open Sans', sans-serif;
-                    /* Apply Open Sans font */
                     transition: color 0.3s ease, background-color 0.3s ease;
-                    /* Transition for smooth effect */
                     text-decoration: none;
                 }
 
@@ -341,36 +329,32 @@ main {
                 /* Ensure active link has hover effect as well */
                 .nav-link.active:hover {
                     color: var(--border-color);
-                    /* Maintain hover color */
                 }
 
                 .popup-content-container {
                     display: flex;
-                    /* Use flexbox to align items horizontally */
                     align-items: flex-start;
-                    /* Align items at the start */
                     justify-content: space-between;
-                    /* Space between text and image */
                     margin-top: 1.3vw;
-                    /* Optional margin for spacing */
                     width: 100%;
-                    /* Ensure it takes the full width */
                 }
 
                 .popup-text-content div {
                     color: var(--white);
-                    /* Set text color to white */
                     margin-bottom: 0.6vw;
-                    /* Optional: spacing between text sections */
                     text-align: left;
-                    /* Align text to the left */
                 }
 
                 .popup-text-content {
                     flex: 1;
-                    /* Allow text content to grow */
                     margin-right: 1vw;
-                    /* Space between text and image */
+                }
+
+                .popup-title {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    color: #4CA6A8;
                 }
 
                 #popup-title {
@@ -390,75 +374,51 @@ main {
                 #popup-code {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
-                    /* Fundo levemente destacado */
                     border-radius: 0.3vw;
-                    /* Bordas arredondadas */
                     padding: 1vw;
-                    /* Espaçamento interno do código */
-                    margin: 1vw 0;
-                    /* Espaçamento acima e abaixo do código */
+                    margin: 1vw 1vw 0 0;
                     width: 100%;
                 }
 
                 #popup-code2 {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
-                    /* Fundo levemente destacado */
                     border-radius: 0.3vw;
-                    /* Bordas arredondadas */
                     padding: 1vw;
-                    /* Espaçamento interno do código */
                     margin: 1vw 0;
-                    /* Espaçamento acima e abaixo do código */
                     width: 100%;
                 }
 
                 .popup-image {
                     flex: 1;
-                    /* Make the image take up half the container width */
                     width: auto;
-                    /* Allow width to be determined by flex */
                     height: auto;
-                    /* Maintain aspect ratio */
                     max-width: 50%;
-                    /* Limit maximum width to 50% of container */
                     border-radius: 0.5vw;
-                    /* Optional rounded corners */
                     margin: 12vh 1vh;
                 }
 
                 /* Optional: ensure the popup-content does not shrink below a certain size */
                 .popup-content {
                     min-width: 42vw;
-                    /* Set a minimum width for the popup */
                     min-height: 26vw;
-                    /* Set a minimum height for the popup */
                 }
 
                 .navbar-border {
                     width: 100%;
-                    /* Largura total da navbar */
                     height: 0.1vw;
-                    /* Altura da linha - ajuste conforme necessário */
                     background-color: var(--border-color);
-                    /* Cor da linha */
                     border-top: 2px solid #4CA6A8;
-                    /* Cor da borda para a aba ativa */
                     margin-top: -2px;
                     transition: all 0.3s ease;
-                    /* Transição suave */
                 }
 
                 .middle-divider {
                     width: 1px;
-                    /* Largura da linha */
                     height: 75%;
-                    /* Altura da linha, pode ajustar conforme necessário */
                     background-color: #4CA6A8;
-                    /* Cor da linha */
                     position: absolute;
                     left: 50%;
-                    /* Posiciona a linha no centro */
                     top: 7.5vw;
                     transform: translateX(-50%);
                 }

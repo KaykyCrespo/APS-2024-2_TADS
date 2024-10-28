@@ -160,6 +160,20 @@ function showPopup(sortType) {
             document.getElementById(id).style.display = id === sectionId ? 'block' : 'none';
         });
 
+        const titleElement = document.getElementById('popup-title');
+
+        // Condicional para mover o título para o topo ou manter no centro
+        if (sectionId === 'popup-code' || sectionId ==='popup-step-by-step' || sectionId ==='popup-details' ) {
+            titleElement.style.position = 'absolute';
+            titleElement.style.top = '-7vw'; // Posiciona no topo do pop-up
+            titleElement.style.left = '15%';
+            titleElement.style.transform = 'translateX(-50%)';
+        } else {
+            titleElement.style.position = 'static'; // Retorna o título para o posicionamento padrão (meio)
+            titleElement.style.transform = 'none';
+        }
+
+
         // Controle de exibição das barras do meio
         const middleDividerCode = document.getElementById('middle-divider-code');
         const middleDividerStep = document.getElementById('middle-divider-step');
