@@ -5,9 +5,9 @@ const sortAlgorithms = {
         explanation: "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
         code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">bubble_sort</span>(array):<br>
                &nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(array)<br>
-               &nbsp;&nbsp;iterations = 0 <span class="code-coler-gray"># Interaction counter</span><br>
+               iterations = 0 <span class="code-coler-gray"># Interaction counter</span><br>
                <br>
-               &nbsp;&nbsp;<span class="code-coler-gray"># Iterate through all of the array</span><br>
+               <span class="code-coler-gray"># Iterate through all of the array</span><br>
                &nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n):<br>
                <br>
                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># The last i elements are already in the correct position</span><br>
@@ -33,11 +33,27 @@ const sortAlgorithms = {
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
         array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
         </div>`,
+
+
+
+        
         titleStepByStepElement: 'Assume the following array: [22, 11, 54, 32]:',
         subtitleStepByStepElement: 'First iteration (i = 0):',
         stepByStep: `Compare the first with the second, is it greater? Yes.
             Swap 22 with 11.
                      The array is now: [11, 22, 54, 32].`,
+
+
+
+
+
+
+
+
+
+
+
+                     
         details: '',
         imagePath: 'imgs/bubblesort.jpg',
     },
@@ -47,10 +63,12 @@ const sortAlgorithms = {
         code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">insertion_sort</span>(array):<br>
         iterations = 0 <span class="code-coler-gray"># Counter for iterations</span><br>
         <br>
+        <span class="code-coler-gray"># Traverse the array starting from the second element</span
         <span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(<span class="code-coler-red">1</span>, <span class="code-coler-orange">len</span>(array)):<br>
         &nbsp;&nbsp;&nbsp;&nbsp;key = array[i] <span class="code-coler-gray"># The element to be inserted</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;j = i - <span class="code-coler-red">1</span> <span class="code-coler-gray"># The index of the previous element</span><br>
         <br>
+        <span class="code-coler-gray"># Move elements of the array that are greater than the key one position ahead</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">while</span> j >= <span class="code-coler-red">0</span> <span class="code-coler-blue">and</span> array[j] > key:<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[j + <span class="code-coler-red">1</span>] = array[j]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j -= <span class="code-coler-red">1</span><br>
@@ -107,11 +125,19 @@ const sortAlgorithms = {
         <span class="code-coler-blue">return</span> array`,
         code2: `<div class="text-center">
         <span class="code-coler-gray"># Example of usage</span> <br>
-        array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
-        total_iterations = selection_sort(array) <br>
-        <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
-        <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
-    </div>`,
+        &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
+        &nbsp;total_iterations = selection_sort(array) <br>
+        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
+        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
+    </div>
+    
+    <div style="text-align: center; margin: 0 auto;">
+        array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
+        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
+        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
+        </div>`,
         titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
         subtitleStepByStep: 'First iteration (i = 0):',
         stepByStep: `Compare the first with the second, is it greater? Yes.
@@ -123,33 +149,61 @@ const sortAlgorithms = {
     'Heapsort Information': {
         title: 'HEAPSORT',
         explanation: "To sort numbers using a heap, we first place all the numbers into a heap, where the largest stone (number) is at the top. Then, we remove this largest stone from the top and reorganize the heap, repeating the process until all the stones are removed. Each time we remove a stone, we count that action as an iteration. In the end, we will have the numbers organized from smallest to largest.",
-        code: `def heapify(array, n, i, interactions):
-                                                                                                        largest = i  # Assume root is the largest element
-                                                                                                        left = 2 * i + 1  # Index of left child
-                                                                                                        right = 2 * i + 2  # Index of right child
-                                                                                                        if left < n and array[left] > array[largest]:
-                                                                                                        largest = left
-                                                                                                        if right < n and array[right] > array[largest]:
-                                                                                                        largest = right
-                                                                                                        if largest != i:
-                                                                                                        array[i], array[largest] = array[largest], array[i]
-                                                                                                        interactions[0] += 1  # Increment interaction
-                                                                                                        heapify(array, n, largest, interactions)`,
-        code2: `def heap_sort(array):
-                                                                                                        n = len(array)
-                                                                                                        interactions = [0];
-
-                                                                                                        # Build the max heap
-                                                                                                        for i in range(n // 2 - 1, -1, -1):
-                                                                                                        heapify(array, n, i, interacoes)
-
-
-                                                                                                        # Extract one element at a time from the heap
-                                                                                                        for i in range(n - 1, 0, -1):
-                                                                                                        array[i], array[0] = array[0], array[i]  # Move the root to the end
-                                                                                                        interactions[0] += 1
-                                                                                                        heapify(array, i, 0, interactions)  # Call heapify
-                                                                                                        return interactions`,
+        code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heapify</span>(array, n, i, interactions):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;largest = i  <span class="code-coler-gray"># Assume root is the largest element</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;left = <span class="code-coler-red">2</span> * i + <span class="code-coler-red">1</span>  <span class="code-coler-gray"># Index of left child</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;right = <span class="code-coler-red">2</span> * i + <span class="code-coler-red">2</span>  <span class="code-coler-gray"># Index of right child</span><br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> left < span(n) <span class="code-coler-blue">and</span> array[left] > array[largest]:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;largest = left<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> right < span(n) <span class="code-coler-blue">and</span> array[right] > array[largest]:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;largest = right<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> largest != i:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[largest] = array[largest], array[i]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span>  <span class="code-coler-gray"># Increment interaction</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;heapify(array, n, largest, interactions)<br>`,
+        code2: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heap_sort</span>(array):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(array)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;interactions = [<span class="code-coler-red">0</span>]<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Build the max heap</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n // <span class="code-coler-red">2</span> - <span class="code-coler-red">1</span>, -<span class="code-coler-red">1</span>, -<span class="code-coler-red">1</span>):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, n, i, interactions)<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Extract one element at a time from the heap</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n - <span class="code-coler-red">1</span>, <span class="code-coler-red">0</span>, -<span class="code-coler-red">1</span>):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[0] = array[0], array[i]  <span class="code-coler-gray"># Move the root to the end</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, i, 0, interactions)  <span class="code-coler-gray"># Call heapify</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">return</span> interactions`,
+        code3: `<div class="text-center">
+        <span class="code-coler-gray"># Example of usage</span> <br>
+        &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
+        &nbsp;total_iterations = heao_sort(array) <br>
+        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
+        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
+    </div>
+    
+    <div style="display: flex; flex-direction: column; align-items: flex-end; margin: 0 auto;">
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div>
+                <span class="code-coler-orange">array</span> = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]
+            </div>
+            <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%); margin: 0 5px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div>
+                <span class="code-coler-orange">array</span> = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]
+            </div>
+            <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%); margin: 0 5px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div>
+                <span class="code-coler-orange">array</span> = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]
+            </div>
+        </div>
+    </div>
+    
+`,
         titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
         subtitleStepByStep: 'First iteration (i = 0):',
         stepByStep: `Compare the first with the second, is it greater? Yes.
@@ -172,8 +226,9 @@ function showPopup(sortType) {
     // Atualiza o conteúdo do pop-up
     document.getElementById('popup-title').innerHTML = applyColorLogic(algorithm.title);
     document.getElementById('popup-explanation').innerText = algorithm.explanation;
-    document.getElementById('popup-code').innerHTML = algorithm.code; // Alterado para innerHTML
-    document.getElementById('popup-code2').innerHTML = algorithm.code2 || ''; // Alterado para innerHTML
+    document.getElementById('popup-code').innerHTML = algorithm.code;
+    document.getElementById('popup-code2').innerHTML = algorithm.code2 || '';
+    document.getElementById('popup-code3').innerHTML = algorithm.code3 || '';
     document.getElementById('popup-step-by-step').innerText = algorithm.stepByStep || '';
     document.getElementById('popup-details').innerText = algorithm.details || '';
     document.querySelector('.popup-image').src = algorithm.imagePath;
@@ -210,16 +265,14 @@ function showPopup(sortType) {
             titleElement.style.transform = 'none';
         }
 
-
         // Controle de exibição das barras do meio
         const middleDividerStep = document.getElementById('middle-divider-step');
         const middleDividerDetails = document.getElementById('middle-divider-details');
-        const middleDividerHeapsort = document.getElementById('middle-divider-heapsort');
 
-        middleDividerStep.classList.toggle('hidden', sectionId !== 'popup-step-by-step');
+        // O middleDividerStep só deve ser exibido na seção "step-by-step"
+        middleDividerStep.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
+
         middleDividerDetails.classList.toggle('hidden', sectionId !== 'popup-details');
-        middleDividerHeapsort.classList.toggle('hidden', sectionId !== 'heapsort');
-        middleDividerHeapsort.style.display = sectionId === 'popup-explanation' && sortType === 'Heapsort Information' ? 'block' : 'none'; // Exibe a barra do Heapsort
 
         // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
         const titleStepByStepElement = document.getElementById('popup-title-step-by-step');
@@ -228,6 +281,10 @@ function showPopup(sortType) {
         titleStepByStepElement.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
         subtitleStepByStepElement.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
 
+        const isStepOrDetails = sectionId === 'popup-step-by-step' || sectionId === 'popup-details';
+        titleStepByStepElement.style.display = isStepOrDetails ? 'block' : 'none';
+        subtitleStepByStepElement.style.display = isStepOrDetails ? 'block' : 'none';
+
         // Remove a imagem se a seção ativa não for a de explicação
         const imageElement = document.querySelector('.popup-image');
         imageElement.style.display = sectionId === 'popup-explanation' ? 'block' : 'none';
@@ -235,7 +292,17 @@ function showPopup(sortType) {
         // Mostra ou oculta o code2 com base na seção ativa
         const code2Element = document.getElementById('popup-code2');
         code2Element.style.display = sectionId === 'popup-code' ? 'block' : 'none';
+
+        // Mostra ou oculta o code3 com base na seção ativa
+        const code3Element = document.getElementById('popup-code3');
+        code3Element.style.display = (sectionId === 'popup-code' && sortType === 'Heapsort Information') ? 'block' : 'none';
+
+
+        // Mostra ou oculta o code3 com base na seção ativa
+        const stepBystepContainerElement = document.getElementById('step-by-step-container');
+        stepBystepContainerElement.style.display = (sectionId === 'popup-code' && sortType === 'Heapsort Information') ? 'block' : 'none';
     }
+
 
     // Adiciona um evento para cada link da navbar
     const navLinks = document.querySelectorAll('.nav-link');
