@@ -385,7 +385,7 @@ main {
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
                     padding: 1vw;
-                    margin: 1vw 0;
+                    margin: 1vw -1vw 0 0;
                     width: 100%;
                 }
 
@@ -427,7 +427,7 @@ main {
                     width: 2px;
                     height: 100px;
                     background-color: #4CA6A8;
-                    transform: rotate(180deg);
+                    transform: rotate(90deg);
                     margin: 0 auto;
                     display: none;
                 }

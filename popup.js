@@ -3,22 +3,27 @@ const sortAlgorithms = {
     'Bubblesort Information': {
         title: 'BUBBLESORT',
         explanation: "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
-        code: `<span class="code-coler-blue"> def </span> <span class="code-coler-red">bubble_sort</span>(array):
-                    n = <span class="code-coler-orange"> len </span> (array)
-                    iterations = 0  <span class="code-coler-gray"> # Interaction counter </span>
-                    <span class="code-coler-blue"> for </span> i <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span>(n):
-                    <span class="code-coler-gray"> # The last i elements are already in the correct position </span>
-                        <span class="code-coler-blue"> for </span> j <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span> (<span class="code-coler-red"> 0 </span>, n - i - <span class="code-coler-red"> 1 </span>):
-                            iterations += <span class="code-coler-red"> 1 </span>  <span class="code-coler-gray"> # Increment the interaction counter </span>
-                            <span class="code-coler-gray"> # Swap if the found element is greater than the next </span>
-                            <span class="code-coler-blue"> if </span> array[j] > array[j + <span class="code-coler-red"> 1 </span>]:
-                                array[j], array[j + <span class="code-coler-red"> 1 </span>] = array[j + <span class="code-coler-red"> 1 </span>], array[j]
-                                <span class="code-coler-blue"> return </span> iterations`,
-        code2: `<span class="code-coler-gray"> # Example of usage </span>
-                array = [22, 11, 54, 32]
-                total_iterations = bubble_sort(array)
-                print("Sorted array: ", array)
-                print("Total iterations: ", total_iterations)`,
+        code: `<span class="code-coler-blue"> def </span> <span class="code-coler-red">bubble_sort</span>(array):<br>
+                    n = <span class="code-coler-orange"> len </span> (array)<br>
+                    iterations = 0 <span class="code-coler-gray"> # Interaction counter </span> <br>
+                    <br>
+                    <span class="code-coler-gray"># Iterate through all of the array</span> <br>
+                    <span class="code-coler-blue"> for </span> i <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span>(n): <br> 
+                    <br>
+                    <span class="code-coler-gray"> # The last i elements are already in the correct position </span> <br>
+                    <span class="code-coler-blue"> for </span> j <span class="code-coler-blue"> in </span> <span class="code-coler-orange"> range</span> (<span class="code-coler-red"> 0 </span>, n - i - <span class="code-coler-red"> 1 </span>): <br>
+                    iterations += <span class="code-coler-red"> 1 </span> <span class="code-coler-gray"> # Increment the interaction counter </span> <br>
+                    <br>
+                    <span class="code-coler-gray"> # Swap if the found element is greater than the next </span> <br>
+                    <span class="code-coler-blue"> if </span> array[j] > array[j + <span class="code-coler-red"> 1 </span>]: <br>
+                    array[j], array[j + <span class="code-coler-red"> 1 </span>] = array[j + <span class="code-coler-red"> 1 </span>], array[j] <br>
+                    <br>
+                    <span class="code-coler-blue"> return </span> iterations`,
+        code2: `<span class="code-coler-gray"> # Example of usage </span> <br>
+                array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
+                total_iterations = bubble_sort(array) <br>
+                <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
+                <span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations) <br>`, 
         titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
         subtitleStepByStep: 'First iteration (i = 0):',
         stepByStep: `Compare the first with the second, is it greater? Yes.
