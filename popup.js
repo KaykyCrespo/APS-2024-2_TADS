@@ -41,7 +41,7 @@ const sortAlgorithms = {
 
 
         stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">First iteration</span> (i = 0):</h3>
+                                                <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">Compare the first with the second, is it greater? Yes.</li>
                                                     <li id="item-2">Swap 22 with 11.</li>
@@ -49,7 +49,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">Second iteration</span> (i = 1):</h3>
+                                                <h3 id="title-2"><span class="code-coler-topics">Second</span> iteration (i = 1):</h3>
                                                 <ul>
                                                     <li id="item-4">Compare the second with the third, is it greater? No.
                                                     <li id="item-5">No swap needed.</li>
@@ -57,7 +57,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span class="code-coler-topics">Third iteration</span> (i = 2):</h3>
+                                                <h3 id="title-3"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
                                                 <ul>
                                                     <li id="item-7">Compare the third with the fourth, is it greater? Yes.
                                                     <li id="item-8">Swap 32 with 54.</li>
@@ -65,7 +65,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-4"><span class="code-coler-topics">Fouth iteration</span> (i = 3):</h3>
+                                                <h3 id="title-4"><span class="code-coler-topics">Fouth</span> iteration (i = 3):</h3>
                                                 <ul>
                                                     <li id="item-10">Compare the first with the second, is it greater? No.
                                                     <li id="item-11">No swap needed.</li>
@@ -150,7 +150,7 @@ const sortAlgorithms = {
         subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
 
         stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">First iteration</span> (i = 0):</h3>
+                                                <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">Compare 11 with 22.</li>
                                                     <li id="item-2">11 is smaller, so move 22 one position ahead and insert 11 at the beginning.</li>
@@ -158,7 +158,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">Second iteration</span> (i = 1):</h3>
+                                                <h3 id="title-2"><span class="code-coler-topics">Second</span> iteration (i = 1):</h3>
                                                 <ul>
                                                     <li id="item-4">Move to the last element (32).</li>
                                                     <li id="item-5">Compare 32 with 54.</li>
@@ -173,37 +173,15 @@ const sortAlgorithms = {
 
 
         stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span class="code-coler-topics">Fifth</span> iteration (i = 4):</h3>
+                                                <h3 id="title-5"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
                                                 <ul>
-                                                    <li id="item-13">Compare the second with the third, is it greater? No.</li>
-                                                    <li id="item-14">No swap needed.</li>
-                                                    <li id="item-15">The array remains: [11, 22, 32, 54].</li>
+                                                    <li id="item-10">Move to the next element (54).</li>
+                                                    <li id="item-11">Compare 54 with 22.</li>
+                                                    <li id="item-12">54 is greater, so keep it where it is.</li>
+                                                    <li id="item-13">The array remains: [11, 22, 32, 54].</li>
                                                 </ul>
                                             </div>
-                                            <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-6"><span class="code-coler-topics">Sixth</span> iteration (i = 5):
-                                                <ul>
-                                                    <li id="item-16">Compare the third with the fourth, is it greater? No.</li>
-                                                    <li id="item-17">No swap needed.</li>
-                                                    <li id="item-18">The array is now: [11, 22, 32, 54].</li>
-                                                </ul>
-                                            </div>
-                                            <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-7"><span class="code-coler-topics">Seventh</span> iteration (i = 6):
-                                                <ul>
-                                                    <li id="item-19">Compare the first with the second, is it greater? No.</li>
-                                                    <li id="item-20">No swap needed.</li>
-                                                    <li id="item-21">The array is now: [11, 22, 32, 54].</li>
-                                                </ul>
-                                            </div>
-                                            <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-8"><span class="code-coler-topics">Eighth</span> iteration (i = 7):
-                                                <ul>
-                                                    <li id="item-22">Compare the second with the third, is it greater? No.</li>
-                                                    <li id="item-23">No swap needed.</li>
-                                                    <li id="item-24">The array is now: [11, 22, 32, 54].</h3></li>
-                                                </ul>
-                                            </div>`,
+                                            `,
         details: '',
         imagePath: 'imgs/insertionsort.jpg',
     },
@@ -249,8 +227,42 @@ const sortAlgorithms = {
         
         subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
 
-        stepByStepLeft: '',
-        stepByStepRight: '',
+        stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
+                                                <ul>
+                                                    <li id="item-1">The smallest element in [22, 11, 54, 32] is 11.</li>
+                                                    <li id="item-2">Swap 11 with 22.</li>
+                                                    <li id="item-3">The array is now: [11, 22, 54, 32].</li>
+                                                </ul>
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-2"><span class="code-coler-topics">Second</span> iteration (i = 1):</h3>
+                                                <ul>
+                                                    <li id="item-4">Second iteration (i = 1):</li>
+                                                    <li id="item-5">The smallest element in [22, 54, 32] is 22.</li>
+                                                    <li id="item-6">No swap is needed.</li>
+                                                    <li id="item-7">The array remains: [11, 22, 54, 32].</li>
+                                                </ul>
+                                            </div>
+                                        `,
+
+
+
+        stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-5"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
+                                                <ul>
+                                                    <li id="item-8">The smallest element in [22, 54, 32] is 32.</li>
+                                                    <li id="item-9">Swap 32 with 54.</li>
+                                                    <li id="item-10">The array remains: [11, 22, 32, 54].</li>
+                                                </ul>
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-11"><span class="code-coler-topics">Fourth</span> iteration (i = 3):
+                                                <ul>
+                                                    <li id="item-12">Only one element (54) remains, so no swap is needed.</li>
+                                                </ul>
+                                            </div>
+                                            `,
         details: '',
         imagePath: 'imgs/selectionsort.jpg',
     },
@@ -413,7 +425,7 @@ function showPopup(sortType) {
     
         // Mostra o stepBystepContainerElement apenas na seção "popup-step-by-step"
         const stepBystepContainerElement = document.getElementById('step-by-step-container');
-        stepBystepContainerElement.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
+        stepBystepContainerElement.style.display = sectionId === 'popup-step-by-step' ? 'flex' : 'none';
 
         const stepByStepLeft = document.getElementById('popup-left-column-step-by-step');
         stepByStepLeft.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
