@@ -406,7 +406,7 @@ main {
                     align-items: center;
                     justify-content: center;
                     overflow: auto;
-                    height: 100%;
+                    height: auto;
                 }
 
                 .popup-image {
@@ -441,15 +441,6 @@ main {
                     left: 50%;
                     top: 7.5vw;
                     transform: translateX(-50%);
-                }
-
-                .heap-divider {
-                    width: 2px;
-                    height: 100px;
-                    background-color: #4CA6A8;
-                    transform: rotate(90deg);
-                    margin: 0 auto;
-                    display: none;
                 }
 
                 .show-heap-divider {

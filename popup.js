@@ -36,7 +36,7 @@ const sortAlgorithms = {
 
 
 
-        
+
         description: 'Assume the following  array: [22, 11, 54, 32]:',
         description2: '',
         titleTopic1: 'First iteration (i = 0):',
@@ -165,7 +165,9 @@ const sortAlgorithms = {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, i, 0, interactions)  <span class="code-coler-gray"># Call heapify</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">return</span> interactions`,
-        code3: `<div class="text-center">
+        code3: `
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin: 0 auto;">
+        <div class="text-center">
         <span class="code-coler-gray"># Example of usage</span> <br>
         &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
         &nbsp;total_iterations = heao_sort(array) <br>
@@ -173,32 +175,30 @@ const sortAlgorithms = {
         &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
     </div>
     
-    <div style="display: flex; flex-direction: column; align-items: flex-end; margin: 0 auto;">
-        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+    
+     <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
             <div>
                 <span class="code-coler-orange">array</span> = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]
             </div>
             <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%); margin: 0 5px;">
         </div>
-        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
             <div>
                 <span class="code-coler-orange">array</span> = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]
             </div>
             <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%); margin: 0 5px;">
         </div>
-        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
             <div>
                 <span class="code-coler-orange">array</span> = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]
             </div>
         </div>
     </div>
+</div>
     
 `,
         titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
-        subtitleStepByStep: 'First iteration (i = 0):',
-        stepByStep: `Compare the first with the second, is it greater? Yes.
-                                                                                                        Swap 22 with 11.
-                                                                                                        The array is now: [11, 22, 54, 32].`,
         details: '',
         imagePath: 'imgs/heapsort.jpg',
     }
@@ -225,7 +225,7 @@ function showPopup(sortType) {
     document.getElementById('popup-subtitle-step-by-step').innerText = algorithm.description2;
 
 
-
+/*
     document.getElementById('title-1').innerText = algorithm.titleTopic1;
     document.getElementById('title-2').innerText = algorithm.titleTopic2;
     document.getElementById('title-3').innerText = algorithm.titleTopic3;
@@ -259,6 +259,7 @@ function showPopup(sortType) {
     document.getElementById('item-22').innerText = algorithm.topic22;
     document.getElementById('item-23').innerText = algorithm.topic23;
     document.getElementById('item-24').innerText = algorithm.topic24;
+    */
 
     document.getElementById('popup-details').innerText = algorithm.details || '';
     document.querySelector('.popup-image').src = algorithm.imagePath;
@@ -299,8 +300,8 @@ function showPopup(sortType) {
         const middleDividerStep = document.getElementById('middle-divider-step');
         const middleDividerDetails = document.getElementById('middle-divider-details');
 
-        // O middleDividerStep só deve ser exibido na seção "step-by-step"
-        middleDividerStep.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
+        // O middleDividerStep deve ser exibido na seção "step-by-step" e "details"
+        middleDividerStep.style.display = (sectionId === 'popup-step-by-step' || sectionId === 'popup-details') ? 'block' : 'none';
 
         middleDividerDetails.classList.toggle('hidden', sectionId !== 'popup-details');
 
@@ -308,12 +309,10 @@ function showPopup(sortType) {
         const titleStepByStepElement = document.getElementById('popup-title-step-by-step');
         const subtitleStepByStepElement = document.getElementById('popup-subtitle-step-by-step');
 
-        titleStepByStepElement.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
-        subtitleStepByStepElement.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
+        const isStepByStep = sectionId === 'popup-step-by-step';
+        titleStepByStepElement.style.display = isStepByStep ? 'block' : 'none';
+        subtitleStepByStepElement.style.display = isStepByStep ? 'block' : 'none';
 
-        const isStepOrDetails = sectionId === 'popup-step-by-step' || sectionId === 'popup-details';
-        titleStepByStepElement.style.display = isStepOrDetails ? 'block' : 'none';
-        subtitleStepByStepElement.style.display = isStepOrDetails ? 'block' : 'none';
 
         // Remove a imagem se a seção ativa não for a de explicação
         const imageElement = document.querySelector('.popup-image');
