@@ -37,13 +37,77 @@ const sortAlgorithms = {
 
 
 
-        description: 'Assume the following  array: [22, 11, 54, 32]:',
-        description2: '',
-        titleTopic1: 'First iteration (i = 0):',
-        topic1: 'Compare the first with the second, is it greater? Yes.',
+        subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
 
 
-        stepByStepRight: '',
+        stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-1"><span class="code-coler-topics">First iteration</span> (i = 0):</h3>
+                                                <ul>
+                                                    <li id="item-1">Compare the first with the second, is it greater? Yes.</li>
+                                                    <li id="item-2">Swap 22 with 11.</li>
+                                                    <li id="item-3">The array is now: [11, 22, 54, 32].</li>
+                                                </ul>
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-2"><span class="code-coler-topics">Second iteration</span> (i = 1):</h3>
+                                                <ul>
+                                                    <li id="item-4">Compare the second with the third, is it greater? No.
+                                                    <li id="item-5">No swap needed.</li>
+                                                    <li id="item-6">The array remains: [11, 22, 54, 32]</li>
+                                                </ul>
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-3"><span class="code-coler-topics">Third iteration</span> (i = 2):</h3>
+                                                <ul>
+                                                    <li id="item-7">Compare the third with the fourth, is it greater? Yes.
+                                                    <li id="item-8">Swap 32 with 54.</li>
+                                                    <li id="item-9">The array is now: [11, 22, 32, 54].</li>
+                                                </ul>
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-4"><span class="code-coler-topics">Fouth iteration</span> (i = 3):</h3>
+                                                <ul>
+                                                    <li id="item-10">Compare the first with the second, is it greater? No.
+                                                    <li id="item-11">No swap needed.</li>
+                                                    <li id="item-12">The array is now: [11, 22, 32, 54].</li>
+                                                </ul>
+                                            </div>
+                                        `,
+
+
+
+        stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-5">Title 5</h3>
+                                                <ul>
+                                                    <li id="item-13">Item 5.1</li>
+                                                    <li id="item-14">Item 5.2</li>
+                                                    <li id="item-15">Item 5.3</li>
+                                                </ul>
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-6">Title 6</h3>
+                                                <ul>
+                                                    <li id="item-16">Item 6.1</li>
+                                                    <li id="item-17">Item 6.2</li>
+                                                    <li id="item-18">Item 6.3</li>
+                                                </ul>
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-7">Title 7</h3>
+                                                <ul>
+                                                    <li id="item-19">Item 7.1</li>
+                                                    <li id="item-20">Item 7.2</li>
+                                                    <li id="item-21">Item 7.3</li>
+                                                </ul>
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-8">Title 8</h3>
+                                                <ul>
+                                                    <li id="item-22">Item 8.1</li>
+                                                    <li id="item-23">Item 8.2</li>
+                                                    <li id="item-24">Item 8.3</li>
+                                                </ul>
+                                            </div>`,
         details: '',
         imagePath: 'imgs/bubblesort.jpg',
     },
@@ -82,11 +146,11 @@ const sortAlgorithms = {
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
         array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
         </div>`,
-        titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
-        subtitleStepByStep: 'First iteration (i = 0):',
-        stepByStep: `Compare the first with the second, is it greater? Yes.
-                    Swap 22 with 11.
-                    The array is now: [11, 22, 54, 32].`,
+
+        subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+
+        stepByStepLeft: '',
+        stepByStepRight: '',
         details: '',
         imagePath: 'imgs/insertionsort.jpg',
     },
@@ -128,11 +192,12 @@ const sortAlgorithms = {
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
         array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
         </div>`,
-        titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
-        subtitleStepByStep: 'First iteration (i = 0):',
-        stepByStep: `Compare the first with the second, is it greater? Yes.
-                                                                                                        Swap 22 with 11.
-                                                                                                        The array is now: [11, 22, 54, 32].`,
+
+        
+        subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+
+        stepByStepLeft: '',
+        stepByStepRight: '',
         details: '',
         imagePath: 'imgs/selectionsort.jpg',
     },
@@ -193,12 +258,17 @@ const sortAlgorithms = {
             <div>
                 <span class="code-coler-orange">array</span> = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]
             </div>
+            <!-- Adicionando uma imagem invisível para alinhar -->
+            <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; visibility: hidden; margin: 0 5px;">
         </div>
     </div>
 </div>
     
 `,
-        titleStepByStep: 'Assume the following array: [22, 11, 54, 32]:',
+        subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+
+        stepByStepLeft: '',
+        stepByStepRight: '',
         details: '',
         imagePath: 'imgs/heapsort.jpg',
     }
@@ -215,53 +285,18 @@ function showPopup(sortType) {
 
     // Atualiza o conteúdo do pop-up
     document.getElementById('popup-title').innerHTML = applyColorLogic(algorithm.title);
-    document.getElementById('popup-explanation').innerText = algorithm.explanation;
+    document.getElementById('popup-explanation').innerHTML = algorithm.explanation;
     document.getElementById('popup-code').innerHTML = algorithm.code;
     document.getElementById('popup-code2').innerHTML = algorithm.code2 || '';
     document.getElementById('popup-code3').innerHTML = algorithm.code3 || '';
-    document.getElementById('popup-step-by-step').innerText = algorithm.stepByStep || '';
+    document.getElementById('popup-step-by-step').innerHTML = algorithm.stepByStep || '';
 
-    document.getElementById('popup-title-step-by-step').innerText = algorithm.description;
-    document.getElementById('popup-subtitle-step-by-step').innerText = algorithm.description2;
+    document.getElementById('popup-title-step-by-step').innerHTML = algorithm.subtitle;
+    document.getElementById('popup-left-column-step-by-step').innerHTML = algorithm.stepByStepLeft;
+    document.getElementById('popup-right-column-step-by-step').innerHTML = algorithm.stepByStepRight;
 
 
-/*
-    document.getElementById('title-1').innerText = algorithm.titleTopic1;
-    document.getElementById('title-2').innerText = algorithm.titleTopic2;
-    document.getElementById('title-3').innerText = algorithm.titleTopic3;
-    document.getElementById('title-4').innerText = algorithm.titleTopic4;
-    document.getElementById('title-5').innerText = algorithm.titleTopic5;
-    document.getElementById('title-6').innerText = algorithm.titleTopic6;
-    document.getElementById('title-7').innerText = algorithm.titleTopic7;
-    document.getElementById('title-8').innerText = algorithm.titleTopic8;
-
-    document.getElementById('item-1').innerText = algorithm.topic1;
-    document.getElementById('item-2').innerText = algorithm.topic2;
-    document.getElementById('item-3').innerText = algorithm.topic3;
-    document.getElementById('item-4').innerText = algorithm.topic4;
-    document.getElementById('item-5').innerText = algorithm.topic5;
-    document.getElementById('item-6').innerText = algorithm.topic6;
-    document.getElementById('item-7').innerText = algorithm.topic7;
-    document.getElementById('item-8').innerText = algorithm.topic8;
-    document.getElementById('item-9').innerText = algorithm.topic9;
-    document.getElementById('item-10').innerText = algorithm.topic10;
-    document.getElementById('item-11').innerText = algorithm.topic11;
-    document.getElementById('item-12').innerText = algorithm.topic12;
-    document.getElementById('item-13').innerText = algorithm.topic13;
-    document.getElementById('item-14').innerText = algorithm.topic14;
-    document.getElementById('item-15').innerText = algorithm.topic15;
-    document.getElementById('item-16').innerText = algorithm.topic16;
-    document.getElementById('item-17').innerText = algorithm.topic17;
-    document.getElementById('item-18').innerText = algorithm.topic18;
-    document.getElementById('item-19').innerText = algorithm.topic19;
-    document.getElementById('item-20').innerText = algorithm.topic20;
-    document.getElementById('item-21').innerText = algorithm.topic21;
-    document.getElementById('item-22').innerText = algorithm.topic22;
-    document.getElementById('item-23').innerText = algorithm.topic23;
-    document.getElementById('item-24').innerText = algorithm.topic24;
-    */
-
-    document.getElementById('popup-details').innerText = algorithm.details || '';
+    document.getElementById('popup-details').innerHTML = algorithm.details || '';
     document.querySelector('.popup-image').src = algorithm.imagePath;
 
     // Exibe o pop-up e ativa a aba de explicação
@@ -282,9 +317,9 @@ function showPopup(sortType) {
         sections.forEach(id => {
             document.getElementById(id).style.display = id === sectionId ? 'block' : 'none';
         });
-
+    
         const titleElement = document.getElementById('popup-title');
-
+    
         // Condicional para mover o título para o topo ou manter no centro
         if (sectionId === 'popup-code' || sectionId === 'popup-step-by-step' || sectionId === 'popup-details') {
             titleElement.style.position = 'absolute';
@@ -295,42 +330,45 @@ function showPopup(sortType) {
             titleElement.style.position = 'static'; // Retorna o título para o posicionamento padrão (meio)
             titleElement.style.transform = 'none';
         }
-
+    
         // Controle de exibição das barras do meio
         const middleDividerStep = document.getElementById('middle-divider-step');
         const middleDividerDetails = document.getElementById('middle-divider-details');
-
+    
         // O middleDividerStep deve ser exibido na seção "step-by-step" e "details"
         middleDividerStep.style.display = (sectionId === 'popup-step-by-step' || sectionId === 'popup-details') ? 'block' : 'none';
-
+    
         middleDividerDetails.classList.toggle('hidden', sectionId !== 'popup-details');
-
+    
         // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
         const titleStepByStepElement = document.getElementById('popup-title-step-by-step');
-        const subtitleStepByStepElement = document.getElementById('popup-subtitle-step-by-step');
-
+    
         const isStepByStep = sectionId === 'popup-step-by-step';
         titleStepByStepElement.style.display = isStepByStep ? 'block' : 'none';
-        subtitleStepByStepElement.style.display = isStepByStep ? 'block' : 'none';
-
-
+    
         // Remove a imagem se a seção ativa não for a de explicação
         const imageElement = document.querySelector('.popup-image');
         imageElement.style.display = sectionId === 'popup-explanation' ? 'block' : 'none';
-
+    
         // Mostra ou oculta o code2 com base na seção ativa
         const code2Element = document.getElementById('popup-code2');
         code2Element.style.display = sectionId === 'popup-code' ? 'block' : 'none';
-
-        // Mostra ou oculta o code3 com base na seção ativa
+    
+        // Mostra ou oculta o code3 com base na seção ativa e no tipo de ordenação
         const code3Element = document.getElementById('popup-code3');
         code3Element.style.display = (sectionId === 'popup-code' && sortType === 'Heapsort Information') ? 'block' : 'none';
-
-
-        // Mostra ou oculta o code3 com base na seção ativa
+    
+        // Mostra o stepBystepContainerElement apenas na seção "popup-step-by-step"
         const stepBystepContainerElement = document.getElementById('step-by-step-container');
-        stepBystepContainerElement.style.display = (sectionId === 'popup-code' && sortType === 'Heapsort Information') ? 'block' : 'none';
+        stepBystepContainerElement.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
+
+        const stepByStepLeft = document.getElementById('popup-left-column-step-by-step');
+        stepByStepLeft.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
+
+        const stepByStepRight = document.getElementById('popup-right-column-step-by-step');
+        stepByStepRight.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
     }
+    
 
 
     // Adiciona um evento para cada link da navbar

@@ -453,22 +453,18 @@ main {
 
                 .code-coler-red {
                     color: var(--red);
-                    /* Use a variável de cor definida */
                 }
 
                 .code-coler-blue {
                     color: var(--blue);
-                    /* Use a variável de cor definida */
                 }
 
                 .code-coler-orange {
                     color: var(--orange);
-                    /* Use a variável de cor definida */
                 }
 
                 .code-coler-green {
                     color: var(--green);
-                    /* Use a variável de cor definida */
                 }
 
                 .code-coler-gray {
@@ -478,7 +474,6 @@ main {
 
                 .code-coler-topics {
                     color: var(--topics);
-                    /* Use a variável de cor definida */
                 }
 
 
