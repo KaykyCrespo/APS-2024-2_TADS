@@ -408,6 +408,24 @@ main {
                     overflow: auto;
                     height: auto;
                 }
+                
+                #step-by-step-container {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 1.3vw;
+                    width: 100%;
+                }
+                
+                #popup-left-column-step-by-step,
+                #popup-right-column-step-by-step {
+                    font-family: 'Fira Code', monospace;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 0.3vw;
+                    padding: 1vw;
+                    margin: 1vw;
+                }
+                
+                
 
                 .popup-image {
                     flex: 1;
@@ -441,11 +459,14 @@ main {
                     left: 50%;
                     top: 7.5vw;
                     transform: translateX(-50%);
+                    
                 }
 
                 .show-heap-divider {
                     display: block;
                 }
+
+                
 
                 .hidden {
                     display: none;
