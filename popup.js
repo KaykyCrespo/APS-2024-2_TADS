@@ -37,23 +37,13 @@ const sortAlgorithms = {
 
 
         
-        titleStepByStepElement: 'Assume the following array: [22, 11, 54, 32]:',
-        subtitleStepByStepElement: 'First iteration (i = 0):',
-        stepByStep: `Compare the first with the second, is it greater? Yes.
-            Swap 22 with 11.
-                     The array is now: [11, 22, 54, 32].`,
+        description: 'Assume the following  array: [22, 11, 54, 32]:',
+        description2: '',
+        titleTopic1: 'First iteration (i = 0):',
+        topic1: 'Compare the first with the second, is it greater? Yes.',
 
 
-
-
-
-
-
-
-
-
-
-                     
+        stepByStepRight: '',
         details: '',
         imagePath: 'imgs/bubblesort.jpg',
     },
@@ -230,6 +220,46 @@ function showPopup(sortType) {
     document.getElementById('popup-code2').innerHTML = algorithm.code2 || '';
     document.getElementById('popup-code3').innerHTML = algorithm.code3 || '';
     document.getElementById('popup-step-by-step').innerText = algorithm.stepByStep || '';
+
+    document.getElementById('popup-title-step-by-step').innerText = algorithm.description;
+    document.getElementById('popup-subtitle-step-by-step').innerText = algorithm.description2;
+
+
+
+    document.getElementById('title-1').innerText = algorithm.titleTopic1;
+    document.getElementById('title-2').innerText = algorithm.titleTopic2;
+    document.getElementById('title-3').innerText = algorithm.titleTopic3;
+    document.getElementById('title-4').innerText = algorithm.titleTopic4;
+    document.getElementById('title-5').innerText = algorithm.titleTopic5;
+    document.getElementById('title-6').innerText = algorithm.titleTopic6;
+    document.getElementById('title-7').innerText = algorithm.titleTopic7;
+    document.getElementById('title-8').innerText = algorithm.titleTopic8;
+
+    document.getElementById('item-1').innerText = algorithm.topic1;
+    document.getElementById('item-2').innerText = algorithm.topic2;
+    document.getElementById('item-3').innerText = algorithm.topic3;
+    document.getElementById('item-4').innerText = algorithm.topic4;
+    document.getElementById('item-5').innerText = algorithm.topic5;
+    document.getElementById('item-6').innerText = algorithm.topic6;
+    document.getElementById('item-7').innerText = algorithm.topic7;
+    document.getElementById('item-8').innerText = algorithm.topic8;
+    document.getElementById('item-9').innerText = algorithm.topic9;
+    document.getElementById('item-10').innerText = algorithm.topic10;
+    document.getElementById('item-11').innerText = algorithm.topic11;
+    document.getElementById('item-12').innerText = algorithm.topic12;
+    document.getElementById('item-13').innerText = algorithm.topic13;
+    document.getElementById('item-14').innerText = algorithm.topic14;
+    document.getElementById('item-15').innerText = algorithm.topic15;
+    document.getElementById('item-16').innerText = algorithm.topic16;
+    document.getElementById('item-17').innerText = algorithm.topic17;
+    document.getElementById('item-18').innerText = algorithm.topic18;
+    document.getElementById('item-19').innerText = algorithm.topic19;
+    document.getElementById('item-20').innerText = algorithm.topic20;
+    document.getElementById('item-21').innerText = algorithm.topic21;
+    document.getElementById('item-22').innerText = algorithm.topic22;
+    document.getElementById('item-23').innerText = algorithm.topic23;
+    document.getElementById('item-24').innerText = algorithm.topic24;
+
     document.getElementById('popup-details').innerText = algorithm.details || '';
     document.querySelector('.popup-image').src = algorithm.imagePath;
 
