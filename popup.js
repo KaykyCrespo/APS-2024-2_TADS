@@ -1,9 +1,71 @@
+// Função para obter a linguagem ativa (modifique conforme necessário)
+function getActiveLanguage() {
+  // Retorne "english" como a linguagem padrão
+  return "english"; // Defina o idioma padrão como "english"
+}
+
+// Função para atualizar a explicação com base na linguagem ativa
+function updateExplanation() {
+  const currentLanguage = getActiveLanguage();
+  const explanationElement = document.querySelector('#popup-explanation'); // Supondo que você tenha um elemento com este ID
+  const explanation = sortAlgorithms["Bubblesort Information"].explanation[currentLanguage];
+
+  if (explanation) {
+    explanationElement.textContent = explanation;
+  } else {
+    console.warn(`Translation not found for ${currentLanguage}`);
+  }
+}
+
+// Chame updateExplanation() quando a linguagem for alterada
+document.addEventListener('DOMContentLoaded', () => {
+  // Adicione evento para alternar idiomas
+  const langEl = document.querySelector('.langWrap');
+  const links = langEl.querySelectorAll('a[language]');
+  
+  links.forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault(); // Evita a navegação padrão
+
+      // Remover a classe active de todos os links
+      links.forEach(l => l.classList.remove('active'));
+
+      // Adicionar a classe active ao link clicado
+      link.classList.add('active');
+
+      // Atualizar a explicação com base na nova linguagem
+      updateExplanation();
+    });
+  });
+
+  // Atualiza a explicação ao carregar a página
+  updateExplanation(); // Isso garante que a explicação inicial seja exibida em inglês
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Objeto contendo informações sobre os algoritmos de ordenação
 const sortAlgorithms = {
   "Bubblesort Information": {
     title: "BUBBLESORT",
-    explanation:
-      "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
+    explanation: {
+      english:"The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
+      portuguese:"O algoritmo de ordenação por bolha organiza uma lista comparando pares de elementos adjacentes, como crianças em uma fila. Primeiro, olhamos as duas primeiras crianças; se a da esquerda for maior que a da direita, trocamos elas. Continuamos fazendo isso até o final da fila. Repetimos esse processo várias vezes até que ninguém precise mais trocar de lugar. Assim, no final, a fila ficará organizada do menor para o maior!",
+    },
     code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">bubble_sort</span>(array):<br>
                &nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(array)<br>
                iterations = 0 <span class="code-coler-gray"># Interaction counter</span><br>
@@ -159,8 +221,10 @@ const sortAlgorithms = {
   },
   "Insertionsort Information": {
     title: "INSERTIONSORT",
-    explanation:
-      "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!",
+    explanation: {
+      english:"Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!",
+      portuguese:"Imagine que você tem uma caixa de lápis misturados. Você pega um lápis e coloca na sua mão, que já está organizada. Depois, pega outro lápis e verifica onde ele deve ir na sua mão, colocando-o na posição certa. Você repete isso até que todos os lápis estejam organizados. No final, conta quantas vezes olhou e comparou os lápis para deixá-los em ordem!",
+    },
     code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">insertion_sort</span>(array):<br>
         iterations = 0 <span class="code-coler-gray"># Counter for iterations</span><br>
         <br>
