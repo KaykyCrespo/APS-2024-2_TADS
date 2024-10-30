@@ -624,25 +624,6 @@ function showPopup(sortType) {
       titleElement.style.transform = "none";
     }
 
-    // Controle de exibição das barras do meio
-    const middleDividerStep = document.getElementById("middle-divider-step");
-    const middleDividerDetails = document.getElementById("middle-divider-details");
-
-// Oculta os divisores
-middleDividerStep.style.display = "none";
-middleDividerDetails.style.display = "none";
-
-
-    // O middleDividerStep deve ser exibido na seção "step-by-step" e "details"
-    middleDividerStep.style.display =
-      sectionId === "popup-step-by-step" || sectionId === "popup-details"
-        ? "block"
-        : "none";
-    middleDividerDetails.classList.toggle(
-      "hidden",
-      sectionId !== "popup-details"
-    );
-
     // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
     const titleStepByStepElement = document.getElementById(
       "popup-title-step-by-step"
