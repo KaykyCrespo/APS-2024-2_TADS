@@ -85,7 +85,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-6"><span class="code-coler-topics">Sixth</span> iteration (i = 5):
+                                                <h3 id="title-6"><span class="code-coler-topics">Sixth</span> iteration (i = 5):</h3>
                                                 <ul>
                                                     <li id="item-16">Compare the third with the fourth, is it greater? No.</li>
                                                     <li id="item-17">No swap needed.</li>
@@ -93,7 +93,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-7"><span class="code-coler-topics">Seventh</span> iteration (i = 6):
+                                                <h3 id="title-7"><span class="code-coler-topics">Seventh</span> iteration (i = 6):</h3>
                                                 <ul>
                                                     <li id="item-19">Compare the first with the second, is it greater? No.</li>
                                                     <li id="item-20">No swap needed.</li>
@@ -101,7 +101,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-8"><span class="code-coler-topics">Eighth</span> iteration (i = 7):
+                                                <h3 id="title-8"><span class="code-coler-topics">Eighth</span> iteration (i = 7):</h3>
                                                 <ul>
                                                     <li id="item-22">Compare the second with the third, is it greater? No.</li>
                                                     <li id="item-23">No swap needed.</li>
@@ -257,7 +257,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-11"><span class="code-coler-topics">Fourth</span> iteration (i = 3):
+                                                <h3 id="title-11"><span class="code-coler-topics">Fourth</span> iteration (i = 3):</h3>
                                                 <ul>
                                                     <li id="item-12">Only one element (54) remains, so no swap is needed.</li>
                                                 </ul>
@@ -332,9 +332,44 @@ const sortAlgorithms = {
 `,
         subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
 
-        stepByStepLeft: '',
-        stepByStepRight: '',
+        stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-1"><span class="code-coler-topics">First:</span></h3>
+                                                <ul>
+                                                    <li id="item-1">Build the Max-Heap: Start by building the Max-Heap. In Heap Sort, we use a tree structure where each "parent" element is greater than its "children."</li>
+                                                </ul>
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-2"><span class="code-coler-topics">Second:</span></h3>
+                                                <ul>
+                                                    <li id="item-2">Building the Max-Heap (starting from the middle and moving to the beginning):</li>
+                                                    <li id="item-3">First, check the element 11 (position 1, considering 0-based indexing).</li>
+                                                    <li id="item-4">Compare it with its child, 32.       Since 32 > 11, swap them:       List: [22, 32, 54, 11].</li>
+                                                    <li id="item-5">Next, move to the element 22 (position 0).       Compare 22 with its children (32 and 54).       Since 54 is the largest, swap 22 with 54:       List: [54, 32, 22, 11]</li>
+                                                    <li id="item-6">Max-Heap built: [54, 32, 22, 11].</li>
+                                                </ul>
+                                            </div>
+                                        `,
+
+
+
+        stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-3"><span class="code-coler-topics">Third:</span></h3>
+                                                <ul>
+                                                    <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li>
+                                                    <h3 id="title-7"><span class="code-coler-topics">1. First Extraction:</span></h3>
+                                                    <li id="item-9">Swap the largest element (54) with the last element (11):           List: [11, 32, 22, 54]</li>
+                                                </ul>
+                                                
+                                            </div>
+                                            <div class="step-item" style="margin-bottom: 20px;">
+                                                <h3 id="title-10"><span class="code-coler-topics">Fourth</span> iteration (i = 3):</h3>
+                                                <ul>
+                                                    <li id="item-11">Only one element (54) remains, so no swap is needed.</li>
+                                                </ul>
+                                            </div>
+                                            `,
         details: '',
+
         imagePath: 'imgs/heapsort.jpg',
     }
 };
