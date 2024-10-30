@@ -470,14 +470,7 @@ main {
                 }
 
                 .middle-divider {
-                    width: 1px;
-                    height: 75%;
-                    background-color: #4CA6A8;
-                    position: absolute;
-                    left: 50%;
-                    top: 7.5vw;
-                    transform: translateX(-50%);
-                    
+                    display: none;
                 }
 
                 .show-heap-divider {

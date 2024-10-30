@@ -626,9 +626,12 @@ function showPopup(sortType) {
 
     // Controle de exibição das barras do meio
     const middleDividerStep = document.getElementById("middle-divider-step");
-    const middleDividerDetails = document.getElementById(
-      "middle-divider-details"
-    );
+    const middleDividerDetails = document.getElementById("middle-divider-details");
+
+// Oculta os divisores
+middleDividerStep.style.display = "none";
+middleDividerDetails.style.display = "none";
+
 
     // O middleDividerStep deve ser exibido na seção "step-by-step" e "details"
     middleDividerStep.style.display =
