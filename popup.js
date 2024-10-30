@@ -1,9 +1,10 @@
 // Objeto contendo informações sobre os algoritmos de ordenação
 const sortAlgorithms = {
-    'Bubblesort Information': {
-        title: 'BUBBLESORT',
-        explanation: "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
-        code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">bubble_sort</span>(array):<br>
+  "Bubblesort Information": {
+    title: "BUBBLESORT",
+    explanation:
+      "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
+    code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">bubble_sort</span>(array):<br>
                &nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(array)<br>
                iterations = 0 <span class="code-coler-gray"># Interaction counter</span><br>
                <br>
@@ -19,7 +20,7 @@ const sortAlgorithms = {
                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[j], array[j + <span class="code-coler-red">1</span>] = array[j + <span class="code-coler-red">1</span>], array[j]<br>
                <br>
                &nbsp;&nbsp;<span class="code-coler-blue">return</span> iterations`,
-        code2: `
+    code2: `
         <span class="code-coler-gray"># Example of usage</span><br>
         &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br>
         &nbsp;total_iterations = bubble_sort(array)<br>
@@ -34,13 +35,10 @@ const sortAlgorithms = {
         array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
         </div>`,
 
+    subtitle:
+      'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
 
-
-
-        subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
-
-
-        stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
+    stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">Compare the first with the second, is it greater? Yes.</li>
@@ -74,9 +72,7 @@ const sortAlgorithms = {
                                             </div>
                                         `,
 
-
-
-        stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
+    stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-5"><span class="code-coler-topics">Fifth</span> iteration (i = 4):</h3>
                                                 <ul>
                                                     <li id="item-13">Compare the second with the third, is it greater? No.</li>
@@ -108,7 +104,8 @@ const sortAlgorithms = {
                                                     <li id="item-24">The array is now: [11, 22, 32, 54].</h3></li>
                                                 </ul>
                                             </div>`,
-        details:  `<div class="step-item" style="margin-bottom: 20px;">
+
+    detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
         <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION: </span></h3>
         <ul>
             <li id="item-1">Start with an array or list of elements that you want to sort.</li>
@@ -117,7 +114,7 @@ const sortAlgorithms = {
     <div class="step-item" style="margin-bottom: 20px;">
         <h3 id="title-2"><span class="code-coler-topics">2. INITIAL COMPARISON:</span></h3>
         <ul>
-            <li id="item-3">Begin with the first number in the list. Compare this number with the next number.</li>
+            <li id="item-2">Begin with the first number in the list. Compare this number with the next number.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
@@ -129,45 +126,42 @@ const sortAlgorithms = {
     <div class="step-item" style="margin-bottom: 20px;">
         <h3 id="title-4"><span class="code-coler-topics">4. MOVE TO THE NEXT PAIR:</span></h3>
         <ul>
-            <li id="item-3">Move to the next number and repeat step 2, comparing it with the next one.</li>
+            <li id="item-4">Move to the next number and repeat step 2, comparing it with the next one.</li>
         </ul>
     </div>`,
 
-details: `<div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION: </span></h3>
+    detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
+        <h3 id="title-5"><span class="code-coler-topics">5. REPEAT UNTIL THE END OF THE LIST: </span></h3>
         <ul>
-            <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+            <li id="item-5">Continue doing this until you reach the end of the list. After one complete pass, the largest number will be in the last position.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-2"><span class="code-coler-topics">2. INITIAL COMPARISON:</span></h3>
+        <h3 id="title-6"><span class="code-coler-topics">6. RESTART FOR INITIAL UNORDERED LIST:</span></h3>
         <ul>
-            <li id="item-3">Begin with the first number in the list. Compare this number with the next number.</li>
+            <li id="item-6">Start again from the beginning of the list. Repeat steps 2 to 5, but ignore the last number, as it is already sorted.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-3"><span class="code-coler-topics">3. SWAP IF NECESSARY:</span></h3>
+        <h3 id="title-7"><span class="code-coler-topics">7. REPETITION:</span></h3>
         <ul>
-            <li id="item-3">If the first number is greater than the second, swap them. If not, leave them as they are.</li>
+            <li id="item-8">Keep repeating this process, each time ignoring the last sorted number, until no more swaps are made. This means the list is sorted.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-4"><span class="code-coler-topics">4. MOVE TO THE NEXT PAIR:</span></h3>
+        <h3 id="title-8"><span class="code-coler-topics">8. CONCLUDE:</span></h3>
         <ul>
-            <li id="item-3">Move to the next number and repeat step 2, comparing it with the next one.</li>
+            <li id="item-8">When you pass through the list without making any swaps, the algorithm terminates, and the list is completely sorted.</li>
         </ul>
         </div>`,
 
-
-
-
-        
-        imagePath: 'imgs/bubblesort.jpg',
-    },
-    'Insertionsort Information': {
-        title: 'INSERTIONSORT',
-        explanation: "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!",
-        code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">insertion_sort</span>(array):<br>
+    imagePath: "imgs/bubblesort.jpg",
+  },
+  "Insertionsort Information": {
+    title: "INSERTIONSORT",
+    explanation:
+      "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!",
+    code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">insertion_sort</span>(array):<br>
         iterations = 0 <span class="code-coler-gray"># Counter for iterations</span><br>
         <br>
         <span class="code-coler-gray"># Traverse the array starting from the second element</span
@@ -185,7 +179,7 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
         &nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the iteration of the key movement</span><br>
         <br>
         <span class="code-coler-blue">return</span> iterations`,
-        code2: `
+    code2: `
         <span class="code-coler-gray"># Example of usage</span><br>
         &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br>
         &nbsp;total_iterations = insertion_sort(array)<br>
@@ -200,9 +194,10 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
         array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
         </div>`,
 
-        subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+    subtitle:
+      'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
 
-        stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
+    stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">Compare 11 with 22.</li>
@@ -223,9 +218,7 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
                                             </div>
                                         `,
 
-
-
-        stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
+    stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-5"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
                                                 <ul>
                                                     <li id="item-10">Move to the next element (54).</li>
@@ -235,13 +228,63 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
                                                 </ul>
                                             </div>
                                             `,
-        details: '',
-        imagePath: 'imgs/insertionsort.jpg',
-    },
-    'Selectionsort Information': {
-        title: 'SELECTIONSORT',
-        explanation: "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy.",
-        code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">selection_sort</span>(array): <br>
+
+    detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+                                            <ul>
+                                                <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-2"><span class="code-coler-topics">2. INITIAL SELECTION:</span></h3>
+                                            <ul>
+                                                <li id="item-3">Begin with the second number in the list, assuming that the first number is already in the "sorted sublist."</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-3"><span class="code-coler-topics">3. SWAP IF NECESSARY:</span></h3>
+                                            <ul>
+                                                <li id="item-3">If the first number is greater than the second, swap them. If not, leave them as they are.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-4"><span class="code-coler-topics">4. MOVE TO THE NEXT PAIR:</span></h3>
+                                            <ul>
+                                                <li id="item-3">Move to the next number and repeat step 2, comparing it with the next one.</li>
+                                            </ul>
+                                        </div>`,
+
+    detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-1"><span class="code-coler-topics">5. REPEAT UNTIL THE END OF THE LIST: </span></h3>
+                                            <ul>
+                                                <li id="item-1">Continue doing this until you reach the end of the list. After one complete pass, the largest number will be in the last position.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-2"><span class="code-coler-topics">6. RESTART FOR INITIAL UNORDERED LIST:</span></h3>
+                                            <ul>
+                                                <li id="item-3">Start again from the beginning of the list. Repeat steps 2 to 5, but ignore the last number, as it is already sorted.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-3"><span class="code-coler-topics">7. REPETITION:</span></h3>
+                                            <ul>
+                                                <li id="item-3">Keep repeating this process, each time ignoring the last sorted number, until no more swaps are made. This means the list is sorted.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-4"><span class="code-coler-topics">8. CONCLUDE:</span></h3>
+                                            <ul>
+                                                <li id="item-3">When you pass through the list without making any swaps, the algorithm terminates, and the list is completely sorted.</li>
+                                            </ul>
+                                            </div>`,
+    imagePath: "imgs/insertionsort.jpg",
+  },
+  "Selectionsort Information": {
+    title: "SELECTIONSORT",
+    explanation:
+      "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy.",
+    code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">selection_sort</span>(array): <br>
         iterations = 0  <span class="code-coler-gray"># Interaction counter</span> <br>
         <br>
         <span class="code-coler-gray"># Traverse all elements of the array</span> <br>
@@ -261,7 +304,7 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[min_index] = array[min_index], array[i]  <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the swap</span> <br>
         <span class="code-coler-blue">return</span> array`,
-        code2: `<div class="text-center">
+    code2: `<div class="text-center">
         <span class="code-coler-gray"># Example of usage</span> <br>
         &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
         &nbsp;total_iterations = selection_sort(array) <br>
@@ -277,10 +320,10 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
         array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
         </div>`,
 
-        
-        subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+    subtitle:
+      'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
 
-        stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
+    stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">The smallest element in [22, 11, 54, 32] is 11.</li>
@@ -299,9 +342,7 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
                                             </div>
                                         `,
 
-
-
-        stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
+    stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-5"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
                                                 <ul>
                                                     <li id="item-8">The smallest element in [22, 54, 32] is 32.</li>
@@ -316,13 +357,14 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
                                                 </ul>
                                             </div>
                                             `,
-        details: '',
-        imagePath: 'imgs/selectionsort.jpg',
-    },
-    'Heapsort Information': {
-        title: 'HEAPSORT',
-        explanation: "To sort numbers using a heap, we first place all the numbers into a heap, where the largest stone (number) is at the top. Then, we remove this largest stone from the top and reorganize the heap, repeating the process until all the stones are removed. Each time we remove a stone, we count that action as an iteration. In the end, we will have the numbers organized from smallest to largest.",
-        code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heapify</span>(array, n, i, interactions):<br>
+    details: "",
+    imagePath: "imgs/selectionsort.jpg",
+  },
+  "Heapsort Information": {
+    title: "HEAPSORT",
+    explanation:
+      "To sort numbers using a heap, we first place all the numbers into a heap, where the largest stone (number) is at the top. Then, we remove this largest stone from the top and reorganize the heap, repeating the process until all the stones are removed. Each time we remove a stone, we count that action as an iteration. In the end, we will have the numbers organized from smallest to largest.",
+    code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heapify</span>(array, n, i, interactions):<br>
         &nbsp;&nbsp;&nbsp;&nbsp;largest = i  <span class="code-coler-gray"># Assume root is the largest element</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;left = <span class="code-coler-red">2</span> * i + <span class="code-coler-red">1</span>  <span class="code-coler-gray"># Index of left child</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;right = <span class="code-coler-red">2</span> * i + <span class="code-coler-red">2</span>  <span class="code-coler-gray"># Index of right child</span><br><br>
@@ -334,7 +376,7 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[largest] = array[largest], array[i]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span>  <span class="code-coler-gray"># Increment interaction</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;heapify(array, n, largest, interactions)<br>`,
-        code2: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heap_sort</span>(array):<br>
+    code2: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heap_sort</span>(array):<br>
         &nbsp;&nbsp;&nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(array)<br>
         &nbsp;&nbsp;&nbsp;&nbsp;interactions = [<span class="code-coler-red">0</span>]<br>
         <br>
@@ -348,7 +390,7 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, i, 0, interactions)  <span class="code-coler-gray"># Call heapify</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">return</span> interactions`,
-        code3: `
+    code3: `
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin: 0 auto;">
         <div class="text-center">
         <span class="code-coler-gray"># Example of usage</span> <br>
@@ -383,9 +425,10 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
 </div>
     
 `,
-        subtitle: 'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+    subtitle:
+      'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
 
-        stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
+    stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span class="code-coler-topics">First:</span></h3>
                                                 <ul>
                                                     <li id="item-1">Build the Max-Heap: Start by building the Max-Heap. In Heap Sort, we use a tree structure where each "parent" element is greater than its "children."</li>
@@ -403,9 +446,7 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
                                             </div>
                                         `,
 
-
-
-        stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
+    stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-3"><span class="code-coler-topics">Third:</span></h3>
                                                 <ul>
                                                     <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li>
@@ -421,151 +462,207 @@ details: `<div class="step-item" style="margin-bottom: 20px;">
                                                 
                                             </div>
                                             `,
-        details: '',
+    details: "",
 
-        imagePath: 'imgs/heapsort.jpg',
-    }
+    imagePath: "imgs/heapsort.jpg",
+  },
 };
 
 // Função para mostrar o pop-up
 function showPopup(sortType) {
-    const algorithm = sortAlgorithms[sortType];
+  const algorithm = sortAlgorithms[sortType];
 
-    if (!algorithm) {
-        console.error("Sort type not recognized.");
-        return;
+  if (!algorithm) {
+    console.error("Sort type not recognized.");
+    return;
+  }
+
+  // Atualiza o conteúdo do pop-up
+  document.getElementById("popup-title").innerHTML = applyColorLogic(
+    algorithm.title
+  );
+  document.getElementById("popup-explanation").innerHTML =
+    algorithm.explanation;
+  document.getElementById("popup-code").innerHTML = algorithm.code;
+  document.getElementById("popup-code2").innerHTML = algorithm.code2 || "";
+  document.getElementById("popup-code3").innerHTML = algorithm.code3 || "";
+  document.getElementById("popup-step-by-step").innerHTML =
+    algorithm.stepByStep || "";
+
+  document.getElementById("popup-title-step-by-step").innerHTML =
+    algorithm.subtitle;
+  document.getElementById("popup-left-column-step-by-step").innerHTML =
+    algorithm.stepByStepLeft;
+  document.getElementById("popup-right-column-step-by-step").innerHTML =
+    algorithm.stepByStepRight;
+
+  document.getElementById("popup-left-column-details").innerHTML =
+    algorithm.detailsLeft;
+  document.getElementById("popup-right-column-details").innerHTML =
+    algorithm.detailsRight;
+
+  document.getElementById("popup-details").innerHTML = algorithm.details || "";
+  document.querySelector(".popup-image").src = algorithm.imagePath;
+
+  // Exibe o pop-up e ativa a aba de explicação
+  document.getElementById("popup").style.display = "flex";
+  showSection("popup-explanation"); // Exibe a seção de explicação por padrão ao abrir o popup
+
+  // Fecha o popup ao clicar fora dele
+  window.onclick = function (event) {
+    const popup = document.getElementById("popup");
+    if (event.target === popup) {
+      closePopup();
     }
+  };
 
-    // Atualiza o conteúdo do pop-up
-    document.getElementById('popup-title').innerHTML = applyColorLogic(algorithm.title);
-    document.getElementById('popup-explanation').innerHTML = algorithm.explanation;
-    document.getElementById('popup-code').innerHTML = algorithm.code;
-    document.getElementById('popup-code2').innerHTML = algorithm.code2 || '';
-    document.getElementById('popup-code3').innerHTML = algorithm.code3 || '';
-    document.getElementById('popup-step-by-step').innerHTML = algorithm.stepByStep || '';
-
-    document.getElementById('popup-title-step-by-step').innerHTML = algorithm.subtitle;
-    document.getElementById('popup-left-column-step-by-step').innerHTML = algorithm.stepByStepLeft;
-    document.getElementById('popup-right-column-step-by-step').innerHTML = algorithm.stepByStepRight;
-
-
-    document.getElementById('popup-details').innerHTML = algorithm.details || '';
-    document.querySelector('.popup-image').src = algorithm.imagePath;
-
-    // Exibe o pop-up e ativa a aba de explicação
-    document.getElementById('popup').style.display = 'flex';
-    showSection('popup-explanation'); // Exibe a seção de explicação por padrão ao abrir o popup
-
-    // Fecha o popup ao clicar fora dele
-    window.onclick = function (event) {
-        const popup = document.getElementById('popup');
-        if (event.target === popup) {
-            closePopup();
-        }
-    };
-
-    // Função para mostrar e ocultar seções com base no ID
-    function showSection(sectionId) {
-        const sections = ['popup-explanation', 'popup-code', 'popup-step-by-step', 'popup-details'];
-        sections.forEach(id => {
-            document.getElementById(id).style.display = id === sectionId ? 'block' : 'none';
-        });
-    
-        const titleElement = document.getElementById('popup-title');
-    
-        // Condicional para mover o título para o topo ou manter no centro
-        if (sectionId === 'popup-code' || sectionId === 'popup-step-by-step' || sectionId === 'popup-details') {
-            titleElement.style.position = 'absolute';
-            titleElement.style.top = '-7vw'; // Posiciona no topo do pop-up
-            titleElement.style.left = '15%';
-            titleElement.style.transform = 'translateX(-50%)';
-        } else {
-            titleElement.style.position = 'static'; // Retorna o título para o posicionamento padrão (meio)
-            titleElement.style.transform = 'none';
-        }
-    
-        // Controle de exibição das barras do meio
-        const middleDividerStep = document.getElementById('middle-divider-step');
-        const middleDividerDetails = document.getElementById('middle-divider-details');
-    
-        // O middleDividerStep deve ser exibido na seção "step-by-step" e "details"
-        middleDividerStep.style.display = (sectionId === 'popup-step-by-step' || sectionId === 'popup-details') ? 'block' : 'none';
-    
-        middleDividerDetails.classList.toggle('hidden', sectionId !== 'popup-details');
-    
-        // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
-        const titleStepByStepElement = document.getElementById('popup-title-step-by-step');
-    
-        const isStepByStep = sectionId === 'popup-step-by-step';
-        titleStepByStepElement.style.display = isStepByStep ? 'block' : 'none';
-    
-        // Remove a imagem se a seção ativa não for a de explicação
-        const imageElement = document.querySelector('.popup-image');
-        imageElement.style.display = sectionId === 'popup-explanation' ? 'block' : 'none';
-    
-        // Mostra ou oculta o code2 com base na seção ativa
-        const code2Element = document.getElementById('popup-code2');
-        code2Element.style.display = sectionId === 'popup-code' ? 'block' : 'none';
-    
-        // Mostra ou oculta o code3 com base na seção ativa e no tipo de ordenação
-        const code3Element = document.getElementById('popup-code3');
-        code3Element.style.display = (sectionId === 'popup-code' && sortType === 'Heapsort Information') ? 'block' : 'none';
-    
-        // Mostra o stepBystepContainerElement apenas na seção "popup-step-by-step"
-        const stepBystepContainerElement = document.getElementById('step-by-step-container');
-        stepBystepContainerElement.style.display = sectionId === 'popup-step-by-step' ? 'flex' : 'none';
-
-        const stepByStepLeft = document.getElementById('popup-left-column-step-by-step');
-        stepByStepLeft.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
-
-        const stepByStepRight = document.getElementById('popup-right-column-step-by-step');
-        stepByStepRight.style.display = sectionId === 'popup-step-by-step' ? 'block' : 'none';
-    }
-    
-
-
-    // Adiciona um evento para cada link da navbar
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            showSection(targetId); // Exibe a seção clicada e oculta as outras
-
-            // Muda a cor do hover para a seção selecionada
-            navLinks.forEach(l => l.style.color = '#FFF'); // Reseta a cor para branco
-            link.style.color = '#4CA6A8'; // Altera a cor da seção selecionada
-        });
+  // Função para mostrar e ocultar seções com base no ID
+  function showSection(sectionId) {
+    const sections = [
+      "popup-explanation",
+      "popup-code",
+      "popup-step-by-step",
+      "popup-details",
+    ];
+    sections.forEach((id) => {
+      document.getElementById(id).style.display =
+        id === sectionId ? "block" : "none";
     });
 
-    // Resetar a cor da navbar para a seção "Explanation" ao abrir o popup
-    navLinks.forEach(link => {
-        link.style.color = '#FFF'; // Reseta todas as cores para branco
+    const titleElement = document.getElementById("popup-title");
+
+    // Condicional para mover o título para o topo ou manter no centro
+    if (
+      sectionId === "popup-code" ||
+      sectionId === "popup-step-by-step" ||
+      sectionId === "popup-details"
+    ) {
+      titleElement.style.position = "absolute";
+      titleElement.style.top = "-7vw"; // Posiciona no topo do pop-up
+      titleElement.style.left = "15%";
+      titleElement.style.transform = "translateX(-50%)";
+    } else {
+      titleElement.style.position = "static"; // Retorna o título para o posicionamento padrão (meio)
+      titleElement.style.transform = "none";
+    }
+
+    // Controle de exibição das barras do meio
+    const middleDividerStep = document.getElementById("middle-divider-step");
+    const middleDividerDetails = document.getElementById(
+      "middle-divider-details"
+    );
+
+    // O middleDividerStep deve ser exibido na seção "step-by-step" e "details"
+    middleDividerStep.style.display =
+      sectionId === "popup-step-by-step" || sectionId === "popup-details"
+        ? "block"
+        : "none";
+    middleDividerDetails.classList.toggle(
+      "hidden",
+      sectionId !== "popup-details"
+    );
+
+    // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
+    const titleStepByStepElement = document.getElementById(
+      "popup-title-step-by-step"
+    );
+    const isStepByStep = sectionId === "popup-step-by-step";
+    titleStepByStepElement.style.display = isStepByStep ? "block" : "none";
+
+    // Remove a imagem se a seção ativa não for a de explicação
+    const imageElement = document.querySelector(".popup-image");
+    imageElement.style.display =
+      sectionId === "popup-explanation" ? "block" : "none";
+
+    // Mostra ou oculta o code2 com base na seção ativa
+    const code2Element = document.getElementById("popup-code2");
+    code2Element.style.display = sectionId === "popup-code" ? "block" : "none";
+
+    // Mostra ou oculta o code3 com base na seção ativa e no tipo de ordenação
+    const code3Element = document.getElementById("popup-code3");
+    code3Element.style.display =
+      sectionId === "popup-code" && sortType === "Heapsort Information"
+        ? "block"
+        : "none";
+
+    // Mostra o stepBystepContainerElement apenas na seção "popup-step-by-step"
+    const stepBystepContainerElement = document.getElementById(
+      "step-by-step-container"
+    );
+    stepBystepContainerElement.style.display =
+      sectionId === "popup-step-by-step" ? "flex" : "none";
+
+    const stepByStepLeft = document.getElementById(
+      "popup-left-column-step-by-step"
+    );
+    stepByStepLeft.style.display =
+      sectionId === "popup-step-by-step" ? "block" : "none";
+
+    const stepByStepRight = document.getElementById(
+      "popup-right-column-step-by-step"
+    );
+    stepByStepRight.style.display =
+      sectionId === "popup-step-by-step" ? "block" : "none";
+
+    // Mostra o detailsContainerElementElement apenas na seção "popup-step-by-step"
+    const detailsContainerElement =
+      document.getElementById("details-container");
+    detailsContainerElement.style.display =
+      sectionId === "popup-details" ? "flex" : "none";
+
+    const detailsLeft = document.getElementById("popup-left-column-details");
+    detailsLeft.style.display =
+      sectionId === "popup-details" ? "block" : "none";
+
+    const detailsRight = document.getElementById("popup-right-column-details");
+    detailsRight.style.display =
+      sectionId === "popup-details" ? "block" : "none";
+  }
+
+  // Adiciona um evento para cada link da navbar
+  const navLinks = document.querySelectorAll(".nav-link");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+      showSection(targetId); // Exibe a seção clicada e oculta as outras
+
+      // Muda a cor do hover para a seção selecionada
+      navLinks.forEach((l) => (l.style.color = "#FFF")); // Reseta a cor para branco
+      link.style.color = "#4CA6A8"; // Altera a cor da seção selecionada
     });
-    navLinks[0].style.color = '#4CA6A8'; // Define a cor da seção "Explanation" como selecionada
+  });
+
+  // Resetar a cor da navbar para a seção "Explanation" ao abrir o popup
+  navLinks.forEach((link) => {
+    link.style.color = "#FFF"; // Reseta todas as cores para branco
+  });
+  navLinks[0].style.color = "#4CA6A8"; // Define a cor da seção "Explanation" como selecionada
 }
 
 // Função para aplicar a lógica de cor nas palavras
 function applyColorLogic(title) {
-    const letterToChange = 'S';
-    let changeIndex = title.indexOf(letterToChange); // Primeiro "S"
+  const letterToChange = "S";
+  let changeIndex = title.indexOf(letterToChange); // Primeiro "S"
 
-    if (title === 'SELECTIONSORT' || title === 'INSERTIONSORT') {
-        changeIndex = title.indexOf(letterToChange, changeIndex + 1); // Segundo "S"
-    }
+  if (title === "SELECTIONSORT" || title === "INSERTIONSORT") {
+    changeIndex = title.indexOf(letterToChange, changeIndex + 1); // Segundo "S"
+  }
 
-    // Verifique se a letra foi encontrada e aplique a alteração
-    if (changeIndex !== -1) {
-        const firstPart = title.substring(0, changeIndex);
-        const secondPart = title.substring(changeIndex);
-        return `<span style="color: #4CA6A8;">${firstPart}</span>` +
-            `<span style="color: #FFF;">${secondPart}</span>`;
-    } else {
-        return title; // Retorna o título original se nenhuma letra for encontrada
-    }
+  // Verifique se a letra foi encontrada e aplique a alteração
+  if (changeIndex !== -1) {
+    const firstPart = title.substring(0, changeIndex);
+    const secondPart = title.substring(changeIndex);
+    return (
+      `<span style="color: #4CA6A8;">${firstPart}</span>` +
+      `<span style="color: #FFF;">${secondPart}</span>`
+    );
+  } else {
+    return title; // Retorna o título original se nenhuma letra for encontrada
+  }
 }
 
 // Função para fechar o popup
 function closePopup() {
-    document.getElementById('popup').style.display = 'none'; // Oculta o pop-up
+  document.getElementById("popup").style.display = "none"; // Oculta o pop-up
 }

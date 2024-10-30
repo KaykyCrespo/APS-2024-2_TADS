@@ -425,6 +425,23 @@ main {
                     margin: 1vw;
                     width: 100%;
                 }
+
+                #details-container {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 1.3vw;
+                    width: 100%;
+                }
+                
+                #popup-left-column-details,
+                #popup-right-column-details {
+                    font-family: 'Fira Code', monospace;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 0.3vw;
+                    padding: 1vw 1vw 0 1.5vw;
+                    margin: 1vw;
+                    width: 100%;
+                }
                 
                 
 
