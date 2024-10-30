@@ -49,7 +49,7 @@ const sortAlgorithms = {
                                             <div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-2"><span class="code-coler-topics">Second</span> iteration (i = 1):</h3>
                                                 <ul>
-                                                    <li id="item-4">Compare the second with the third, is it greater? No.
+                                                    <li id="item-4">Compare the second with the third, is it greater? No.</li>
                                                     <li id="item-5">No swap needed.</li>
                                                     <li id="item-6">The array remains: [11, 22, 54, 32].</li>
                                                 </ul>
@@ -106,7 +106,7 @@ const sortAlgorithms = {
                                             </div>`,
 
     detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION: </span></h3>
+        <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
         <ul>
             <li id="item-1">Start with an array or list of elements that you want to sort.</li>
         </ul>
@@ -131,7 +131,7 @@ const sortAlgorithms = {
     </div>`,
 
     detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-5"><span class="code-coler-topics">5. REPEAT UNTIL THE END OF THE LIST: </span></h3>
+        <h3 id="title-5"><span class="code-coler-topics">5. REPEAT UNTIL THE END OF THE LIST:</span></h3>
         <ul>
             <li id="item-5">Continue doing this until you reach the end of the list. After one complete pass, the largest number will be in the last position.</li>
         </ul>
@@ -238,46 +238,38 @@ const sortAlgorithms = {
                                         <div class="step-item" style="margin-bottom: 20px;">
                                             <h3 id="title-2"><span class="code-coler-topics">2. INITIAL SELECTION:</span></h3>
                                             <ul>
-                                                <li id="item-3">Begin with the second number in the list, assuming that the first number is already in the "sorted sublist."</li>
+                                                <li id="item-2">Begin with the second number in the list, assuming that the first number is already in the "sorted sublist."</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">3. SWAP IF NECESSARY:</span></h3>
+                                            <h3 id="title-3"><span class="code-coler-topics">3. COMPARISON AND INSERTION:</span></h3>
                                             <ul>
-                                                <li id="item-3">If the first number is greater than the second, swap them. If not, leave them as they are.</li>
+                                                <li id="item-3">Compare the selected number with the numbers in the "sorted sublist.</li>
+                                                <li id="item-4">If the current number is smaller than the previous ones, move each larger number one position ahead to make space.</li>
                                             </ul>
                                         </div>
-                                        <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-4"><span class="code-coler-topics">4. MOVE TO THE NEXT PAIR:</span></h3>
-                                            <ul>
-                                                <li id="item-3">Move to the next number and repeat step 2, comparing it with the next one.</li>
-                                            </ul>
-                                        </div>`,
+                                        `,
 
     detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">5. REPEAT UNTIL THE END OF THE LIST: </span></h3>
+                                            <h3 id="title-1"><span class="code-coler-topics">4. POSITIONING THE NUMBER:</span></h3>
                                             <ul>
-                                                <li id="item-1">Continue doing this until you reach the end of the list. After one complete pass, the largest number will be in the last position.</li>
+                                                <li id="item-1">Place the current number in its correct position within the sublist to keep it sorted.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span class="code-coler-topics">6. RESTART FOR INITIAL UNORDERED LIST:</span></h3>
+                                            <h3 id="title-2"><span class="code-coler-topics">5. MOVE TO THE NEXT NUMBER:</span></h3>
                                             <ul>
-                                                <li id="item-3">Start again from the beginning of the list. Repeat steps 2 to 5, but ignore the last number, as it is already sorted.</li>
+                                                <li id="item-2">Proceed to the next number in the original list and repeat steps 3 and 4.</li>
+                                                <li id="item-3">Continue this process for each number, expanding the "sorted sublist" until all numbers have been processed.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">7. REPETITION:</span></h3>
+                                            <h3 id="title-3"><span class="code-coler-topics">6. COMPLETION:</span></h3>
                                             <ul>
-                                                <li id="item-3">Keep repeating this process, each time ignoring the last sorted number, until no more swaps are made. This means the list is sorted.</li>
+                                                <li id="item-4">When all the numbers have been inserted, the list will be sorted.</li>
                                             </ul>
                                         </div>
-                                        <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-4"><span class="code-coler-topics">8. CONCLUDE:</span></h3>
-                                            <ul>
-                                                <li id="item-3">When you pass through the list without making any swaps, the algorithm terminates, and the list is completely sorted.</li>
-                                            </ul>
-                                            </div>`,
+                                        `,
     imagePath: "imgs/insertionsort.jpg",
   },
   "Selectionsort Information": {
@@ -357,7 +349,50 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             `,
-    details: "",
+
+    detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+                                            <ul>
+                                                <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-2"><span class="code-coler-topics">2. ITERATING THROUGH THE ARRAY:</span></h3>
+                                            <ul>
+                                                <li id="item-2">For each position i in the array (from the first to the second-to-last element).</li>
+                                                <li id="item-3">Set i as the index of the smallest element found.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-3"><span class="code-coler-topics">3. FINDING THE SMALLEST ELEMENT:</span></h3>
+                                            <ul>
+                                                <li id="item-4">Traverse the remaining part of the array (from index i + 1 to the end) to find the smallest element.</li>
+                                                <li id="item-5">If a smaller element is found, update i to the index of that element.</li>
+                                            </ul>
+                                        </div>
+                                        `,
+
+    detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-1"><span class="code-coler-topics">4. SWAP:</span></h3>
+                                            <ul>
+                                                <li id="item-1">After finding the smallest element in the unsorted part of the array.</li>
+                                                <li id="item-2">Swap this smallest element with the element at the current position i.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-3"><span class="code-coler-topics">5. REPEAT:</span></h3>
+                                            <ul>
+                                                <li id="item-4">Repeat steps 2 to 4 until the entire array is sorted.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-3"><span class="code-coler-topics">6. COMPLETION: </span></h3>
+                                            <ul>
+                                                <li id="item-5">When all the numbers have been inserted, the list will be sorted.</li>
+                                            </ul>
+                                        </div>
+                                        `,
+
     imagePath: "imgs/selectionsort.jpg",
   },
   "Heapsort Information": {
@@ -462,7 +497,50 @@ const sortAlgorithms = {
                                                 
                                             </div>
                                             `,
-    details: "",
+
+    detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+                                            <ul>
+                                                <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-2"><span class="code-coler-topics">2. BUILD A MAX-HEAP:</span></h3>
+                                            <ul>
+                                                <li id="item-2">Construct a binary tree called a "heap" from the list, where the highest value is at the top (root).</li>
+                                                <li id="item-3">To do this, adjust the tree starting from the middle elements and moving towards the beginning, ensuring that each parent is greater than its children.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-3"><span class="code-coler-topics">3. EXTRACT THE LARGEST ELEMENT:</span></h3>
+                                            <ul>
+                                                <li id="item-4">After building the Max-Heap, the largest number will be at the root of the tree.</li>
+                                                <li id="item-5">Swap the root value with the last value in the list (end of the heap).</li>
+                                                <li id="item-6">Remove this last value from the heap (it is now in its correct sorted position in the list).</li>
+                                            </ul>
+                                        </div>
+                                        `,
+
+    detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-1"><span class="code-coler-topics">4. ADJUST THE HEAP:</span></h3>
+                                            <ul>
+                                                <li id="item-1">With the original root removed, the new value at the root must maintain the Max-Heap property.</li>
+                                                <li id="item-2">Restructure the tree so the largest value returns to the top.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-3"><span class="code-coler-topics">5. REPEAT:</span></h3>
+                                            <ul>
+                                                <li id="item-4">Repeat steps 3 and 4 until the entire list is sorted, and the tree is empty.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="step-item" style="margin-bottom: 20px;">
+                                            <h3 id="title-3"><span class="code-coler-topics">6. COMPLETION: </span></h3>
+                                            <ul>
+                                                <li id="item-5">When all the numbers have been inserted, the list will be sorted.</li>
+                                            </ul>
+                                        </div>
+                                        `,
 
     imagePath: "imgs/heapsort.jpg",
   },
