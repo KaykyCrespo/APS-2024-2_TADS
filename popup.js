@@ -108,7 +108,60 @@ const sortAlgorithms = {
                                                     <li id="item-24">The array is now: [11, 22, 32, 54].</h3></li>
                                                 </ul>
                                             </div>`,
-        details: '',
+        details:  `<div class="step-item" style="margin-bottom: 20px;">
+        <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION: </span></h3>
+        <ul>
+            <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+        </ul>
+    </div>
+    <div class="step-item" style="margin-bottom: 20px;">
+        <h3 id="title-2"><span class="code-coler-topics">2. INITIAL COMPARISON:</span></h3>
+        <ul>
+            <li id="item-3">Begin with the first number in the list. Compare this number with the next number.</li>
+        </ul>
+    </div>
+    <div class="step-item" style="margin-bottom: 20px;">
+        <h3 id="title-3"><span class="code-coler-topics">3. SWAP IF NECESSARY:</span></h3>
+        <ul>
+            <li id="item-3">If the first number is greater than the second, swap them. If not, leave them as they are.</li>
+        </ul>
+    </div>
+    <div class="step-item" style="margin-bottom: 20px;">
+        <h3 id="title-4"><span class="code-coler-topics">4. MOVE TO THE NEXT PAIR:</span></h3>
+        <ul>
+            <li id="item-3">Move to the next number and repeat step 2, comparing it with the next one.</li>
+        </ul>
+    </div>`,
+
+details: `<div class="step-item" style="margin-bottom: 20px;">
+        <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION: </span></h3>
+        <ul>
+            <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+        </ul>
+    </div>
+    <div class="step-item" style="margin-bottom: 20px;">
+        <h3 id="title-2"><span class="code-coler-topics">2. INITIAL COMPARISON:</span></h3>
+        <ul>
+            <li id="item-3">Begin with the first number in the list. Compare this number with the next number.</li>
+        </ul>
+    </div>
+    <div class="step-item" style="margin-bottom: 20px;">
+        <h3 id="title-3"><span class="code-coler-topics">3. SWAP IF NECESSARY:</span></h3>
+        <ul>
+            <li id="item-3">If the first number is greater than the second, swap them. If not, leave them as they are.</li>
+        </ul>
+    </div>
+    <div class="step-item" style="margin-bottom: 20px;">
+        <h3 id="title-4"><span class="code-coler-topics">4. MOVE TO THE NEXT PAIR:</span></h3>
+        <ul>
+            <li id="item-3">Move to the next number and repeat step 2, comparing it with the next one.</li>
+        </ul>
+        </div>`,
+
+
+
+
+        
         imagePath: 'imgs/bubblesort.jpg',
     },
     'Insertionsort Information': {
