@@ -356,16 +356,16 @@ const sortAlgorithms = {
                                                 <h3 id="title-3"><span class="code-coler-topics">Third:</span></h3>
                                                 <ul>
                                                     <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li>
-                                                    <h3 id="title-7"><span class="code-coler-topics">1. First Extraction:</span></h3>
-                                                    <li id="item-9">Swap the largest element (54) with the last element (11):           List: [11, 32, 22, 54]</li>
+                                                    <h3 id="title-4"><span class="code-coler-topics">1. First Extraction:</span></h3>
+                                                    <li id="item-9">Swap the largest element (54) with the last element (11): List: [11, 32, 22, 54]</li>
+                                                    <li id="item-10">Ignore the last element (54) as it is already in its final position.</li>
+                                                    <li id="item-11">Restructure the heap so that 11 moves to its correct position. Swap 11 with 32: List: [32, 11, 22, 54].</li>
+
+                                                    <h3 id="title-5"><span class="code-coler-topics">2. Second Extraction:</span></h3>
+                                                    <li id="item-12">Swap the largest remaining element (32) with the last unsorted element (22):List: [22, 11, 32, 54]</li>
+                                                    <li id="item-13">Ignore the last two elements (32 and 54) since they are already sorted. 22 becomes the new root, and since it is already in the correct position, the heap is balanced.</li>
                                                 </ul>
                                                 
-                                            </div>
-                                            <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-10"><span class="code-coler-topics">Fourth</span> iteration (i = 3):</h3>
-                                                <ul>
-                                                    <li id="item-11">Only one element (54) remains, so no swap is needed.</li>
-                                                </ul>
                                             </div>
                                             `,
         details: '',
