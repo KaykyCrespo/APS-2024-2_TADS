@@ -564,20 +564,14 @@ function showPopup(sortType) {
   document.getElementById("popup-code").innerHTML = algorithm.code;
   document.getElementById("popup-code2").innerHTML = algorithm.code2 || "";
   document.getElementById("popup-code3").innerHTML = algorithm.code3 || "";
-  document.getElementById("popup-step-by-step").innerHTML =
-    algorithm.stepByStep || "";
+  document.getElementById("popup-step-by-step").innerHTML = algorithm.stepByStep || "";
 
-  document.getElementById("popup-title-step-by-step").innerHTML =
-    algorithm.subtitle;
-  document.getElementById("popup-left-column-step-by-step").innerHTML =
-    algorithm.stepByStepLeft;
-  document.getElementById("popup-right-column-step-by-step").innerHTML =
-    algorithm.stepByStepRight;
+  document.getElementById("popup-title-step-by-step").innerHTML = algorithm.subtitle;
+  document.getElementById("popup-left-column-step-by-step").innerHTML = algorithm.stepByStepLeft;
+  document.getElementById("popup-right-column-step-by-step").innerHTML = algorithm.stepByStepRight;
 
-  document.getElementById("popup-left-column-details").innerHTML =
-    algorithm.detailsLeft;
-  document.getElementById("popup-right-column-details").innerHTML =
-    algorithm.detailsRight;
+  document.getElementById("popup-left-column-details").innerHTML = algorithm.detailsLeft;
+  document.getElementById("popup-right-column-details").innerHTML = algorithm.detailsRight;
 
   document.getElementById("popup-details").innerHTML = algorithm.details || "";
   document.querySelector(".popup-image").src = algorithm.imagePath;
@@ -603,8 +597,7 @@ function showPopup(sortType) {
       "popup-details",
     ];
     sections.forEach((id) => {
-      document.getElementById(id).style.display =
-        id === sectionId ? "block" : "none";
+      document.getElementById(id).style.display = id === sectionId ? "block" : "none";
     });
 
     const titleElement = document.getElementById("popup-title");
@@ -625,16 +618,13 @@ function showPopup(sortType) {
     }
 
     // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
-    const titleStepByStepElement = document.getElementById(
-      "popup-title-step-by-step"
-    );
+    const titleStepByStepElement = document.getElementById("popup-title-step-by-step");
     const isStepByStep = sectionId === "popup-step-by-step";
     titleStepByStepElement.style.display = isStepByStep ? "block" : "none";
 
     // Remove a imagem se a seção ativa não for a de explicação
     const imageElement = document.querySelector(".popup-image");
-    imageElement.style.display =
-      sectionId === "popup-explanation" ? "block" : "none";
+    imageElement.style.display = sectionId === "popup-explanation" ? "block" : "none";
 
     // Mostra ou oculta o code2 com base na seção ativa
     const code2Element = document.getElementById("popup-code2");
@@ -642,43 +632,28 @@ function showPopup(sortType) {
 
     // Mostra ou oculta o code3 com base na seção ativa e no tipo de ordenação
     const code3Element = document.getElementById("popup-code3");
-    code3Element.style.display =
-      sectionId === "popup-code" && sortType === "Heapsort Information"
-        ? "block"
-        : "none";
+    code3Element.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "block" : "none";
 
     // Mostra o stepBystepContainerElement apenas na seção "popup-step-by-step"
-    const stepBystepContainerElement = document.getElementById(
-      "step-by-step-container"
-    );
-    stepBystepContainerElement.style.display =
-      sectionId === "popup-step-by-step" ? "flex" : "none";
+    const stepBystepContainerElement = document.getElementById("step-by-step-container");
+    stepBystepContainerElement.style.display = sectionId === "popup-step-by-step" ? "flex" : "none";
 
-    const stepByStepLeft = document.getElementById(
-      "popup-left-column-step-by-step"
-    );
-    stepByStepLeft.style.display =
-      sectionId === "popup-step-by-step" ? "block" : "none";
+    const stepByStepLeft = document.getElementById("popup-left-column-step-by-step");
+    stepByStepLeft.style.display = sectionId === "popup-step-by-step" ? "block" : "none";
 
-    const stepByStepRight = document.getElementById(
-      "popup-right-column-step-by-step"
-    );
-    stepByStepRight.style.display =
-      sectionId === "popup-step-by-step" ? "block" : "none";
+    const stepByStepRight = document.getElementById("popup-right-column-step-by-step");
+    stepByStepRight.style.display = sectionId === "popup-step-by-step" ? "block" : "none";
 
     // Mostra o detailsContainerElementElement apenas na seção "popup-step-by-step"
-    const detailsContainerElement =
-      document.getElementById("details-container");
-    detailsContainerElement.style.display =
-      sectionId === "popup-details" ? "flex" : "none";
+    const detailsContainerElement = document.getElementById("details-container");
+    detailsContainerElement.style.display = sectionId === "popup-details" ? "flex" : "none";
 
     const detailsLeft = document.getElementById("popup-left-column-details");
-    detailsLeft.style.display =
-      sectionId === "popup-details" ? "block" : "none";
+    detailsLeft.style.display = sectionId === "popup-details" ? "block" : "none";
 
     const detailsRight = document.getElementById("popup-right-column-details");
-    detailsRight.style.display =
-      sectionId === "popup-details" ? "block" : "none";
+    detailsRight.style.display = sectionId === "popup-details" ? "block" : "none";
+  
   }
 
   // Adiciona um evento para cada link da navbar
