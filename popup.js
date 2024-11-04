@@ -550,128 +550,129 @@ const sortAlgorithms = {
         function showPopup(sortType) {
     const algorithm = sortAlgorithms[sortType];
 
-  if (!algorithm) {
-    console.error("Sort type not recognized.");
-    return;
+    if (!algorithm) {
+        console.error("Sort type not recognized.");
+        return;
     }
 
     // Atualiza o conteúdo do pop-up
-        document.getElementById("popup-title").innerHTML = applyColorLogic(algorithm.title);
-          document.getElementById("popup-explanation").innerHTML = algorithm.explanation;
-  document.getElementById("popup-code").innerHTML = algorithm.code;
-  document.getElementById("popup-code2").innerHTML = algorithm.code2 || "";
-        document.getElementById("popup-code3").innerHTML = algorithm.code3 || "";
-        document.getElementById("popup-step-by-step").innerHTML = algorithm.stepByStep || "";
+    document.getElementById("popup-title").innerHTML = applyColorLogic(algorithm.title);
+    document.getElementById("popup-explanation").innerHTML = algorithm.explanation;
+    document.getElementById("popup-code").innerHTML = algorithm.code;
+    document.getElementById("popup-code2").innerHTML = algorithm.code2 || "";
+    document.getElementById("popup-code3").innerHTML = algorithm.code3 || "";
+    document.getElementById("popup-step-by-step").innerHTML = algorithm.stepByStep || "";
             
-        document.getElementById("popup-title-step-by-step").innerHTML = algorithm.subtitle;
-        document.getElementById("popup-left-column-step-by-step").innerHTML = algorithm.stepByStepLeft;
-            document.getElementById("popup-right-column-step-by-step").innerHTML = algorithm.stepByStepRight;
+    document.getElementById("popup-title-step-by-step").innerHTML = algorithm.subtitle;
+    document.getElementById("popup-left-column-step-by-step").innerHTML = algorithm.stepByStepLeft;
+        document.getElementById("popup-right-column-step-by-step").innerHTML = algorithm.stepByStepRight;
         
-        document.getElementById("popup-left-column-details").innerHTML = algorithm.detailsLeft;
-        document.getElementById("popup-right-column-details").innerHTML = algorithm.detailsRight;
+    document.getElementById("popup-left-column-details").innerHTML = algorithm.detailsLeft;
+    document.getElementById("popup-right-column-details").innerHTML = algorithm.detailsRight;
         
-  document.getElementById("popup-details").innerHTML = algorithm.details || "";
-        document.querySelector(".popup-image").src = algorithm.imagePath;
+    document.getElementById("popup-details").innerHTML = algorithm.details || "";
+    document.querySelector(".popup-image").src = algorithm.imagePath;
         
-        // Exibe o pop-up e ativa a aba de explicação
-  document.getElementById("popup").style.display = "flex";
-        showSection("popup-explanation"); // Exibe a seção de explicação por padrão ao abrir o popup
+    // Exibe o pop-up e ativa a aba de explicação
+    document.getElementById("popup").style.display = "flex";
+    showSection("popup-explanation"); // Exibe a seção de explicação por padrão ao abrir o popup
         
-  // Fecha o popup ao clicar fora dele
-        window.onclick = function (event) {
+    // Fecha o popup ao clicar fora dele
+    window.onclick = function (event) {
           const popup = document.getElementById("popup");
-    if (event.target === popup) {
+        if (event.target === popup) {
             closePopup();
-          }
-        };
+            }
+    };
 
-        // Função para mostrar e ocultar seções com base no ID
-        function showSection(sectionId) {
-            const sections = [
-              "popup-explanation",
-                "popup-code",
-              "popup-step-by-step",
+    // Função para mostrar e ocultar seções com base no ID
+    function showSection(sectionId) {
+        const sections = [
+            "popup-explanation",
+            "popup-code",
+            "popup-step-by-step",
             "popup-details",
-    ];
-          sections.forEach((id) => {
+        ];
+        sections.forEach((id) => {
             document.getElementById(id).style.display = id === sectionId ? "block" : "none";
             });
                 
-                const titleElement = document.getElementById("popup-title");
-                
-                // Condicional para mover o título para o topo ou manter no centro
+            const titleElement = document.getElementById("popup-title");
+            
+            // Condicional para mover o título para o topo ou manter no centro
             if (
-              sectionId === "popup-code" ||
+                sectionId === "popup-code" ||
                 sectionId === "popup-step-by-step" ||
-              sectionId === "popup-details"
-    ) {
-              titleElement.style.position = "absolute";
-      titleElement.style.top = "-7vw"; // Posiciona no topo do pop-up
-              titleElement.style.left = "15%";
-              titleElement.style.transform = "translateX(-50%)";
+                sectionId === "popup-details"
+            ) {
+
+                titleElement.style.position = "absolute";
+                titleElement.style.top = "-7vw"; // Posiciona no topo do pop-up
+                titleElement.style.left = "15%";
+                titleElement.style.transform = "translateX(-50%)";
     } else {
-            titleElement.style.position = "static"; // Retorna o título para o posicionamento padrão (meio)
-            titleElement.style.transform = "none";
+        titleElement.style.position = "static"; // Retorna o título para o posicionamento padrão (meio)
+        titleElement.style.transform = "none";
     }
             
-            // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
-            const titleStepByStepElement = document.getElementById("popup-title-step-by-step");
-            const isStepByStep = sectionId === "popup-step-by-step";
-        titleStepByStepElement.style.display = isStepByStep ? "block" : "none";
+    // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
+    const titleStepByStepElement = document.getElementById("popup-title-step-by-step");
+    const isStepByStep = sectionId === "popup-step-by-step";
+    titleStepByStepElement.style.display = isStepByStep ? "block" : "none";
             
-            // Remove a imagem se a seção ativa não for a de explicação
-        const imageElement = document.querySelector(".popup-image");
+        // Remove a imagem se a seção ativa não for a de explicação
+    const imageElement = document.querySelector(".popup-image");
     imageElement.style.display = sectionId === "popup-explanation" ? "block" : "none";
         
-        // Mostra ou oculta o code2 com base na seção ativa
-        const code2Element = document.getElementById("popup-code2");
-        code2Element.style.display = sectionId === "popup-code" ? "block" : "none";
+    // Mostra ou oculta o code2 com base na seção ativa
+    const code2Element = document.getElementById("popup-code2");
+    code2Element.style.display = sectionId === "popup-code" ? "block" : "none";
 
-        // Mostra ou oculta o code3 com base na seção ativa e no tipo de ordenação
-        const code3Element = document.getElementById("popup-code3");
-        code3Element.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "block" : "none";
+    // Mostra ou oculta o code3 com base na seção ativa e no tipo de ordenação
+    const code3Element = document.getElementById("popup-code3");
+    code3Element.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "block" : "none";
 
-        // Mostra o stepBystepContainerElement apenas na seção "popup-step-by-step"
-        const stepBystepContainerElement = document.getElementById("step-by-step-container");
-        stepBystepContainerElement.style.display = sectionId === "popup-step-by-step" ? "flex" : "none";
+    // Mostra o stepBystepContainerElement apenas na seção "popup-step-by-step"
+    const stepBystepContainerElement = document.getElementById("step-by-step-container");
+    stepBystepContainerElement.style.display = sectionId === "popup-step-by-step" ? "flex" : "none";
 
-        const stepByStepLeft = document.getElementById("popup-left-column-step-by-step");
-        stepByStepLeft.style.display = sectionId === "popup-step-by-step" ? "block" : "none";
+    const stepByStepLeft = document.getElementById("popup-left-column-step-by-step");
+    stepByStepLeft.style.display = sectionId === "popup-step-by-step" ? "block" : "none";
         
     const stepByStepRight = document.getElementById("popup-right-column-step-by-step");
-        stepByStepRight.style.display = sectionId === "popup-step-by-step" ? "block" : "none";
+    stepByStepRight.style.display = sectionId === "popup-step-by-step" ? "block" : "none";
         
-        // Mostra o detailsContainerElementElement apenas na seção "popup-step-by-step"
+    // Mostra o detailsContainerElementElement apenas na seção "popup-step-by-step"
     const detailsContainerElement = document.getElementById("details-container");
-        detailsContainerElement.style.display = sectionId === "popup-details" ? "flex" : "none";
+    detailsContainerElement.style.display = sectionId === "popup-details" ? "flex" : "none";
         
     const detailsLeft = document.getElementById("popup-left-column-details");
-        detailsLeft.style.display = sectionId === "popup-details" ? "block" : "none";
+    detailsLeft.style.display = sectionId === "popup-details" ? "block" : "none";
         
     const detailsRight = document.getElementById("popup-right-column-details");
-        detailsRight.style.display = sectionId === "popup-details" ? "block" : "none";
+    detailsRight.style.display = sectionId === "popup-details" ? "block" : "none";
         
     }
 
     // Adiciona um evento para cada link da navbar
     const navLinks = document.querySelectorAll(".nav-link");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-    const targetId = link.getAttribute("href").substring(1);
-    showSection(targetId); // Exibe a seção clicada e oculta as outras
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        showSection(targetId); // Exibe a seção clicada e oculta as outras
 
-    // Muda a cor do hover para a seção selecionada
-    navLinks.forEach((l) => (l.style.color = "#FFF")); // Reseta a cor para branco
-    link.style.color = "#4CA6A8"; // Altera a cor da seção selecionada
-    });
+        // Muda a cor do hover para a seção selecionada
+        navLinks.forEach((l) => (l.style.color = "#FFF")); // Reseta a cor para branco
+        link.style.color = "#4CA6A8"; // Altera a cor da seção selecionada
+        });
     });
     
     // Resetar a cor da navbar para a seção "Explanation" ao abrir o popup
-  navLinks.forEach((link) => {
+    navLinks.forEach((link) => {
     link.style.color = "#FFF"; // Reseta todas as cores para branco
 });
-navLinks[0].style.color = "#4CA6A8"; // Define a cor da seção "Explanation" como selecionada
+    navLinks[0].style.color = "#4CA6A8"; // Define a cor da seção "Explanation" como selecionada
 }
 
 
@@ -715,7 +716,7 @@ function applyColorLogic(title) {
         const secondPart = title.substring(changeIndex);
 
         // Escolha a cor com base no modo
-        const color = isDarkMode ? "#FFD700" : "#4CA6A8";
+        const color = isDarkMode ? "#7d8185" : "#4CA6A8";
 
         return (
             `<span style="color: ${color};">${firstPart}</span>` +

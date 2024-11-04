@@ -106,10 +106,31 @@
 
                         #popup{
                             .popup-content{
-                                background-color: var(--quaternary-dark);
+                                background-color: var(--secondary-dark);
+                            } 
+                            
+                            .nav-link.active {
+                                color: red;
+                            }
+
+                            .nav-link:hover {
+                                color: red;
+                                /* Cor ao passar o mouse */
+                            }
+
+                            .active {
+                                color: red;
+                            }
+
+                            .nav-link.active:hover {
+                                color: red;
+                                z-index: 55;
+                            }
+
+                            .popup-title {
+                                color: red;
                             }
                         }
-
                         #big-statistics-blocks-container {
                             .big-statistics-blocks {
                                 border: 0.25vw solid var(--quinternary-dark);
@@ -410,8 +431,4 @@
 
 #coments{
     color: var(--primary-dark);
-}
-
-#popup-title{
-    color: var(--primary-color);
 }
