@@ -397,6 +397,20 @@ main {
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
                     padding: 1vw;
+                    margin: 0 auto;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: auto;
+                    text-align: center;
+                }
+
+                #popup-code4 {
+                    font-family: 'Fira Code', monospace;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 0.3vw;
+                    padding: 1vw;
                     margin: 1vw;
                     min-height: 50px;
                     display: flex;
@@ -404,6 +418,25 @@ main {
                     justify-content: center;
                     overflow: auto;
                     height: auto;
+                }
+
+                #popup-code5 {
+                    font-family: 'Fira Code', monospace;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    border-radius: 0.3vw;
+                    padding: 1vw;
+                    margin: 1vw;
+                    min-height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: auto;
+                    height: auto;
+                    
+                    display: flex;
+                    flex: 1;
+                    flex-direction: column;
+                    align-self: center;
                 }
                 
                 #step-by-step-container {

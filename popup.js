@@ -26,8 +26,9 @@ const sortAlgorithms = {
         &nbsp;total_iterations = bubble_sort(array)<br>
         &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
         &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>
+        `,
 
-        <div style="text-align: center; margin: 0 auto;">
+        code3:`
         array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
         array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
@@ -160,7 +161,8 @@ const sortAlgorithms = {
     "Insertionsort Information": {
         title: "INSERTIONSORT",
         explanation:
-            "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!",
+            "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!"
+            ,
         code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">insertion_sort</span>(array):<br>
         iterations = 0 <span class="code-coler-gray"># Counter for iterations</span><br>
         <br>
@@ -179,14 +181,16 @@ const sortAlgorithms = {
         &nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the iteration of the key movement</span><br>
         <br>
         <span class="code-coler-blue">return</span> iterations`,
+
         code2: `
         <span class="code-coler-gray"># Example of usage</span><br>
         &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br>
         &nbsp;total_iterations = insertion_sort(array)<br>
         &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>
+        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>code2:
+        `,
 
-        <div style="text-align: center; margin: 0 auto;">
+        code3: `
         array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
         array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
@@ -302,9 +306,9 @@ const sortAlgorithms = {
         &nbsp;total_iterations = selection_sort(array) <br>
         &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
         &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
-    </div>
+    </div>`,
     
-    <div style="text-align: center; margin: 0 auto;">
+    code3:`
         array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
         array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
@@ -425,7 +429,8 @@ const sortAlgorithms = {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, i, 0, interactions)  <span class="code-coler-gray"># Call heapify</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">return</span> interactions`,
-        code3: `
+
+        code4: `
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin: 0 auto;">
         <div class="text-center">
         <span class="code-coler-gray"># Example of usage</span> <br>
@@ -433,10 +438,9 @@ const sortAlgorithms = {
         &nbsp;total_iterations = heao_sort(array) <br>
         &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
         &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
-    </div>
+    </div>`,
     
-    
-     <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+     code5: `
         <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
             <div>
                 <span class="code-coler-orange">array</span> = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]
@@ -458,7 +462,6 @@ const sortAlgorithms = {
         </div>
     </div>
 </div>
-    
 `,
         subtitle:
             'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
@@ -547,7 +550,7 @@ const sortAlgorithms = {
 };
 
 // Função para mostrar o pop-up
-        function showPopup(sortType) {
+function showPopup(sortType) {
     const algorithm = sortAlgorithms[sortType];
 
     if (!algorithm) {
@@ -561,6 +564,8 @@ const sortAlgorithms = {
     document.getElementById("popup-code").innerHTML = algorithm.code;
     document.getElementById("popup-code2").innerHTML = algorithm.code2 || "";
     document.getElementById("popup-code3").innerHTML = algorithm.code3 || "";
+    document.getElementById("popup-code4").innerHTML = algorithm.code4 || "";
+    document.getElementById("popup-code5").innerHTML = algorithm.code5 || "";
     document.getElementById("popup-step-by-step").innerHTML = algorithm.stepByStep || "";
             
     document.getElementById("popup-title-step-by-step").innerHTML = algorithm.subtitle;
@@ -620,7 +625,7 @@ const sortAlgorithms = {
     const isStepByStep = sectionId === "popup-step-by-step";
     titleStepByStepElement.style.display = isStepByStep ? "block" : "none";
             
-        // Remove a imagem se a seção ativa não for a de explicação
+    // Remove a imagem se a seção ativa não for a de explicação
     const imageElement = document.querySelector(".popup-image");
     imageElement.style.display = sectionId === "popup-explanation" ? "block" : "none";
         
@@ -630,7 +635,15 @@ const sortAlgorithms = {
 
     // Mostra ou oculta o code3 com base na seção ativa e no tipo de ordenação
     const code3Element = document.getElementById("popup-code3");
-    code3Element.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "block" : "none";
+    code3Element.style.display = sectionId === "popup-code" && sortType !== "Heapsort Information" ? "block" : "none";
+
+    // Mostra ou oculta o code4 com base na seção ativa e no tipo de ordenação
+    const code4Element = document.getElementById("popup-code4");
+    code4Element.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "block" : "none";
+
+    // Mostra ou oculta o code5 com base na seção ativa e no tipo de ordenação
+    const code5Element = document.getElementById("popup-code5");
+    code5Element.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "block" : "none";
 
     // Mostra o stepBystepContainerElement apenas na seção "popup-step-by-step"
     const stepBystepContainerElement = document.getElementById("step-by-step-container");
@@ -727,8 +740,6 @@ function applyColorLogic(title) {
     }
 }
 
-// Atualiza o título no carregamento da página
-updateTitle();
 
 
 
