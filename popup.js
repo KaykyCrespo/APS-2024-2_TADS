@@ -163,11 +163,11 @@ const sortAlgorithms = {
             title: "BUBBLESORT",
         explanation:
             "O algoritmo de ordenação por bolha organiza uma lista comparando pares de elementos adjacentes, como crianças em uma fila. Primeiro, olhamos as duas primeiras crianças; se a da esquerda for maior que a da direita, trocamos elas. Continuamos fazendo isso até o final da fila. Repetimos esse processo várias vezes até que ninguém precise mais trocar de lugar. Assim, no final, a fila ficará organizada do menor para o maior!",
-        code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">bubble_sort</span>(array):<br>
-               &nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(array)<br>
-               iterations = 0 <span id="coments"># Interaction counter</span><br>
+        code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">bubble_sort</span>(lista):<br>
+               &nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(lista)<br>
+               interacoes = 0 <span id="coments"># Contador de interações</span><br>
                <br>
-               <span class="code-coler-gray"># Iterate through all of the array</span><br>
+               <span class="code-coler-gray"># Iterate through all da lista</span><br>
                &nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n):<br>
                <br>
                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># The last i elements are already in the correct position</span><br>
@@ -175,8 +175,8 @@ const sortAlgorithms = {
                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Increment the interaction counter</span><br>
                <br>
                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Swap if the found element is greater than the next</span><br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> array[j] > array[j + <span class="code-coler-red">1</span>]:<br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[j], array[j + <span class="code-coler-red">1</span>] = array[j + <span class="code-coler-red">1</span>], array[j]<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> lista[j] > lista[j + <span class="code-coler-red">1</span>]:<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lista[j], lista[j + <span class="code-coler-red">1</span>] = lista[j + <span class="code-coler-red">1</span>], lista[j]<br>
                <br>
                &nbsp;&nbsp;<span class="code-coler-blue">return</span> iterations`,
         code2: `
@@ -233,85 +233,85 @@ const sortAlgorithms = {
                                         `,
 
         stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span class="code-coler-topics">Fifth</span> iteration (i = 4):</h3>
+                                                <h3 id="title-5"><span class="code-coler-topics">Quinta</span> interação (i = 4):</h3>
                                                 <ul>
-                                                    <li id="item-13">Compare the second with the third, is it greater? No.</li>
-                                                    <li id="item-14">No swap needed.</li>
-                                                    <li id="item-15">The array remains: [11, 22, 32, 54].</li>
+                                                    <li id="item-13">Compare o segundo com o terceiro, é maior, não.</li>
+                                                    <li id="item-14">Não há troca necessária.</li>
+                                                    <li id="item-15">A lista permanece: [11, 22, 32, 54].</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-6"><span class="code-coler-topics">Sixth</span> iteration (i = 5):</h3>
+                                                <h3 id="title-6"><span class="code-coler-topics">Sexta</span> interação (i = 5):</h3>
                                                 <ul>
-                                                    <li id="item-16">Compare the third with the fourth, is it greater? No.</li>
-                                                    <li id="item-17">No swap needed.</li>
-                                                    <li id="item-18">The array is now: [11, 22, 32, 54].</li>
+                                                    <li id="item-16">Compare o terceiro com o quarto, é maior, não.</li>
+                                                    <li id="item-17">Não há troca necessária.</li>
+                                                    <li id="item-18">A lista agora é: [11, 22, 32, 54].</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-7"><span class="code-coler-topics">Seventh</span> iteration (i = 6):</h3>
+                                                <h3 id="title-7"><span class="code-coler-topics">Sétima</span> interação (i = 6):</h3>
                                                 <ul>
-                                                    <li id="item-19">Compare the first with the second, is it greater? No.</li>
-                                                    <li id="item-20">No swap needed.</li>
-                                                    <li id="item-21">The array is now: [11, 22, 32, 54].</li>
+                                                    <li id="item-19">Compare o primeiro com o segundo, é maior, não.</li>
+                                                    <li id="item-20">Não há troca necessária.</li>
+                                                    <li id="item-21">A lista agora é: [11, 22, 32, 54].</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-8"><span class="code-coler-topics">Eighth</span> iteration (i = 7):</h3>
+                                                <h3 id="title-8"><span class="code-coler-topics">Oitava</span> interação (i = 7):</h3>
                                                 <ul>
-                                                    <li id="item-22">Compare the second with the third, is it greater? No.</li>
-                                                    <li id="item-23">No swap needed.</li>
-                                                    <li id="item-24">The array is now: [11, 22, 32, 54].</h3></li>
+                                                    <li id="item-22">Compare o segundo com o terceiro, é maior, não.</li>
+                                                    <li id="item-23">Não há troca necessária.</li>
+                                                    <li id="item-24">A lista agora é: [11, 22, 32, 54].</h3></li>
                                                 </ul>
                                             </div>`,
 
         detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+        <h3 id="title-1"><span class="code-coler-topics">1. INICIALIZAÇÃO:</span></h3>
         <ul>
-            <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+            <li id="item-1">Comece com um array ou lista de elementos que você deseja ordenar.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-2"><span class="code-coler-topics">2. INITIAL COMPARISON:</span></h3>
+        <h3 id="title-2"><span class="code-coler-topics">2. COMPARAÇÃO INICIAL:</span></h3>
         <ul>
-            <li id="item-2">Begin with the first number in the list. Compare this number with the next number.</li>
+            <li id="item-2">Comece do primeiro número da lista. Compare esse número com o próximo número.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-3"><span class="code-coler-topics">3. SWAP IF NECESSARY:</span></h3>
+        <h3 id="title-3"><span class="code-coler-topics">3. TROCA SE NECESSÁRIO:</span></h3>
         <ul>
-            <li id="item-3">If the first number is greater than the second, swap them. If not, leave them as they are.</li>
+            <li id="item-3">Se o primeiro número for maior que o segundo, troque-os de lugar. Se não, mantenha-os como estão.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-4"><span class="code-coler-topics">4. MOVE TO THE NEXT PAIR:</span></h3>
+        <h3 id="title-4"><span class="code-coler-topics">4. AVANÇAR PARA O PRÓXIMO PAR:</span></h3>
         <ul>
-            <li id="item-4">Move to the next number and repeat step 2, comparing it with the next one.</li>
+            <li id="item-4">Mova para o próximo número e repita o passo 2, comparando-o com o seguinte.</li>
         </ul>
     </div>`,
 
         detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-5"><span class="code-coler-topics">5. REPEAT UNTIL THE END OF THE LIST:</span></h3>
+        <h3 id="title-5"><span class="code-coler-topics">5. REPETIR ATÉ O FIM DA LISTA:</span></h3>
         <ul>
-            <li id="item-5">Continue doing this until you reach the end of the list. After one complete pass, the largest number will be in the last position.</li>
+            <li id="item-5">Continue fazendo isso até chegar ao final da lista. Após uma passagem completa, o maior número estará na última posição.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-6"><span class="code-coler-topics">6. RESTART FOR INITIAL UNORDERED LIST:</span></h3>
+        <h3 id="title-6"><span class="code-coler-topics">6. REINICIAR PARA LISTA NÃO ORDENADA INICIAL:</span></h3>
         <ul>
-            <li id="item-6">Start again from the beginning of the list. Repeat steps 2 to 5, but ignore the last number, as it is already sorted.</li>
+            <li id="item-6">Comece novamente do início da lista. Repita os passos 2 a 5, mas ignore o último número, pois já está ordenado.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-7"><span class="code-coler-topics">7. REPETITION:</span></h3>
+        <h3 id="title-7"><span class="code-coler-topics">7. REPETIÇÃO:</span></h3>
         <ul>
-            <li id="item-8">Keep repeating this process, each time ignoring the last sorted number, until no more swaps are made. This means the list is sorted.</li>
+            <li id="item-8">Continue repetindo esse processo, cada vez ignorando o último número ordenado, até que não haja mais trocas. Isso significa que a lista está ordenada.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-8"><span class="code-coler-topics">8. CONCLUDE:</span></h3>
+        <h3 id="title-8"><span class="code-coler-topics">8. CONCLUIR:</span></h3>
         <ul>
-            <li id="item-8">When you pass through the list without making any swaps, the algorithm terminates, and the list is completely sorted.</li>
+            <li id="item-8">Quando você passar pela lista sem fazer nenhuma troca, o algoritmo termina, e a lista está completamente ordenada.</li>
         </ul>
         </div>`,
 

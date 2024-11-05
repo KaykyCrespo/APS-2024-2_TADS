@@ -305,9 +305,7 @@ main {
 
                 .nav-link.active {
                     color: #4CA6A8;
-                    /* Cor da aba ativa */
                     font-weight: bold;
-                    /* Para deixar a aba ativa em negrito */
                 }
 
                 .nav-link:hover {

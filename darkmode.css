@@ -104,6 +104,10 @@
                             }
                         }
 
+                        .popup-navbar {
+                            border-bottom: 0.1vw solid var(--quaternary-dark);
+                        }
+
                         #popup{
                             .popup-content{
                                 background-color: var(--secondary-dark);
