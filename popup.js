@@ -5,43 +5,43 @@ const sortAlgorithms = {
             title: "BUBBLESORT",
             explanation:
                 "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
-            code: `<span id="blue" style="color: var(--blue)">def</span> <span class="code-coler-red">bubble_sort</span>(array):<br>
-               &nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(array)<br>
+            code: `<span id="blue" style="color: var(--blue)">def</span> <span style = "color: var(--red)">bubble_sort</span>(array):<br>
+               &nbsp;&nbsp;n = <span style = "color: var(--orange)">len</span>(array)<br>
                iterations = 0 <span id="coments"># Interaction counter</span><br>
                <br>
-               <span class="code-coler-gray"># Iterate through all of the array</span><br>
-               &nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n):<br>
+               <span style = "color: var(--gray-popup)"># Iterate through all of the array</span><br>
+               &nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n):<br>
                <br>
-               &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># The last i elements are already in the correct position</span><br>
-               &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> j <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(<span class="code-coler-red">0</span>, n - i - <span class="code-coler-red">1</span>):<br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Increment the interaction counter</span><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># The last i elements are already in the correct position</span><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">for</span> j <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(<span style = "color: var(--red)">0</span>, n - i - <span style = "color: var(--red)">1</span>):<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Increment the interaction counter</span><br>
                <br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Swap if the found element is greater than the next</span><br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> array[j] > array[j + <span class="code-coler-red">1</span>]:<br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[j], array[j + <span class="code-coler-red">1</span>] = array[j + <span class="code-coler-red">1</span>], array[j]<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Swap if the found element is greater than the next</span><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> array[j] > array[j + <span style = "color: var(--red)">1</span>]:<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[j], array[j + <span style = "color: var(--red)">1</span>] = array[j + <span style = "color: var(--red)">1</span>], array[j]<br>
                <br>
-               &nbsp;&nbsp;<span class="code-coler-blue">return</span> iterations`,
+               &nbsp;&nbsp;<span style = "color: var(--blue)">return</span> iterations`,
             code2: `
-        <span class="code-coler-gray"># Example of usage</span><br>
-        &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br>
+        <span style = "color: var(--gray-popup)"># Example of usage</span><br>
+        &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br>
         &nbsp;total_iterations = bubble_sort(array)<br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>
         `,
 
             code3: `
-        array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]<br><br>
         </div>`,
 
             subtitle:
-                'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">Compare the first with the second, is it greater? Yes.</li>
                                                     <li id="item-2">Swap 22 with 11.</li>
@@ -49,7 +49,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">Second</span> iteration (i = 1):</h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">Second</span> iteration (i = 1):</h3>
                                                 <ul>
                                                     <li id="item-4">Compare the second with the third, is it greater? No.</li>
                                                     <li id="item-5">No swap needed.</li>
@@ -57,7 +57,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
+                                                <h3 id="title-3"><span style = "color: var(--topics)">Third</span> iteration (i = 2):</h3>
                                                 <ul>
                                                     <li id="item-7">Compare the third with the fourth, is it greater? Yes.</li>
                                                     <li id="item-8">Swap 32 with 54.</li>
@@ -65,7 +65,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-4"><span class="code-coler-topics">Fouth</span> iteration (i = 3):</h3>
+                                                <h3 id="title-4"><span style = "color: var(--topics)">Fouth</span> iteration (i = 3):</h3>
                                                 <ul>
                                                     <li id="item-10">Compare the first with the second, is it greater? No.</li>
                                                     <li id="item-11">No swap needed.</li>
@@ -75,7 +75,7 @@ const sortAlgorithms = {
                                         `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span class="code-coler-topics">Fifth</span> iteration (i = 4):</h3>
+                                                <h3 id="title-5"><span style = "color: var(--topics)">Fifth</span> iteration (i = 4):</h3>
                                                 <ul>
                                                     <li id="item-13">Compare the second with the third, is it greater? No.</li>
                                                     <li id="item-14">No swap needed.</li>
@@ -83,7 +83,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-6"><span class="code-coler-topics">Sixth</span> iteration (i = 5):</h3>
+                                                <h3 id="title-6"><span style = "color: var(--topics)">Sixth</span> iteration (i = 5):</h3>
                                                 <ul>
                                                     <li id="item-16">Compare the third with the fourth, is it greater? No.</li>
                                                     <li id="item-17">No swap needed.</li>
@@ -91,7 +91,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-7"><span class="code-coler-topics">Seventh</span> iteration (i = 6):</h3>
+                                                <h3 id="title-7"><span style = "color: var(--topics)">Seventh</span> iteration (i = 6):</h3>
                                                 <ul>
                                                     <li id="item-19">Compare the first with the second, is it greater? No.</li>
                                                     <li id="item-20">No swap needed.</li>
@@ -99,7 +99,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-8"><span class="code-coler-topics">Eighth</span> iteration (i = 7):</h3>
+                                                <h3 id="title-8"><span style = "color: var(--topics)">Eighth</span> iteration (i = 7):</h3>
                                                 <ul>
                                                     <li id="item-22">Compare the second with the third, is it greater? No.</li>
                                                     <li id="item-23">No swap needed.</li>
@@ -108,50 +108,50 @@ const sortAlgorithms = {
                                             </div>`,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+        <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
         <ul>
             <li id="item-1">Start with an array or list of elements that you want to sort.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-2"><span class="code-coler-topics">2. INITIAL COMPARISON:</span></h3>
+        <h3 id="title-2"><span style = "color: var(--topics)">2. INITIAL COMPARISON:</span></h3>
         <ul>
             <li id="item-2">Begin with the first number in the list. Compare this number with the next number.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-3"><span class="code-coler-topics">3. SWAP IF NECESSARY:</span></h3>
+        <h3 id="title-3"><span style = "color: var(--topics)">3. SWAP IF NECESSARY:</span></h3>
         <ul>
             <li id="item-3">If the first number is greater than the second, swap them. If not, leave them as they are.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-4"><span class="code-coler-topics">4. MOVE TO THE NEXT PAIR:</span></h3>
+        <h3 id="title-4"><span style = "color: var(--topics)">4. MOVE TO THE NEXT PAIR:</span></h3>
         <ul>
             <li id="item-4">Move to the next number and repeat step 2, comparing it with the next one.</li>
         </ul>
     </div>`,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-5"><span class="code-coler-topics">5. REPEAT UNTIL THE END OF THE LIST:</span></h3>
+        <h3 id="title-5"><span style = "color: var(--topics)">5. REPEAT UNTIL THE END OF THE LIST:</span></h3>
         <ul>
             <li id="item-5">Continue doing this until you reach the end of the list. After one complete pass, the largest number will be in the last position.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-6"><span class="code-coler-topics">6. RESTART FOR INITIAL UNORDERED LIST:</span></h3>
+        <h3 id="title-6"><span style = "color: var(--topics)">6. RESTART FOR INITIAL UNORDERED LIST:</span></h3>
         <ul>
             <li id="item-6">Start again from the beginning of the list. Repeat steps 2 to 5, but ignore the last number, as it is already sorted.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-7"><span class="code-coler-topics">7. REPETITION:</span></h3>
+        <h3 id="title-7"><span style = "color: var(--topics)">7. REPETITION:</span></h3>
         <ul>
             <li id="item-8">Keep repeating this process, each time ignoring the last sorted number, until no more swaps are made. This means the list is sorted.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-8"><span class="code-coler-topics">8. CONCLUDE:</span></h3>
+        <h3 id="title-8"><span style = "color: var(--topics)">8. CONCLUDE:</span></h3>
         <ul>
             <li id="item-8">When you pass through the list without making any swaps, the algorithm terminates, and the list is completely sorted.</li>
         </ul>
@@ -163,43 +163,43 @@ const sortAlgorithms = {
             title: "BUBBLESORT",
             explanation:
                 "O algoritmo de ordenação por bolha organiza uma lista comparando pares de elementos adjacentes, como crianças em uma fila. Primeiro, olhamos as duas primeiras crianças; se a da esquerda for maior que a da direita, trocamos elas. Continuamos fazendo isso até o final da fila. Repetimos esse processo várias vezes até que ninguém precise mais trocar de lugar. Assim, no final, a fila ficará organizada do menor para o maior!",
-            code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">bubble_sort</span>(lista):<br>
-               &nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(lista)<br>
+            code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">bubble_sort</span>(lista):<br>
+               &nbsp;&nbsp;n = <span style = "color: var(--orange)">len</span>(lista)<br>
                interacoes = 0 <span id="coments"># Contador de interações</span><br>
                <br>
-               <span class="code-coler-gray"># Iterate through all da lista</span><br>
-               &nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n):<br>
+               <span style = "color: var(--gray-popup)"># Iterate through all da lista</span><br>
+               &nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n):<br>
                <br>
-               &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># The last i elements are already in the correct position</span><br>
-               &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> j <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(<span class="code-coler-red">0</span>, n - i - <span class="code-coler-red">1</span>):<br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Increment the interaction counter</span><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># The last i elements are already in the correct position</span><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">for</span> j <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(<span style = "color: var(--red)">0</span>, n - i - <span style = "color: var(--red)">1</span>):<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Increment the interaction counter</span><br>
                <br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Swap if the found element is greater than the next</span><br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> lista[j] > lista[j + <span class="code-coler-red">1</span>]:<br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lista[j], lista[j + <span class="code-coler-red">1</span>] = lista[j + <span class="code-coler-red">1</span>], lista[j]<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Swap if the found element is greater than the next</span><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> lista[j] > lista[j + <span style = "color: var(--red)">1</span>]:<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lista[j], lista[j + <span style = "color: var(--red)">1</span>] = lista[j + <span style = "color: var(--red)">1</span>], lista[j]<br>
                <br>
-               &nbsp;&nbsp;<span class="code-coler-blue">return</span> iterations`,
+               &nbsp;&nbsp;<span style = "color: var(--blue)">return</span> iterations`,
             code2: `
-        <span class="code-coler-gray"># Example of usage</span><br>
-        &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br>
+        <span style = "color: var(--gray-popup)"># Example of usage</span><br>
+        &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br>
         &nbsp;total_iterations = bubble_sort(array)<br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>
         `,
 
             code3: `
-        array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]<br><br>
         </div>`,
 
             subtitle:
-                'Suponha a seguinte lista: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+                'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">Primeiro</span> interação (i = 0):</h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">Primeiro</span> interação (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">Compare o primeiro com o segundo, é maior, sim.</li>
                                                     <li id="item-2">Troque 22 com 11.</li>
@@ -207,7 +207,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">Segunda</span> interação (i = 1):</h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">Segunda</span> interação (i = 1):</h3>
                                                 <ul>
                                                     <li id="item-4">Compare o segundo com o terceiro, é maior, não</li>
                                                     <li id="item-5">Não há troca necessária.</li>
@@ -215,7 +215,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span class="code-coler-topics">Terceira</span> interação (i = 2):</h3>
+                                                <h3 id="title-3"><span style = "color: var(--topics)">Terceira</span> interação (i = 2):</h3>
                                                 <ul>
                                                     <li id="item-7">Compare o terceiro com o quarto, é maior, sim.</li>
                                                     <li id="item-8">Troque 32 com 54.</li>
@@ -223,7 +223,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-4"><span class="code-coler-topics">Quarta</span> interação (i = 3):</h3>
+                                                <h3 id="title-4"><span style = "color: var(--topics)">Quarta</span> interação (i = 3):</h3>
                                                 <ul>
                                                     <li id="item-10">Compare o primeiro com o segundo, é maior, não.</li>
                                                     <li id="item-11">Não há troca necessária.</li>
@@ -233,7 +233,7 @@ const sortAlgorithms = {
                                         `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span class="code-coler-topics">Quinta</span> interação (i = 4):</h3>
+                                                <h3 id="title-5"><span style = "color: var(--topics)">Quinta</span> interação (i = 4):</h3>
                                                 <ul>
                                                     <li id="item-13">Compare o segundo com o terceiro, é maior, não.</li>
                                                     <li id="item-14">Não há troca necessária.</li>
@@ -241,7 +241,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-6"><span class="code-coler-topics">Sexta</span> interação (i = 5):</h3>
+                                                <h3 id="title-6"><span style = "color: var(--topics)">Sexta</span> interação (i = 5):</h3>
                                                 <ul>
                                                     <li id="item-16">Compare o terceiro com o quarto, é maior, não.</li>
                                                     <li id="item-17">Não há troca necessária.</li>
@@ -249,7 +249,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-7"><span class="code-coler-topics">Sétima</span> interação (i = 6):</h3>
+                                                <h3 id="title-7"><span style = "color: var(--topics)">Sétima</span> interação (i = 6):</h3>
                                                 <ul>
                                                     <li id="item-19">Compare o primeiro com o segundo, é maior, não.</li>
                                                     <li id="item-20">Não há troca necessária.</li>
@@ -257,7 +257,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-8"><span class="code-coler-topics">Oitava</span> interação (i = 7):</h3>
+                                                <h3 id="title-8"><span style = "color: var(--topics)">Oitava</span> interação (i = 7):</h3>
                                                 <ul>
                                                     <li id="item-22">Compare o segundo com o terceiro, é maior, não.</li>
                                                     <li id="item-23">Não há troca necessária.</li>
@@ -266,50 +266,50 @@ const sortAlgorithms = {
                                             </div>`,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-1"><span class="code-coler-topics">1. INICIALIZAÇÃO:</span></h3>
+        <h3 id="title-1"><span style = "color: var(--topics)">1. INICIALIZAÇÃO:</span></h3>
         <ul>
             <li id="item-1">Comece com um array ou lista de elementos que você deseja ordenar.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-2"><span class="code-coler-topics">2. COMPARAÇÃO INICIAL:</span></h3>
+        <h3 id="title-2"><span style = "color: var(--topics)">2. COMPARAÇÃO INICIAL:</span></h3>
         <ul>
             <li id="item-2">Comece do primeiro número da lista. Compare esse número com o próximo número.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-3"><span class="code-coler-topics">3. TROCA SE NECESSÁRIO:</span></h3>
+        <h3 id="title-3"><span style = "color: var(--topics)">3. TROCA SE NECESSÁRIO:</span></h3>
         <ul>
             <li id="item-3">Se o primeiro número for maior que o segundo, troque-os de lugar. Se não, mantenha-os como estão.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-4"><span class="code-coler-topics">4. AVANÇAR PARA O PRÓXIMO PAR:</span></h3>
+        <h3 id="title-4"><span style = "color: var(--topics)">4. AVANÇAR PARA O PRÓXIMO PAR:</span></h3>
         <ul>
             <li id="item-4">Mova para o próximo número e repita o passo 2, comparando-o com o seguinte.</li>
         </ul>
     </div>`,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-5"><span class="code-coler-topics">5. REPETIR ATÉ O FIM DA LISTA:</span></h3>
+        <h3 id="title-5"><span style = "color: var(--topics)">5. REPETIR ATÉ O FIM DA LISTA:</span></h3>
         <ul>
             <li id="item-5">Continue fazendo isso até chegar ao final da lista. Após uma passagem completa, o maior número estará na última posição.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-6"><span class="code-coler-topics">6. REINICIAR PARA LISTA NÃO ORDENADA INICIAL:</span></h3>
+        <h3 id="title-6"><span style = "color: var(--topics)">6. REINICIAR PARA LISTA NÃO ORDENADA INICIAL:</span></h3>
         <ul>
             <li id="item-6">Comece novamente do início da lista. Repita os passos 2 a 5, mas ignore o último número, pois já está ordenado.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-7"><span class="code-coler-topics">7. REPETIÇÃO:</span></h3>
+        <h3 id="title-7"><span style = "color: var(--topics)">7. REPETIÇÃO:</span></h3>
         <ul>
             <li id="item-8">Continue repetindo esse processo, cada vez ignorando o último número ordenado, até que não haja mais trocas. Isso significa que a lista está ordenada.</li>
         </ul>
     </div>
     <div class="step-item" style="margin-bottom: 20px;">
-        <h3 id="title-8"><span class="code-coler-topics">8. CONCLUIR:</span></h3>
+        <h3 id="title-8"><span style = "color: var(--topics)">8. CONCLUIR:</span></h3>
         <ul>
             <li id="item-8">Quando você passar pela lista sem fazer nenhuma troca, o algoritmo termina, e a lista está completamente ordenada.</li>
         </ul>
@@ -324,46 +324,46 @@ const sortAlgorithms = {
             explanation:
                 "Imagine you have a box of mixed pencils. You take one pencil and place it in your hand, which is already organized. Then, you take another pencil and check where it should go in your hand, placing it in the correct position. You repeat this until all the pencils are organized. In the end, you count how many times you looked at and compared the pencils to arrange them in order!"
             ,
-            code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">insertion_sort</span>(array):<br>
-        iterations = 0 <span class="code-coler-gray"># Counter for iterations</span><br>
+            code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">insertion_sort</span>(array):<br>
+        iterations = 0 <span style = "color: var(--gray-popup)"># Counter for iterations</span><br>
         <br>
-        <span class="code-coler-gray"># Traverse the array starting from the second element</span
-        <span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(<span class="code-coler-red">1</span>, <span class="code-coler-orange">len</span>(array)):<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;key = array[i] <span class="code-coler-gray"># The element to be inserted</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;j = i - <span class="code-coler-red">1</span> <span class="code-coler-gray"># The index of the previous element</span><br>
+        <span style = "color: var(--gray-popup)"># Traverse the array starting from the second element</span
+        <span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(<span style = "color: var(--red)">1</span>, <span style = "color: var(--orange)">len</span>(array)):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;key = array[i] <span style = "color: var(--gray-popup)"># The element to be inserted</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;j = i - <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># The index of the previous element</span><br>
         <br>
-        <span class="code-coler-gray"># Move elements of the array that are greater than the key one position ahead</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">while</span> j >= <span class="code-coler-red">0</span> <span class="code-coler-blue">and</span> array[j] > key:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[j + <span class="code-coler-red">1</span>] = array[j]<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j -= <span class="code-coler-red">1</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Increment the iteration counter</span><br>
+        <span style = "color: var(--gray-popup)"># Move elements of the array that are greater than the key one position ahead</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">while</span> j >= <span style = "color: var(--red)">0</span> <span style = "color: var(--blue)">and</span> array[j] > key:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[j + <span style = "color: var(--red)">1</span>] = array[j]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j -= <span style = "color: var(--red)">1</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Increment the iteration counter</span><br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;array[j + 1] = key <span class="code-coler-gray"># Insert the key in the correct position</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the iteration of the key movement</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;array[j + 1] = key <span style = "color: var(--gray-popup)"># Insert the key in the correct position</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Count the iteration of the key movement</span><br>
         <br>
-        <span class="code-coler-blue">return</span> iterations`,
+        <span style = "color: var(--blue)">return</span> iterations`,
 
             code2: `
-        <span class="code-coler-gray"># Example of usage</span><br>
-        &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br>
+        <span style = "color: var(--gray-popup)"># Example of usage</span><br>
+        &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br>
         &nbsp;total_iterations = insertion_sort(array)<br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>code2:
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>code2:
         `,
 
             code3: `
-        array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]<br><br>
         </div>`,
 
             subtitle:
-                'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">Compare 11 with 22.</li>
                                                     <li id="item-2">11 is smaller, so move 22 one position ahead and insert 11 at the beginning.</li>
@@ -371,7 +371,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">Second</span> iteration (i = 1):</h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">Second</span> iteration (i = 1):</h3>
                                                 <ul>
                                                     <li id="item-4">Move to the last element (32).</li>
                                                     <li id="item-5">Compare 32 with 54.</li>
@@ -384,7 +384,7 @@ const sortAlgorithms = {
                                         `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
+                                                <h3 id="title-5"><span style = "color: var(--topics)">Third</span> iteration (i = 2):</h3>
                                                 <ul>
                                                     <li id="item-10">Move to the next element (54).</li>
                                                     <li id="item-11">Compare 54 with 22.</li>
@@ -395,19 +395,19 @@ const sortAlgorithms = {
                                             `,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
                                             <ul>
                                                 <li id="item-1">Start with an array or list of elements that you want to sort.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span class="code-coler-topics">2. INITIAL SELECTION:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">2. INITIAL SELECTION:</span></h3>
                                             <ul>
                                                 <li id="item-2">Begin with the second number in the list, assuming that the first number is already in the "sorted sublist."</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">3. COMPARISON AND INSERTION:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">3. COMPARISON AND INSERTION:</span></h3>
                                             <ul>
                                                 <li id="item-3">Compare the selected number with the numbers in the "sorted sublist.</li>
                                                 <li id="item-4">If the current number is smaller than the previous ones, move each larger number one position ahead to make space.</li>
@@ -416,20 +416,20 @@ const sortAlgorithms = {
                                         `,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">4. POSITIONING THE NUMBER:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">4. POSITIONING THE NUMBER:</span></h3>
                                             <ul>
                                                 <li id="item-1">Place the current number in its correct position within the sublist to keep it sorted.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span class="code-coler-topics">5. MOVE TO THE NEXT NUMBER:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">5. MOVE TO THE NEXT NUMBER:</span></h3>
                                             <ul>
                                                 <li id="item-2">Proceed to the next number in the original list and repeat steps 3 and 4.</li>
                                                 <li id="item-3">Continue this process for each number, expanding the "sorted sublist" until all numbers have been processed.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">6. COMPLETION:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">6. COMPLETION:</span></h3>
                                             <ul>
                                                 <li id="item-4">When all the numbers have been inserted, the list will be sorted.</li>
                                             </ul>
@@ -441,46 +441,46 @@ const sortAlgorithms = {
             explanation:
                 "Imagine que você tem uma caixa de lápis misturados. Você pega um lápis e coloca na sua mão, que já está organizada. Depois, pega outro lápis e verifica onde ele deve ir na sua mão, colocando-o na posição certa. Você repete isso até que todos os lápis estejam organizados. No final, conta quantas vezes olhou e comparou os lápis para deixá-los em ordem!"
             ,
-            code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">insertion_sort</span>(array):<br>
-        iterations = 0 <span class="code-coler-gray"># Counter for iterations</span><br>
+            code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">insertion_sort</span>(array):<br>
+        iterations = 0 <span style = "color: var(--gray-popup)"># Counter for iterations</span><br>
         <br>
-        <span class="code-coler-gray"># Traverse the array starting from the second element</span
-        <span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(<span class="code-coler-red">1</span>, <span class="code-coler-orange">len</span>(array)):<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;key = array[i] <span class="code-coler-gray"># The element to be inserted</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;j = i - <span class="code-coler-red">1</span> <span class="code-coler-gray"># The index of the previous element</span><br>
+        <span style = "color: var(--gray-popup)"># Traverse the array starting from the second element</span
+        <span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(<span style = "color: var(--red)">1</span>, <span style = "color: var(--orange)">len</span>(array)):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;key = array[i] <span style = "color: var(--gray-popup)"># The element to be inserted</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;j = i - <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># The index of the previous element</span><br>
         <br>
-        <span class="code-coler-gray"># Move elements of the array that are greater than the key one position ahead</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">while</span> j >= <span class="code-coler-red">0</span> <span class="code-coler-blue">and</span> array[j] > key:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[j + <span class="code-coler-red">1</span>] = array[j]<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j -= <span class="code-coler-red">1</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Increment the iteration counter</span><br>
+        <span style = "color: var(--gray-popup)"># Move elements of the array that are greater than the key one position ahead</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">while</span> j >= <span style = "color: var(--red)">0</span> <span style = "color: var(--blue)">and</span> array[j] > key:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[j + <span style = "color: var(--red)">1</span>] = array[j]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j -= <span style = "color: var(--red)">1</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Increment the iteration counter</span><br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;array[j + 1] = key <span class="code-coler-gray"># Insert the key in the correct position</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the iteration of the key movement</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;array[j + 1] = key <span style = "color: var(--gray-popup)"># Insert the key in the correct position</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Count the iteration of the key movement</span><br>
         <br>
-        <span class="code-coler-blue">return</span> iterations`,
+        <span style = "color: var(--blue)">return</span> iterations`,
 
             code2: `
-        <span class="code-coler-gray"># Example of usage</span><br>
-        &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br>
+        <span style = "color: var(--gray-popup)"># Example of usage</span><br>
+        &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br>
         &nbsp;total_iterations = insertion_sort(array)<br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>code2:
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>code2:
         `,
 
             code3: `
-        array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]<br><br>
         </div>`,
 
             subtitle:
-                'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+                'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">Compare 11 with 22.</li>
                                                     <li id="item-2">11 is smaller, so move 22 one position ahead and insert 11 at the beginning.</li>
@@ -488,7 +488,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">Second</span> iteration (i = 1):</h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">Second</span> iteration (i = 1):</h3>
                                                 <ul>
                                                     <li id="item-4">Move to the last element (32).</li>
                                                     <li id="item-5">Compare 32 with 54.</li>
@@ -501,7 +501,7 @@ const sortAlgorithms = {
                                         `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
+                                                <h3 id="title-5"><span style = "color: var(--topics)">Third</span> iteration (i = 2):</h3>
                                                 <ul>
                                                     <li id="item-10">Move to the next element (54).</li>
                                                     <li id="item-11">Compare 54 with 22.</li>
@@ -512,19 +512,19 @@ const sortAlgorithms = {
                                             `,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
                                             <ul>
                                                 <li id="item-1">Start with an array or list of elements that you want to sort.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span class="code-coler-topics">2. INITIAL SELECTION:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">2. INITIAL SELECTION:</span></h3>
                                             <ul>
                                                 <li id="item-2">Begin with the second number in the list, assuming that the first number is already in the "sorted sublist."</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">3. COMPARISON AND INSERTION:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">3. COMPARISON AND INSERTION:</span></h3>
                                             <ul>
                                                 <li id="item-3">Compare the selected number with the numbers in the "sorted sublist.</li>
                                                 <li id="item-4">If the current number is smaller than the previous ones, move each larger number one position ahead to make space.</li>
@@ -533,20 +533,20 @@ const sortAlgorithms = {
                                         `,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">4. POSITIONING THE NUMBER:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">4. POSITIONING THE NUMBER:</span></h3>
                                             <ul>
                                                 <li id="item-1">Place the current number in its correct position within the sublist to keep it sorted.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span class="code-coler-topics">5. MOVE TO THE NEXT NUMBER:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">5. MOVE TO THE NEXT NUMBER:</span></h3>
                                             <ul>
                                                 <li id="item-2">Proceed to the next number in the original list and repeat steps 3 and 4.</li>
                                                 <li id="item-3">Continue this process for each number, expanding the "sorted sublist" until all numbers have been processed.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">6. COMPLETION:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">6. COMPLETION:</span></h3>
                                             <ul>
                                                 <li id="item-4">When all the numbers have been inserted, the list will be sorted.</li>
                                             </ul>
@@ -560,47 +560,47 @@ const sortAlgorithms = {
             title: "SELECTIONSORT",
             explanation:
                 "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy.",
-            code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">selection_sort</span>(array): <br>
-        iterations = 0  <span class="code-coler-gray"># Interaction counter</span> <br>
+            code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">selection_sort</span>(array): <br>
+        iterations = 0  <span style = "color: var(--gray-popup)"># Interaction counter</span> <br>
         <br>
-        <span class="code-coler-gray"># Traverse all elements of the array</span> <br>
-        <span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(<span class="code-coler-orange">len</span>(array) - <span class="code-coler-red">1</span>): <br>
+        <span style = "color: var(--gray-popup)"># Traverse all elements of the array</span> <br>
+        <span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(<span style = "color: var(--orange)">len</span>(array) - <span style = "color: var(--red)">1</span>): <br>
         <br>
-        <span class="code-coler-gray"># Initially assume that the smallest element is at the current position 'i'</span> <br>
+        <span style = "color: var(--gray-popup)"># Initially assume that the smallest element is at the current position 'i'</span> <br>
         &nbsp;&nbsp;&nbsp;&nbsp;min_index = i <br>
         <br>
-        <span class="code-coler-gray"># Find the index of the smallest element in the unsorted part</span> <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> j <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(i + <span class="code-coler-red">1</span>, <span class="code-coler-orange">len</span>(array)): <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the comparison</span> <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> array[j] < array[min_index]: <br>
+        <span style = "color: var(--gray-popup)"># Find the index of the smallest element in the unsorted part</span> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">for</span> j <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(i + <span style = "color: var(--red)">1</span>, <span style = "color: var(--orange)">len</span>(array)): <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Count the comparison</span> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> array[j] < array[min_index]: <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min_index = j <br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Swap the current element with the smallest element found, if necessary</span> <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> min_index != i: <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Swap the current element with the smallest element found, if necessary</span> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> min_index != i: <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[min_index] = array[min_index], array[i]  <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the swap</span> <br>
-        <span class="code-coler-blue">return</span> array`,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Count the swap</span> <br>
+        <span style = "color: var(--blue)">return</span> array`,
             code2: `<div class="text-center">
-        <span class="code-coler-gray"># Example of usage</span> <br>
-        &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
+        <span style = "color: var(--gray-popup)"># Example of usage</span> <br>
+        &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>] <br>
         &nbsp;total_iterations = selection_sort(array) <br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
     </div>`,
 
             code3: `
-        array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]<br><br>
         </div>`,
 
             subtitle:
-                'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">The smallest element in [22, 11, 54, 32] is 11.</li>
                                                     <li id="item-2">Swap 11 with 22.</li>
@@ -608,7 +608,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">Second</span> iteration (i = 1):</h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">Second</span> iteration (i = 1):</h3>
                                                 <ul>
                                                     <li id="item-4">Second iteration (i = 1):</li>
                                                     <li id="item-5">The smallest element in [22, 54, 32] is 22.</li>
@@ -619,7 +619,7 @@ const sortAlgorithms = {
                                         `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
+                                                <h3 id="title-5"><span style = "color: var(--topics)">Third</span> iteration (i = 2):</h3>
                                                 <ul>
                                                     <li id="item-8">The smallest element in [22, 54, 32] is 32.</li>
                                                     <li id="item-9">Swap 32 with 54.</li>
@@ -627,7 +627,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-11"><span class="code-coler-topics">Fourth</span> iteration (i = 3):</h3>
+                                                <h3 id="title-11"><span style = "color: var(--topics)">Fourth</span> iteration (i = 3):</h3>
                                                 <ul>
                                                     <li id="item-12">Only one element (54) remains, so no swap is needed.</li>
                                                 </ul>
@@ -635,20 +635,20 @@ const sortAlgorithms = {
                                             `,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
                                             <ul>
                                                 <li id="item-1">Start with an array or list of elements that you want to sort.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span class="code-coler-topics">2. ITERATING THROUGH THE ARRAY:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">2. ITERATING THROUGH THE ARRAY:</span></h3>
                                             <ul>
                                                 <li id="item-2">For each position i in the array (from the first to the second-to-last element).</li>
                                                 <li id="item-3">Set i as the index of the smallest element found.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">3. FINDING THE SMALLEST ELEMENT:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">3. FINDING THE SMALLEST ELEMENT:</span></h3>
                                             <ul>
                                                 <li id="item-4">Traverse the remaining part of the array (from index i + 1 to the end) to find the smallest element.</li>
                                                 <li id="item-5">If a smaller element is found, update i to the index of that element.</li>
@@ -657,20 +657,20 @@ const sortAlgorithms = {
                                         `,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">4. SWAP:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">4. SWAP:</span></h3>
                                             <ul>
                                                 <li id="item-1">After finding the smallest element in the unsorted part of the array.</li>
                                                 <li id="item-2">Swap this smallest element with the element at the current position i.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">5. REPEAT:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">5. REPEAT:</span></h3>
                                             <ul>
                                                 <li id="item-4">Repeat steps 2 to 4 until the entire array is sorted.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">6. COMPLETION: </span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">6. COMPLETION: </span></h3>
                                             <ul>
                                                 <li id="item-5">When all the numbers have been inserted, the list will be sorted.</li>
                                             </ul>
@@ -682,47 +682,47 @@ const sortAlgorithms = {
             title: "SELECTIONSORT",
             explanation:
                 "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy.",
-            code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">selection_sort</span>(array): <br>
-        iterations = 0  <span class="code-coler-gray"># Interaction counter</span> <br>
+            code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">selection_sort</span>(array): <br>
+        iterations = 0  <span style = "color: var(--gray-popup)"># Interaction counter</span> <br>
         <br>
-        <span class="code-coler-gray"># Traverse all elements of the array</span> <br>
-        <span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(<span class="code-coler-orange">len</span>(array) - <span class="code-coler-red">1</span>): <br>
+        <span style = "color: var(--gray-popup)"># Traverse all elements of the array</span> <br>
+        <span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(<span style = "color: var(--orange)">len</span>(array) - <span style = "color: var(--red)">1</span>): <br>
         <br>
-        <span class="code-coler-gray"># Initially assume that the smallest element is at the current position 'i'</span> <br>
+        <span style = "color: var(--gray-popup)"># Initially assume that the smallest element is at the current position 'i'</span> <br>
         &nbsp;&nbsp;&nbsp;&nbsp;min_index = i <br>
         <br>
-        <span class="code-coler-gray"># Find the index of the smallest element in the unsorted part</span> <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> j <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(i + <span class="code-coler-red">1</span>, <span class="code-coler-orange">len</span>(array)): <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the comparison</span> <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> array[j] < array[min_index]: <br>
+        <span style = "color: var(--gray-popup)"># Find the index of the smallest element in the unsorted part</span> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">for</span> j <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(i + <span style = "color: var(--red)">1</span>, <span style = "color: var(--orange)">len</span>(array)): <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Count the comparison</span> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> array[j] < array[min_index]: <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min_index = j <br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Swap the current element with the smallest element found, if necessary</span> <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> min_index != i: <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Swap the current element with the smallest element found, if necessary</span> <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> min_index != i: <br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[min_index] = array[min_index], array[i]  <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span class="code-coler-red">1</span> <span class="code-coler-gray"># Count the swap</span> <br>
-        <span class="code-coler-blue">return</span> array`,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Count the swap</span> <br>
+        <span style = "color: var(--blue)">return</span> array`,
             code2: `<div class="text-center">
-        <span class="code-coler-gray"># Example of usage</span> <br>
-        &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
+        <span style = "color: var(--gray-popup)"># Example of usage</span> <br>
+        &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>] <br>
         &nbsp;total_iterations = selection_sort(array) <br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
     </div>`,
 
             code3: `
-        array = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]<br><br>
+        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]<br><br>
         </div>`,
 
             subtitle:
-                'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">First</span> iteration (i = 0):</h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">The smallest element in [22, 11, 54, 32] is 11.</li>
                                                     <li id="item-2">Swap 11 with 22.</li>
@@ -730,7 +730,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">Second</span> iteration (i = 1):</h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">Second</span> iteration (i = 1):</h3>
                                                 <ul>
                                                     <li id="item-4">Second iteration (i = 1):</li>
                                                     <li id="item-5">The smallest element in [22, 54, 32] is 22.</li>
@@ -741,7 +741,7 @@ const sortAlgorithms = {
                                         `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span class="code-coler-topics">Third</span> iteration (i = 2):</h3>
+                                                <h3 id="title-5"><span style = "color: var(--topics)">Third</span> iteration (i = 2):</h3>
                                                 <ul>
                                                     <li id="item-8">The smallest element in [22, 54, 32] is 32.</li>
                                                     <li id="item-9">Swap 32 with 54.</li>
@@ -749,7 +749,7 @@ const sortAlgorithms = {
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-11"><span class="code-coler-topics">Fourth</span> iteration (i = 3):</h3>
+                                                <h3 id="title-11"><span style = "color: var(--topics)">Fourth</span> iteration (i = 3):</h3>
                                                 <ul>
                                                     <li id="item-12">Only one element (54) remains, so no swap is needed.</li>
                                                 </ul>
@@ -757,20 +757,20 @@ const sortAlgorithms = {
                                             `,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
                                             <ul>
                                                 <li id="item-1">Start with an array or list of elements that you want to sort.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span class="code-coler-topics">2. ITERATING THROUGH THE ARRAY:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">2. ITERATING THROUGH THE ARRAY:</span></h3>
                                             <ul>
                                                 <li id="item-2">For each position i in the array (from the first to the second-to-last element).</li>
                                                 <li id="item-3">Set i as the index of the smallest element found.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">3. FINDING THE SMALLEST ELEMENT:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">3. FINDING THE SMALLEST ELEMENT:</span></h3>
                                             <ul>
                                                 <li id="item-4">Traverse the remaining part of the array (from index i + 1 to the end) to find the smallest element.</li>
                                                 <li id="item-5">If a smaller element is found, update i to the index of that element.</li>
@@ -779,20 +779,20 @@ const sortAlgorithms = {
                                         `,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">4. SWAP:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">4. SWAP:</span></h3>
                                             <ul>
                                                 <li id="item-1">After finding the smallest element in the unsorted part of the array.</li>
                                                 <li id="item-2">Swap this smallest element with the element at the current position i.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">5. REPEAT:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">5. REPEAT:</span></h3>
                                             <ul>
                                                 <li id="item-4">Repeat steps 2 to 4 until the entire array is sorted.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">6. COMPLETION: </span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">6. COMPLETION: </span></h3>
                                             <ul>
                                                 <li id="item-5">When all the numbers have been inserted, the list will be sorted.</li>
                                             </ul>
@@ -807,59 +807,59 @@ const sortAlgorithms = {
             title: "HEAPSORT",
             explanation:
                 "To sort numbers using a heap, we first place all the numbers into a heap, where the largest stone (number) is at the top. Then, we remove this largest stone from the top and reorganize the heap, repeating the process until all the stones are removed. Each time we remove a stone, we count that action as an iteration. In the end, we will have the numbers organized from smallest to largest.",
-            code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heapify</span>(array, n, i, interactions):<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;largest = i  <span class="code-coler-gray"># Assume root is the largest element</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;left = <span class="code-coler-red">2</span> * i + <span class="code-coler-red">1</span>  <span class="code-coler-gray"># Index of left child</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;right = <span class="code-coler-red">2</span> * i + <span class="code-coler-red">2</span>  <span class="code-coler-gray"># Index of right child</span><br><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> left < span(n) <span class="code-coler-blue">and</span> array[left] > array[largest]:<br>
+            code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">heapify</span>(array, n, i, interactions):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;largest = i  <span style = "color: var(--gray-popup)"># Assume root is the largest element</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;left = <span style = "color: var(--red)">2</span> * i + <span style = "color: var(--red)">1</span>  <span style = "color: var(--gray-popup)"># Index of left child</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;right = <span style = "color: var(--red)">2</span> * i + <span style = "color: var(--red)">2</span>  <span style = "color: var(--gray-popup)"># Index of right child</span><br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> left < span(n) <span style = "color: var(--blue)">and</span> array[left] > array[largest]:<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;largest = left<br><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> right < span(n) <span class="code-coler-blue">and</span> array[right] > array[largest]:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> right < span(n) <span style = "color: var(--blue)">and</span> array[right] > array[largest]:<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;largest = right<br><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> largest != i:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> largest != i:<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[largest] = array[largest], array[i]<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span>  <span class="code-coler-gray"># Increment interaction</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span style = "color: var(--red)">1</span>  <span style = "color: var(--gray-popup)"># Increment interaction</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;heapify(array, n, largest, interactions)<br>`,
-            code2: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heap_sort</span>(array):<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(array)<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;interactions = [<span class="code-coler-red">0</span>]<br>
+            code2: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">heap_sort</span>(array):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;n = <span style = "color: var(--orange)">len</span>(array)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;interactions = [<span style = "color: var(--red)">0</span>]<br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Build the max heap</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n // <span class="code-coler-red">2</span> - <span class="code-coler-red">1</span>, -<span class="code-coler-red">1</span>, -<span class="code-coler-red">1</span>):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Build the max heap</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n // <span style = "color: var(--red)">2</span> - <span style = "color: var(--red)">1</span>, -<span style = "color: var(--red)">1</span>, -<span style = "color: var(--red)">1</span>):<br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, n, i, interactions)<br>
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Extract one element at a time from the heap</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n - <span class="code-coler-red">1</span>, <span class="code-coler-red">0</span>, -<span class="code-coler-red">1</span>):<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[0] = array[0], array[i]  <span class="code-coler-gray"># Move the root to the end</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, i, 0, interactions)  <span class="code-coler-gray"># Call heapify</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">return</span> interactions`,
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Extract one element at a time from the heap</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n - <span style = "color: var(--red)">1</span>, <span style = "color: var(--red)">0</span>, -<span style = "color: var(--red)">1</span>):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[0] = array[0], array[i]  <span style = "color: var(--gray-popup)"># Move the root to the end</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span style = "color: var(--red)">1</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, i, 0, interactions)  <span style = "color: var(--gray-popup)"># Call heapify</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">return</span> interactions`,
 
             code4: `
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin: 0 auto;">
         <div class="text-center">
-        <span class="code-coler-gray"># Example of usage</span> <br>
-        &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
+        <span style = "color: var(--gray-popup)"># Example of usage</span> <br>
+        &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>] <br>
         &nbsp;total_iterations = heao_sort(array) <br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
-        &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
     </div>`,
 
             code5: `
         <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
             <div>
-                <span class="code-coler-orange">array</span> = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]
+                <span style = "color: var(--orange)">array</span> = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]
             </div>
             <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%); margin: 0 5px;">
         </div>
         <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
             <div>
-                <span class="code-coler-orange">array</span> = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]
+                <span style = "color: var(--orange)">array</span> = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]
             </div>
             <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%); margin: 0 5px;">
         </div>
         <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
             <div>
-                <span class="code-coler-orange">array</span> = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]
+                <span style = "color: var(--orange)">array</span> = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]
             </div>
             <!-- Adicionando uma imagem invisível para alinhar -->
             <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; visibility: hidden; margin: 0 5px;">
@@ -868,16 +868,16 @@ const sortAlgorithms = {
 </div>
 `,
             subtitle:
-                'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">First:</span></h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">First:</span></h3>
                                                 <ul>
                                                     <li id="item-1">Build the Max-Heap: Start by building the Max-Heap.In Heap Sort, we use a tree structure where each "parent" element is greater than its "children."</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">Second:</span></h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">Second:</span></h3>
                                                 <ul>
                                                     <li id="item-2">Building the Max-Heap (starting from the middle and moving to the beginning):</li>
                                                     <li id="item-3">First, check the element 11 (position 1, considering 0-based indexing).</li>
@@ -889,15 +889,15 @@ const sortAlgorithms = {
                                         `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span class="code-coler-topics">Third:</span></h3>
+                                                <h3 id="title-3"><span style = "color: var(--topics)">Third:</span></h3>
                                                 <ul>
                                                     <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li>
-                                                    <h3 id="title-4"><span class="code-coler-topics">1. First Extraction:</span></h3>
+                                                    <h3 id="title-4"><span style = "color: var(--topics)">1. First Extraction:</span></h3>
                                                         <li id="item-9">Swap the largest element (54) with the last element (11): List: [11, 32, 22, 54]</li>
                                                     <li id="item-10">Ignore the last element (54) as it is already in its final position.</li>
                                                     <li id="item-11">Restructure the heap so that 11 moves to its correct position. Swap 11 with 32: List: [32, 11, 22, 54].</li>
 
-                                                    <h3 id="title-5"><span class="code-coler-topics">2. Second Extraction:</span></h3>
+                                                    <h3 id="title-5"><span style = "color: var(--topics)">2. Second Extraction:</span></h3>
                                                     <li id="item-12">Swap the largest remaining element (32) with the last unsorted element (22):List: [22, 11, 32, 54]</li>
                                                     <li id="item-13">Ignore the last two elements (32 and 54) since they are already sorted. 22 becomes the new root, and since it is already in the correct position, the heap is balanced.</li>
                                                 </ul>
@@ -906,20 +906,20 @@ const sortAlgorithms = {
                                             `,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
                                             <ul>
                                                 <li id="item-1">Start with an array or list of elements that you want to sort.</li>
                                             </ul>
                                             </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span class="code-coler-topics">2. BUILD A MAX-HEAP:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">2. BUILD A MAX-HEAP:</span></h3>
                                             <ul>
                                                 <li id="item-2">Construct a binary tree called a "heap" from the list, where the highest value is at the top (root).</li>
                                                 <li id="item-3">To do this, adjust the tree starting from the middle elements and moving towards the beginning, ensuring that each parent is greater than its children.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">3. EXTRACT THE LARGEST ELEMENT:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">3. EXTRACT THE LARGEST ELEMENT:</span></h3>
                                             <ul>
                                                 <li id="item-4">After building the Max-Heap, the largest number will be at the root of the tree.</li>
                                                 <li id="item-5">Swap the root value with the last value in the list (end of the heap).</li>
@@ -929,20 +929,20 @@ const sortAlgorithms = {
                                         `,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span class="code-coler-topics">4. ADJUST THE HEAP:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">4. ADJUST THE HEAP:</span></h3>
                                             <ul>
                                                 <li id="item-1">With the original root removed, the new value at the root must maintain the Max-Heap property.</li>
                                                 <li id="item-2">Restructure the tree so the largest value returns to the top.</li>
                                                 </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">5. REPEAT:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">5. REPEAT:</span></h3>
                                             <ul>
                                                 <li id="item-4">Repeat steps 3 and 4 until the entire list is sorted, and the tree is empty.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span class="code-coler-topics">6. COMPLETION: </span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">6. COMPLETION: </span></h3>
                                             <ul>
                                                 <li id="item-5">When all the numbers have been inserted, the list will be sorted.</li>
                                             </ul>
@@ -954,59 +954,59 @@ const sortAlgorithms = {
             title: "HEAPSORT",
             explanation:
                 "To sort numbers using a heap, we first place all the numbers into a heap, where the largest stone (number) is at the top. Then, we remove this largest stone from the top and reorganize the heap, repeating the process until all the stones are removed. Each time we remove a stone, we count that action as an iteration. In the end, we will have the numbers organized from smallest to largest.",
-            code: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heapify</span>(array, n, i, interactions):<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;largest = i  <span class="code-coler-gray"># Assume root is the largest element</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;left = <span class="code-coler-red">2</span> * i + <span class="code-coler-red">1</span>  <span class="code-coler-gray"># Index of left child</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;right = <span class="code-coler-red">2</span> * i + <span class="code-coler-red">2</span>  <span class="code-coler-gray"># Index of right child</span><br><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> left < span(n) <span class="code-coler-blue">and</span> array[left] > array[largest]:<br>
+            code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">heapify</span>(array, n, i, interactions):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;largest = i  <span style = "color: var(--gray-popup)"># Assume root is the largest element</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;left = <span style = "color: var(--red)">2</span> * i + <span style = "color: var(--red)">1</span>  <span style = "color: var(--gray-popup)"># Index of left child</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;right = <span style = "color: var(--red)">2</span> * i + <span style = "color: var(--red)">2</span>  <span style = "color: var(--gray-popup)"># Index of right child</span><br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> left < span(n) <span style = "color: var(--blue)">and</span> array[left] > array[largest]:<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;largest = left<br><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> right < span(n) <span class="code-coler-blue">and</span> array[right] > array[largest]:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> right < span(n) <span style = "color: var(--blue)">and</span> array[right] > array[largest]:<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;largest = right<br><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">if</span> largest != i:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> largest != i:<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[largest] = array[largest], array[i]<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span>  <span class="code-coler-gray"># Increment interaction</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span style = "color: var(--red)">1</span>  <span style = "color: var(--gray-popup)"># Increment interaction</span><br>
             &nbsp;&nbsp;&nbsp;&nbsp;heapify(array, n, largest, interactions)<br>`,
-            code2: `<span class="code-coler-blue">def</span> <span class="code-coler-red">heap_sort</span>(array):<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;n = <span class="code-coler-orange">len</span>(array)<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;interactions = [<span class="code-coler-red">0</span>]<br>
+            code2: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">heap_sort</span>(array):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;n = <span style = "color: var(--orange)">len</span>(array)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;interactions = [<span style = "color: var(--red)">0</span>]<br>
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Build the max heap</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n // <span class="code-coler-red">2</span> - <span class="code-coler-red">1</span>, -<span class="code-coler-red">1</span>, -<span class="code-coler-red">1</span>):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Build the max heap</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n // <span style = "color: var(--red)">2</span> - <span style = "color: var(--red)">1</span>, -<span style = "color: var(--red)">1</span>, -<span style = "color: var(--red)">1</span>):<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, n, i, interactions)<br>
             <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-gray"># Extract one element at a time from the heap</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">for</span> i <span class="code-coler-blue">in</span> <span class="code-coler-orange">range</span>(n - <span class="code-coler-red">1</span>, <span class="code-coler-red">0</span>, -<span class="code-coler-red">1</span>):<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[0] = array[0], array[i]  <span class="code-coler-gray"># Move the root to the end</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span class="code-coler-red">1</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, i, 0, interactions)  <span class="code-coler-gray"># Call heapify</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-coler-blue">return</span> interactions`,
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Extract one element at a time from the heap</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n - <span style = "color: var(--red)">1</span>, <span style = "color: var(--red)">0</span>, -<span style = "color: var(--red)">1</span>):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[i], array[0] = array[0], array[i]  <span style = "color: var(--gray-popup)"># Move the root to the end</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interactions[0] += <span style = "color: var(--red)">1</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(array, i, 0, interactions)  <span style = "color: var(--gray-popup)"># Call heapify</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">return</span> interactions`,
 
             code4: `
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin: 0 auto;">
             <div class="text-center">
-            <span class="code-coler-gray"># Example of usage</span> <br>
-            &nbsp;array = [<span class="code-coler-red">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>] <br>
+            <span style = "color: var(--gray-popup)"># Example of usage</span> <br>
+            &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>] <br>
             &nbsp;total_iterations = heao_sort(array) <br>
-            &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
-            &nbsp;<span class="code-coler-orange">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
+            &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array) <br>
+            &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total interactions: "</span>, total_iterations)
         </div>`,
 
             code5: `
             <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
                 <div>
-                    <span class="code-coler-orange">array</span> = [<span class="code-coler-orange">22</span>, <span class="code-coler-red">11</span>, <span class="code-coler-red">54</span>, <span class="code-coler-red">32</span>]
+                    <span style = "color: var(--orange)">array</span> = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]
                 </div>
                 <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%); margin: 0 5px;">
             </div>
             <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
                 <div>
-                    <span class="code-coler-orange">array</span> = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-orange">54</span>, <span class="code-coler-red">32</span>]
+                    <span style = "color: var(--orange)">array</span> = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]
                 </div>
                 <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%); margin: 0 5px;">
             </div>
             <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
                 <div>
-                    <span class="code-coler-orange">array</span> = [<span class="code-coler-red">11</span>, <span class="code-coler-red">22</span>, <span class="code-coler-red">32</span>, <span class="code-coler-red">54</span>]
+                    <span style = "color: var(--orange)">array</span> = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]
                 </div>
                 <!-- Adicionando uma imagem invisível para alinhar -->
                 <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; visibility: hidden; margin: 0 5px;">
@@ -1015,16 +1015,16 @@ const sortAlgorithms = {
     </div>
     `,
             subtitle:
-                'Assume the following  array: <span class="code-coler-topics">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                    <h3 id="title-1"><span class="code-coler-topics">First:</span></h3>
+                                                    <h3 id="title-1"><span style = "color: var(--topics)">First:</span></h3>
                                                     <ul>
                                                         <li id="item-1">Build the Max-Heap: Start by building the Max-Heap.In Heap Sort, we use a tree structure where each "parent" element is greater than its "children."</li>
                                                     </ul>
                                                 </div>
                                                 <div class="step-item" style="margin-bottom: 20px;">
-                                                    <h3 id="title-2"><span class="code-coler-topics">Second:</span></h3>
+                                                    <h3 id="title-2"><span style = "color: var(--topics)">Second:</span></h3>
                                                     <ul>
                                                         <li id="item-2">Building the Max-Heap (starting from the middle and moving to the beginning):</li>
                                                         <li id="item-3">First, check the element 11 (position 1, considering 0-based indexing).</li>
@@ -1036,15 +1036,15 @@ const sortAlgorithms = {
                                             `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                    <h3 id="title-3"><span class="code-coler-topics">Third:</span></h3>
+                                                    <h3 id="title-3"><span style = "color: var(--topics)">Third:</span></h3>
                                                     <ul>
                                                         <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li>
-                                                        <h3 id="title-4"><span class="code-coler-topics">1. First Extraction:</span></h3>
+                                                        <h3 id="title-4"><span style = "color: var(--topics)">1. First Extraction:</span></h3>
                                                             <li id="item-9">Swap the largest element (54) with the last element (11): List: [11, 32, 22, 54]</li>
                                                         <li id="item-10">Ignore the last element (54) as it is already in its final position.</li>
                                                         <li id="item-11">Restructure the heap so that 11 moves to its correct position. Swap 11 with 32: List: [32, 11, 22, 54].</li>
     
-                                                        <h3 id="title-5"><span class="code-coler-topics">2. Second Extraction:</span></h3>
+                                                        <h3 id="title-5"><span style = "color: var(--topics)">2. Second Extraction:</span></h3>
                                                         <li id="item-12">Swap the largest remaining element (32) with the last unsorted element (22):List: [22, 11, 32, 54]</li>
                                                         <li id="item-13">Ignore the last two elements (32 and 54) since they are already sorted. 22 becomes the new root, and since it is already in the correct position, the heap is balanced.</li>
                                                     </ul>
@@ -1053,20 +1053,20 @@ const sortAlgorithms = {
                                                 `,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">1. INITIALIZATION:</span></h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
                                                 <ul>
                                                     <li id="item-1">Start with an array or list of elements that you want to sort.</li>
                                                 </ul>
                                                 </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span class="code-coler-topics">2. BUILD A MAX-HEAP:</span></h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">2. BUILD A MAX-HEAP:</span></h3>
                                                 <ul>
                                                     <li id="item-2">Construct a binary tree called a "heap" from the list, where the highest value is at the top (root).</li>
                                                     <li id="item-3">To do this, adjust the tree starting from the middle elements and moving towards the beginning, ensuring that each parent is greater than its children.</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span class="code-coler-topics">3. EXTRACT THE LARGEST ELEMENT:</span></h3>
+                                                <h3 id="title-3"><span style = "color: var(--topics)">3. EXTRACT THE LARGEST ELEMENT:</span></h3>
                                                 <ul>
                                                     <li id="item-4">After building the Max-Heap, the largest number will be at the root of the tree.</li>
                                                     <li id="item-5">Swap the root value with the last value in the list (end of the heap).</li>
@@ -1076,20 +1076,20 @@ const sortAlgorithms = {
                                             `,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span class="code-coler-topics">4. ADJUST THE HEAP:</span></h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">4. ADJUST THE HEAP:</span></h3>
                                                 <ul>
                                                     <li id="item-1">With the original root removed, the new value at the root must maintain the Max-Heap property.</li>
                                                     <li id="item-2">Restructure the tree so the largest value returns to the top.</li>
                                                     </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span class="code-coler-topics">5. REPEAT:</span></h3>
+                                                <h3 id="title-3"><span style = "color: var(--topics)">5. REPEAT:</span></h3>
                                                 <ul>
                                                     <li id="item-4">Repeat steps 3 and 4 until the entire list is sorted, and the tree is empty.</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span class="code-coler-topics">6. COMPLETION: </span></h3>
+                                                <h3 id="title-3"><span style = "color: var(--topics)">6. COMPLETION: </span></h3>
                                                 <ul>
                                                     <li id="item-5">When all the numbers have been inserted, the list will be sorted.</li>
                                                 </ul>
