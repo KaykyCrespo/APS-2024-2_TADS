@@ -637,26 +637,28 @@ function showPopup(sortType) {
     popupContentContainerCode2.style.display = sectionId === "popup-code" ? "flex" : "none";
 
 
-    // Mostra ou oculta o code2 com base na seção ativa
     const code2Element = document.getElementById("popup-code2");
     code2Element.style.display = sectionId === "popup-code" ? "flex" : "none";
 
-    // Mostra ou oculta o code3 com base na seção ativa e no tipo de ordenação
     const code3Element = document.getElementById("popup-code3");
     code3Element.style.display = sectionId === "popup-code" && sortType !== "Heapsort Information" ? "block" : "none";
 
-    // Mostra ou oculta o code4 com base na seção ativa e no tipo de ordenação
     const code4Element = document.getElementById("popup-code4");
     code4Element.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "block" : "none";
 
-    // Mostra ou oculta o code5 com base na seção ativa e no tipo de ordenação
     const code5Element = document.getElementById("popup-code5");
     code5Element.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "block" : "none";
 
-    // Exibe o título e o subtítulo do passo a passo apenas na seção "step-by-step"
+
+    const containerContainerStepByStep = document.querySelector(".container-container-step-by-step");
+    containerContainerStepByStep.style.display = sectionId === "popup-step-by-step" ? "flex" : "none";
+
+
+    const containerTitleStep = document.querySelector(".container-title-step");
+    containerTitleStep.style.display = sectionId === "popup-step-by-step" ? "flex" : "none";
+
     const popupContentContainerStep = document.querySelector(".popup-content-container-step");
     popupContentContainerStep.style.display = sectionId === "popup-step-by-step" ? "flex" : "none";
-
 
     const titleStepByStepElement = document.getElementById("popup-title-step-by-step");
     titleStepByStepElement.style.display = sectionId === "popup-step-by-step" ? "block" : "none";
@@ -667,11 +669,9 @@ function showPopup(sortType) {
     const stepByStepRight = document.getElementById("popup-right-column-step-by-step");
     stepByStepRight.style.display = sectionId === "popup-step-by-step" ? "block" : "none";
 
-    // Mostra o detailsContainerElementElement apenas na seção "popup-step-by-step"
     const detailsContainerElement = document.getElementById("details-container");
     detailsContainerElement.style.display = sectionId === "popup-details" ? "flex" : "none";
 
-    // Mostra ou oculta o code2 com base na seção ativa
     const popupContentContainerDetails = document.querySelector(".popup-content-container-details");
     popupContentContainerDetails.style.display = sectionId === "popup-details" ? "flex" : "none";
 

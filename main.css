@@ -450,6 +450,19 @@ main {
                     width: 50%;
                 }
 
+                .container-container-step-by-step{
+                    display: flex;
+                    flex-direction: column;
+                    width: auto;
+                    gap: 1vw;
+                }
+
+                .container-title-step{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5vw;
+                }
+
                 #popup-title-step-by-step{
                     display: flex;
                     flex-direction: column;
@@ -458,6 +471,7 @@ main {
                 }
 
                 .popup-content-container-step{
+                    padding-left: 1.3vw;
                     gap: 1.5vw;
                 }
 
@@ -466,6 +480,8 @@ main {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
+                    padding: 1.3vw;
+                    gap: 1.5vw;
                 }
 
                 .popup-content-container-details{
@@ -476,6 +492,8 @@ main {
                     display: flex;
                     justify-content: space-between;
                     width: 100%;
+                    padding-left: 1.2vw;
+                    gap: 1.5vw;
                 }
                 
                 #popup-left-column-details,
