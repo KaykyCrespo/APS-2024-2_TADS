@@ -104,22 +104,25 @@
                             }
                         }
 
-                        .popup-navbar {
-                            border-bottom: 0.1vw solid var(--quaternary-dark);
-                        }
-
                         #popup{
                             .popup-content{
                                 background-color: var(--secondary-dark);
                             } 
                             
+                            .popup-navbar {
+                                border-bottom: 0.1vw solid var(--quaternary-dark);
+                            }
+
+                            .nav-link{
+                                color: white;
+                            }
+
                             .nav-link.active {
                                 color: red;
                             }
 
                             .nav-link:hover {
                                 color: red;
-                                /* Cor ao passar o mouse */
                             }
 
                             .active {
@@ -128,13 +131,13 @@
 
                             .nav-link.active:hover {
                                 color: red;
-                                z-index: 55;
                             }
 
                             .popup-title {
                                 color: red;
                             }
                         }
+
                         #big-statistics-blocks-container {
                             .big-statistics-blocks {
                                 border: 0.25vw solid var(--quinternary-dark);
@@ -434,5 +437,9 @@
 }
 
 #coments{
+    color: var(--primary-dark);
+}
+
+#blue{
     color: var(--primary-dark);
 }
