@@ -486,6 +486,8 @@ main {
 
                 .popup-content-container-details{
                     width: 50%;
+                    padding-left: 1.2vw;
+                    gap: 1.5vw;
                 }
 
                 #details-container {
