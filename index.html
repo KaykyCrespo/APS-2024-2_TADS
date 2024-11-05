@@ -61,22 +61,26 @@
                     <h1 id="lang-title-statistics">General statistics</h1>
                     <div id="small-statistics-blocks-container">
                         <div class="small-statistics-blocks">
-                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Bubblesort Information')">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon"
+                                onclick="showPopup('Bubblesort Information')">
                             <p id="lang-bubblesort-used">Bubblesort used</p>
                             <h2 id="bubblesort-count">0</h2>
                         </div>
                         <div class="small-statistics-blocks">
-                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Insertionsort Information')">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon"
+                                onclick="showPopup('Insertionsort Information')">
                             <p id="lang-insertionsort-used">Insertionsort used</p>
                             <h2 id="insertionsort-count">0</h2>
                         </div>
                         <div class="small-statistics-blocks">
-                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Selectionsort Information')">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon"
+                                onclick="showPopup('Selectionsort Information')">
                             <p id="lang-selectionsort-used">Selectionsort used</p>
                             <h2 id="selectionsort-count">0</h2>
                         </div>
                         <div class="small-statistics-blocks">
-                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon" onclick="showPopup('Heapsort Information')">
+                            <img src="imgs/info.png" alt="Bubblesort" class="sort-icon"
+                                onclick="showPopup('Heapsort Information')">
                             <p id="lang-heapsort-used">Heapsort used</p>
                             <h2 id="heapsort-count">0</h2>
                         </div>
@@ -86,7 +90,7 @@
 
                     <!-- Estrutura do Popup -->
                     <div id="popup" class="popup">
-                        <div class="popup-content">
+                        <div class="popup-content" style="border: 1px solid white">
                             <span class="close" onclick="closePopup()">&times;</span>
 
                             <div class="popup-navbar">
@@ -96,45 +100,57 @@
                                 <a href="#popup-details" class="nav-link">Details</a>
                             </div>
 
-                            <div class="navbar-border"></div>
 
-                            <div class="popup-content-container">
-                                <div class="popup-text-content">
-                                    <div class="popup-title" id="popup-title">Title goes here.</div>
-                                    <div id="popup-explanation">Explanation goes here.</div>
+                            <div class="popup-content-container" style="border: 1px solid green">
+                                <div class="popup-text-content" style="border: 1px solid purple">
+
+                                    <div class="popup-content-container-explanation" style="border: 1px solid red">
+                                        <div id="popup-title">Title goes here.</div>
+                                        <div id="popup-explanation">Explanation goes here.</div>
+                                    </div>
+                                    <img src="imgs/bubblesortjpg.jpg" alt="Description of Image" class="popup-image" style="border: 1px solid yellow">
+
+
 
                                     <div class="popup-content-container-code">
                                         <div id="popup-code">Code snippet goes here.</div>
-                                        <div id="popup-code2">Code snippet goes here.</div>
-                                        <div id="popup-code3">Code snippet goes here.</div>
+
+                                        <div class="popup-content-container-code2">
+                                            <div id="popup-code2">Code snippet goes here.</div>
+                                            <div id="popup-code3">Code snippet goes here.</div>
+                                        </div>
                                     </div>
-                                    
+
+
                                     <div id="popup-code4">Code snippet goes here.</div>
                                     <div id="popup-code5">Code snippet goes here.</div>
 
 
-                                    <div id="popup-title-step-by-step">Title of Step by Step explanation goes here.
-                                    </div>
 
 
 
-                                    <div id="step-by-step-container">
-                                        <div id="popup-left-column-step-by-step"></div>
-                                        <div id="popup-step-by-step">Step by Step explanation goes here.</div>
-                                        <div id="popup-right-column-step-by-step"></div>
-                                    </div>
 
-                                    <div id="details-container">
+
+                                            <div id="popup-title-step-by-step">Title of Step by Step explanation goes here.</div>
+                                        <div class="popup-content-container-step" style="border: 1px solid red">
+                                            <div id="popup-left-column-step-by-step"></div>
+                                            <div id="popup-step-by-step"></div>
+                                            <div id="popup-right-column-step-by-step" style="border: 1px solid yellow"></div>
+                                        </div>
+
+
+
+
+                                <div id="details-container">
+                                    <div class="popup-content-container-details" style="border: 1px solid red">
                                         <div id="popup-left-column-details"></div>
                                         <div id="popup-details">Additional details go here.</div>
-                                        <div id="popup-right-column-details"></div>
                                     </div>
-
+                                        <div id="popup-right-column-details" style="border: 1px solid orange"></div>
+                                </div>
 
 
                                 </div>
-                                <!-- Adicionando a Imagem -->
-                                <img src="imgs/bubblesortjpg.jpg" alt="Description of Image" class="popup-image">
                             </div>
                         </div>
                     </div>
@@ -142,18 +158,18 @@
 
 
 
-                    <div id="big-statistics-blocks-container">
-                        <div class="big-statistics-blocks">
-                            <p id="lang-total-iterations">Total iterations :</p>
-                            <h2 id="iterations-count">0</h2>
-                        </div>
-                        <div class="big-statistics-blocks">
-                            <p id="lang-total-sec">Total time (sec):</p>
-                            <h2 id="totaltime-count">0s</h2>
-                        </div>
-                    </div>
-                </section>
+            <div id="big-statistics-blocks-container">
+                <div class="big-statistics-blocks">
+                    <p id="lang-total-iterations">Total iterations :</p>
+                    <h2 id="iterations-count">0</h2>
+                </div>
+                <div class="big-statistics-blocks">
+                    <p id="lang-total-sec">Total time (sec):</p>
+                    <h2 id="totaltime-count">0s</h2>
+                </div>
             </div>
+        </section>
+        </div>
         </section>
         <section id="right-side">
             <div>

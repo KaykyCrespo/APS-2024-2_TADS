@@ -214,24 +214,16 @@ main {
                         height: 7vw;
                         position: relative;
                         flex: 0.5;
-                        /* Faz com que todos os blocos cresçam igualmente */
                         margin: 0 0.6vw;
-                        /* Margem lateral para espaçamento entre os blocos */
                         transition: transform 0.3s ease, box-shadow 0.3s ease;
-                        /* Suaviza a transformação e a sombra */
 
                         img {
                             position: absolute;
-                            width: 17px;
-                            /* Tamanho da imagem */
-                            height: 17px;
-                            /* Tamanho da imagem */
+                            width: 1.1vw;
+                            height: 1.1vw;
                             top: 10px;
-                            /* Ajuste de posição */
                             right: 10px;
-                            /* Ajuste de posição */
                             opacity: 0.8;
-                            /* Leve transparência para o ícone */
                             transition: opacity 0.3s ease;
                         }
 
@@ -289,12 +281,16 @@ main {
                     position: relative;
                     width: 65vw;
                     height: 40vw;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1vw;
                 }
 
                 .popup-navbar {
                     display: flex;
                     font-family: 'Open Sans', sans-serif;
-                }
+                    border-bottom: 0.1vw solid #4CA6A8;
+                    }
 
                 .nav-link {
                     color: white;
@@ -332,59 +328,68 @@ main {
                 .popup-content-container {
                     display: flex;
                     justify-content: space-between;
-                    margin-top: 1.3vw;
                     width: 100%;
+                    height: 65vw;
+                }
+
+                .popup-text-content {
+                    color: var(--white);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: left;
+                    gap: 1vw;
+                }
+
+                #popup-title {
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: bold;
+                    font-size: 2vw;
+                    padding-left: 0.6vw;
+                    color: #4CA6A8;
+                }
+
+                #popup-explanation {
+                    font-family: 'Open Sans', sans-serif;
+                    padding-left: 0.6vw;
+                    line-height: 1.5vw;
+                }
+
+                .popup-image {
+                    width: 50%;
+                    height: auto;
+                    max-width: 45%;
+                    border-radius: 0.5vw;
                 }
 
                 .popup-content-container-code{
                     display: flex;
                     justify-content: space-between;
-                    margin-top: 1.3vw;
                     width: 100%;
-                }
-
-                .popup-text-content div {
-                    color: var(--white);
-                    margin-bottom: 0.6vw;
-                    text-align: left;
-                }
-
-                .popup-title {
-                    font-size: 24px;
-                    font-weight: bold;
-                    margin-bottom: 10px;
-                    color: #4CA6A8;
-                }
-
-                #popup-title {
-                    margin-top: 8vh;
-                    font-family: 'Open Sans', sans-serif;
-                    font-weight: bold;
-                    font-size: 2vw;
-                    padding: 0.6vw;
-                }
-
-                #popup-explanation {
-                    font-family: 'Open Sans', sans-serif;
-                    padding: 0.6vw;
-                    line-height: 1.5vw;
+                    height: 100%;
+                    gap: 1.5vw;
                 }
 
                 #popup-code {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
-                    padding: 1vw;
-                    margin: 1vw;
                     width: 100%;
+                }
+
+                .popup-content-container-code2{
+                    display: flex;
+                    flex-direction: column;
+                    align-content: space-between ;
+                    width: 100%;
+                    height: 100%;
+                    gap: 1vw;
                 }
 
                 #popup-code2 {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
-                    padding: 1vw;
-                    margin: 1vw;
                     width: 100%;
                     display: flex;
                     align-items: center;
@@ -396,8 +401,6 @@ main {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
-                    padding: 1vw;
-                    margin: 0 auto;
                     width: 100%;
                     display: flex;
                     align-items: center;
@@ -438,28 +441,40 @@ main {
                     flex-direction: column;
                     align-self: center;
                 }
+
                 
-                #step-by-step-container {
+                .popup-content-container-explanation {
                     display: flex;
-                    justify-content: space-between;
-                    margin-top: 1.3vw;
-                    width: 100%;
+                    flex-direction: column;
+                    gap: 1.5vw;
+                    width: 50%;
                 }
-                
+
+                #popup-title-step-by-step{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5vw;
+                    width: 50%;
+                }
+
+                .popup-content-container-step{
+                    gap: 1.5vw;
+                }
+
                 #popup-left-column-step-by-step,
                 #popup-right-column-step-by-step {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
-                    padding: 1vw 1vw 0 1.5vw;
-                    margin: 1vw;
-                    width: 100%;
+                }
+
+                .popup-content-container-details{
+                    width: 50%;
                 }
 
                 #details-container {
                     display: flex;
                     justify-content: space-between;
-                    margin-top: 1.3vw;
                     width: 100%;
                 }
                 
@@ -468,26 +483,7 @@ main {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
-                    padding: 1vw 1vw 0 1.5vw;
-                    margin: 1vw;
                     width: 100%;
-                }
-                
-                
-
-                .popup-image {
-                    flex: 1;
-                    width: auto;
-                    height: auto;
-                    max-width: 50%;
-                    border-radius: 0.5vw;
-                    margin: 12vh 1vh;
-                }
-
-                /* Optional: ensure the popup-content does not shrink below a certain size */
-                .popup-content {
-                    min-width: 42vw;
-                    min-height: 26vw;
                 }
 
                 .navbar-border {
@@ -497,12 +493,11 @@ main {
                     margin-top: -2px;
                     transition: all 0.3s ease;
                 }
-                
+
                 .show-heap-divider {
                     display: block;
                 }
 
-                
 
                 .hidden {
                     display: none;
