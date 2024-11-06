@@ -328,10 +328,13 @@ main {
                     justify-content: space-between;
                     width: 100%;
                     height: 65vw;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: left;
+                    gap: 1vw;
                 }
 
                 .popup-text-content {
-                    color: var(--white);
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -351,6 +354,7 @@ main {
                     font-family: 'Open Sans', sans-serif;
                     padding-left: 0.6vw;
                     line-height: 1.5vw;
+                    color: var(--white);
                 }
 
                 .popup-image {
@@ -373,6 +377,7 @@ main {
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
                     width: 100%;
+                    color: var(--white);
                 }
 
                 .popup-content-container-code2{
@@ -393,6 +398,7 @@ main {
                     align-items: center;
                     justify-content: center;
                     overflow: auto;
+                    color: var(--white);
                 }
 
                 #popup-code3 {
@@ -405,6 +411,7 @@ main {
                     justify-content: center;
                     overflow: auto;
                     text-align: center;
+                    color: var(--white);
                 }
 
                 #popup-code4 {
@@ -419,6 +426,7 @@ main {
                     justify-content: center;
                     overflow: auto;
                     height: auto;
+                    color: var(--white);
                 }
 
                 #popup-code5 {
@@ -438,6 +446,7 @@ main {
                     flex: 1;
                     flex-direction: column;
                     align-self: center;
+                    color: var(--white);
                 }
 
                 
@@ -466,10 +475,10 @@ main {
                     flex-direction: column;
                     gap: 1.5vw;
                     width: 50%;
+                    color: var(--white);
                 }
 
                 .popup-content-container-step{
-                    padding-left: 1.3vw;
                     gap: 1.5vw;
                 }
 
@@ -479,20 +488,13 @@ main {
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
                     padding: 1.3vw;
-                    gap: 1.5vw;
-                }
-
-                .popup-content-container-details{
-                    width: 50%;
-                    padding-left: 1.2vw;
-                    gap: 1.5vw;
+                    color: var(--white);
                 }
 
                 #details-container {
                     display: flex;
                     justify-content: space-between;
                     width: 100%;
-                    padding-left: 1.2vw;
                     gap: 1.5vw;
                 }
                 
@@ -502,6 +504,8 @@ main {
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
                     width: 100%;
+                    color: var(--white);
+                    padding: 1.3vw;
                 }
 
                 .navbar-border {
