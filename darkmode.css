@@ -5,6 +5,8 @@
     --stroke-color: rgba(255, 255, 255, 0.5);
     --topics: #4995A6;
     --subtitle-step: #4995A6;
+    --gray-popup: #AAAAAA;
+    --green: #008000;
 }
 
 .dark{
@@ -14,6 +16,8 @@
     --stroke-color: rgba(0, 0, 0, 0.5);
     --topics: #1C2026;
     --subtitle-step: #0A0B0D;
+    --gray-popup: #0A0B0D;
+    --green: #00C000;
 }
 
 #switch{
@@ -449,8 +453,3 @@
 	}
 
 }
-
-#coments{
-    color: var(--primary-dark);
-}
-

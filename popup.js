@@ -7,7 +7,7 @@ const sortAlgorithms = {
                 "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
             code: `<span style="color: var(--blue)">def</span> <span style = "color: var(--red)">bubble_sort</span>(array):<br>
                &nbsp;&nbsp;n = <span style = "color: var(--orange)">len</span>(array)<br>
-               iterations = 0 <span id="coments"># Interaction counter</span><br>
+               iterations = 0 <span style = "color: var(--gray-popup)># Interaction counter</span><br>
                <br>
                <span style = "color: var(--gray-popup)"># Iterate through all of the array</span><br>
                &nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n):<br>
@@ -165,7 +165,7 @@ const sortAlgorithms = {
                 "O algoritmo de ordenação por bolha organiza uma lista comparando pares de elementos adjacentes, como crianças em uma fila. Primeiro, olhamos as duas primeiras crianças; se a da esquerda for maior que a da direita, trocamos elas. Continuamos fazendo isso até o final da fila. Repetimos esse processo várias vezes até que ninguém precise mais trocar de lugar. Assim, no final, a fila ficará organizada do menor para o maior!",
             code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">bubble_sort</span>(lista):<br>
                &nbsp;&nbsp;n = <span style = "color: var(--orange)">len</span>(lista)<br>
-               interacoes = 0 <span id="coments"># Contador de interações</span><br>
+               interacoes = 0 <span style = "color: var(--gray-popup)># Contador de interações</span><br>
                <br>
                <span style = "color: var(--gray-popup)"># Percorre todos os elementos do array</span><br>
                &nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n):<br>
