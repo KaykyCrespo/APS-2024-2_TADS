@@ -5,7 +5,7 @@ const sortAlgorithms = {
             title: "BUBBLESORT",
             explanation:
                 "The bubble sort algorithm organizes a list by comparing pairs of adjacent elements, like children in a line. First, we look at the first two children; if the one on the left is taller than the one on the right, we swap them. We keep doing this until we reach the end of the line. We repeat this process several times until no one needs to switch places anymore. In the end, the line will be organized from shortest to tallest!",
-            code: `<span id="blue" style="color: var(--blue)">def</span> <span style = "color: var(--red)">bubble_sort</span>(array):<br>
+            code: `<span style="color: var(--blue)">def</span> <span style = "color: var(--red)">bubble_sort</span>(array):<br>
                &nbsp;&nbsp;n = <span style = "color: var(--orange)">len</span>(array)<br>
                iterations = 0 <span id="coments"># Interaction counter</span><br>
                <br>
@@ -38,7 +38,7 @@ const sortAlgorithms = {
         </div>`,
 
             subtitle:
-                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--subtitle-step); font-weight: bold;">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
@@ -196,7 +196,7 @@ const sortAlgorithms = {
         </div>`,
 
             subtitle:
-                'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Suponha a seguinte lista: <span style = "color: var(--subtitle-step); font-weight: bold;">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span style = "color: var(--topics)">Primeira</span> interação (i = 0):</h3>
@@ -360,7 +360,7 @@ const sortAlgorithms = {
         </div>`,
 
             subtitle:
-                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--subtitle-step); font-weight: bold;">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
@@ -477,7 +477,7 @@ const sortAlgorithms = {
         </div>`,
 
             subtitle:
-                'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Suponha a seguinte lista: <span style = "color: var(--subtitle-step); font-weight: bold;">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span style = "color: var(--topics)">Primeira</span> interação (i = 0):</h3>
@@ -597,7 +597,7 @@ const sortAlgorithms = {
         </div>`,
 
             subtitle:
-                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--subtitle-step); font-weight: bold;">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
@@ -719,7 +719,7 @@ const sortAlgorithms = {
         </div>`,
 
             subtitle:
-                'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Suponha a seguinte lista: <span style = "color: var(--subtitle-step); font-weight: bold;">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span style = "color: var(--topics)">Primeira</span> interação (i = 0):</h3>
@@ -867,7 +867,7 @@ const sortAlgorithms = {
 </div>
 `,
             subtitle:
-                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Assume the following  array: <span style = "color: var(--subtitle-step); font-weight: bold;">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-1"><span style = "color: var(--topics)">First:</span></h3>
@@ -1014,7 +1014,7 @@ const sortAlgorithms = {
     </div>
     `,
             subtitle:
-                'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Suponha a seguinte lista: <span style = "color: var(--subtitle-step); font-weight: bold;">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
                                                     <h3 id="title-1"><span style = "color: var(--topics)">Primeiro:</span></h3>

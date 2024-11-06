@@ -3,6 +3,8 @@
     --highdark-color: rgba(255, 255, 255, 0.2);
     --surface-color: rgba(255, 255, 255, 0.1);
     --stroke-color: rgba(255, 255, 255, 0.5);
+    --topics: #4995A6;
+    --subtitle-step: #4995A6;
 }
 
 .dark{
@@ -10,6 +12,8 @@
 	--highdark-color: rgba(0, 0, 0, 0.2);
     --surface-color: rgba(0, 0, 0, 0.05);
     --stroke-color: rgba(0, 0, 0, 0.5);
+    --topics: #1C2026;
+    --subtitle-step: #0A0B0D;
 }
 
 #switch{
@@ -117,24 +121,34 @@
                                 color: white;
                             }
 
-                            .nav-link.active {
-                                color: red;
+
+                            #popup-code{
+                                background-color: rgba(255, 255, 255, 0.3);
                             }
 
-                            .nav-link:hover {
-                                color: red;
+                            #popup-code2{
+                                background-color: rgba(255, 255, 255, 0.3);
                             }
 
-                            .active {
-                                color: red;
+                            #popup-code3{
+                                background-color: rgba(255, 255, 255, 0.3);
                             }
 
-                            .nav-link.active:hover {
-                                color: red;
+                            #popup-code4{
+                                background-color: rgba(255, 255, 255, 0.3);
+                            }
+                            #popup-code5{
+                                background-color: rgba(255, 255, 255, 0.3);
                             }
 
-                            .popup-title {
-                                color: red;
+                            #popup-left-column-step-by-step,
+                            #popup-right-column-step-by-step {
+                                background-color: rgba(255, 255, 255, 0.3);
+                            }
+
+                            #popup-left-column-details,
+                            #popup-right-column-details {
+                                background-color: rgba(255, 255, 255, 0.3);
                             }
                         }
 
@@ -440,6 +454,3 @@
     color: var(--primary-dark);
 }
 
-#blue{
-    color: var(--primary-dark);
-}
