@@ -480,75 +480,75 @@ const sortAlgorithms = {
                 'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">Primeira</span> interação (i = 0):</h3>
                                                 <ul>
-                                                    <li id="item-1">Compare 11 with 22.</li>
-                                                    <li id="item-2">11 is smaller, so move 22 one position ahead and insert 11 at the beginning.</li>
-                                                    <li id="item-3">The array is now: [11, 22, 54, 32].</li>
+                                                    <li id="item-1">Compare 11 com 22.</li>
+                                                    <li id="item-2">11 é menor, então mova 22 uma posição à frente e insira 11 no início.</li>
+                                                    <li id="item-3">A lista agora está assim: [11, 22, 54, 32].</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span style = "color: var(--topics)">Second</span> iteration (i = 1):</h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">Segunda</span> interação (i = 1):</h3>
                                                 <ul>
-                                                    <li id="item-4">Move to the last element (32).</li>
-                                                    <li id="item-5">Compare 32 with 54.</li>
-                                                    <li id="item-6">32 is smaller, so move 54 one position ahead.</li>
-                                                    <li id="item-7">Compare 32 with 22.</li>
-                                                    <li id="item-8">32 is greater, so insert it right after 22.</li>
-                                                    <li id="item-9">The array remains: [11, 22, 32, 52].</li>
+                                                    <li id="item-4">Mova para o último elemento (32).</li>
+                                                    <li id="item-5">Compare 32 com 54.</li>
+                                                    <li id="item-6">32 é menor, então mova 54 uma posição à frente.</li>
+                                                    <li id="item-7">Compare 32 com 22.</li>
+                                                    <li id="item-8">32 é maior, então insira-o logo após 22.</li>
+                                                    <li id="item-9">Lista final ordenada: [11, 22, 32, 52].</li>
                                                 </ul>
                                             </div>
                                         `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span style = "color: var(--topics)">Third</span> iteration (i = 2):</h3>
+                                                <h3 id="title-5"><span style = "color: var(--topics)">Terceira</span> interação (i = 2):</h3>
                                                 <ul>
-                                                    <li id="item-10">Move to the next element (54).</li>
-                                                    <li id="item-11">Compare 54 with 22.</li>
-                                                    <li id="item-12">54 is greater, so keep it where it is.</li>
-                                                    <li id="item-13">The array remains: [11, 22, 32, 54].</li>
+                                                    <li id="item-10">Mova para o próximo elemento (54).</li>
+                                                    <li id="item-11">Compare 54 com 22.</li>
+                                                    <li id="item-12">54 é maior, então mantenha-o onde está.</li>
+                                                    <li id="item-13">Lista: [11, 22, 32, 54].</li>
                                                 </ul>
                                             </div>
                                             `,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">1. INICIALIZAÇÃO:</span></h3>
                                             <ul>
-                                                <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+                                                <li id="item-1">Comece com um array ou lista de elementos que você deseja ordenar.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span style = "color: var(--topics)">2. INITIAL SELECTION:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">2. SELEÇÃO INICIAL:</span></h3>
                                             <ul>
-                                                <li id="item-2">Begin with the second number in the list, assuming that the first number is already in the "sorted sublist."</li>
+                                                <li id="item-2">Comece com o segundo número na lista, assumindo que o primeiro número já está na "sublista ordenada".</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span style = "color: var(--topics)">3. COMPARISON AND INSERTION:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">3. COMPARAÇÃO E INSERÇÃO:</span></h3>
                                             <ul>
-                                                <li id="item-3">Compare the selected number with the numbers in the "sorted sublist.</li>
-                                                <li id="item-4">If the current number is smaller than the previous ones, move each larger number one position ahead to make space.</li>
+                                                <li id="item-3">Compare o número selecionado com os números da "sublista ordenada".</li>
+                                                <li id="item-4">Se o número atual for menor que os números anteriores, mova cada número maior uma posição à frente para abrir espaço.</li>
                                             </ul>
                                         </div>
                                         `,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span style = "color: var(--topics)">4. POSITIONING THE NUMBER:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">4. POSICIONAR O NÚMERO:</span></h3>
                                             <ul>
-                                                <li id="item-1">Place the current number in its correct position within the sublist to keep it sorted.</li>
+                                                <li id="item-1">Coloque o número atual no seu lugar na sublista, para que ela continue ordenada.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span style = "color: var(--topics)">5. MOVE TO THE NEXT NUMBER:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">5. AVANÇAR PARA O PRÓXIMO NÚMERO:</span></h3>
                                             <ul>
-                                                <li id="item-2">Proceed to the next number in the original list and repeat steps 3 and 4.</li>
-                                                <li id="item-3">Continue this process for each number, expanding the "sorted sublist" until all numbers have been processed.</li>
+                                                <li id="item-2">Passe para o próximo número na lista original e repita os passos 3 e 4.</li>
+                                                <li id="item-3">Continue esse processo para cada número, expandindo a "sublista ordenada" até que todos os números tenham sido processados.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span style = "color: var(--topics)">6. COMPLETION:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">6. CONCLUIR:</span></h3>
                                             <ul>
-                                                <li id="item-4">When all the numbers have been inserted, the list will be sorted.</li>
+                                                <li id="item-4">Quando você tiver inserido todos os números, a lista estará ordenada.</li>
                                             </ul>
                                         </div>
                                         `,
@@ -681,7 +681,7 @@ const sortAlgorithms = {
         }, portuguese: {
             title: "SELECTIONSORT",
             explanation:
-                "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy.",
+                "Para organizar os brinquedos, você começa olhando para todos e escolhe o menor. Depois, coloca esse menor na caixa. Em seguida, olha para os brinquedos restantes e escolhe o menor deles, colocando-o também na caixa. Você repete esse processo até que todos os brinquedos estejam organizados. No final, conta quantas vezes olhou para escolher o menor brinquedo.",
             code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">selection_sort</span>(array): <br>
         iterations = 0  <span style = "color: var(--gray-popup)"># Interaction counter</span> <br>
         <br>
@@ -719,82 +719,81 @@ const sortAlgorithms = {
         </div>`,
 
             subtitle:
-                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span style = "color: var(--topics)">First</span> iteration (i = 0):</h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">Primeira</span> interação (i = 0):</h3>
                                                 <ul>
-                                                    <li id="item-1">The smallest element in [22, 11, 54, 32] is 11.</li>
-                                                    <li id="item-2">Swap 11 with 22.</li>
-                                                    <li id="item-3">The array is now: [11, 22, 54, 32].</li>
+                                                    <li id="item-1">O menor elemento de [22, 11, 54, 32] is 11.</li>
+                                                    <li id="item-2">Troque 11 com 22.</li>
+                                                    <li id="item-3">A lista agora está assim: [11, 22, 54, 32].</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span style = "color: var(--topics)">Second</span> iteration (i = 1):</h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">Segunda</span> interação (i = 1):</h3>
                                                 <ul>
-                                                    <li id="item-4">Second iteration (i = 1):</li>
-                                                    <li id="item-5">The smallest element in [22, 54, 32] is 22.</li>
-                                                    <li id="item-6">No swap is needed.</li>
-                                                    <li id="item-7">The array remains: [11, 22, 54, 32].</li>
+                                                    <li id="item-5">O menor elemento de [22, 54, 32] é 22.</li>
+                                                    <li id="item-6">Não há troca necessária.</li>
+                                                    <li id="item-7">A lista permanece: [11, 22, 54, 32].</li>
                                                 </ul>
                                             </div>
                                         `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-5"><span style = "color: var(--topics)">Third</span> iteration (i = 2):</h3>
+                                                <h3 id="title-5"><span style = "color: var(--topics)">Terceira</span> interação (i = 2):</h3>
                                                 <ul>
-                                                    <li id="item-8">The smallest element in [22, 54, 32] is 32.</li>
-                                                    <li id="item-9">Swap 32 with 54.</li>
-                                                    <li id="item-10">The array remains: [11, 22, 32, 54].</li>
+                                                    <li id="item-8">O menor elemento de [54, 32] é 32.</li>
+                                                    <li id="item-9">Troque 32 com 54.</li>
+                                                    <li id="item-10">A lista agora é: [11, 22, 32, 54].</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-11"><span style = "color: var(--topics)">Fourth</span> iteration (i = 3):</h3>
+                                                <h3 id="title-11"><span style = "color: var(--topics)">Quarta</span> interação (i = 3):</h3>
                                                 <ul>
-                                                    <li id="item-12">Only one element (54) remains, so no swap is needed.</li>
+                                                    <li id="item-12">Apenas um elemento (54) resta, então nenhuma troca é necessária.</li>
                                                 </ul>
                                             </div>
                                             `,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">1. INICIALIZAÇÃO:</span></h3>
                                             <ul>
-                                                <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+                                                <li id="item-1">Comece com um array ou lista de elementos que você deseja ordenar.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-2"><span style = "color: var(--topics)">2. ITERATING THROUGH THE ARRAY:</span></h3>
+                                            <h3 id="title-2"><span style = "color: var(--topics)">2. ITERAÇÃO PELO ARRAY:</span></h3>
                                             <ul>
-                                                <li id="item-2">For each position i in the array (from the first to the second-to-last element).</li>
-                                                <li id="item-3">Set i as the index of the smallest element found.</li>
+                                                <li id="item-2">Para cada posição i do array (do primeiro até o penúltimo elemento).</li>
+                                                <li id="item-3">Defina i como o índice do menor elemento encontrado.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span style = "color: var(--topics)">3. FINDING THE SMALLEST ELEMENT:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">3. BUSCA DO MENOR ELEMENTO:</span></h3>
                                             <ul>
-                                                <li id="item-4">Traverse the remaining part of the array (from index i + 1 to the end) to find the smallest element.</li>
-                                                <li id="item-5">If a smaller element is found, update i to the index of that element.</li>
+                                                <li id="item-4">Percorra o restante do array (do índice i + 1 até o final) para encontrar o menor elemento.</li>
+                                                <li id="item-5">Se um elemento menor for encontrado, atualize i para o índice desse elemento.</li>
                                             </ul>
                                         </div>
                                         `,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-1"><span style = "color: var(--topics)">4. SWAP:</span></h3>
+                                            <h3 id="title-1"><span style = "color: var(--topics)">4. TROCA:</span></h3>
                                             <ul>
-                                                <li id="item-1">After finding the smallest element in the unsorted part of the array.</li>
-                                                <li id="item-2">Swap this smallest element with the element at the current position i.</li>
+                                                <li id="item-1">Após encontrar o menor elemento da parte não ordenada do array.</li>
+                                                <li id="item-2">Troque esse menor elemento com o elemento na posição atual i.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span style = "color: var(--topics)">5. REPEAT:</span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">5. REPETIR:</span></h3>
                                             <ul>
-                                                <li id="item-4">Repeat steps 2 to 4 until the entire array is sorted.</li>
+                                                <li id="item-4">Repita os passos 2 a 4 até que todo o array esteja ordenado.</li>
                                             </ul>
                                         </div>
                                         <div class="step-item" style="margin-bottom: 20px;">
-                                            <h3 id="title-3"><span style = "color: var(--topics)">6. COMPLETION: </span></h3>
+                                            <h3 id="title-3"><span style = "color: var(--topics)">6. CONCLUIR: </span></h3>
                                             <ul>
-                                                <li id="item-5">When all the numbers have been inserted, the list will be sorted.</li>
+                                                <li id="item-5">Quando você tiver inserido todos os números, a lista estará ordenada.</li>
                                             </ul>
                                         </div>
                                         `,
@@ -953,7 +952,7 @@ const sortAlgorithms = {
         }, portuguese: {
             title: "HEAPSORT",
             explanation:
-                "To sort numbers using a heap, we first place all the numbers into a heap, where the largest stone (number) is at the top. Then, we remove this largest stone from the top and reorganize the heap, repeating the process until all the stones are removed. Each time we remove a stone, we count that action as an iteration. In the end, we will have the numbers organized from smallest to largest.",
+                "Para ordenar números usando uma heap, primeiro colocamos todos os números em uma montanha, onde a maior pedra (número) fica no topo. Depois, tiramos essa maior pedra do topo e reorganizamos a montanha, repetindo o processo até que todas as pedras sejam retiradas. Cada vez que tiramos uma pedra, contamos essa ação como uma iteração. No final, teremos os números organizados do menor para o maior.",
             code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">heapify</span>(array, n, i, interactions):<br>
             &nbsp;&nbsp;&nbsp;&nbsp;largest = i  <span style = "color: var(--gray-popup)"># Assume root is the largest element</span><br>
             &nbsp;&nbsp;&nbsp;&nbsp;left = <span style = "color: var(--red)">2</span> * i + <span style = "color: var(--red)">1</span>  <span style = "color: var(--gray-popup)"># Index of left child</span><br>
@@ -1015,22 +1014,22 @@ const sortAlgorithms = {
     </div>
     `,
             subtitle:
-                'Assume the following  array: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
+                'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                    <h3 id="title-1"><span style = "color: var(--topics)">First:</span></h3>
+                                                    <h3 id="title-1"><span style = "color: var(--topics)">Primeiro:</span></h3>
                                                     <ul>
-                                                        <li id="item-1">Build the Max-Heap: Start by building the Max-Heap.In Heap Sort, we use a tree structure where each "parent" element is greater than its "children."</li>
+                                                        <li id="item-1">Construir a Max-Heap: comece a construir a Max-Heap. No Heap Sort, usamos uma estrutura de árvore onde cada elemento "pai" é maior que seus "filhos".</li>
                                                     </ul>
                                                 </div>
                                                 <div class="step-item" style="margin-bottom: 20px;">
-                                                    <h3 id="title-2"><span style = "color: var(--topics)">Second:</span></h3>
+                                                    <h3 id="title-2"><span style = "color: var(--topics)">Segundo:</span></h3>
                                                     <ul>
-                                                        <li id="item-2">Building the Max-Heap (starting from the middle and moving to the beginning):</li>
-                                                        <li id="item-3">First, check the element 11 (position 1, considering 0-based indexing).</li>
-                                                        <li id="item-4">Compare it with its child, 32.      Since 32 > 11, swap them:      List: [22, 32, 54, 11].</li>
-                                                        <li id="item-5">Next, move to the element 22 (position 0).      Compare 22 with its children (32 and 54).      Since 54 is the largest, swap 22 with 54:      List: [54, 32, 22, 11]</li>
-                                                        <li id="item-6">Max-Heap built: [54, 32, 22, 11].</li>
+                                                        <li id="item-2">Construindo a Max-Heap (começando do meio e indo para o início):</li>
+                                                        <li id="item-3">Primeiro, verifique o elemento 11 (posição 1, considerando índice 0).</li>
+                                                        <li id="item-4">Compare com seu filho, 32. Como 32 > 11, troque: Lista: [22, 32, 54, 11]</li>
+                                                        <li id="item-5">Em seguida, vá para o elemento 22 (posição 0).      Compare 22 com seus filhos (32 e 54). Como 54 é o maior,      troque 22 com 54:                 Lista: [54, 32, 22, 11]</li>
+                                                        <li id="item-6">Max-Heap construído: [54, 32, 22, 11].</li>
                                                     </ul>
                                                 </div>
                                             `,
