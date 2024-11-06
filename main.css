@@ -364,6 +364,15 @@ main {
                     border-radius: 0.5vw;
                 }
 
+                .container-principal{
+                    display: block;
+                }
+
+                .container-left-code{
+                    display: flex;
+                    gap: 1.5vw;
+                }
+
                 .popup-content-container-code{
                     display: flex;
                     flex-direction: column;
@@ -378,7 +387,8 @@ main {
                     border-radius: 0.3vw;
                     width: 100%;
                     color: var(--white);
-                    padding: 0.5vw;
+                    padding: 1vw;
+                    overflow: auto;
                 }
 
                 .popup-content-container-code2{
@@ -393,12 +403,9 @@ main {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
                     overflow: auto;
                     color: var(--white);
-                    padding: 0.5vw;
+                    padding: 1vw;
 
                 }
 
@@ -407,14 +414,25 @@ main {
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
                     width: 100%;
+                    text-align: center;
+                    color: var(--white);
+                    padding: 1vw;
+
+                }
+
+                .container-code{
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    overflow: auto;
-                    text-align: center;
-                    color: var(--white);
-                    padding: 0.5vw;
+                    gap: 1.5vw;
+                }
 
+                .popup-content-container-code3{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1.5vw;
+                    padding: 1.5vh;
                 }
 
                 #popup-code4 {
@@ -422,37 +440,18 @@ main {
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
                     padding: 1vw;
-                    margin: 1vw;
-                    min-height: 50px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    overflow: auto;
-                    height: auto;
                     color: var(--white);
                     padding: 0.5vw;
-
                 }
 
                 #popup-code5 {
                     font-family: 'Fira Code', monospace;
                     background-color: rgba(255, 255, 255, 0.1);
                     border-radius: 0.3vw;
-                    padding: 1vw;
-                    margin: 1vw;
-                    min-height: 50px;
-                    align-items: center;
-                    justify-content: center;
+                    width: 100%;
                     overflow: auto;
-                    height: auto;
-                    
-                    display: flex;
-                    flex: 1;
-                    flex-direction: column;
-                    align-self: center;
                     color: var(--white);
                     padding: 0.5vw;
-
                 }
 
                 

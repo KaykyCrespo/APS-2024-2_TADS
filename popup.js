@@ -442,7 +442,7 @@ const sortAlgorithms = {
                 "Imagine que você tem uma caixa de lápis misturados. Você pega um lápis e coloca na sua mão, que já está organizada. Depois, pega outro lápis e verifica onde ele deve ir na sua mão, colocando-o na posição certa. Você repete isso até que todos os lápis estejam organizados. No final, conta quantas vezes olhou e comparou os lápis para deixá-los em ordem!"
             ,
             code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">insertion_sort</span>(array):<br>
-        iterations = 0 <span style = "color: var(--gray-popup)"># Counter for iterations</span><br>
+        &nbsp;iterations = 0 <span style = "color: var(--gray-popup)"># Counter for iterations</span><br>
         <br>
         <span style = "color: var(--gray-popup)"># Traverse the array starting from the second element</span
         <span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(<span style = "color: var(--red)">1</span>, <span style = "color: var(--orange)">len</span>(array)):<br>
@@ -465,7 +465,7 @@ const sortAlgorithms = {
         &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br>
         &nbsp;total_iterations = insertion_sort(array)<br>
         &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
-        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>code2:
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>
         `,
 
             code3: `
@@ -561,7 +561,7 @@ const sortAlgorithms = {
             explanation:
                 "To organize the toys, you start by looking at all of them and choosing the smallest one. Then, you put this smallest one in the box. Next, you look at the remaining toys and choose the smallest one among them, placing it in the box as well. You repeat this process until all the toys are organized. In the end, you count how many times you looked to pick the smallest toy.",
             code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">selection_sort</span>(array): <br>
-        iterations = 0  <span style = "color: var(--gray-popup)"># Interaction counter</span> <br>
+        &nbsp;iterations = 0  <span style = "color: var(--gray-popup)"># Interaction counter</span> <br>
         <br>
         <span style = "color: var(--gray-popup)"># Traverse all elements of the array</span> <br>
         <span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(<span style = "color: var(--orange)">len</span>(array) - <span style = "color: var(--red)">1</span>): <br>
@@ -890,11 +890,11 @@ const sortAlgorithms = {
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
                                                 <h3 id="title-3"><span style = "color: var(--topics)">Third:</span></h3>
                                                 <ul>
-                                                    <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li>
+                                                    <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li><br>
                                                     <h3 id="title-4"><span style = "color: var(--topics)">1. First Extraction:</span></h3>
                                                         <li id="item-9">Swap the largest element (54) with the last element (11): List: [11, 32, 22, 54]</li>
                                                     <li id="item-10">Ignore the last element (54) as it is already in its final position.</li>
-                                                    <li id="item-11">Restructure the heap so that 11 moves to its correct position. Swap 11 with 32: List: [32, 11, 22, 54].</li>
+                                                    <li id="item-11">Restructure the heap so that 11 moves to its correct position. Swap 11 with 32: List: [32, 11, 22, 54].</li><br>
 
                                                     <h3 id="title-5"><span style = "color: var(--topics)">2. Second Extraction:</span></h3>
                                                     <li id="item-12">Swap the largest remaining element (32) with the last unsorted element (22):List: [22, 11, 32, 54]</li>
@@ -1037,11 +1037,11 @@ const sortAlgorithms = {
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
                                                     <h3 id="title-3"><span style = "color: var(--topics)">Third:</span></h3>
                                                     <ul>
-                                                        <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li>
+                                                        <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li><br>
                                                         <h3 id="title-4"><span style = "color: var(--topics)">1. First Extraction:</span></h3>
                                                             <li id="item-9">Swap the largest element (54) with the last element (11): List: [11, 32, 22, 54]</li>
                                                         <li id="item-10">Ignore the last element (54) as it is already in its final position.</li>
-                                                        <li id="item-11">Restructure the heap so that 11 moves to its correct position. Swap 11 with 32: List: [32, 11, 22, 54].</li>
+                                                        <li id="item-11">Restructure the heap so that 11 moves to its correct position. Swap 11 with 32: List: [32, 11, 22, 54].</li><br>
     
                                                         <h3 id="title-5"><span style = "color: var(--topics)">2. Second Extraction:</span></h3>
                                                         <li id="item-12">Swap the largest remaining element (32) with the last unsorted element (22):List: [22, 11, 32, 54]</li>
@@ -1190,9 +1190,17 @@ function showPopup(sortType) {
         const popupContentContainerCode2 = document.querySelector(".popup-content-container-code2");
         popupContentContainerCode2.style.display = sectionId === "popup-code" ? "flex" : "none";
 
+        // Mostra ou oculta o code2 com base na seção ativa
+        const containerCode = document.querySelector(".container-code");
+        containerCode.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "block" : "none";
+
+        // Mostra ou oculta o code2 com base na seção ativa
+        const popupContentContainerCode3 = document.querySelector(".popup-content-container-code3");
+        popupContentContainerCode3.style.display = sectionId === "popup-code" && sortType === "Heapsort Information" ? "flex" : "none";
+
 
         const code2Element = document.getElementById("popup-code2");
-        code2Element.style.display = sectionId === "popup-code" ? "flex" : "none";
+        code2Element.style.display = sectionId === "popup-code" ? "block" : "none";
 
         const code3Element = document.getElementById("popup-code3");
         code3Element.style.display = sectionId === "popup-code" && sortType !== "Heapsort Information" ? "block" : "none";
