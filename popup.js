@@ -1035,62 +1035,61 @@ const sortAlgorithms = {
                                             `,
 
             stepByStepRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                    <h3 id="title-3"><span style = "color: var(--topics)">Third:</span></h3>
+                                                    <h3 id="title-3"><span style = "color: var(--topics)">Terceiro:</span></h3>
                                                     <ul>
-                                                        <li id="item-8">Sorting by Repeatedly Extracting the Largest Element.</li><br>
-                                                        <h3 id="title-4"><span style = "color: var(--topics)">1. First Extraction:</span></h3>
-                                                            <li id="item-9">Swap the largest element (54) with the last element (11): List: [11, 32, 22, 54]</li>
-                                                        <li id="item-10">Ignore the last element (54) as it is already in its final position.</li>
-                                                        <li id="item-11">Restructure the heap so that 11 moves to its correct position. Swap 11 with 32: List: [32, 11, 22, 54].</li><br>
-    
-                                                        <h3 id="title-5"><span style = "color: var(--topics)">2. Second Extraction:</span></h3>
-                                                        <li id="item-12">Swap the largest remaining element (32) with the last unsorted element (22):List: [22, 11, 32, 54]</li>
-                                                        <li id="item-13">Ignore the last two elements (32 and 54) since they are already sorted. 22 becomes the new root, and since it is already in the correct position, the heap is balanced.</li>
+                                                        <li id="item-8">Ordenação Extraindo o Maior Elemento Repetidamente.</li><br>
+                                                        <h3 id="title-4"><span style = "color: var(--topics)">1. Primeira Extração</span></h3>
+                                                            <li id="item-9">Troque o maior elemento (54) com o último elemento (11): Lista: [11, 32, 22, 54]</li>
+                                                        <li id="item-10"> Fixe a heap ignorando o último elemento (54 já está em sua posição final)</li>
+                                                        <li id="item-11"> Reestruture a heap para que 11 vá para sua posição correta. 11 troca de lugar com 32. Lista: [32, 11, 22, 54].</li><br>
+                                                        <h3 id="title-5"><span style = "color: var(--topics)">2. Segunda Extração:</span></h3>
+                                                        <li id="item-12">Troque o maior elemento restante (32) com o último elemento da heap não ordenado (22): Lista: [22, 11, 32, 54]</li>
+                                                        <li id="item-13">Fixe a heap ignorando os dois últimos elementos. 22 é a nova raiz e já está em sua posição correta, então a heap está balanceada.</li>
                                                     </ul>
                                                     
                                                 </div>
                                                 `,
 
             detailsLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span style = "color: var(--topics)">1. INITIALIZATION:</span></h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">1. INICIALIZAÇÃO:</span></h3>
                                                 <ul>
-                                                    <li id="item-1">Start with an array or list of elements that you want to sort.</li>
+                                                    <li id="item-1">Comece com um array ou lista de elementos que você deseja ordenar.</li>
                                                 </ul>
                                                 </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-2"><span style = "color: var(--topics)">2. BUILD A MAX-HEAP:</span></h3>
+                                                <h3 id="title-2"><span style = "color: var(--topics)">2. CONSTRUIR UMA MAX-HEAP:</span></h3>
                                                 <ul>
-                                                    <li id="item-2">Construct a binary tree called a "heap" from the list, where the highest value is at the top (root).</li>
-                                                    <li id="item-3">To do this, adjust the tree starting from the middle elements and moving towards the beginning, ensuring that each parent is greater than its children.</li>
+                                                    <li id="item-2">Construa uma árvore binária chamada "heap" a partir da lista, onde o valor mais alto está no topo (raiz).</li>
+                                                    <li id="item-3">Para fazer isso, ajuste a árvore começando nos elementos do meio e avançando para o início, garantindo que cada pai seja maior que seus filhos.</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span style = "color: var(--topics)">3. EXTRACT THE LARGEST ELEMENT:</span></h3>
+                                                <h3 id="title-3"><span style = "color: var(--topics)">3. EXTRAIR DO MAIOR ELEMENTO:</span></h3>
                                                 <ul>
-                                                    <li id="item-4">After building the Max-Heap, the largest number will be at the root of the tree.</li>
-                                                    <li id="item-5">Swap the root value with the last value in the list (end of the heap).</li>
-                                                    <li id="item-6">Remove this last value from the heap (it is now in its correct sorted position in the list).</li>
+                                                    <li id="item-4">Após construir a Max-Heap, o maior número estará na raiz da árvore.</li>
+                                                    <li id="item-5">Troque o valor da raiz com o último valor na lista (final da heap).</li>
+                                                    <li id="item-6">Remova esse último valor da heap (já está em sua posição ordenada na lista).</li>
                                                 </ul>
                                             </div>
                                             `,
 
             detailsRight: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span style = "color: var(--topics)">4. ADJUST THE HEAP:</span></h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">4. REAJUSTAR O HEAP:</span></h3>
                                                 <ul>
-                                                    <li id="item-1">With the original root removed, the new value at the root must maintain the Max-Heap property.</li>
-                                                    <li id="item-2">Restructure the tree so the largest value returns to the top.</li>
+                                                    <li id="item-1">Com a raiz original removida, o novo valor na raiz precisa manter a propriedade de Max-Heap</li>
+                                                    <li id="item-2">Reestruture a árvore para que o maior valor volte ao topo.</li>
                                                     </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span style = "color: var(--topics)">5. REPEAT:</span></h3>
+                                                <h3 id="title-3"><span style = "color: var(--topics)">5. REPETIR:</span></h3>
                                                 <ul>
-                                                    <li id="item-4">Repeat steps 3 and 4 until the entire list is sorted, and the tree is empty.</li>
+                                                    <li id="item-4">Repita os passos 3 e 4 até que toda a lista esteja ordenada e a árvore esteja vazia.</li>
                                                 </ul>
                                             </div>
                                             <div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-3"><span style = "color: var(--topics)">6. COMPLETION: </span></h3>
+                                                <h3 id="title-3"><span style = "color: var(--topics)">6. CONCLUIR: </span></h3>
                                                 <ul>
-                                                    <li id="item-5">When all the numbers have been inserted, the list will be sorted.</li>
+                                                    <li id="item-5">Quando você tiver inserido todos os números, a lista estará ordenada.</li>
                                                 </ul>
                                             </div>
                                             `,
