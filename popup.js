@@ -165,7 +165,7 @@ const sortAlgorithms = {
                 "O algoritmo de ordenação por bolha organiza uma lista comparando pares de elementos adjacentes, como crianças em uma fila. Primeiro, olhamos as duas primeiras crianças; se a da esquerda for maior que a da direita, trocamos elas. Continuamos fazendo isso até o final da fila. Repetimos esse processo várias vezes até que ninguém precise mais trocar de lugar. Assim, no final, a fila ficará organizada do menor para o maior!",
             code: `<span style = "color: var(--blue)">def</span> <span style = "color: var(--red)">bubble_sort</span>(lista):<br>
                &nbsp;&nbsp;n = <span style = "color: var(--orange)">len</span>(lista)<br>
-               interacoes = 0 <span style = "color: var(--gray-popup)># Contador de interações</span><br>
+               interacoes = 0 <span style = "color: var(--gray-popup)"># Contador de interações</span><br>
                <br>
                <span style = "color: var(--gray-popup)"># Percorre todos os elementos do array</span><br>
                &nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n):<br>
