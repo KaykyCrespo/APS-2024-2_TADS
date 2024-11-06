@@ -348,7 +348,7 @@ const sortAlgorithms = {
         &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br>
         &nbsp;total_iterations = insertion_sort(array)<br>
         &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
-        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>code2:
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>
         `,
 
             code3: `
