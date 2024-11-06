@@ -167,39 +167,39 @@ const sortAlgorithms = {
                &nbsp;&nbsp;n = <span style = "color: var(--orange)">len</span>(lista)<br>
                interacoes = 0 <span id="coments"># Contador de interações</span><br>
                <br>
-               <span style = "color: var(--gray-popup)"># Iterate through all da lista</span><br>
+               <span style = "color: var(--gray-popup)"># Percorre todos os elementos do array</span><br>
                &nbsp;&nbsp;<span style = "color: var(--blue)">for</span> i <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(n):<br>
                <br>
-               &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># The last i elements are already in the correct position</span><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Últimos i elementos já estão na posição correta</span><br>
                &nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">for</span> j <span style = "color: var(--blue)">in</span> <span style = "color: var(--orange)">range</span>(<span style = "color: var(--red)">0</span>, n - i - <span style = "color: var(--red)">1</span>):<br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterations += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Increment the interaction counter</span><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interacoes += <span style = "color: var(--red)">1</span> <span style = "color: var(--gray-popup)"># Incrementa o contador de interações</span><br>
                <br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Swap if the found element is greater than the next</span><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--gray-popup)"># Troca se o elemento encontrado for maior que o próximo</span><br>
                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style = "color: var(--blue)">if</span> lista[j] > lista[j + <span style = "color: var(--red)">1</span>]:<br>
                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lista[j], lista[j + <span style = "color: var(--red)">1</span>] = lista[j + <span style = "color: var(--red)">1</span>], lista[j]<br>
                <br>
-               &nbsp;&nbsp;<span style = "color: var(--blue)">return</span> iterations`,
+               &nbsp;&nbsp;<span style = "color: var(--blue)">return</span> interacoes`,
             code2: `
-        <span style = "color: var(--gray-popup)"># Example of usage</span><br>
-        &nbsp;array = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br>
-        &nbsp;total_iterations = bubble_sort(array)<br>
-        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Sorted array: "</span>, array)<br>
-        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total iterations: "</span>, total_iterations)<br><br>
+        <span style = "color: var(--gray-popup)"># Exemplo de uso</span><br>
+        &nbsp;lista = [<span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br>
+        &nbsp; total_interacoes = bubble_sort(lista)<br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Lista ordenada: "</span>, lista)<br>
+        &nbsp;<span style = "color: var(--orange)">print</span>(<span class="code-coler-green">"Total de interações: "</span>, total_interacoes)<br><br>
         `,
 
             code3: `
-        array = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
+        lista = [<span style = "color: var(--orange)">22</span>, <span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
+        lista = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--orange)">54</span>, <span style = "color: var(--red)">32</span>]<br><br>
         <img src="imgs/arrow.png" alt="arrow" style="width: 1.5vw; height: auto; filter: invert(100%);"><br><br>
-        array = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]<br><br>
+        lista = [<span style = "color: var(--red)">11</span>, <span style = "color: var(--red)">22</span>, <span style = "color: var(--red)">32</span>, <span style = "color: var(--red)">54</span>]<br><br>
         </div>`,
 
             subtitle:
                 'Suponha a seguinte lista: <span style = "color: var(--topics)">[22, 11, 54, 32]</span>:',
 
             stepByStepLeft: `<div class="step-item" style="margin-bottom: 20px;">
-                                                <h3 id="title-1"><span style = "color: var(--topics)">Primeiro</span> interação (i = 0):</h3>
+                                                <h3 id="title-1"><span style = "color: var(--topics)">Primeira</span> interação (i = 0):</h3>
                                                 <ul>
                                                     <li id="item-1">Compare o primeiro com o segundo, é maior, sim.</li>
                                                     <li id="item-2">Troque 22 com 11.</li>
